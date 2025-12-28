@@ -24,7 +24,9 @@
     "Webpack5",
     "dpzvc3",
     "UI",
-    "Vue3 Components"
+    "Vue3 Components",
+    "Vue3组件库",
+    "移动端组件库"
   ],
   "dependencies": {
     "china-area-data": "^3.0.0",
