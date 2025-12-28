@@ -1,0 +1,14 @@
+{
+  "eslint.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue"
+  ],
+  "eslint.run": "onType",
+  "eslint.packageManager": "npm",
+  "editor.formatOnSave": true,
+   "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}
