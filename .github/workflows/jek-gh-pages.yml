@@ -1,0 +1,29 @@
+name: Deploy dist-prod to Pages
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload dist-prod
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist-prod
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
