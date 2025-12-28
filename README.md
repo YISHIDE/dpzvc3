@@ -96,14 +96,6 @@ dpzvc3-ui 提供一些 服务组件，无需注册即可使用，如：
 
 使用示例    
 ```bash
-import Vue from 'vue'
-import dpzvc3 from 'dpzvc3-ui'
-import { Message, Modal, Prompt, Indicator } from 'dpzvc3-ui'
-Vue.use(Message)
-Vue.use(Modal)
-Vue.use(Prompt)
-Vue.use(Indicator)
-
 import { createApp } from 'vue'
 import App from './components/app.vue'
 import { Message, Modal, Prompt, Indicator } from 'dpzvc3-ui'
