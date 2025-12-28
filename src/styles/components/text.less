@@ -1,0 +1,82 @@
+@import "../base/variable.less";
+
+.dpzvc3-textBar {
+
+  background: #ffffff;
+  overflow: hidden;
+
+  &-input {
+    width: 100%;
+    display: inline-block;
+
+    &>input {
+      border: 1px solid @TextBorderColor;
+      border-radius: 0;
+      height: @TextInputHeight;
+      box-sizing: border-box;
+      width: 100%;
+      padding-left: 10px;
+      color: @TextColor;
+      transition: all .2s linear;
+    }
+
+    &>input:focus {
+
+      border-color: @ThemeColor;
+      box-shadow: 0 0 2px @ThemeColor
+    }
+
+    &>input::placeholder {
+      color: @TextPlaceholderColor;
+      font-family: "Microsoft Tai Le";
+    }
+  }
+
+
+  &-textarea {
+
+    width: 100%;
+    display: inline-block;
+
+    &>textarea {
+      width: 100%;
+      padding: 10px 5px;
+      box-sizing: border-box;
+      height: @TextAreaHeight;
+      border: 1px solid @TextBorderColor;
+      border-radius: 0;
+      color: @TextColor;
+      transition: border-color .2s linear;
+      will-change: border-color;
+      font-size: 12px;
+    }
+
+    &>textarea:focus {
+      border-color: #39f;
+      box-shadow: 0 0 2px #39f
+    }
+
+    &>textarea::placeholder {
+      color: #e5e5e5;
+      font-family: "Microsoft Tai Le";
+    }
+  }
+
+
+
+  &-tip {
+    flex: 1;
+    align-self: center;
+    text-indent: 3px;
+    line-height: 1;
+    font-size: 12px;
+  }
+
+  &-tip.success {
+    color: lightgreen;
+  }
+
+  &-tip.error {
+    color: red;
+  }
+}

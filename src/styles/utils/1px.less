@@ -1,0 +1,206 @@
+// 使用1px类时，需要注意 如果是absolute定位的，在引入mx-1px后，需要重新写入absolute定位
+@import "../base/variable.less";
+
+.dpzvc3-1px {
+  &-all {
+    .dpzvc3-1px(@BorderColor);
+  }
+
+  &-top {
+    .dpzvc3-1px-side(@BorderColor, top, before);
+  }
+
+  &-bottom {
+    .dpzvc3-1px-side(@BorderColor, bottom, after);
+  }
+
+  &-left {
+    .dpzvc3-1px-side(@BorderColor, left, before);
+  }
+
+  &-right {
+    .dpzvc3-1px-side(@BorderColor, right, after);
+  }
+
+  &-left-right {
+    .dpzvc3-1px-side(@BorderColor, left, before);
+    .dpzvc3-1px-side(@BorderColor, right, after);
+  }
+
+  &-top-bottom {
+    .dpzvc3-1px-side(@BorderColor, top, before);
+    .dpzvc3-1px-side(@BorderColor, bottom, after);
+  }
+
+  &-left-top {
+    .dpzvc3-1px-side(@BorderColor, left, before);
+    .dpzvc3-1px-side(@BorderColor, top, after);
+  }
+
+  &-left-bottom {
+    .dpzvc3-1px-side(@BorderColor, left, before);
+    .dpzvc3-1px-side(@BorderColor, bottom, after);
+  }
+
+  &-right-top {
+    .dpzvc3-1px-side(@BorderColor, right, before);
+    .dpzvc3-1px-side(@BorderColor, top, after);
+  }
+
+  &-right-bottom {
+    .dpzvc3-1px-side(@BorderColor, right, before);
+    .dpzvc3-1px-side(@BorderColor, bottom, after);
+  }
+}
+
+// @mixin
+.dpzvc3-1px(@color: #ccc) {
+  position: relative;
+  border-color: @color;
+
+  &:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    pointer-events: none;
+    border: 1px solid;
+    border-color: inherit;
+    border-radius: inherit;
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio:1.5) {
+    &:before {
+      width: 150%;
+      height: 150%;
+      transform: scale(0.6667);
+    }
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:before {
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+    }
+  }
+}
+
+.dpzvc3-1px-side-base(@color, @pseudo) {
+  position: relative;
+  border-color: @color;
+
+  &:@{pseudo} {
+    position: absolute;
+    content: "";
+    transform-origin: 0 0;
+  }
+}
+
+.dpzvc3-1px-side(@color: #ccc, @direction: top, @pseudo: before) when (@direction =top) {
+  .dpzvc3-1px-side-base(@color, @pseudo);
+
+  &:@{pseudo} {
+    width: 100%;
+    height: 1px;
+    top: 0;
+    left: 0;
+    border-top: 1px solid;
+    border-color: inherit;
+  }
+
+  .dpzvc3-1px-device-fix(@pseudo, "Y");
+}
+
+.dpzvc3-1px-side(@color: #ccc, @direction: top, @pseudo: before) when (@direction =bottom) {
+  .dpzvc3-1px-side-base(@color, @pseudo);
+
+  &:@{pseudo} {
+    width: 100%;
+    height: 1px;
+    bottom: -1px;
+    left: 0;
+    border-bottom: 1px solid;
+    border-color: inherit;
+  }
+
+  .dpzvc3-1px-device-fix(@pseudo, "Y");
+}
+
+.dpzvc3-1px-side(@color: #ccc, @direction: top, @pseudo: before) when (@direction =left) {
+  .dpzvc3-1px-side-base(@color, @pseudo);
+
+  &:@{pseudo} {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-left: 1px solid;
+    border-color: inherit;
+  }
+
+  .dpzvc3-1px-device-fix(@pseudo, "X");
+}
+
+.dpzvc3-1px-side(@color: #ccc, @direction: top, @pseudo: before) when (@direction =right) {
+  .dpzvc3-1px-side-base(@color, @pseudo);
+
+  &:@{pseudo} {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    right: -1px;
+    border-right: 1px solid;
+    border-color: inherit;
+  }
+
+  .dpzvc3-1px-device-fix(@pseudo, "X");
+}
+
+.dpzvc3-1px-device-fix(@pseudo, @transform) when (@transform ="X") {
+  @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    &:@{pseudo} {
+      transform: scaleX(0.6667);
+    }
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:@{pseudo} {
+      transform: scaleX(0.5);
+    }
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 3) {
+    &:@{pseudo} {
+      transform: scaleX(0.333);
+    }
+  }
+}
+
+;
+
+.dpzvc3-1px-device-fix(@pseudo, @transform) when (@transform ="Y") {
+  @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    &:@{pseudo} {
+      transform: scaleY(0.6667);
+    }
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:@{pseudo} {
+      transform: scaleY(0.5);
+    }
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 3) {
+    &:@{pseudo} {
+      transform: scaleY(0.333);
+    }
+  }
+}
+
+;

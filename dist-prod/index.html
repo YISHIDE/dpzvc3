@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>丁平中vc移动端组件</title><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1"><style>html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }</style><script defer="defer" src="91.9d79b442ec3131707419.js"></script><script defer="defer" src="main.2e9aaa9095e329ea2d7b.js"></script></head><body><div id="app"></div><script>(function (doc, win) {
+      var docEl = doc.documentElement;
+
+      function recalc() {
+        var clientWidth = docEl.clientWidth;
+        if (!clientWidth) return;
+
+        if (clientWidth > 750) clientWidth = 750;
+
+        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+      }
+
+      win.addEventListener('resize', recalc);
+      doc.addEventListener('DOMContentLoaded', recalc);
+    })(document, window);</script></body></html>

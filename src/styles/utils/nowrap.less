@@ -1,0 +1,19 @@
+.dpzvc3-nowrap {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dpzvc3-nowrap(@n, @i: 1) when (@i <=@n) {
+  .dpzvc3-nowrap-@{i} {
+    .dpzvc3-nowrap();
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @i;
+  }
+
+  .dpzvc3-nowrap(@n, (@i+1));
+}
+
+.dpzvc3-nowrap(5);

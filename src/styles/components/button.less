@@ -1,0 +1,124 @@
+@width: 40px;
+@import "../base/variable.less";
+
+.dpzvc3-button {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: content-box;
+
+
+  .loading {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &-radius {
+    border-radius: 5px;
+  }
+
+}
+
+.dpzvc3-button.dpzvc3-button-circle {
+
+  width: @width;
+  height: @width;
+  border-radius: 50%
+}
+
+.dpzvc3-button .dpzvc3-button-btn {
+  width: 100%;
+  height: 100%;
+
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0;
+  }
+
+}
+
+.dpzvc3-button-inline {
+  letter-spacing: -3px;
+}
+
+.dpzvc3-button-inline>button {
+
+  letter-spacing: 0;
+}
+
+.dpzvc3-button-success {
+  background: @ButtonSuccessBgColor;
+  color: @ButtonColor;
+  border-color: @ButtonSuccessBgColor;
+
+  &:active {
+    background: @SuccessActiveBgColor;
+    border-color: @SuccessActiveBgColor;
+  }
+}
+
+.dpzvc3-button-danger {
+  color: @ButtonColor;
+  background-color: @ButtonDangerBgColor;
+  border-color: @ButtonDangerBgColor;
+
+  &:active {
+    background: @DangerActiveBgColor;
+    border-color: @DangerActiveBgColor;
+  }
+}
+
+.dpzvc3-button-primary {
+  color: #4d4d4d;
+  background-color: @ButtonPrimaryBgColor;
+  border-color: @ButtonPrimaryBgColor;
+
+  &:active {
+    background-color: @PrimaryActiveBgColor;
+    border-color: @PrimaryActiveBgColor;
+  }
+}
+
+.dpzvc3-button-warning {
+  color: @ButtonColor;
+  background-color: @ButtonWarningBgColor;
+  border-color: @ButtonWarningBgColor;
+
+  &:active {
+    background-color: @WarningActiveBgColor;
+    border-color: @WarningActiveBgColor;
+  }
+}
+
+.dpzvc3-button-normal {
+  color: @ButtonColor;
+  background-color: @ButtonNormalBgColor;
+  border-color: @ButtonNormalBgColor;
+
+  &:active {
+    background-color: @NormalActiveBgColor;
+    border-color: @NormalActiveBgColor;
+  }
+}
+
+.dpzvc3-button-text {
+  color: #657180;
+  background-color: @ButtonTextBgColor;
+  border-color: @ButtonTextBgColor;
+
+  &:active {
+    background-color: @TextActiveBgColor;
+    border-color: @TextActiveBgColor;
+  }
+}
+
+.dpzvc3-button-btn.dpzvc3-button-disabled {
+  color: @ButtonColor;
+  opacity: .6;
+}

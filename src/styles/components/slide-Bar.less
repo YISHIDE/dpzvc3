@@ -1,0 +1,149 @@
+@import "../base/variable.less";
+
+.dpzvc3-slideBar {
+  border-top-color: @SlideBarBgColor;
+  border-bottom-color: @SlideBarBgColor;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+
+  //border-bottom: 1px solid #eee;
+  //border-top: 1px solid #eee;
+  .dpzvc3-slideBar-child {
+    overflow: hidden;
+
+    background-color: @SlideBackgroundCorlor;
+
+    >a {
+
+      color: @slideChildColor;
+    }
+  }
+}
+
+.dpzvc3-slideBar {
+  display: block;
+  width: 100%;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+
+  &-header {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    position: relative;
+    //&.fixed {
+    //  position: absolute;
+    //  top:0;
+    //  left:0;
+    //  z-index:10;
+    //  background: #fff;
+    //}
+  }
+}
+
+.dpzvc3-slideBar-wrapper {
+
+
+  //border-bottom: 1px solid #eeeeee;
+}
+
+.dpzvc3-slideBar-wrapper-absolute {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: @ThemeColor;
+  transition: transform .2s ease-out;
+  will-change: transform;
+  z-index: 3;
+}
+
+//.dpzvc3-slideBar-wrapper::before {
+//  width:100%;
+//  bottom:0;
+//  left: 0;
+//  position: absolute;
+//  content: '';
+//  height: 1px;
+//  background: #eeeeee;
+//
+//}
+
+.dpzvc3-slideBar-wrapper .dpzvc3-slideBar-child {
+  height: 100%;
+  line-height: 1;
+}
+
+.dpzvc3-slideBar-wrapper .dpzvc3-slideBar-child.active>a {
+  color: @ThemeColor;
+}
+
+.dpzvc3-slideBar-wrapper .dpzvc3-slideBar-child a {
+  display: inline-block;
+  width: 100%;
+}
+
+.dpzvc3-slideBar-wrapper.dpzvc3-slideBar-flex {
+  display: flex;
+  align-items: center;
+
+}
+
+.dpzvc3-slideBar-wrapper.dpzvc3-slideBar-flex.normal {
+  flex-direction: row;
+}
+
+.dpzvc3-slideBar-wrapper.dpzvc3-slideBar-flex.vertical {
+  flex-direction: column;
+}
+
+.dpzvc3-slideBar-wrapper.dpzvc3-slideBar-flex .dpzvc3-slideBar-child {
+  flex: 1;
+  width: 0;
+}
+
+.dpzvc3-slideBar-slide {
+  width: auto;
+}
+
+.dpzvc3-slideBar-slide .dpzvc3-slideBar-child {
+  display: inline-block;
+  margin-bottom: -3px;
+}
+
+//.dpzvc3-slideBar-slide .dpzvc3-slideBar-child.normalChild {
+//  height: 30px;
+//}
+
+.dpzvc3-slideBar-container {
+  width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+.dpzvc3-slideBar-content {
+  transition: transform .2s ease-in;
+  will-change: transform;
+  height: 100%;
+  //display: flex;
+  //flex-flow: row nowrap;
+
+  overflow: auto;
+}
+
+.dpzvc3-slideBar-content.dpzvc3-slideBar-dragging {
+  transition: none;
+  will-change: none;
+}
+
+.dpzvc3-slideBar-content-item {
+  //flex: 1;
+  //width:0;
+  display: inline-block;
+  height: 100%;
+
+}

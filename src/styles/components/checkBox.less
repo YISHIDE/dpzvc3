@@ -1,0 +1,113 @@
+@import "../base/variable.less";
+
+.dpzvc3-checkbox {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.dpzvc3-checkBoxGroup-vertical .dpzvc3-checkbox {
+  margin-right: 0;
+  margin-bottom: 8px;
+}
+
+.dpzvc3-checkbox-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: 0;
+  line-height: 1;
+  position: relative
+}
+
+.dpzvc3-checkbox-inner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  top: 0;
+  left: 0;
+  border: 1px solid #d7dde4;
+  border-radius: 2px;
+  background-color: #fff;
+  transition: border-color .2s ease-in-out, background-color .2s ease-in-out;
+
+  &:after {
+    content: "";
+    display: table;
+    width: 4px;
+    height: 8px;
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg) scale(0);
+    transition: all .2s ease-in-out;
+  }
+}
+
+.dpzvc3-checkbox-checked {
+  .dpzvc3-checkbox-inner {
+    border-color: @checkBoxColor;
+    background-color: @checkBoxColor;
+
+    &:after {
+      content: "";
+      display: table;
+      width: 4px;
+      height: 8px;
+      position: absolute;
+      top: 1px;
+      left: 4px;
+      border: 2px solid #fff;
+      border-top: 0;
+      border-left: 0;
+      transform: rotate(45deg) scale(1);
+      transition: all .2s ease-in-out;
+    }
+  }
+
+  .dpzvc3-checkbox-disable+span {
+    color: #f3f3f3;
+    cursor: not-allowed;
+  }
+}
+
+.dpzvc3-checkbox-input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.dpzvc3-checkbox-disable {
+  .dpzvc3-checkbox-inner {
+    background-color: #f3f3f3;
+    border-color: #d7dde4;
+
+    input {
+      cursor: not-allowed;
+    }
+
+  }
+
+  &.dpzvc3-checkbox-checked {
+    .dpzvc3-checkbox-inner {
+      background-color: #f3f3f3;
+      border-color: #d7dde4;
+    }
+  }
+}
+
+.dpzvc3-checkbox-disable+span {
+  color: #f3f3f3;
+  cursor: not-allowed;
+}
