@@ -5,12 +5,10 @@
       :list="files"
     >
       <template #default="props">
-        <div>
-          <img
-            :src="props.item.image"
-            :alt="props.item.name"
-          >
-        </div>
+        <img
+          :src="props.item.image"
+          :alt="props.item.name"
+        >
       </template>
     </Swipe>
   </div>
@@ -27,21 +25,21 @@ export default defineComponent({
         id: 521,
         ad_id: 10,
         name: '玩转大数据分析！Spark2.X+Python 精华实战课程',
-        image: 'https://o74ly5e8r.qnssl.com/9MhSVW1gJD.png',
+        image: 'https://www.189.cn/upfiles/189v2/jt/images/2024/0/ce687527-56e0-4c0f-89f7-2688a45441ea.jpg',
         link: 'https://edu.hellobi.com/course/222'
       },
       {
         id: 506,
         ad_id: 10,
         name: '数据分析报告制作秘籍升级版',
-        image: 'https://o74ly5e8r.qnssl.com/EAbxDnBMcX.png',
+        image: 'https://www.189.cn/upfiles/189v2/jt/images/2020/9/5436bb73-fdd8-414e-9e15-32fae4996e37.jpg',
         link: 'https://edu.hellobi.com/course/132'
       },
       {
         id: 504,
         ad_id: 10,
         name: '独一无二的数据仓库建模指引系列教程升级版（连载中）',
-        image: 'https://o74ly5e8r.qnssl.com/dmJqsjtLNS.png',
+        image: 'https://www.189.cn/upfiles/189v2/jt/images/2019/9/0223427c-7e00-4521-91f7-56dce455766b.jpg',
         link: 'https://edu.hellobi.com/course/102'
       }
     ])
@@ -53,7 +51,7 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .swipe {
-  padding-top: 100px;
+  // padding-top: 100px;
   width: 100%;
 }
 </style>

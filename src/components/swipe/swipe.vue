@@ -48,19 +48,19 @@
         </div>
       </template>
     </div>
-
+    <!-- :class="['dpzvc3-swipe-dots-item', (loop ? index + 1 : index) === slideIndex ? 'active' : '']" -->
     <div :class="dotsClasses">
       <span
         v-for="(item, index) in dotLength"
         :key="index"
-        :class="['dpzvc3-swipe-dots-item', (loop ? index + 1 : index) === slideIndex ? 'active' : '']"
+        :class="['dpzvc3-swipe-dots-item', (index) === slideIndex ? 'active' : '']"
       />
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
 const prefixCls = 'dpzvc3-swipe'
 
@@ -88,9 +88,11 @@ export default defineComponent({
     const autoSwipe = ref(true)
     const startX = ref(0)
     const distance = ref(0)
-    const slideIndex = ref(props.loop ? props.startIndex + 1 : props.startIndex)
+    // const slideIndex = ref(props.loop ? props.startIndex + 1 : props.startIndex)
+    const slideIndex = ref(props.startIndex)
     const timer = ref(null)
     const localList = ref([...props.list])
+    const transitionRef = ref('transform .2s ease-out')
 
     const isMultiple = computed(() => {
       if (props.perpage <= 1) return false
@@ -112,14 +114,16 @@ export default defineComponent({
     const arrayList = computed(() => {
       if (!localList.value.length) return []
       if (props.loop) {
-        return [localList.value[localList.value.length - 1], ...localList.value, localList.value[0]]
+        // return [localList.value[localList.value.length - 1], ...localList.value, localList.value[0]]
+        return [...localList.value, localList.value[0]]
       }
       return localList.value
     })
 
     const dotLength = computed(() => localList.value.length)
 
-    const minIndex = computed(() => (props.loop ? 1 : 0))
+    // const minIndex = computed(() => (props.loop ? 1 : 0))
+    const minIndex = computed(() => (0))
     const maxIndex = computed(() => (props.loop ? arrayList.value.length - 2 : arrayList.value.length - 1))
 
     const classes = computed(() => [prefixCls])
@@ -134,7 +138,8 @@ export default defineComponent({
     const wrapperStyle = computed(() => ({
       width: arrayList.value.length * clientWidth.value + 'px',
       transform: `translate3d(${translateX.value}px,0,0)`,
-      height: 'auto'
+      height: 'auto',
+      transition: transitionRef.value
     }))
 
     function choose (item, index, e) {
@@ -203,10 +208,11 @@ export default defineComponent({
       timer.value = setTimeout(() => {
         if (!dragging.value && autoSwipe.value) {
           translateX.value -= clientWidth.value
+          console.log(slideIndex.value, maxIndex.value, 'dsdadddasdss')
           slideIndex.value++
-          // console.log(slideIndex.value, maxIndex.value, 'dsdadddasdss')
           if (slideIndex.value > maxIndex.value && props.loop) {
             slideIndex.value = minIndex.value
+            // resetSlide()
             wrapper.value.addEventListener('transitionend', resetSlide, false)
           }
           autoSlide()
@@ -216,13 +222,13 @@ export default defineComponent({
 
     function resetSlide () {
       wrapper.value.removeEventListener('transitionend', resetSlide, false)
-
       slideIndex.value = minIndex.value
       autoSwipe.value = false
-      // this.translateX = -this.slideIndex * this.clientWidth
+      transitionRef.value = 'none'
       translateX.value = -slideIndex.value * clientWidth.value
       setTimeout(() => {
         autoSwipe.value = true
+        transitionRef.value = 'transform .2s ease-out'
       }, 0)
     }
 
