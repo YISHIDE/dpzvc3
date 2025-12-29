@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
 const prefixCls = 'dpzvc3-slideBar'
 
@@ -93,8 +93,8 @@ export default defineComponent({
     const fixed = ref(false)
 
     const getItemWidth = computed(() => (isFlex.value ? clientWidth.value / items.value.length : props.childWidth))
-    const translateX = computed(() => -startIndex.value * clientWidth.value)
-
+    // const translateX = computed(() => -startIndex.value * clientWidth.value)
+    const translateX = ref(0)
     const classes = computed(() => [prefixCls])
     const headerClasses = computed(() => [prefixCls + '-header', { fixed: fixed.value }])
     const wrapperClasses = computed(() => [
@@ -121,6 +121,7 @@ export default defineComponent({
     function changeBar (index) {
       if (startIndex.value === index) return
       startIndex.value = index
+      translateX.value = -startIndex.value * clientWidth.value
       emit('on-change', index)
     }
 
@@ -134,21 +135,35 @@ export default defineComponent({
     function onTouchMove (e) {
       const currentX = e.touches[0].clientX
       distance.value = props.distanceIndex ? (currentX - startX.value) / props.distanceIndex : currentX - startX.value
+      translateX.value = startTranslateX.value + distance.value
     }
     function onTouchEnd () {
       if (distance.value < 0 && Math.abs(distance.value) > clientWidth.value / 2) {
         slideLeft()
       } else if (distance.value > 0 && Math.abs(distance.value) > clientWidth.value / 2) {
         slideRight()
+      } else {
+        translateX.value = startTranslateX.value
       }
       dragging.value = false
     }
     function slideLeft () {
-      if (startIndex.value < maxIndex.value) startIndex.value++
+      if (startIndex.value >= maxIndex.value) {
+        translateX.value = startTranslateX.value
+      } else {
+        startIndex.value++
+        translateX.value = startTranslateX.value - clientWidth.value
+      }
       emit('on-change', startIndex.value)
     }
     function slideRight () {
-      if (startIndex.value > 0) startIndex.value--
+      // if (startIndex.value > 0) startIndex.value--
+      if (startIndex.value <= 0) {
+        translateX.value = startTranslateX.value
+      } else {
+        startIndex.value--
+        translateX.value = startTranslateX.value + clientWidth.value
+      }
       emit('on-change', startIndex.value)
     }
 
@@ -162,8 +177,11 @@ export default defineComponent({
 
     onMounted(() => {
       clientWidth.value = header.value.clientWidth
+      translateX.value = -startIndex.value * clientWidth.value
       window.addEventListener('resize', onResize)
+      onScroll()
       if (props.canDrag && content.value) {
+        // console.log(content.value, 'dadsds')
         content.value.addEventListener('touchstart', onTouchStart)
         content.value.addEventListener('touchmove', onTouchMove)
         content.value.addEventListener('touchend', onTouchEnd)

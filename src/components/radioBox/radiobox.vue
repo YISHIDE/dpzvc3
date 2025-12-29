@@ -24,10 +24,10 @@ export default defineComponent({
   name: 'RadioBox',
   props: {
     label: { type: [String, Number], required: true },
-    modalValue: { type: Boolean, default: false },
+    modelValue: { type: Boolean, default: false },
     disable: { type: Boolean, default: false }
   },
-  emits: ['update:value', 'on-change'],
+  emits: ['update:modelValue', 'on-change'],
   setup (props, { emit }) {
     const slotEl = ref(null)
     const show = ref(true)
@@ -37,7 +37,7 @@ export default defineComponent({
       if (group) {
         return group.currentValue.value === props.label
       } else {
-        return props.modalValue
+        return props.modelValue
       }
     })
 
@@ -59,7 +59,8 @@ export default defineComponent({
       if (group) {
         group.change(props.label)
       } else {
-        emit('update:modalValue', checked)
+        // console.log(checked, 'ddadda')
+        emit('update:modelValue', checked)
         emit('on-change', checked)
       }
     }

@@ -4,10 +4,10 @@
       :list="items"
       :flex="false"
       :index="index"
-      :can-drag="false"
       height="100%"
       scroll-height="50px"
       :is-fixed-header="true"
+      @on-change="changeIndex"
     >
       <!-- 具名插槽语法 Vue3 -->
       <template #slot-item-0>
@@ -43,7 +43,10 @@ export default defineComponent({
       { name: '选项三' }
     ])
     const index = ref(1)
-    return { items, index }
+    const changeIndex = (index) => {
+      console.log(index)
+    }
+    return { items, index, changeIndex }
   }
 })
 </script>
