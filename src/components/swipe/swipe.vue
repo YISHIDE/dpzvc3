@@ -238,7 +238,8 @@ export default defineComponent({
     }
 
     function onResize () {
-      if (wrapper.value) clientWidth.value = wrapper.value.clientWidth
+      // if (wrapper.value) clientWidth.value = wrapper.value.clientWidth
+      clientWidth.value = swipeRef.value ? swipeRef.value.clientWidth : 0
     }
 
     onMounted(() => {
