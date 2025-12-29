@@ -28,12 +28,12 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, defineComponent } from 'vue'
 import Popup from '../popup'
 
 const prefixCls = 'dpzvc3-actionSheet'
 
-export default {
+export default defineComponent({
   name: 'ActionSheet',
   components: { Popup },
   props: {
@@ -61,9 +61,9 @@ export default {
     })
 
     // 监听 visible 改变，通知父组件
-    watch(visible, (val) => {
-      emit('update:modelValue', val)
-    })
+    // watch(visible, (val) => {
+    //   emit('update:modelValue', val)
+    // })
 
     // 样式类
     const classes = computed(() => [prefixCls])
@@ -76,7 +76,8 @@ export default {
       if (item.onClick && typeof item.onClick === 'function') {
         item.onClick(item, index)
       }
-      visible.value = false
+      // visible.value = false
+      emit('update:modelValue', false)
     }
 
     return {
@@ -89,5 +90,5 @@ export default {
       emit: emitAction
     }
   }
-}
+})
 </script>

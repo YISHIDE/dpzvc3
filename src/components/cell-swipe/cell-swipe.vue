@@ -1,7 +1,6 @@
 <template>
   <Cell
     ref="cell"
-    v-clickoutside:touchstart="swipe"
     :title="title"
     :value="value"
     :label="label"
@@ -47,14 +46,14 @@
 </template>
 
 <script>
-import { ref, reactive, onMounted, watch, nextTick } from 'vue'
+import { ref, reactive, onMounted, watch, nextTick, defineComponent } from 'vue'
 import Cell from '../cell'
-import Clickoutside from '../../directives/clickoutside'
+// import Clickoutside from '../../directives/clickoutside'
 
-export default {
+export default defineComponent({
   name: 'CellSwipe',
   components: { Cell },
-  directives: { Clickoutside },
+  // directives: { Clickoutside },
   props: {
     title: String,
     value: {},
@@ -165,5 +164,5 @@ export default {
       onTouchEnd
     }
   }
-}
+})
 </script>

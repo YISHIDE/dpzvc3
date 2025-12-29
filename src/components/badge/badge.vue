@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, defineComponent } from 'vue'
 
 const prefixCls = 'dpzvc3-badge'
 
-export default {
+export default defineComponent({
   name: 'Dpzvc3Badge',
   props: {
     type: {
@@ -76,5 +76,5 @@ export default {
       displayCount
     }
   }
-}
+})
 </script>

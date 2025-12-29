@@ -66,10 +66,10 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, defineComponent } from 'vue'
 import VButton from '../button'
 
-export default {
+export default defineComponent({
   name: 'Dpzvc3Modal',
   components: { VButton },
   props: {
@@ -134,5 +134,5 @@ export default {
       ok
     }
   }
-}
+})
 </script>

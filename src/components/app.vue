@@ -1,9 +1,7 @@
 <template>
-  <div id="app">
-    <transition :name="direction">
-      <router-view class="page" />
-    </transition>
-  </div>
+  <transition :name="direction">
+    <router-view class="page" />
+  </transition>
 </template>
 <script>
 export default {

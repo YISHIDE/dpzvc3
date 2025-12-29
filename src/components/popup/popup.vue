@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, defineComponent } from 'vue'
 
 const prefixCls = 'dpzvc3-popup'
 
-export default {
+export default defineComponent({
   name: 'Dpzvc3Popup',
   props: {
     modelValue: { // Vue 3 v-model 默认绑定
@@ -87,5 +87,5 @@ export default {
       close
     }
   }
-}
+})
 </script>

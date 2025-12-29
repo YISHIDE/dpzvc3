@@ -3,6 +3,9 @@
     :href="toLink"
     :class="classes"
     @click.prevent="handleClick"
+    @touchstart="cellTouchStart"
+    @touchmove="cellTouchMove"
+    @touchend="cellTouchEnd"
   >
     <span
       v-if="hasMask"
@@ -35,12 +38,12 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
 
 const prefixCls = 'dpzvc3-cell'
 
-export default {
+export default defineComponent({
   name: 'Dpzvc3Cell',
   props: {
     title: String,
@@ -49,6 +52,7 @@ export default {
     link: String,
     hasMask: Boolean
   },
+  emits: ['touchstart', 'touchmove', 'touchend', 'click'],
   setup (props, { emit }) {
     const router = useRouter()
 
@@ -72,7 +76,20 @@ export default {
 
     // 点击跳转
     const handleClick = (e) => {
-      if (props.link) router.push(props.link)
+      if (props.link) { router.push(props.link) } else {
+        emit('click', e)
+      }
+    }
+
+    // 定义touchstart，touchmove，touchend事件
+    const cellTouchStart = (e) => {
+      emit('touchstart', e)
+    }
+    const cellTouchMove = (e) => {
+      emit('touchmove', e)
+    }
+    const cellTouchEnd = (e) => {
+      emit('touchend', e)
     }
 
     return {
@@ -86,8 +103,11 @@ export default {
       valueClass,
       labelClass,
       handleClick,
-      emit
+      emit,
+      cellTouchStart,
+      cellTouchMove,
+      cellTouchEnd
     }
   }
-}
+})
 </script>

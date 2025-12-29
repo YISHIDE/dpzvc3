@@ -93,9 +93,9 @@ export default defineComponent({
       }
     )
 
-    watch(visible, val => {
-      emit('update:modelValue', val)
-    })
+    // watch(visible, val => {
+    //   emit('update:modelValue', val)
+    // })
 
     watch(
       () => props.wechat,
@@ -107,7 +107,8 @@ export default defineComponent({
     /** mounted 逻辑 */
     onMounted(() => {
       if ((isWeixin.value || isPcWeixin.value) && !isWechat.value) {
-        visible.value = false
+        // visible.value = false
+        emit('update:modelValue', false)
       }
     })
 
