@@ -61,7 +61,7 @@
 
 <script>
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
-
+import rafTimeout from '../../lib/lib'
 const prefixCls = 'dpzvc3-swipe'
 
 export default defineComponent({
@@ -205,7 +205,7 @@ export default defineComponent({
     }
 
     function autoSlide () {
-      timer.value = setTimeout(() => {
+      timer.value = rafTimeout(() => {
         if (!dragging.value && autoSwipe.value) {
           translateX.value -= clientWidth.value
           console.log(slideIndex.value, maxIndex.value, 'dsdadddasdss')
@@ -233,7 +233,8 @@ export default defineComponent({
     }
 
     function clearTimer () {
-      if (timer.value) clearTimeout(timer.value)
+      // if (timer.value) clearTimeout(timer.value)
+      timer.value && timer.value()
       timer.value = null
     }
 
