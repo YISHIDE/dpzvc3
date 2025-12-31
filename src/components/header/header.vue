@@ -34,7 +34,7 @@
 
 <script>
 import { defineComponent, ref, computed, onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 
 const prefixCls = 'dpzvc3-header'
 
@@ -63,7 +63,7 @@ export default defineComponent({
   emits: ['update:modelValue'],
 
   setup (props, { emit }) {
-    const router = useRouter()
+    // const router = useRouter()
 
     const visible = ref(props.modelValue)
     const isWechat = ref(props.wechat)
@@ -114,11 +114,11 @@ export default defineComponent({
 
     /** 返回 */
     const back = () => {
-      if (router) {
-        router.back()
-      } else {
-        window.history.back()
-      }
+      // if (router) {
+      //   router.back()
+      // } else {
+      window.history.back()
+      // }
     }
 
     return {
