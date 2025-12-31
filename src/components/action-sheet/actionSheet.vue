@@ -20,7 +20,7 @@
           v-if="cancleText"
           href="javascript:;"
           :class="cancleClass"
-          @click="visible = false"
+          @click="cancleClick"
         >{{ cancleText }}</a>
       </div>
     </Popup>
@@ -80,6 +80,9 @@ export default defineComponent({
       emit('update:modelValue', false)
     }
 
+    const cancleClick = () => {
+      emit('update:modelValue', false)
+    }
     return {
       visible,
       actions,
@@ -87,6 +90,7 @@ export default defineComponent({
       wrapperClasses,
       wrapperActionClass,
       cancleClass,
+      cancleClick,
       emit: emitAction
     }
   }
