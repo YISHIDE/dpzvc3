@@ -23,12 +23,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from 'vue'
 // import Card from '../components/card'
 
 export default {
   name: 'ViewCard',
+  // components: { Card },
   setup () {
     const count = ref(0)
 

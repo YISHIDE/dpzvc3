@@ -11,14 +11,14 @@
   </div>
 </template>
 
-<script>
-import { ref } from 'vue'
+<script lang="ts">
+import { ref, defineComponent } from 'vue'
 // import VButton from '@/components/button'
-// import ActionSheet from '@/components/action-sheet'
+// import ActionSheet from '@/components/actionSheet'
 
-export default {
+export default defineComponent({
   name: 'ViewActionSheet',
-  // components: { VButton, ActionSheet },
+  // components: { ActionSheet },
   setup () {
     // 响应式状态
     const visible = ref(false)
@@ -32,7 +32,7 @@ export default {
       actionSheet
     }
   }
-}
+})
 </script>
 
 <style lang="less" scoped>

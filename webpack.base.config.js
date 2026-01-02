@@ -17,6 +17,7 @@ module.exports = {
     alias: {
       vue$: 'vue/dist/vue.esm-bundler.js', // ✅ Vue 3 正确写法
       '@': path.resolve(__dirname, 'src')
+      // 'dpzvc3-ui': path.resolve(__dirname, 'dist/dpzvc3.esm.js')
     }
   },
   module: {

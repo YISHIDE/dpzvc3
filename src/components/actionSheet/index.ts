@@ -3,3 +3,4 @@
  */
 import ActionSheet from './actionSheet'
 export default ActionSheet
+export type { ActionSheetProps } from './types'

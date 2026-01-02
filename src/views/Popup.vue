@@ -2,25 +2,25 @@
   <div class="Popup">
     <VButton
       width="50%"
-      @click.native="showPop('top')"
+      @click="() => showPop('top')"
     >
       Top
     </VButton>
     <VButton
       width="50%"
-      @click.native="showPop('right')"
+      @click="() => showPop('right')"
     >
       Right
     </VButton>
     <VButton
       width="50%"
-      @click.native="showPop('bottom')"
+      @click="() => showPop('bottom')"
     >
       Bottom
     </VButton>
     <VButton
       width="50%"
-      @click.native="showPop('left')"
+      @click="() => showPop('left')"
     >
       Left
     </VButton>
@@ -30,68 +30,74 @@
       :position="side"
       :width="width"
       :height="height"
-      show-mask=""
+      :show-mask="true"
     />
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, ref, nextTick } from 'vue'
+// import type { Side } from './dist/types/components/popup/types'
+type Side = 'top' | 'right' | 'bottom' | 'left'
 
-export default {
+export default defineComponent({
   name: 'ViewPopup',
-  data () {
-    return {
-      side: 'top',
-      show: false,
-      sideList: ['top', 'right', 'bottom', 'left'],
-      width: '100%',
-      height: '100%'
-    }
-  },
+  setup () {
+    const side = ref<Side>('top')
+    const show = ref(false)
+    const width = ref('100%')
+    const height = ref<string | number>('100%')
+    const sideList: Side[] = ['top', 'right', 'bottom', 'left']
 
-  methods: {
-    showPop (side) {
-      this.show = false
-      this.$nextTick(() => {
-        if (this.sideList.indexOf(side) < 0) side = 'top'
+    const showPop = (s: Side) => {
+      show.value = false
+      nextTick(() => {
+        if (!sideList.includes(s)) s = 'top'
 
-        switch (side) {
+        switch (s) {
         case 'top':
-          this.width = '100%'
-          this.height = 0
+          width.value = '100%'
+          height.value = 0
           break
         case 'right':
-          this.width = '70%'
-          this.height = '100%'
+          width.value = '70%'
+          height.value = '100%'
           break
         case 'bottom':
-          this.width = '100%'
-          this.height = '70%'
+          width.value = '100%'
+          height.value = '70%'
           break
         case 'left':
-          this.width = '70%'
-          this.height = '100%'
+          width.value = '70%'
+          height.value = '100%'
           break
         }
 
-        this.side = side
+        side.value = s
 
         setTimeout(() => {
-          this.show = true
+          show.value = true
         }, 350)
       })
     }
+
+    return {
+      side,
+      show,
+      width,
+      height,
+      showPop
+    }
   }
-}
+})
 </script>
 
 <style scoped>
-
-    .Popup {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    }
+.Popup {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 </style>

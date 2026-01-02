@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './components/app.vue'
 import Routers from './router'
 import Config from './config/config'
+// import dpzvc3 from 'dpzvc3-ui'
 import dpzvc3 from './index'
 // import { count } from './utils/test'
 // console.log(count)

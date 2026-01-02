@@ -24,14 +24,13 @@
     "declaration": true,   // ✅ 生成 .d.ts 类型文件
     "declarationDir": "dist/types", // ✅ 类型文件输出目录
     "types": ["node", "vue"],
-
     "noEmit": true
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.vue", 
-    "src/**/*.tsx", "src/components/radioBox/index.js", ],
+    "src/**/*.tsx"],
   "exclude": [
     "node_modules",
     "dist",

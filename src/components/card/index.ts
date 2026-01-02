@@ -3,3 +3,4 @@
  */
 import Card from './card'
 export default Card
+export type { CardProps } from './types'

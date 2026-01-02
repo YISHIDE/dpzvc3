@@ -3,3 +3,4 @@
  */
 import Popup from './popup'
 export default Popup
+export type { PopupProps } from './types'
