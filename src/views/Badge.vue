@@ -1,6 +1,8 @@
 <template>
   <div class="Badge">
-    <Badge number="10">
+    <Badge
+      number="10"
+    >
       <div class="item" />
     </Badge>
 
@@ -22,7 +24,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 // import Badge from '@/components/badge/badge.vue' // 修改为你实际路径
 

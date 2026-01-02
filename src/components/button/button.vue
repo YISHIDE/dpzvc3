@@ -1,24 +1,9 @@
 <template>
-  <div
-    :class="classes"
-    :style="wrapperStyles"
-  >
-    <button
-      :style="styles"
-      :class="buttonClass"
-      :disabled="disabled"
-      @click.stop="handleClick"
-    >
+  <div :class="classes" :style="wrapperStyles">
+    <button :style="styles" :class="buttonClass" :disabled="disabled" @click.stop="handleClick">
       <slot name="left">
-        <span
-          v-show="loadingValue"
-          class="loading"
-        >
-          <Spinner
-            type="blade"
-            size="15"
-            color="#ffffff"
-          />
+        <span v-show="loadingValue" class="loading">
+          <Spinner type="blade" size="15" color="#ffffff" />
         </span>
       </slot>
       <slot><span>确定</span></slot>

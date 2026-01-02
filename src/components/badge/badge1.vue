@@ -8,37 +8,41 @@
   </span>
 </template>
 
-<script>
-import { computed, ref, watch, defineComponent } from 'vue'
+<script lang="ts">
+import { computed, ref, watch, defineComponent, PropType } from 'vue'
 
 const prefixCls = 'dpzvc3-badge'
+type BadgeType = 'normal' | 'danger' | 'warning' | 'success'
+type BadgeSize = 'small' | 'normal' | 'large'
 
 export default defineComponent({
   name: 'Dpzvc3Badge',
   props: {
     type: {
-      type: String,
+      type: String as PropType<BadgeType>,
       default: 'danger',
-      validator: (val) => ['normal', 'danger', 'warning', 'success'].includes(val)
+      validator: (val: string): boolean => ['normal', 'danger', 'warning', 'success'].includes(val)
     },
     size: {
-      type: String,
+      type: String as PropType<BadgeSize>,
       default: 'normal',
-      validator: (val) => ['small', 'normal', 'large'].includes(val)
+      validator: (val: string): boolean => ['small', 'normal', 'large'].includes(val)
     },
     dot: {
       type: Boolean,
       default: false
     },
     max: {
-      type: [Number, String],
+      type: [Number, String] as PropType<number | string>,
       default: 99
     },
-    number: [Number, String]
+    number: {
+      type: [Number, String] as PropType<number | string>,
+      default: undefined
+    }
   },
   setup (props) {
     const visible = ref(true)
-
     // 监听 number 来控制 visible
     watch(
       () => props.number,

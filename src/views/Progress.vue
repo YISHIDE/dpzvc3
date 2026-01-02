@@ -29,6 +29,7 @@ export default defineComponent({
     })
 
     onBeforeUnmount(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       timer && clearInterval(timer)
     })
 

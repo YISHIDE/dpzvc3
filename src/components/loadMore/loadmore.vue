@@ -143,6 +143,7 @@ export default defineComponent({
         if (more.value && isBottom()) {
           direction.value = 'up'
           downStatus.value = 'loading'
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           props.loadMore && props.loadMore()
         }
       }, 1000)
@@ -200,6 +201,7 @@ export default defineComponent({
         if (upStatus.value === 'drop') {
           translateY.value = 40
           upStatus.value = 'loading'
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           props.refresh && props.refresh()
         } else {
           translateY.value = 0

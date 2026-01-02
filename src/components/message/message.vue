@@ -107,6 +107,7 @@ export default defineComponent({
 
     const close = () => {
       closeTimer()
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       remove && remove(props.name)
       props.onClose()
     }

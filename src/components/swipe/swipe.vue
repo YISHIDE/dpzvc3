@@ -172,8 +172,10 @@ export default defineComponent({
 
     function onTouchEnd () {
       if (distance.value < 0 && Math.abs(distance.value) > clientWidth.value / 5) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         props.loop && props.auto ? onLoopSlideLeft() : onSlideLeft()
       } else if (distance.value > 0 && Math.abs(distance.value) > clientWidth.value / 5) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         props.loop && props.auto ? onLoopSlideRight() : onSlideRight()
       } else {
         translateX.value = currentTranslateX.value
@@ -234,6 +236,7 @@ export default defineComponent({
 
     function clearTimer () {
       // if (timer.value) clearTimeout(timer.value)
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       timer.value && timer.value()
       timer.value = null
     }

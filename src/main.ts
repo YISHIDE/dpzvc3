@@ -5,7 +5,8 @@ import App from './components/app.vue'
 import Routers from './router'
 import Config from './config/config'
 import dpzvc3 from './index'
-
+// import { count } from './utils/test'
+// console.log(count)
 // 1️⃣ 创建 app
 const app = createApp(App)
 
@@ -19,7 +20,7 @@ app.config.globalProperties.$Config = Config
 const router = createRouter({
   history: createWebHashHistory(), // 等价于 Vue 2 的 mode: 'hash'
   routes: Routers,
-  scrollBehavior () {
+  scrollBehavior() {
     return { top: 0 }
   }
 })

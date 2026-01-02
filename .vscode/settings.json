@@ -5,10 +5,17 @@
     "javascriptreact",
     "vue"
   ],
+  "editor.defaultFormatter": "Vue.volar",
   "eslint.run": "onType",
   "eslint.packageManager": "npm",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
    "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
-  }
+  },
+"[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }

@@ -116,6 +116,7 @@ class MegaPixImage {
     }
     if (!srcImage.naturalWidth && !srcImage.naturalHeight) {
       this.imageLoadListeners = []
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       const _this = this
       srcImage.onload = srcImage.onerror = function () {
         const listeners = _this.imageLoadListeners

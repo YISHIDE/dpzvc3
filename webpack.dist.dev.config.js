@@ -9,7 +9,7 @@ module.exports = [merge(webpackBaseConfig, {
   mode: 'production',
 
   entry: {
-    main: path.resolve(__dirname, './src/index.js')
+    main: path.resolve(__dirname, './src/index.ts')
   },
 
   output: {
@@ -41,7 +41,7 @@ merge(webpackBaseConfig, {
   mode: 'production',
 
   entry: {
-    main: path.resolve(__dirname, './src/index.js')
+    main: path.resolve(__dirname, './src/index.ts')
   },
 
   output: {

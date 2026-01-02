@@ -139,9 +139,11 @@ export default defineComponent({
       let step = 2
       if (direction === 'right') {
         step++
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         step > maxStep && (step = minStep)
       } else {
         step--
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         step < minStep && (step = maxStep)
       }
       const degree = (step * 90 * Math.PI) / 180

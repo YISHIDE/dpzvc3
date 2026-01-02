@@ -80,6 +80,7 @@ function createModalInstance (properties = {}) {
 
   const destroy = () => {
     render(null, container)
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     container.parentNode && container.parentNode.removeChild(container)
     props.onRemove()
   }

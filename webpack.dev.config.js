@@ -7,7 +7,7 @@ module.exports = merge(baseConfig, {
   mode: 'development',
 
   entry: {
-    main: path.resolve(__dirname, 'src/main.js')
+    main: path.resolve(__dirname, 'src/main.ts')
   },
 
   output: {

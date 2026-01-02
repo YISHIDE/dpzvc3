@@ -1,0 +1,27 @@
+{
+  // "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,             // 生成类型声明
+    "declarationMap": true,          // 可选，生成 d.ts.map
+    "emitDeclarationOnly": true,     // 只生成类型声明，不生成 js
+    "declarationDir": "dist/types",  // 类型输出目录
+    "outDir": "dist/types",
+    "rootDir": "src",
+    "jsx": "preserve",
+    "strict": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    // "src/components/**/*.{ts,tsx,vue}",  // 组件源代码
+    "src/components/badge/*.tsx",
+    "src/components/badge/*.ts",
+    "src/shims-vue.d.ts",
+    "src/types/index.d.ts"                 // 存放 BadgeProps 等类型
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/views" // demo 目录不打包到 types
+  ]
+}

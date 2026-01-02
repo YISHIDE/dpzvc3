@@ -1,17 +1,17 @@
 /**
- * Created by admin on 2025/12/25.
- * Vue 3 version
+ * Vue 3 组件库入口 ts 版本
  */
 
-/* ========= 组件引入 ========= */
+import type { App } from 'vue'
 
+/* ========= 组件引入 ========= */
 import VButton from './components/button'
-import CheckBox from './components/checkBox'
+import { CheckBox, CheckBoxGroup } from './components/checkBox'
 import DpHeader from './components/header'
 import Message from './components/message'
 import Modal from './components/modal'
 import Picker from './components/picker'
-import RadioBox from './components/radioBox'
+import { RadioBox, RadioBoxGroup } from './components/radioBox'
 import Swipe from './components/swipe'
 import Tab from './components/tab'
 import Prompt from './components/prompt'
@@ -32,14 +32,21 @@ import CellSwipe from './components/cell-swipe'
 import Badge from './components/badge'
 import Card from './components/card'
 
+/* ========= Installable 泛型 ========= */
+export type Installable<T> = T & {
+  install?: (app: App) => void
+}
+export type Components = {
+  [K in keyof typeof _components]: Installable<typeof _components[K]>
+}
+export const components: Components = {} as Components
 /* ========= 组件集合 ========= */
-
-const components = {
+const _components = {
   VButton,
   CheckBox,
-  CheckBoxGroup: CheckBox.group,
+  CheckBoxGroup,
   RadioBox,
-  RadioBoxGroup: RadioBox.group,
+  RadioBoxGroup,
   DpHeader,
   Picker,
   Swipe,
@@ -61,61 +68,77 @@ const components = {
   Badge,
   Card
 }
-
+/* typeof _component在ts输出
+ // {
+//   VButton: typeof VButton
+//   CheckBox: typeof CheckBox
+//   CheckBoxGroup: typeof CheckBoxGroup
+// }
+如果直接写[K in keyof _components]报错Type '_components' is not a type.  原因就是 _components 是 值，不是类型。
+  •	keyof 只能作用在 类型上。
+  •	所以必须先用 typeof 变成类型：keyof typeof _components。
+*/
+/* ========= 生成 Installable 类型组件集合 ========= */
+// export const components: {
+//   [K in keyof typeof _components]: Installable<typeof _components[K]>
+// } = {} as any
+// 遍历给组件加 install
+Object.keys(_components).forEach((key) => {
+  const component = _components[key as keyof typeof _components] as Installable<
+    typeof _components[keyof typeof _components]
+  >
+  if (component && !component.install) {
+    component.install = (app: App) => {
+      app.component(key, component)
+    }
+  }
+  components[key as keyof typeof _components] = component
+})
 /* ========= 服务组件 ========= */
-
-const services = {
+export const services: Record<string, any> = {
   Message,
   Modal,
   Prompt,
   Indicator
 }
 
-/* ========= 给单个组件补 install（Vue 3 写法） ========= */
-
-Object.keys(components).forEach(key => {
-  const component = components[key]
-  if (component && !component.install) {
-    component.install = (app) => {
-      app.component(key, component)
-    }
-  }
-})
-
-Object.keys(services).forEach(key => {
+Object.keys(services).forEach((key) => {
   const service = services[key]
   if (service && !service.install) {
-    service.install = (app) => {
+    service.install = (app: App) => {
       app.config.globalProperties[`$${key}`] = service
     }
   }
 })
 
 /* ========= 全量 install ========= */
-
-const install = (app) => {
-  // if (install.installed) return
-  // install.installed = true
+export const install = (app: App) => {
   if (!app) {
-    console.warn('dpzvc3 install: app is undefined, ensure you are using Vue 3 createApp')
+    console.warn(
+      'dpzvc3 install: app is undefined, ensure you are using Vue 3 createApp'
+    )
     return
   }
   // 注册组件
-  Object.keys(components).forEach(key => {
-    app.component(key, components[key])
+  Object.values(components).forEach((comp) => {
+    if (comp.install) {
+      comp.install(app)
+    }
   })
 
   // 注册服务
-  Object.keys(services).forEach(key => {
-    app.config.globalProperties[`$${key}`] = services[key]
+  Object.values(services).forEach((srv) => {
+    if (srv.install) {
+      srv.install(app)
+    }
   })
 }
 
 /* ========= 按需导出 ========= */
-
 export {
   VButton,
   CheckBox,
+  CheckBoxGroup,
   DpHeader,
   Message,
   Modal,
@@ -143,7 +166,6 @@ export {
 }
 
 /* ========= 默认导出 ========= */
-
 export default {
   install
 }
