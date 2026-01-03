@@ -53,11 +53,11 @@
   </Modal>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
-import Modal from '../modal/modal.vue'
-import TextBar from '../Text/textBar.vue'
-import VButton from '../button/button.vue'
+import Modal from '../modal/modal'
+import TextBar from '../Text/textBar'
+import VButton from '../button/button'
 
 export default defineComponent({
   name: 'Dpzvc3Prompt',
@@ -92,7 +92,7 @@ export default defineComponent({
     // 同步父组件变化
     watch(() => props.value, val => (visible.value = val))
 
-    watch(() => props.val, val => (texts.value = val))
+    watch(() => (props as any).val, val => (texts.value = val))
     watch(() => props.loading, val => (buttonLoading.value = val))
 
     // 点击确定

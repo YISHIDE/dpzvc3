@@ -26,39 +26,41 @@
       @cancle="pickerCancle"
     />
     <div class="item">
-      <VButton
+      <DpButton
         width="30%"
         @click="DateVisible = true"
       >
         日期选择器
-      </VButton>
-      <VButton
+      </DpButton>
+      <DpButton
         width="30%"
         @click="AreaVisible = true"
       >
         地区选择器
-      </VButton>
-      <VButton
+      </DpButton>
+      <DpButton
         width="30%"
         @click="NormalVisible = true"
       >
         通用选择器
-      </VButton>
+      </DpButton>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, getCurrentInstance } from 'vue'
-
+// import Picker from '../components/picker'
+import type { PickerProps } from '../components/picker/types'
 export default {
   name: 'ViewPicker',
+  // components: { Picker },
   setup () {
-    const AreaVisible = ref(false)
-    const DateVisible = ref(false)
-    const NormalVisible = ref(false)
-    const initArrRef = ref([1, 3, 3])
-    const listRef = ref([
+    const AreaVisible = ref<PickerProps['modelValue']>(false)
+    const DateVisible = ref<PickerProps['modelValue']>(false)
+    const NormalVisible = ref<PickerProps['modelValue']>(false)
+    const initArrRef = ref<PickerProps['initArr']>([1, 3, 3])
+    const listRef = ref<PickerProps['list']>([
       {
         target: 'targetA',
         list: [{ value: 'a', code: 1 }, { value: 2, code: 2 }, { value: 3, code: 3 }, {
@@ -90,13 +92,13 @@ export default {
         }, { value: 9, code: 9 }, { value: 0, code: 0 }]
       }
     ]) // code为唯一值，value为显示出的具体文本
-    const { proxy } = getCurrentInstance()
+    const { proxy } = getCurrentInstance()!
     // 选择确定回调
-    function pickerSure (value) {
+    function pickerSure (value: any) {
       // console.log(value)
       // 如果全局 $Modal 可用
       if (proxy) {
-        proxy.$Modal.confirm({ body: value.formArea || value.formatDate || JSON.stringify(value) })
+        (proxy as any).$Modal.confirm({ body: value.formArea || value.formatDate || JSON.stringify(value) })
       }
       if (!value.formArea && !value.formatDate) {
         // console.log(value, 'value')
@@ -107,7 +109,7 @@ export default {
     // 选择取消回调
     function pickerCancle () {
       if (proxy) {
-        proxy.$Message.show({ text: '您选择了取消' })
+        (proxy as any).$Message.show({ text: '您选择了取消' })
       }
     }
 

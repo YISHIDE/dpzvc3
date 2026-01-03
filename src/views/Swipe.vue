@@ -14,13 +14,15 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue'
-
+// import Swipe from '../components/swipe'
+import type { SwipeProps } from '../components/swipe'
 export default defineComponent({
   name: 'ViewSwipe',
+  // components: { Swipe },
   setup () {
-    const files = ref([
+    const files = ref<SwipeProps['list']>([
       {
         id: 521,
         ad_id: 10,

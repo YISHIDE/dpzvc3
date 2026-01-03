@@ -14,12 +14,13 @@
   </div>
 </template>
 
-<script>
-
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+// import Cell from '../components/cell/'
+export default defineComponent({
   name: 'ViewCell'
-
-}
+  // components: { Cell }
+})
 </script>
 
 <style  lang="less" scoped>

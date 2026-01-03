@@ -1,44 +1,44 @@
 <template>
   <div class="Message">
-    <VButton
+    <DpButton
       width="50%"
       @click="showMessageTop"
     >
       Top
-    </VButton>
-    <VButton
+    </DpButton>
+    <DpButton
       width="50%"
       @click="showMessage"
     >
       Center
-    </VButton>
-    <VButton
+    </DpButton>
+    <DpButton
       width="50%"
       @click="showMessageBottom"
     >
       Bottom
-    </VButton>
+    </DpButton>
   </div>
 </template>
 
-<script>
-import { getCurrentInstance } from 'vue'
+<script lang="ts">
+import { getCurrentInstance, defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'ViewMessage',
   setup () {
     // 获取全局实例
-    const { proxy } = getCurrentInstance()
+    const { proxy } = getCurrentInstance()!
     const showMessage = () => {
-      proxy.$Message.show({ text: '显示消息' })
+      proxy!.$Message.show({ text: '显示消息' })
     }
 
     const showMessageTop = () => {
-      proxy.$Message.show({ text: '显示消息', position: 'top' })
+      proxy!.$Message.show({ text: '显示消息', position: 'top' })
     }
 
     const showMessageBottom = () => {
-      proxy.$Message.show({ text: '显示消息', position: 'bottom' })
+      proxy!.$Message.show({ text: '显示消息', position: 'bottom' })
     }
 
     return {
@@ -47,7 +47,7 @@ export default {
       showMessageBottom
     }
   }
-}
+})
 </script>
 
 <style scoped>

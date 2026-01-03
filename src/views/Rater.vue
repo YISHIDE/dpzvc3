@@ -3,7 +3,7 @@
     <p>可点击评分</p>
     <Rater
       v-model="rate"
-      max="a"
+      :max="5"
     />
     <span>{{ rate }}</span>
 
@@ -18,10 +18,10 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import Rater from '../components/rater/rater'
+// import Rater from '../components/rater/'
 export default defineComponent({
   name: 'ViewRater',
-  components: { Rater },
+  // components: { Rater },
   setup () {
     const rate = ref(0)
     const disabledRate = ref(4.5)

@@ -9,13 +9,15 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue'
-
+// import Tab from '../components/tab'
+import type { TabProps } from '../components/tab/types'
 export default defineComponent({
   name: 'ViewTab',
+  // components: { Tab },
   setup () {
-    const items = ref([
+    const items = ref<TabProps['items']>([
       {
         path: '/guide',
         name: '首页',
@@ -30,9 +32,9 @@ export default defineComponent({
       }
     ])
 
-    const index = ref(0)
-    const hasBorder = ref(true)
-    const styles = ref({
+    const index = ref<TabProps['index']>(0)
+    const hasBorder = ref<TabProps['border']>(true)
+    const styles = ref<TabProps['styles']>({
       bottom: 0
     })
 

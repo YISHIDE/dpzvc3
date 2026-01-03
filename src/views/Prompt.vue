@@ -1,25 +1,25 @@
 <template>
   <div class="Prompt">
-    <VButton
+    <DpButton
       width="50%"
       @click="showPrompt"
     >
       弹出Prompt
-    </VButton>
+    </DpButton>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, getCurrentInstance } from 'vue'
 
 export default defineComponent({
   name: 'ViewPrompt',
   setup () {
     // 获取当前组件实例
-    const { proxy } = getCurrentInstance()
+    const { proxy } = getCurrentInstance()!
 
     function showPrompt () {
-      proxy.$Prompt.info({
+      (proxy as any).$Prompt.info({
         title: 'Prompt',
         spec: 'ccc',
         text: 'vvvv'

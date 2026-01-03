@@ -37,19 +37,20 @@
   </div>
 </template>
 
-<script>
-import { ref, getCurrentInstance } from 'vue'
-
-export default {
+<script lang="ts">
+import { ref, getCurrentInstance, defineComponent } from 'vue'
+// import DpHeader from '../components/header'
+export default defineComponent({
   name: 'ViewHeader',
+  // components: { DpHeader },
   setup () {
-    const { proxy } = getCurrentInstance()
+    const { proxy } = getCurrentInstance()!
     const fixed = ref(false)
 
     const share = () => {
       // 假设 $Modal 已经在全局挂载
       if (proxy) {
-        proxy.$Modal.confirm({
+        (proxy as any).$Modal.confirm({
           showHead: false,
           body: '点击了分享'
         })
@@ -58,7 +59,7 @@ export default {
 
     return { fixed, share }
   }
-}
+})
 </script>
 
 <style scoped>

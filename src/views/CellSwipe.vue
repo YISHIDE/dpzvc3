@@ -20,49 +20,61 @@
     </template>
   </div>
 </template>
+<!-- // .setup语法糖需要引入props类型  <script setup lang="ts">
+// import type { RaterProps } from 'dpzvc3-ui'
 
-<script setup>
-import { reactive, ref, getCurrentInstance } from 'vue'
-import CellSwipe from '../components/cell-swipe'
+// type Rate = RaterProps['modelValue']
 
-const show = ref(true)
-const { proxy } = getCurrentInstance() // 用于访问全局 Modal
+// const rate = ref<Rate>(3)
+// </script> -->
+<script lang="ts">
+import { defineComponent, reactive, ref, getCurrentInstance } from 'vue'
+// import CellSwipe from '../components/cellSwipe'
 
-const left = reactive([
-  {
-    content: '确定',
-    style: { backgroundColor: '#eee', color: '#fff' },
-    handleClick: () => {
-      proxy.$Modal.info({ body: '点击了确定' })
-    }
-  },
-  {
-    content: '删除',
-    style: { backgroundColor: 'red', color: '#fff' },
-    handleClick: () => {
-      proxy.$Modal.info({ body: '点击了删除' })
+export default defineComponent({
+  name: 'ViewCellSwipe',
+  setup () {
+    const show = ref(true)
+    const { proxy } = getCurrentInstance()! // 用于访问全局 Modal
+
+    const left = reactive([
+      {
+        content: '确定',
+        style: { backgroundColor: '#eee', color: '#fff' },
+        handleClick: () => {
+          (proxy! as any).$Modal.info({ body: '点击了确定' })
+        }
+      },
+      {
+        content: '删除',
+        style: { backgroundColor: 'red', color: '#fff' },
+        handleClick: () => {
+          (proxy! as any).$Modal.info({ body: '点击了删除' })
+        }
+      }
+    ])
+
+    const right = reactive([
+      {
+        content: '确定',
+        style: { backgroundColor: '#eee', color: '#fff' },
+        handleClick: () => {
+          (proxy! as any).$Modal.info({ body: '点击了确定' })
+        }
+      },
+      {
+        content: '删除',
+        style: { backgroundColor: 'red', color: '#fff' },
+        handleClick: () => {
+          (proxy! as any).$Modal.info({ body: '点击了删除' })
+        }
+      }
+    ])
+    return {
+      left,
+      right,
+      show
     }
   }
-])
-
-const right = reactive([
-  {
-    content: '确定',
-    style: { backgroundColor: '#eee', color: '#fff' },
-    handleClick: () => {
-      proxy.$Modal.info({ body: '点击了确定' })
-    }
-  },
-  {
-    content: '删除',
-    style: { backgroundColor: 'red', color: '#fff' },
-    handleClick: () => {
-      proxy.$Modal.info({ body: '点击了删除' })
-    }
-  }
-])
+})
 </script>
-
-<style scoped>
-/* 可自行添加样式 */
-</style>

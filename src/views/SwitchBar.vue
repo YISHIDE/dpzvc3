@@ -13,14 +13,16 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue'
-
+// import SwitchBar from '../components/switchbar'
+import type { SwitchBarProps } from '../components/switchbar/types'
 export default defineComponent({
   name: 'ViewSwitchBar',
+  // components: { SwitchBar },
   setup () {
-    const checkLarge = ref(false)
-    const checkSmall = ref(false)
+    const checkLarge = ref<SwitchBarProps['modelValue']>(false)
+    const checkSmall = ref<SwitchBarProps['modelValue']>(false)
 
     return {
       checkLarge,

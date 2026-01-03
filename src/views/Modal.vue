@@ -15,36 +15,36 @@
   </div>
 </template>
 
-<script>
-import { getCurrentInstance } from 'vue'
+<script lang="ts">
+import { getCurrentInstance, defineComponent } from 'vue'
 import VButton from '../components/button'
 
-export default {
+export default defineComponent({
   name: 'ViewModal',
   components: { VButton },
   setup () {
     // 获取实例，用来访问全局属性 $Modal / $Message
-    const { proxy } = getCurrentInstance()
+    const { proxy } = getCurrentInstance()!
 
     const showInfo = () => {
-      proxy.$Modal.info({
+      proxy!.$Modal.info({
         body: '这是内容',
         onOk: function () {
-          proxy.$Message.show({ text: '点击了确定' })
+          proxy!.$Message.show({ text: '点击了确定' })
           // console.log('点击了确定')
         },
         onCancle: function () {
-          proxy.$Message.show({ text: '点击了取消' })
+          proxy!.$Message.show({ text: '点击了取消' })
           // console.log('点击了取消')
         }
       })
     }
 
     const showConfirm = () => {
-      proxy.$Modal.confirm({
+      proxy!.$Modal.confirm({
         body: '这是内容',
         onOk: function () {
-          proxy.$Message.show({ text: '点击了确定' })
+          proxy!.$Message.show({ text: '点击了确定' })
           // console.log('点击了确定')
         }
       })
@@ -55,7 +55,7 @@ export default {
       showConfirm
     }
   }
-}
+})
 </script>
 
 <style lang="less" scoped>

@@ -1,48 +1,48 @@
 <template>
   <div class="Button">
-    <VButton type="primary">
+    <DpButton type="primary">
       Primary
-    </VButton>
-    <VButton
+    </DpButton>
+    <DpButton
       type="success"
       :loading="loading"
       @click="onClick"
     >
       Success
-    </VButton>
-    <VButton
+    </DpButton>
+    <DpButton
       type="warning"
       :loading="loading"
       @click="onClick"
     >
       Warning
-    </VButton>
-    <VButton type="danger">
+    </DpButton>
+    <DpButton type="danger">
       Danger
-    </VButton>
-    <VButton type="normal">
+    </DpButton>
+    <DpButton type="normal">
       Normal
-    </VButton>
-    <VButton
+    </DpButton>
+    <DpButton
       type="normal"
       disabled
     >
       Disabled
-    </VButton>
+    </DpButton>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from 'vue'
-import VButton from '../components/button'
-
+// import DpButton from '../components/button'
+import type { ButtonProps } from '../components/button/types'
 export default {
   name: 'ViewButton',
   components: {
-    VButton
+    // DpButton
   },
   setup () {
-    const loading = ref(false)
+    const loading = ref<ButtonProps['loading']>(false)
 
     const onClick = () => {
       // console.trace('onClick triggered')

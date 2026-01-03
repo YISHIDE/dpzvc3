@@ -5,7 +5,7 @@
 import type { App } from 'vue'
 
 /* ========= 组件引入 ========= */
-import VButton from './components/button'
+import DpButton from './components/button'
 import { CheckBox, CheckBoxGroup } from './components/checkBox'
 import DpHeader from './components/header'
 import Message from './components/message'
@@ -28,9 +28,10 @@ import Indicator from './components/Indicator'
 import Progress from './components/progress'
 import ToTop from './components/toTop'
 import Cell from './components/cell'
-import CellSwipe from './components/cell-swipe'
+import CellSwipe from './components/cellSwipe'
 import Badge from './components/badge'
 import Card from './components/card'
+import Number from './components/number'
 
 /* ========= Installable 泛型 ========= */
 export type Installable<T> = T & {
@@ -42,7 +43,7 @@ export type Components = {
 export const components: Components = {} as Components
 /* ========= 组件集合 ========= */
 const _components = {
-  VButton,
+  DpButton,
   CheckBox,
   CheckBoxGroup,
   RadioBox,
@@ -53,7 +54,7 @@ const _components = {
   Tab,
   SlideBar,
   TextBar,
-  Number: TextBar.Number,
+  Number,
   Upload,
   ActionSheet,
   SwitchBar,
@@ -136,7 +137,7 @@ export const install = (app: App) => {
 
 /* ========= 按需导出 ========= */
 export {
-  VButton,
+  DpButton,
   CheckBox,
   CheckBoxGroup,
   DpHeader,

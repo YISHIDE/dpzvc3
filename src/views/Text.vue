@@ -10,7 +10,6 @@
         :min="min"
         :max="max"
         :step="step"
-        :focus="focus"
       />
       <span class="value">value: {{ number }}</span>
     </div>
@@ -42,19 +41,24 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue'
-
+// import TextBar from '../components/Text'
+// import Number from '../components/number'
+import type { TextBarProps } from '../components/Text/types'
+import type { NumberProps } from '../components/number/types'
 export default defineComponent({
   name: 'ViewText',
+  // components: { Number },
+  // components: { TextBar },
   setup () {
-    const number = ref(1)
-    const min = ref(1)
-    const max = ref(10)
-    const step = ref(2)
-    const focus = ref(true)
-    const text = ref('请输入')
-    const texts = ref('正在输入....')
+    const number = ref<NumberProps['modelValue']>(0)
+    const min = ref<NumberProps['min']>(0)
+    const max = ref<NumberProps['max']>(10)
+    const step = ref<NumberProps['step']>(2)
+    // const focus = ref<NumberProps['focus']>(true)
+    const text = ref<TextBarProps['modelValue']>('请输入')
+    const texts = ref<TextBarProps['modelValue']>('正在输入....')
 
     return {
       number,
