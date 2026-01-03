@@ -1,58 +1,58 @@
 <template>
   <div class="Indicator">
     <div class="item">
-      <VButton @click="blade">
+      <DpButton @click="blade">
         blade
-      </VButton>
+      </DpButton>
     </div>
     <div class="item">
-      <VButton @click="snake">
+      <DpButton @click="snake">
         snake
-      </VButton>
+      </DpButton>
     </div>
     <div class="item">
-      <VButton @click="circle">
+      <DpButton @click="circle">
         circle
-      </VButton>
+      </DpButton>
     </div>
     <div class="item">
-      <VButton @click="bounce">
+      <DpButton @click="bounce">
         bounce
-      </VButton>
+      </DpButton>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, getCurrentInstance } from 'vue'
 
 export default defineComponent({
   name: 'ViewIndicator',
   setup () {
-    const { proxy } = getCurrentInstance()
+    const { proxy } = getCurrentInstance()!
     const removeAfterDelay = (duration = 3000) => {
       setTimeout(() => {
-        proxy.$Indicator.remove()
+        proxy!.$Indicator.remove()
       }, duration)
     }
 
     const blade = () => {
-      proxy.$Indicator.blade()
+      proxy!.$Indicator.blade({})
       removeAfterDelay()
     }
 
     const snake = () => {
-      proxy.$Indicator.snake()
+      proxy!.$Indicator.snake({})
       removeAfterDelay()
     }
 
     const circle = () => {
-      proxy.$Indicator.circle()
+      proxy!.$Indicator.circle({})
       removeAfterDelay()
     }
 
     const bounce = () => {
-      proxy.$Indicator.bounce()
+      proxy!.$Indicator.bounce({})
       removeAfterDelay()
     }
 

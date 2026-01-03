@@ -91,10 +91,12 @@ import type { UploadProps } from '../components/upload/types'
 import type { SlideBarProps } from '../components/slideBar/types'
 import type { ModalInstance } from '../components/modal/types'
 import type { MessageInstance } from '../components/message/types'
+import type { IndicatorInstance } from '../components/Indicator/types'
 declare module 'vue' {
   interface ComponentCustomProperties {
     $Modal: ModalInstance
     $Message: MessageInstance
+    $Indicator: IndicatorInstance
   }
   export interface GlobalComponents {
     // Badge: typeof import('../components/badge')['default'] & {
