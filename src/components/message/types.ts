@@ -8,7 +8,7 @@
 //   position?: 'top' | 'bottom'
 //   onClose?: () => void
 
-import message from "."
+import type { ComponentPublicInstance } from 'vue'
 
 // }
 export interface MessageProps {
@@ -43,6 +43,6 @@ export type MgInstance = {
   add: (options: any) => void
   remove: (name: string | number) => void
   closeAll: () => void
-  component: any
+  component: ComponentPublicInstance
   destroy: () => void
 } | null

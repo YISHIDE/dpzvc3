@@ -1,4 +1,5 @@
 import { createVNode, render } from 'vue'
+import type { ComponentPublicInstance } from 'vue'
 import MessageGroup from './messageGroup'
 
 // MessageGroup.newInstance = function (props = {}) {
@@ -10,7 +11,7 @@ function createMessageInstance(props = {}) {
   render(vnode, container)
 
   // vnode.component.proxy 会有 expose 出来的方法
-  const instance = vnode.component?.proxy as any
+  const instance = vnode.component?.proxy as ComponentPublicInstance
   const { add, remove, closeAll } = vnode.component?.exposed || {}
 //   console.log(vnode.component.exposed
 // , 'instance---messageGroup')
@@ -30,7 +31,7 @@ function createMessageInstance(props = {}) {
     },
     component: instance,
     destroy() {
-      instance?.closeAll?.()
+      closeAll?.()
       setTimeout(() => {
         render(null, container)
         container.parentNode?.removeChild(container)

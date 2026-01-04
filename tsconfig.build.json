@@ -10,14 +10,17 @@
     "jsx": "preserve",
     "strict": true,
     "skipLibCheck": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "allowJs": true
   },
   "include": [
     // "src/components/**/*.{ts,tsx,vue}",  // 组件源代码
-    "src/components/badge/*.tsx",
-    "src/components/badge/*.ts",
+    // "src/components/badge/*.tsx",
+    // "src/components/badge/*.ts",
     "src/shims-vue.d.ts",
-    "src/types/index.d.ts"                 // 存放 BadgeProps 等类型
+    "src/types/**/*.d.ts",
+    // "src/types/js-shims.d.ts",
+    // "src/types/index.d.ts"                 // 存放 BadgeProps 等类型
   ],
   "exclude": [
     "node_modules",

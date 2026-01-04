@@ -31,14 +31,16 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue'
-
+import type { RadioBoxProps, RadioGroupProps } from '../components/radioBox/types'
+// import { RadioBox, RadioBoxGroup } from '../components/radioBox'
 export default defineComponent({
   name: 'ViewRadioBox',
+  // components: { RadioBox, RadioBoxGroup },
   setup () {
-    const checked = ref(false)
-    const radio = ref('')
+    const checked = ref<RadioBoxProps['modelValue']>(false)
+    const radio = ref<RadioGroupProps['modelValue']>('')
 
     return {
       checked,

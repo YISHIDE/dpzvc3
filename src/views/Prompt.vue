@@ -19,7 +19,7 @@ export default defineComponent({
     const { proxy } = getCurrentInstance()!
 
     function showPrompt () {
-      (proxy as any).$Prompt.info({
+      proxy?.$Prompt.info({
         title: 'Prompt',
         spec: 'ccc',
         text: 'vvvv'

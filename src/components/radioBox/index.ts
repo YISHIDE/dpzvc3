@@ -6,12 +6,29 @@
 
 // RadioBox.group = RadioBoxGroup
 // export default RadioBox
-import type { DefineComponent } from 'vue'
-import RadioBox from './radiobox.vue'
-import RadioBoxGroup from './radiobox-group.vue'
+import type { App } from 'vue'
+import RadioBox from './radiobox'
+import RadioBoxGroup from './radiobox-group'
 
+RadioBox.install = (app: App): void => {
+    app.component('RadioBox', RadioBox); // 注册全局组件
+}
+type IWithInstall<T> = T & { install(app: App): void };
+const _RadioBox = RadioBox as IWithInstall<typeof RadioBox>;
+
+
+
+RadioBoxGroup.install = (app: App): void => {
+    app.component('RadioBoxGroup', RadioBoxGroup); // 注册全局组件
+}
+const _RadioBoxGroup = RadioBoxGroup as IWithInstall<typeof RadioBoxGroup>;
 
 export {
-    RadioBox,
-    RadioBoxGroup
+    _RadioBox as RadioBox,
+    _RadioBoxGroup as RadioBoxGroup
 }
+// export {
+//     RadioBox,
+//     RadioBoxGroup
+// }
+export type { RadioBoxProps, RadioGroupProps } from './types'    

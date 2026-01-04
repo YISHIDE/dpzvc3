@@ -21,16 +21,6 @@ CheckBoxGroup.install = (app: App): void => {
     app.component('CheckBoxGroup', CheckBoxGroup); // 注册全局组件
 }
 const _CheckBoxGroup = CheckBoxGroup as IWithInstall<typeof CheckBoxGroup>;
-// export default _CheckBox
-
-
-// type CheckBoxWithGroup = DefineComponent & {
-//     group: typeof CheckGroup
-// }
-
-// const _CheckBox = CheckBox as unknown as CheckBoxWithGroup
-
-// _CheckBox.group = CheckGroup
 
 export {
     _CheckBox as CheckBox,

@@ -3,7 +3,6 @@
 /* ----------------------------------
  * 1️⃣ 导出组件 & props（给 TS 模块 import 用）
  * ---------------------------------- */
-
 export { default as Badge } from '../components/badge'
 export type { BadgeProps } from '../components/badge/types'
 export { default as Popup } from '../components/popup'
@@ -68,6 +67,9 @@ export type { LoadmoreProps } from '../components/loadMore/types'
 export { default as CheckBox, default as CheckBoxGroup } from '../components/checkBox'
 export type { CheckBoxProps, CheckBoxGroupProps } from '../components/checkBox/types'
 
+export { default as RadioBox, default as RadioBoxGroup } from '../components/radioBox'
+export type { RadioBoxProps, RadioGroupProps } from '../components/radioBox/types'
+
 // // Modal
 // export { default as Modal } from '../components/modal/modal'
 // // 实例调用类型定义
@@ -105,11 +107,16 @@ import type { ProgressProps } from '../components/progress/types'
 import type { LoadmoreProps } from '../components/loadMore/types'
 import type { CheckBoxProps } from '../components/checkBox/types'
 import type { CheckBoxGroupProps } from '../components/checkBox/types'
+import type { RadioBoxProps } from '../components/radioBox/types'
+import type { RadioGroupProps } from '../components/radioBox/types'
+import type { PromptInstance } from '../components/Prompt/types'
+// src/shims-vue.d.ts
 declare module 'vue' {
   interface ComponentCustomProperties {
     $Modal: ModalInstance
     $Message: MessageInstance
     $Indicator: IndicatorInstance
+    $Prompt: PromptInstance
   }
   export interface GlobalComponents {
     // Badge: typeof import('../components/badge')['default'] & {
@@ -139,6 +146,8 @@ declare module 'vue' {
     DpLoadMore: typeof import('../components/loadMore')['default'],
     CheckBoxGroup: typeof import('../components/checkBox')['CheckBoxGroup'],
     CheckBox: typeof import('../components/checkBox')['CheckBox'],
+    RadioBoxGroup: typeof import('../components/radioBox')['RadioBoxGroup'],
+    RadioBox: typeof import('../components/radioBox')['RadioBox'],
   }
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div class="ActionSheet">
-    <VButton
+    <DpButton
       width="50%"
       @click="visible = true"
     />
