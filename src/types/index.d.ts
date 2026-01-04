@@ -59,6 +59,15 @@ export type { UploadProps } from '../components/upload/types'
 export { default as SlideBar } from '../components/slideBar'
 export type { SlideBarProps } from '../components/slideBar/types'
 
+export { default as DpProgress } from '../components/progress'
+export type { ProgressProps } from '../components/progress/types'
+
+export { default as DpLoadMore } from '../components/loadMore'
+export type { LoadmoreProps } from '../components/loadMore/types'
+
+export { default as CheckBox, default as CheckBoxGroup } from '../components/checkBox'
+export type { CheckBoxProps, CheckBoxGroupProps } from '../components/checkBox/types'
+
 // // Modal
 // export { default as Modal } from '../components/modal/modal'
 // // 实例调用类型定义
@@ -92,6 +101,10 @@ import type { SlideBarProps } from '../components/slideBar/types'
 import type { ModalInstance } from '../components/modal/types'
 import type { MessageInstance } from '../components/message/types'
 import type { IndicatorInstance } from '../components/Indicator/types'
+import type { ProgressProps } from '../components/progress/types'
+import type { LoadmoreProps } from '../components/loadMore/types'
+import type { CheckBoxProps } from '../components/checkBox/types'
+import type { CheckBoxGroupProps } from '../components/checkBox/types'
 declare module 'vue' {
   interface ComponentCustomProperties {
     $Modal: ModalInstance
@@ -122,6 +135,10 @@ declare module 'vue' {
     ToTop: typeof import('../components/toTop')['default'],
     Upload: typeof import('../components/upload')['default'],
     SlideBar: typeof import('../components/slideBar')['default'],
+    DpProgress: typeof import('../components/progress')['default'],
+    DpLoadMore: typeof import('../components/loadMore')['default'],
+    CheckBoxGroup: typeof import('../components/checkBox')['CheckBoxGroup'],
+    CheckBox: typeof import('../components/checkBox')['CheckBox'],
   }
 }
 

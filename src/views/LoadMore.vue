@@ -1,6 +1,6 @@
 <template>
   <div class="LoadMore">
-    <LoadMore
+    <DpLoadMore
       ref="moreRef"
       :refresh="topMethod"
       height="100%"
@@ -15,40 +15,43 @@
       >
         {{ item }}
       </div>
-    </LoadMore>
+    </DpLoadMore>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue'
-
+// import DpLoadMore from '../components/loadMore'
+import type { LoadmoreProps } from '../components/loadMore/types'
 export default defineComponent({
   name: 'ViewLoadMore',
+  // components: { DpLoadMore },
   setup () {
     const moreRef = ref(null)
-    const hasMore = ref(true)
+    const hasMore = ref<LoadmoreProps['hasMore']>(true)
     const loadmore = ref(Array(16).fill('LoadMore'))
 
     const topMethod = () => {
       hasMore.value = true
 
       setTimeout(() => {
-        if (moreRef.value && moreRef.value.onLoadOff) {
-          moreRef.value.onLoadOff()
+        // console.log(moreRef.value, '----moreRef----')
+        if (moreRef.value && (moreRef.value as any).onLoadOff) {
+          (moreRef.value as any).onLoadOff()
         }
       }, 2000)
     }
 
     const bottomMethod = () => {
       setTimeout(() => {
-        if (moreRef.value && moreRef.value.onLoadOff) {
-          moreRef.value.onLoadOff()
+        if (moreRef.value && (moreRef.value as any).onLoadOff) {
+          (moreRef.value as any).onLoadOff()
         }
         loadmore.value.push(...['LoadMore', 'LoadMore'])
       }, 2000)
     }
 
-    const getStatus = (val) => {
+    const getStatus = (val: any) => {
       console.log(val)
     }
 

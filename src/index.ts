@@ -22,7 +22,7 @@ import ActionSheet from './components/actionSheet'
 import SwitchBar from './components/switchbar'
 import Rater from './components/rater'
 import Spinner from './components/spinner'
-import LoadMore from './components/loadMore'
+import DpLoadMore from './components/loadMore'
 import Popup from './components/popup'
 import Indicator from './components/Indicator'
 import Progress from './components/progress'
@@ -34,11 +34,11 @@ import Card from './components/card'
 import Number from './components/number'
 
 /* ========= Installable 泛型 ========= */
-export type Installable<T> = T & {
-  install?: (app: App) => void
-}
+// export type Installable<T> = T & {
+//   install?: (app: App) => void
+// }
 export type Components = {
-  [K in keyof typeof _components]: Installable<typeof _components[K]>
+  [K in keyof typeof _components]: any//Installable<typeof _components[K]>
 }
 export const components: Components = {} as Components
 /* ========= 组件集合 ========= */
@@ -60,7 +60,7 @@ const _components = {
   SwitchBar,
   Rater,
   Spinner,
-  LoadMore,
+  DpLoadMore,
   Popup,
   DpProgress: Progress,
   ToTop,
@@ -85,15 +85,18 @@ const _components = {
 // } = {} as any
 // 遍历给组件加 install
 Object.keys(_components).forEach((key) => {
-  const component = _components[key as keyof typeof _components] as Installable<
-    typeof _components[keyof typeof _components]
-  >
+  // const component = _components[key as keyof typeof _components] as Installable<
+  //   typeof _components[keyof typeof _components]
+  //   >
+   const component = _components[key as keyof typeof _components]
   if (component && !component.install) {
     component.install = (app: App) => {
+      // console.log(key, component, '----component----')
       app.component(key, component)
     }
   }
   components[key as keyof typeof _components] = component
+  // console.log(components, '----components----')
 })
 /* ========= 服务组件 ========= */
 export const services: Record<string, any> = {
@@ -155,7 +158,7 @@ export {
   SwitchBar,
   Rater,
   Spinner,
-  LoadMore,
+  DpLoadMore,
   Popup,
   Indicator,
   Progress,

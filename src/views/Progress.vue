@@ -7,20 +7,21 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
-
+// import DpProgress from '../components/progress'
+import type { ProgressProps } from '../components/progress'
 export default defineComponent({
   name: 'ViewDpProgress',
-
+  // components: { DpProgress },
   setup () {
-    const progress = ref(0)
+    const progress = ref<ProgressProps['modelValue']>('0')
     const barHeight = ref(5)
-    let timer = null
+    let timer:any = null
 
     onMounted(() => {
       timer = setInterval(() => {
-        progress.value += 1
+        progress.value = Number(progress.value) + 1
         if (progress.value >= 100) {
           clearInterval(timer)
           timer = null
