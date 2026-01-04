@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require('path')
 const { merge } = require('webpack-merge')
 const webpack = require('webpack')
@@ -10,7 +11,7 @@ process.env.NODE_ENV = 'production'
 module.exports = merge(baseConfig, {
   mode: 'production',
   entry: {
-    main: './src/main.js'
+    main: './src/main.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist-prod'),
