@@ -14,11 +14,11 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 // import VButton from '@/components/button'
-// import ActionSheet from '@/components/actionSheet'
+import ActionSheet from '@/components/actionSheet'
 
 export default defineComponent({
   name: 'ViewActionSheet',
-  // components: { ActionSheet },
+  components: { ActionSheet },
   setup () {
     // 响应式状态
     const visible = ref(false)

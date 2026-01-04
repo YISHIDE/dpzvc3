@@ -5,6 +5,6 @@ type ActionItem = {
 
 export type ActionSheetProps = {
   modelValue?: boolean
-  items?: ActionItem
+  items?: ActionItem[]
   cancleText?: string
 }

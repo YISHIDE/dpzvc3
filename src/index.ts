@@ -2,7 +2,7 @@
  * Vue 3 组件库入口 ts 版本
  */
 
-import type { App } from 'vue'
+import type { App, Plugin } from 'vue'
 
 /* ========= 组件引入 ========= */
 import DpButton from './components/button'
@@ -33,16 +33,8 @@ import Badge from './components/badge'
 import Card from './components/card'
 import Number from './components/number'
 
-/* ========= Installable 泛型 ========= */
-// export type Installable<T> = T & {
-//   install?: (app: App) => void
-// }
-export type Components = {
-  [K in keyof typeof _components]: any//Installable<typeof _components[K]>
-}
-export const components: Components = {} as Components
 /* ========= 组件集合 ========= */
-const _components = {
+const components = {
   DpButton,
   CheckBox,
   CheckBoxGroup,
@@ -68,73 +60,42 @@ const _components = {
   CellSwipe,
   Badge,
   Card
-}
-/* typeof _component在ts输出
- // {
-//   VButton: typeof VButton
-//   CheckBox: typeof CheckBox
-//   CheckBoxGroup: typeof CheckBoxGroup
-// }
-如果直接写[K in keyof _components]报错Type '_components' is not a type.  原因就是 _components 是 值，不是类型。
-  •	keyof 只能作用在 类型上。
-  •	所以必须先用 typeof 变成类型：keyof typeof _components。
-*/
-/* ========= 生成 Installable 类型组件集合 ========= */
-// export const components: {
-//   [K in keyof typeof _components]: Installable<typeof _components[K]>
-// } = {} as any
-// 遍历给组件加 install
-Object.keys(_components).forEach((key) => {
-  // const component = _components[key as keyof typeof _components] as Installable<
-  //   typeof _components[keyof typeof _components]
-  //   >
-   const component = _components[key as keyof typeof _components]
-  if (component && !component.install) {
-    component.install = (app: App) => {
-      // console.log(key, component, '----component----')
-      app.component(key, component)
-    }
-  }
-  components[key as keyof typeof _components] = component
-  // console.log(components, '----components----')
-})
+} as const
+
 /* ========= 服务组件 ========= */
-export const services: Record<string, any> = {
+const services = {
   Message,
   Modal,
   Prompt,
   Indicator
-}
+} as const
 
-Object.keys(services).forEach((key) => {
-  const service = services[key]
-  if (service && !service.install) {
-    service.install = (app: App) => {
-      app.config.globalProperties[`$${key}`] = service
+/* ========= 遍历注册组件 ========= */
+Object.values(components).forEach((comp: any) => {
+  if (comp && !comp.install) {
+    comp.install = (app: App) => {
+      app.component(comp.name, comp)
+    }
+  }
+})
+
+/* ========= 遍历注册服务 ========= */
+Object.values(services).forEach((srv: any, idx) => {
+  if (srv && !srv.install) {
+    const key = Object.keys(services)[idx]
+    srv.install = (app: App) => {
+      app.config.globalProperties[`$${key}`] = srv
     }
   }
 })
 
 /* ========= 全量 install ========= */
-export const install = (app: App) => {
-  if (!app) {
-    console.warn(
-      'dpzvc3 install: app is undefined, ensure you are using Vue 3 createApp'
-    )
-    return
-  }
-  // 注册组件
-  Object.values(components).forEach((comp) => {
-    if (comp.install) {
-      comp.install(app)
-    }
+export const install: Plugin['install'] = (app: App) => {
+  Object.values(components).forEach((comp: any) => {
+    comp.install?.(app)
   })
-
-  // 注册服务
-  Object.values(services).forEach((srv) => {
-    if (srv.install) {
-      srv.install(app)
-    }
+  Object.values(services).forEach((srv: any) => {
+    srv.install?.(app)
   })
 }
 
@@ -149,6 +110,7 @@ export {
   Prompt,
   Picker,
   RadioBox,
+  RadioBoxGroup,
   Swipe,
   Tab,
   SlideBar,
@@ -170,6 +132,5 @@ export {
 }
 
 /* ========= 默认导出 ========= */
-export default {
-  install
-}
+const Dpzvc3UI: Plugin = { install }
+export default Dpzvc3UI

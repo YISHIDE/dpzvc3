@@ -38,11 +38,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-// import { CheckBox, CheckBoxGroup } from '../components/checkBox'
+import { CheckBox, CheckBoxGroup } from '../components/checkBox'
 import type { CheckBoxProps, CheckBoxGroupProps } from '../components/checkBox/types'
 export default defineComponent({
   name: 'ViewCheckBox',
-  // components: { CheckBox, CheckBoxGroup },
+  components: { CheckBox, CheckBoxGroup },
   setup () {
     const data = ref<CheckBoxGroupProps['modelValue']>(['中国'])
     const checked = ref<CheckBoxProps['modelValue']>(false)

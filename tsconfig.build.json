@@ -18,8 +18,9 @@
     // "src/components/badge/*.tsx",
     // "src/components/badge/*.ts",
     "src/shims-vue.d.ts",
-    "src/types/**/*.d.ts",
-    // "src/types/js-shims.d.ts",
+    // "src/types/**/*.d.ts",
+    "src/index.d.ts",
+    "src/types/js-shims.d.ts",
     // "src/types/index.d.ts"                 // 存放 BadgeProps 等类型
   ],
   "exclude": [

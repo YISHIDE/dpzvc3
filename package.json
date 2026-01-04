@@ -1,6 +1,6 @@
 {
   "name": "dpzvc3-ui",
-  "version": "3.1.0",
+  "version": "3.1.5",
   "description": "Vue3组件库",
   "main": "dist/dpzvc3.js",
   "module": "dist/dpzvc3.esm.js",
@@ -11,7 +11,7 @@
     "build:style": "gulp --gulpfile build-style.js",
     "build:dev": "webpack --config webpack.dist.dev.config.js",
     "build:prod": "webpack --config webpack.dist.prod.config.js",
-    "build:types": "tsc --project tsconfig.build.json && cp src/types/index.d.ts dist/types/index.d.ts",
+    "build:types": "tsc --project tsconfig.build.json && cp src/index.d.ts dist/types/index.d.ts",
     "build": "npm run build:style && npm run build:dev && npm run build:prod && npm run build:types",
     "dist": "webpack --progress --config webpack.prod.config.js",
     "prepare": "husky"
