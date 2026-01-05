@@ -1,7 +1,7 @@
 {
   "name": "dpzvc3-ui",
-  "version": "3.1.5",
-  "description": "Vue3组件库",
+  "version": "3.1.6",
+  "description": "Vue3组件库,基于Vue3+Webpack5+TypeScript开发，提供丰富的移动端UI组件。",
   "main": "dist/dpzvc3.js",
   "module": "dist/dpzvc3.esm.js",
   "types": "dist/types/index.d.ts",
@@ -20,6 +20,11 @@
     "type": "git",
     "url": "https://github.com/yishide/dpzvc3.git"
   },
+  "files":[
+    "dist",
+    "README.md",
+    "images"
+  ],
   "keywords": [
     "Vue3",
     "Vue3 Cli",
