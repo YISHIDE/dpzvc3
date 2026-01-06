@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta name="viewport"
+        content="width=device-width,
+                 initial-scale=1.0,
+                 maximum-scale=1.0,
+                 minimum-scale=1.0">
+  <title>dpzvc3-ui SSR</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"><!--app-html--></div>
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement;
+
+      function recalc() {
+        var clientWidth = docEl.clientWidth;
+        if (!clientWidth) return;
+
+        if (clientWidth > 750) clientWidth = 750;
+
+        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+      }
+
+      win.addEventListener('resize', recalc);
+      doc.addEventListener('DOMContentLoaded', recalc);
+    })(document, window);
+  </script>
+  <script type="module" src="/entry-client.js"></script>
+</body>
+</html>

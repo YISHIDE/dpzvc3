@@ -65,7 +65,7 @@ export default defineComponent({
       min,
       max,
       step,
-      focus,
+      // focus,
       text,
       texts
     }

@@ -16,10 +16,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-// import Cell from '../components/cell/'
+import Cell from '../components/cell'
 export default defineComponent({
-  name: 'ViewCell'
-  // components: { Cell }
+  name: 'ViewCell',
+  components: { Cell }
 })
 </script>
 

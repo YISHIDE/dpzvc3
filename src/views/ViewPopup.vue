@@ -1,29 +1,29 @@
 <template>
   <div class="Popup">
-    <VButton
+    <DpButton
       width="50%"
       @click="() => showPop('top')"
     >
       Top
-    </VButton>
-    <VButton
+    </DpButton>
+    <DpButton
       width="50%"
       @click="() => showPop('right')"
     >
       Right
-    </VButton>
-    <VButton
+    </DpButton>
+    <DpButton
       width="50%"
       @click="() => showPop('bottom')"
     >
       Bottom
-    </VButton>
-    <VButton
+    </DpButton>
+    <DpButton
       width="50%"
       @click="() => showPop('left')"
     >
       Left
-    </VButton>
+    </DpButton>
 
     <Popup
       v-model="show"

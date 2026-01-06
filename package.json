@@ -5,22 +5,26 @@
   "main": "dist/dpzvc3.js",
   "module": "dist/dpzvc3.esm.js",
   "types": "dist/types/index.d.ts",
+
   "scripts": {
     "init": "webpack --progress --config webpack.dev.config.js",
     "dev": "webpack serve --config webpack.dev.config.js --open",
+    "build:ssr": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
     "build:style": "gulp --gulpfile build-style.js",
     "build:dev": "webpack --config webpack.dist.dev.config.js",
     "build:prod": "webpack --config webpack.dist.prod.config.js",
     "build:types": "tsc --project tsconfig.build.json && cp src/index.d.ts dist/types/index.d.ts",
     "build": "npm run build:style && npm run build:dev && npm run build:prod && npm run build:types",
     "dist": "webpack --progress --config webpack.prod.config.js",
-    "prepare": "husky"
+    "prepare": "husky",
+    "start": "node server.js",
+    "vercel-build": "npm run build:ssr"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/yishide/dpzvc3.git"
   },
-  "files":[
+  "files": [
     "dist",
     "README.md",
     "images"
@@ -40,7 +44,10 @@
     "core-js": "^2.4.1",
     "deepmerge": "^1.3.1",
     "exifr": "^7.1.3",
-    "vue-router": "^4.6.4"
+    "express": "^4.22.1",
+    "path-to-regexp": "^6.3.0",
+    "vue-router": "^4.6.4",
+    "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
