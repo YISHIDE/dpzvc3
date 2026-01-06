@@ -27,7 +27,7 @@ export interface LoadmoreProps {
 export type LoadmoreUpStatus = 'pull' | 'drop' | 'loading' | ''
 export type LoadmoreDownStatus = 'drop' | 'loading' | 'end' | ''
 export const inputEmits = {
-  'on-change-up-status': (value: LoadmoreUpStatus) => true,
-  'on-change-down-status': (value: LoadmoreDownStatus) => true,
+  'on-change-up-status': (value: LoadmoreUpStatus) => {},
+  'on-change-down-status': (value: LoadmoreDownStatus) => {},
 } as const
 export type LoadmoreEmits = typeof inputEmits

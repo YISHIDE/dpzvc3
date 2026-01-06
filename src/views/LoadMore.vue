@@ -51,7 +51,7 @@ export default defineComponent({
       }, 2000)
     }
 
-    const getStatus = (val: any) => {
+    const getStatus: LoadmoreEmits['on-change-up-status'] = (val) => {
       console.log(val, '----val----')
     }
 
