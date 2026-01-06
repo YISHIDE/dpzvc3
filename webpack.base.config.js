@@ -61,7 +61,7 @@ module.exports = {
              options: {
               lessOptions: {
                 javascriptEnabled: true,
-                paths: [path.resolve(__dirname, 'src')] // ⚡ 关键！让 ~@/ 指向 src
+                // paths: [path.resolve(__dirname, 'src')] // ⚡ 关键！让 ~@/ 指向 src
               }
             }
         }]
