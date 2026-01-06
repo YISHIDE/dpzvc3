@@ -12,3 +12,5 @@ src/config/env.js
 /index_prod.html
 example
 example/*
+.vercel
+.env*.local

@@ -12,7 +12,7 @@ const server = express()
 server.use(express.static(path.resolve(__dirname, 'dist-ssr/client')))
 
 // 所有请求走 SSR
-server.get('*', async (req, res) => {
+server.get('/.*', async (req, res) => {
   try {
     const template = fs.readFileSync(path.resolve(__dirname, 'dist-ssr/client/index.html'), 'utf-8')
     const appHtml = await render(req.url)
