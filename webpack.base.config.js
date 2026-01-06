@@ -56,7 +56,15 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: ['vue-style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader', {
+          loader: 'less-loader',
+             options: {
+              lessOptions: {
+                javascriptEnabled: true,
+                paths: [path.resolve(__dirname, 'src')] // ⚡ 关键！让 ~@/ 指向 src
+              }
+            }
+        }]
       },
       {
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff2?)$/,
