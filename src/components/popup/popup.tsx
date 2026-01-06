@@ -1,6 +1,8 @@
 import { defineComponent, ref, computed, watch, PropType, Transition } from 'vue'
-import type { PopupProps } from './types'
-export type { PopupProps }
+import { inputEmits } from './types'
+import type { CSSProperties } from 'vue'
+import type { PopupProps, PopupEmits, PopupClassNameArray } from './types'
+export type { PopupProps, PopupEmits }
 
 const prefixCls = 'dpzvc3-popup'
 
@@ -13,20 +15,20 @@ export default defineComponent({
     maskClosable: { type: Boolean, default: true },
     width: { type: [Number, String] as PropType<number | string>, default: '100%' },
     height: { type: [Number, String] as PropType<number | string> },
-    styles: { type: Object as PropType<Record<string, string | number>>, default: () => ({}) }
+    styles: { type: Object as PropType<PopupProps['styles']>, default: () => ({}) }
   },
-  emits: ['update:modelValue'],
+  emits: inputEmits,
   setup(props, { emit, slots }) {
-    const visible = ref(props.modelValue)
-    const mask = ref(props.showMask)
+    const visible = ref<PopupProps['modelValue']>(props.modelValue)
+    const mask = ref<PopupProps['showMask']>(props.showMask)
 
-    watch(() => props.modelValue, val => { visible.value = val })
-    watch(visible, val => { emit('update:modelValue', val) })
-    watch(() => props.showMask, val => { mask.value = val })
+    watch<PopupProps['modelValue']>(() => props.modelValue, val => { visible.value = val })
+    watch<PopupProps['modelValue']>(visible, val => { emit('update:modelValue', val) })
+    watch<PopupProps['showMask']>(() => props.showMask, val => { mask.value = val })
 
-    const classes = computed(() => [prefixCls])
-    const popupClasses = computed(() => [`${prefixCls}-${props.position}`, `${prefixCls}-content`])
-    const contentStyle = computed(() => {
+    const classes = computed<PopupClassNameArray>(() => [prefixCls])
+    const popupClasses = computed<PopupClassNameArray>(() => [`${prefixCls}-${props.position}`, `${prefixCls}-content`])
+    const contentStyle = computed<CSSProperties>(() => {
       const heightValue = props.height != null ? props.height : (props.position === 'top' ? 'auto' : '100%')
       return { ...props.styles, width: props.width, height: heightValue }
     })

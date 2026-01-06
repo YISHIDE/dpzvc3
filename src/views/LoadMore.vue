@@ -21,11 +21,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-// import DpLoadMore from '../components/loadMore'
-import type { LoadmoreProps } from '../components/loadMore/types'
+import DpLoadMore from '../components/loadMore'
+import type { LoadmoreProps, LoadmoreEmits } from '../components/loadMore/types'
 export default defineComponent({
   name: 'ViewLoadMore',
-  // components: { DpLoadMore },
+  components: { DpLoadMore },
   setup () {
     const moreRef = ref(null)
     const hasMore = ref<LoadmoreProps['hasMore']>(true)
@@ -52,7 +52,7 @@ export default defineComponent({
     }
 
     const getStatus = (val: any) => {
-      console.log(val)
+      console.log(val, '----val----')
     }
 
     return {

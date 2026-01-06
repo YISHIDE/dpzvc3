@@ -7,10 +7,10 @@ export { default as Badge } from './components/badge'
 export type { BadgeProps } from './components/badge/types'
 
 export { default as Popup } from './components/popup'
-export type { PopupProps } from './components/popup/types'
+export type { PopupProps, PopupEmits } from './components/popup/types'
 
 export { default as ActionSheet } from './components/actionSheet'
-export type { ActionSheetProps } from './components/actionSheet/types'
+export type { ActionSheetProps, ActionSheetEmits } from './components/actionSheet/types'
 
 export { default as Card } from './components/card'
 export type { CardProps } from './components/card/types'

@@ -9,7 +9,9 @@ import {
 } from 'vue'
 import type { PropType, CSSProperties } from 'vue'
 import Spinner from '../spinner'
-import type { LoadmoreProps } from './types'
+import type { LoadmoreProps, LoadmoreEmits, LoadmoreUpStatus, LoadmoreDownStatus } from './types'
+export type { LoadmoreProps, LoadmoreEmits }
+import { inputEmits } from './types'
 
 const prefixCls = 'dpzvc3-loadmore'
 
@@ -44,7 +46,7 @@ export default defineComponent({
     autoFill: { type: Boolean, default: true }
   },
 
-  emits: ['on-change-up-status', 'on-change-down-status'],
+  emits: inputEmits,
 
   setup(props, { slots, emit, expose }) {
     const containerRef = ref<HTMLDivElement | null>(null)
@@ -54,8 +56,8 @@ export default defineComponent({
     const startTranslateY = ref(0)
     const currentY = ref(0)
     const startY = ref(0)
-    const upStatus = ref('')
-    const downStatus = ref('')
+    const upStatus = ref<LoadmoreUpStatus>('')
+    const downStatus = ref<LoadmoreDownStatus>('')
     const direction = ref('')
     const upText = ref('')
     const downText = ref('')
@@ -74,7 +76,7 @@ export default defineComponent({
     const statusClass = computed(() => [`${prefixCls}-status`])
 
     /** watch */
-    watch(upStatus, val => {
+    watch<LoadmoreUpStatus>(upStatus, val => {
       switch (val) {
         case 'pull': upText.value = props.upPullText; break
         case 'drop': upText.value = props.upDropText; break
@@ -83,7 +85,7 @@ export default defineComponent({
       emit('on-change-up-status', val)
     })
 
-    watch(downStatus, val => {
+    watch<LoadmoreDownStatus>(downStatus, val => {
       switch (val) {
         case 'end': downText.value = props.downEndText; break
         case 'drop': downText.value = props.downDropText; break

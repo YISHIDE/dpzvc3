@@ -38,15 +38,16 @@
 <script lang="ts">
 import { defineComponent, ref, nextTick } from 'vue'
 // import type { Side } from './dist/types/components/popup/types'
+import type { PopupProps } from '@/components/popup/types'
 type Side = 'top' | 'right' | 'bottom' | 'left'
 
 export default defineComponent({
   name: 'ViewPopup',
   setup () {
-    const side = ref<Side>('top')
-    const show = ref(false)
-    const width = ref('100%')
-    const height = ref<string | number>('100%')
+    const side = ref<PopupProps['position']>('top')
+    const show = ref<PopupProps['modelValue']>(false)
+    const width = ref<PopupProps['width']>('100%')
+    const height = ref<PopupProps['height']>('100%')
     const sideList: Side[] = ['top', 'right', 'bottom', 'left']
 
     const showPop = (s: Side) => {

@@ -24,3 +24,10 @@ export interface LoadmoreProps {
   auto?: boolean
   autoFill?: boolean
 }
+export type LoadmoreUpStatus = 'pull' | 'drop' | 'loading' | ''
+export type LoadmoreDownStatus = 'drop' | 'loading' | 'end' | ''
+export const inputEmits = {
+  'on-change-up-status': (value: LoadmoreUpStatus) => true,
+  'on-change-down-status': (value: LoadmoreDownStatus) => true,
+} as const
+export type LoadmoreEmits = typeof inputEmits

@@ -10,4 +10,4 @@ type IWithInstall<T> = T & { install(app: App): void };
 const _ActionSheet=ActionSheet as IWithInstall<typeof ActionSheet>;
 export default _ActionSheet
 // export default ActionSheet
-export type { ActionSheetProps } from './types'
+export type { ActionSheetProps, ActionSheetEmits } from './types'

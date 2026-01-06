@@ -15,6 +15,7 @@
 import { ref, defineComponent } from 'vue'
 // import VButton from '@/components/button'
 import ActionSheet from '@/components/actionSheet'
+import type { ActionSheetProps } from '@/components/actionSheet/actionSheet'
 
 export default defineComponent({
   name: 'ViewActionSheet',
@@ -22,8 +23,9 @@ export default defineComponent({
   setup () {
     // 响应式状态
     const visible = ref(false)
-    const actionSheet = ref([
-      { text: '提交' },
+    const actionSheet = ref<ActionSheetProps['items']>([
+      { text: '提交', onClick: (e) => { console.log(e, '点击了提交') } },
+      { text: '保存', onClick: (e) => { console.log(e, '点击了保存') } },
       { text: '确定' }
     ])
 
