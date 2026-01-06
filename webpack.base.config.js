@@ -14,7 +14,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.ts', '.js', '.tsx', '.vue', '.json'],
+    extensions: ['.ts', '.js', '.tsx', '.vue', '.json', '.less', '.css'],
     alias: {
       vue$: 'vue/dist/vue.esm-bundler.js', // ✅ Vue 3 正确写法
       '@': path.resolve(__dirname, 'src')

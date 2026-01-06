@@ -39,7 +39,8 @@ export default {
     // @import '../styles/common.css';
 
     // @import '../../src/styles/index';
-     @import '../styles/index.less';
+    //  @import '../styles/index.less';
+     @import '~@/styles/index.less';
 
     .page{
         position: relative;
