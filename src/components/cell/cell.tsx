@@ -1,9 +1,9 @@
 // src/components/cell/cell.tsx
 import { defineComponent, computed,PropType} from 'vue'
 import { useRouter } from 'vue-router'
-
-import type { CellProps } from './types'
-export type { CellProps }
+import { inputEmits } from './types'
+import type { CellProps, CellEmits, CellClassNameArray } from './types'
+export type { CellProps, CellEmits }
 
 const prefixCls = 'dpzvc3-cell'
 
@@ -16,23 +16,23 @@ export default defineComponent({
     link: String,
     hasMask: Boolean
   },
-  emits: ['touchstart', 'touchmove', 'touchend', 'click'],
+  emits: inputEmits,
   setup(props, { emit, slots }) {
     const router = useRouter()
 
-    const toLink = computed(() => {
+    const toLink = computed<CellProps['link']>(() => {
       if (!props.link) return ''
       const resolved = router.resolve(props.link)
       return resolved.matched.length ? resolved.href : props.link
     })
 
-    const classes = computed(() => [prefixCls])
-    const maskClass = computed(() => [`${prefixCls}-mask`])
-    const leftClasses = computed(() => [`${prefixCls}-left`])
-    const rightClasses = computed(() => [`${prefixCls}-right`])
-    const wrapperClasses = computed(() => [`${prefixCls}-main`, 'dpzvc3-1px-top'])
-    const titleClass = computed(() => [`${prefixCls}-main-title`])
-    const valueClass = computed(() => [`${prefixCls}-main-value`])
+    const classes = computed<CellClassNameArray>(() => [prefixCls])
+    const maskClass = computed<CellClassNameArray>(() => [`${prefixCls}-mask`])
+    const leftClasses = computed<CellClassNameArray>(() => [`${prefixCls}-left`])
+    const rightClasses = computed<CellClassNameArray>(() => [`${prefixCls}-right`])
+    const wrapperClasses = computed<CellClassNameArray>(() => [`${prefixCls}-main`, 'dpzvc3-1px-top'])
+    const titleClass = computed<CellClassNameArray>(() => [`${prefixCls}-main-title`])
+    const valueClass = computed<CellClassNameArray>(() => [`${prefixCls}-main-value`])
     const labelClass = computed(() => [`${prefixCls}-main-label`])
 
     const handleClick = (e: MouseEvent) => {

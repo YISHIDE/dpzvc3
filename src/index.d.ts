@@ -19,7 +19,7 @@ export { default as Rater } from './components/rater'
 export type { RaterProps } from './components/rater/types'
 
 export { default as Cell } from './components/cell'
-export type { CellProps } from './components/cell/types'
+export type { CellProps, CellEmits } from './components/cell/types'
 
 export { default as CellSwipe } from './components/cellSwipe'
 export type { CellSwipeProps } from './components/cellSwipe/types'
@@ -34,7 +34,7 @@ export { default as Swipe } from './components/swipe'
 export type { SwipeProps } from './components/swipe/types'
 
 export { default as DpButton } from './components/button'
-export type { ButtonProps } from './components/button/types'
+export type { ButtonProps, ButtonEmits } from './components/button/types'
 
 export { default as Picker } from './components/picker'
 export type { PickerProps } from './components/picker/types'

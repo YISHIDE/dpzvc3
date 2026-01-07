@@ -4,7 +4,7 @@ import { defineComponent, computed, PropType } from 'vue'
 // export type CardProps = {
 //   width?: string
 // }
-import type { CardProps  } from './types'
+import type { CardProps, CardClassNameArray  } from './types'
 export type { CardProps } 
 
 const prefixCls = 'dpzvc3-card'
@@ -15,11 +15,11 @@ export default defineComponent({
     width: { type: String as PropType<string>, default: '100%' }
   },
   setup(props, { slots }) {
-    const classes = computed(() => [prefixCls])
-    const headerClass = computed(() => [`${prefixCls}-header`, 'dpzvc3-1px-bottom'])
-    const contentClass = computed(() => [`${prefixCls}-content`])
-    const footerClass = computed(() => [`${prefixCls}-footer`, 'dpzvc3-1px-top'])
-    const cardWidth = computed(() => props.width)
+    const classes = computed<CardClassNameArray>(() => [prefixCls])
+    const headerClass = computed<CardClassNameArray>(() => [`${prefixCls}-header`, 'dpzvc3-1px-bottom'])
+    const contentClass = computed<CardClassNameArray>(() => [`${prefixCls}-content`])
+    const footerClass = computed<CardClassNameArray>(() => [`${prefixCls}-footer`, 'dpzvc3-1px-top'])
+    const cardWidth = computed<CardProps['width']>(() => props.width)
 
     return () => (
       <div class={classes.value} style={{ width: cardWidth.value }}>
