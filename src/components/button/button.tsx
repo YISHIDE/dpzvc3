@@ -1,9 +1,10 @@
 // src/components/button/button.tsx
 import { defineComponent, computed, PropType } from 'vue'
+import type { CSSProperties } from 'vue'
 import Spinner from '../spinner'
-import type { ButtonProps } from './types'
-
-export type { ButtonProps }
+import { inputEmits } from './types'
+import type { ButtonProps, ButtonEmits, ButtonClassName } from './types'
+export type { ButtonProps, ButtonEmits }
 
 const prefixCls = 'dpzvc3-button'
 
@@ -29,10 +30,12 @@ export default defineComponent({
     radius: { type: Boolean, default: true },
     border: { type: String as PropType<ButtonProps['border']>, default: 'all' }
   },
-  emits: ['click'],
+  emits: inputEmits,
   setup(props, { emit, slots }) {
     /** 外层容器类 */
-    const classes = computed(() => [
+    type classesBoolean = Partial<{[k in ButtonClassName]: boolean}>
+    type classes = [ButtonClassName, classesBoolean]
+    const classes = computed<classes>(() => [
       prefixCls,
       {
         [`${prefixCls}-circle`]: props.circle,
@@ -41,14 +44,16 @@ export default defineComponent({
     ])
 
     /** 外层容器样式 */
-    const wrapperStyles = computed(() => ({
+    const wrapperStyles = computed<CSSProperties>(() => ({
       display: props.inline ? 'inline-block' : 'block',
       width: props.width,
       height: props.height
     }))
 
     /** button 类 */
-    const buttonClass = computed(() => [
+    type buttonBorder = `dpzvc3-1px-${ButtonProps['border']}`
+    type buttonClasses = [ButtonClassName,[buttonBorder],classesBoolean]
+    const buttonClass = computed<buttonClasses>(() => [
       `${prefixCls}-btn`,
       [`dpzvc3-1px-${props.border}`],
       {
@@ -71,7 +76,7 @@ export default defineComponent({
     }
 
     /** loading 状态 */
-    const loadingValue = computed(() => props.loading)
+    const loadingValue = computed<ButtonProps['loading']>(() => props.loading)
 
     /** JSX 渲染 */
     return () => (

@@ -35,7 +35,7 @@
 <script lang="ts">
 import { ref } from 'vue'
 // import DpButton from '../components/button'
-import type { ButtonProps } from '../components/button/types'
+import type { ButtonProps, ButtonEmits } from '../components/button/types'
 export default {
   name: 'ViewButton',
   components: {
@@ -44,7 +44,7 @@ export default {
   setup () {
     const loading = ref<ButtonProps['loading']>(false)
 
-    const onClick = () => {
+    const onClick: ButtonEmits['click'] = (e) => {
       // console.trace('onClick triggered')
       loading.value = !loading.value
       // alert(loading.value)

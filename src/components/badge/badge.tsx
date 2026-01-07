@@ -1,6 +1,6 @@
 import { defineComponent, computed, ref, watch,PropType } from 'vue'
 
-import type { BadgeProps } from './types'
+import type { BadgeProps, BadgeClassNameArray, BadgeClassName } from './types'
 export type { BadgeProps } 
 
 export default defineComponent({
@@ -46,9 +46,9 @@ export default defineComponent({
       { immediate: true }
     )
 
-    const classes = computed(() => [prefixCls])
-
-    const supClasses = computed(() => [
+    const classes = computed<BadgeClassNameArray>(() => [prefixCls])
+    type arr = [BadgeClassName, Partial<{[key in BadgeClassName]: boolean}>]
+    const supClasses = computed<arr>(() => [
       `${prefixCls}-${props.type}`,
       {
         [`${prefixCls}-size-${props.size}`]: !props.dot,
@@ -56,7 +56,7 @@ export default defineComponent({
       }
     ])
 
-    const displayCount = computed(() => {
+    const displayCount = computed<string>(() => {
       if (props.dot) return ''
       const num = Number(props.number)
       return num <= Number(props.max) ? String(num) : `${props.max}+`
