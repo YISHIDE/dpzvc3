@@ -18,21 +18,29 @@ module.exports = {
     'plugin:@typescript-eslint/recommended' // TS 推荐规则
   ],
   rules: {
+  // JS / 基础
     'no-var': 'error',
     'prefer-const': 'error',
-    'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    'no-unused-vars': 'off', // 交给 TS 处理
     camelcase: 'warn',
     'no-undef': 'error',
     eqeqeq: 'error',
     indent: ['error', 2],
-    // Vue
+
+    // Vue（组件库 + SSR 安全）
     'vue/no-unused-components': 'error',
     'vue/no-mutating-props': 'error',
     'vue/require-default-prop': 'warn',
-    'vue/html-indent': ['error', 2],
+
+    // 🚨 关键：关闭 SSR/模板冲突规则
+    'vue/no-v-for-template-key': 'off',
+
+    // 🚨 TSX / render 函数强烈建议关闭
+    'vue/html-indent': 'off',
+
     // TS
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-    '@typescript-eslint/explicit-module-boundary-types': 'off', // 可选：函数不强制写返回类型
-    '@typescript-eslint/no-explicit-any': 'off' // 可选：允许 any，方便过渡
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
   }
 }

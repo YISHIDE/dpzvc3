@@ -56,14 +56,15 @@ import { createRouter as _createRouter, createWebHistory, createMemoryHistory, c
 const isSSR = typeof process !== 'undefined' && process.env.SSR === 'true'
 // 辅助函数：SSR 同步加载，SPA 异步懒加载
 function loadView(path: string) {
-  if (isSSR) {
-    // console.log(true)
-    // SSR 服务端渲染，直接 require 同步加载
-    return require(`./views/${path}.vue`).default
-  } else {
+  // if (isSSR) {
+  //   // console.log(true)
+  //   console.log('SSR 同步加载')
+  //   // SSR 服务端渲染，直接 require 同步加载
+  //   return require(`./views/${path}.vue`).default
+  // } else {
     // SPA 客户端懒加载
-    return (() => import(`./views/${path}.vue`))
-  }
+    return () => import(`./views/${path}.vue`)
+  // }
 }
 
 const routers: RouteRecordRaw[] = [
@@ -100,6 +101,7 @@ const routers: RouteRecordRaw[] = [
 
 // 创建 SSR/SPA 路由
 export function createRouter(isServer: boolean) {
+  // if(!isServer) console.log(routers, 'routers')
   return _createRouter({
     history: isServer ? createMemoryHistory() : createWebHistory(),
     routes: routers,

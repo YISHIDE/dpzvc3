@@ -1,58 +1,107 @@
-const gulp = require('gulp');
-const less = require('gulp-less');
-const cleanCSS = require('gulp-clean-css');
-const rename = require('gulp-rename');
-const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const { deleteAsync } = require('del'); // 新增
+/* eslint-disable */
+const gulp = require('gulp')
+const less = require('gulp-less')
+const cleanCSS = require('gulp-clean-css')
+const rename = require('gulp-rename')
+const postcss = require('gulp-postcss')
+const autoprefixer = require('autoprefixer')
+const { deleteAsync } = require('del')
+const path = require('path')
 
-// 清空 dist 目录
+// 项目 src 根目录
+const SRC_ROOT = path.resolve(__dirname, 'src')
+
+// 清空 dist
 function clean() {
-  return deleteAsync(['./dist/**', '!./dist']); // 删除 dist 下所有文件和子目录，但保留 dist 目录本身
+  return deleteAsync(['./dist/**', '!./dist'])
 }
 
-// 打包组件 CSS
+// 核心：自定义 less 文件解析器（alias 真·正解）
+function compileLess(src, dest, renameOptions) {
+  let stream = gulp
+    .src(src)
+    .pipe(
+      less({
+        // less 原生选项
+        filename: src,
+        paths: [SRC_ROOT],
+
+        // 👇 关键：拦截 import 解析
+        plugins: [{
+          install(lessInstance, pluginManager) {
+            const FileManager = lessInstance.FileManager
+
+            class AliasFileManager extends FileManager {
+              loadFile(filename, currentDirectory, options, environment, callback) {
+                // 处理 @/ 开头
+                if (filename.startsWith('@/')) {
+                  const realPath = path.join(
+                    SRC_ROOT,
+                    filename.replace('@/', '')
+                  )
+                  return super.loadFile(realPath, '', options, environment, callback)
+                }
+                return super.loadFile(filename, currentDirectory, options, environment, callback)
+              }
+            }
+
+            pluginManager.addFileManager(new AliasFileManager())
+          }
+        }]
+      })
+    )
+    .pipe(postcss([autoprefixer()]))
+    .pipe(cleanCSS({ compatibility: 'ie8' }))
+
+  if (renameOptions) {
+    stream = stream.pipe(rename(renameOptions))
+  }
+
+  return stream.pipe(gulp.dest(dest))
+}
+
+// components
 function componentsCSS() {
-  return gulp.src('./src/styles/components/*.less')
-    .pipe(less())
-    .pipe(postcss([autoprefixer()]))
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(rename({ dirname: '', extname: '.css' }))
-    .pipe(gulp.dest('./dist/styles/components'));
+  return compileLess(
+    './src/styles/components/*.less',
+    './dist/styles/components',
+    { dirname: '', extname: '.css' }
+  )
 }
 
-// 打包 base CSS
+// base
 function baseCSS() {
-  return gulp.src('./src/styles/base/*.less')
-    .pipe(less())
-    .pipe(postcss([autoprefixer()]))
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(rename({ dirname: '', extname: '.css' }))
-    .pipe(gulp.dest('./dist/styles/base'));
+  return compileLess(
+    './src/styles/base/*.less',
+    './dist/styles/base',
+    { dirname: '', extname: '.css' }
+  )
 }
 
-// 打包 utils CSS
+// utils
 function utilsCSS() {
-  return gulp.src('./src/styles/utils/*.less')
-    .pipe(less())
-    .pipe(postcss([autoprefixer()]))
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(rename({ dirname: '', extname: '.css' }))
-    .pipe(gulp.dest('./dist/styles/utils'));
+  return compileLess(
+    './src/styles/utils/*.less',
+    './dist/styles/utils',
+    { dirname: '', extname: '.css' }
+  )
 }
 
-// 打包全局 index.less
+// global
 function globalCSS() {
-  return gulp.src('./src/styles/index.less')
-    .pipe(less())
-    .pipe(postcss([autoprefixer()]))
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(rename('dpzvc3.css'))
-    .pipe(gulp.dest('./dist/styles'));
+  return compileLess(
+    './src/styles/index.less',
+    './dist/styles',
+    'dpzvc3.css'
+  )
 }
 
-// 默认任务：先清空 dist，再并行打包所有 CSS
 exports.default = gulp.series(
   clean,
-  gulp.parallel(globalCSS, componentsCSS, baseCSS, utilsCSS)
-);
+  gulp.parallel(
+    globalCSS,
+    componentsCSS,
+    baseCSS,
+    utilsCSS
+  )
+)

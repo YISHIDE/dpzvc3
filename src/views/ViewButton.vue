@@ -1,6 +1,9 @@
 <template>
   <div class="Button">
-    <DpButton type="primary">
+    <DpButton
+      type="primary"
+      @click="jump"
+    >
       Primary
     </DpButton>
     <DpButton
@@ -31,17 +34,19 @@
     </DpButton>
   </div>
 </template>
-
 <script lang="ts">
-import { ref } from 'vue'
-// import DpButton from '../components/button'
+import { ref, getCurrentInstance, defineComponent, onMounted } from 'vue'
+import DpButton from '../components/button'
+import { useRouter } from 'vue-router'
 import type { ButtonProps, ButtonEmits } from '../components/button/types'
-export default {
+export default defineComponent({
   name: 'ViewButton',
   components: {
-    // DpButton
+    DpButton
   },
   setup () {
+    const router = useRouter()
+    console.log(getCurrentInstance()?.vnode, typeof window !== 'undefined' ? 'client' : 'server')
     const loading = ref<ButtonProps['loading']>(false)
 
     const onClick: ButtonEmits['click'] = (e) => {
@@ -49,13 +54,19 @@ export default {
       loading.value = !loading.value
       // alert(loading.value)
     }
-
+    const jump = () => {
+      router.push({ name: 'guide' })
+    }
+    onMounted(() => {
+      console.log('ViewButton mounted')
+    })
     return {
       loading,
-      onClick
+      onClick,
+      jump
     }
   }
-}
+})
 </script>
 
 <style lang="less" scoped>

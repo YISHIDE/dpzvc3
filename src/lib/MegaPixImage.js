@@ -98,35 +98,39 @@ function transformCoordinate (canvas, ctx, width, height, orientation) {
   }
 }
 
-const URL = window.URL && window.URL.createObjectURL
-  ? window.URL
-  : window.webkitURL && window.webkitURL.createObjectURL ? window.webkitURL : null
+const URL = typeof window !== 'undefined'
+  ? (window.URL && window.URL.createObjectURL
+    ? window.URL
+    : window.webkitURL && window.webkitURL.createObjectURL ? window.webkitURL : null)
+  : null
 
 // -------------------------
 // MegaPixImage class
 // -------------------------
 class MegaPixImage {
   constructor (srcImage) {
-    if (window.Blob && srcImage instanceof Blob) {
-      if (!URL) throw Error('No createObjectURL function found')
-      const img = new Image()
-      img.src = URL.createObjectURL(srcImage)
-      this.blob = srcImage
-      srcImage = img
-    }
-    if (!srcImage.naturalWidth && !srcImage.naturalHeight) {
-      this.imageLoadListeners = []
-      // eslint-disable-next-line @typescript-eslint/no-this-alias
-      const _this = this
-      srcImage.onload = srcImage.onerror = function () {
-        const listeners = _this.imageLoadListeners
-        if (listeners) {
-          _this.imageLoadListeners = null
-          listeners.forEach(fn => fn())
+    if (typeof window !== 'undefined') {
+      if (window.Blob && srcImage instanceof Blob) {
+        if (!URL) throw Error('No createObjectURL function found')
+        const img = new Image()
+        img.src = URL.createObjectURL(srcImage)
+        this.blob = srcImage
+        srcImage = img
+      }
+      if (!srcImage.naturalWidth && !srcImage.naturalHeight) {
+        this.imageLoadListeners = []
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
+        const _this = this
+        srcImage.onload = srcImage.onerror = function () {
+          const listeners = _this.imageLoadListeners
+          if (listeners) {
+            _this.imageLoadListeners = null
+            listeners.forEach(fn => fn())
+          }
         }
       }
+      this.srcImage = srcImage
     }
-    this.srcImage = srcImage
   }
 
   render (target, options, callback) {

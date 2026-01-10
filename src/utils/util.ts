@@ -90,7 +90,7 @@ export function scrollTop(
   to: number,
   duration = 500
 ) {
-  if (!window.requestAnimationFrame) {
+  if (typeof window !== 'undefined' && !window.requestAnimationFrame) {
     window.requestAnimationFrame = (
       window.requestAnimationFrame ||
       function (callback) {

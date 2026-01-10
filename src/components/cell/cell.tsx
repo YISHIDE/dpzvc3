@@ -20,12 +20,19 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const router = useRouter()
 
-    const toLink = computed<CellProps['link']>(() => {
-      if (!props.link) return ''
-      const resolved = router.resolve(props.link)
-      return resolved.matched.length ? resolved.href : props.link
-    })
-
+    // const toLink = computed<CellProps['link']>(() => {
+    //   if (!props.link) return ''
+    //   const resolved = router.resolve(props.link)
+    //   return resolved.matched.length ? resolved.href : props.link
+    // })
+const toLink = computed<CellProps['link']>(() => {
+  if (typeof window === 'undefined') {
+    return ''  // SSR 阶段不要依赖 props.link
+  }
+  if (!props.link) return ''
+  const resolved = router.resolve(props.link)
+  return resolved.matched.length ? resolved.href : props.link
+})
     const classes = computed<CellClassNameArray>(() => [prefixCls])
     const maskClass = computed<CellClassNameArray>(() => [`${prefixCls}-mask`])
     const leftClasses = computed<CellClassNameArray>(() => [`${prefixCls}-left`])
@@ -49,7 +56,7 @@ export default defineComponent({
 
     return () => (
       <div
-        href={toLink.value}
+        data-href={toLink.value}
         class={classes.value}
         onClick={handleClick}
         onTouchstart={cellTouchStart}
