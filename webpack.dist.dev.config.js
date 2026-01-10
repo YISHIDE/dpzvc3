@@ -3,12 +3,19 @@ const path = require('path')
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const webpackBaseConfig = require('./webpack.base.config.js')
-
+webpackBaseConfig.devtool = 'source-map'
 process.env.NODE_ENV = 'production'
 
 module.exports = [merge(webpackBaseConfig, {
   mode: 'production',
-
+   cache: {
+    type: 'filesystem', // 使用磁盘缓存
+    buildDependencies: {
+      config: [__filename] // webpack 配置文件变化会自动失效缓存
+    },
+    cacheDirectory: path.resolve(__dirname, '.temp_cache'), // 自定义缓存目录
+    name: 'my-webpackdistdevumd-cache', // 可选，为缓存命名
+  },
   entry: {
     main: path.resolve(__dirname, './src/index.ts')
   },
@@ -44,7 +51,14 @@ merge(webpackBaseConfig, {
   entry: {
     main: path.resolve(__dirname, './src/index.ts')
   },
-
+  cache: {
+    type: 'filesystem', // 使用磁盘缓存
+    buildDependencies: {
+      config: [__filename] // webpack 配置文件变化会自动失效缓存
+    },
+    cacheDirectory: path.resolve(__dirname, '.temp_cache'), // 自定义缓存目录
+    name: 'my-webpackdistdevesm-cache', // 可选，为缓存命名
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'dpzvc3.esm.js', // 改名，标识 ESM

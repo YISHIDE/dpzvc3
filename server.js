@@ -52,6 +52,7 @@ server.use(async (req, res, next) => {
     const appHtml = await render(req.url)
     // console.log(appHtml, 'appHtml')
     const html = template.replace('<!--app-html-->', appHtml)
+    // console.log(html)
     res.setHeader('Content-Type', 'text/html')
     res.end(html)
   } catch (err) {

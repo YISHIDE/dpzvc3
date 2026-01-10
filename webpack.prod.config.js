@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const baseConfig = require('./webpack.base.config.js')
-
+baseConfig.devtool = 'source-map'
 process.env.NODE_ENV = 'production'
 
 module.exports = merge(baseConfig, {
@@ -20,6 +20,14 @@ module.exports = merge(baseConfig, {
     publicPath: '',
     clean: true
   },
+   cache: {
+        type: 'filesystem', // 使用磁盘缓存
+        buildDependencies: {
+          config: [__filename] // webpack 配置文件变化会自动失效缓存
+        },
+        cacheDirectory: path.resolve(__dirname, '.temp_cache'), // 自定义缓存目录
+        name: 'my-webpackdistprod-cache', // 可选，为缓存命名
+      },
   optimization: {
     minimize: true,
     minimizer: [

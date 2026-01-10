@@ -3,6 +3,7 @@ const path = require('path')
 const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -87,7 +88,16 @@ module.exports = {
       emitError: true,
       failOnWarning: false,
       failOnError: true
+    }),
+    new ForkTsCheckerWebpackPlugin({
+    async: true,          // dev 不阻塞
+    typescript: {
+      diagnosticOptions: {
+        semantic: true,
+        syntactic: true
+      }
+    }
     })
   ],
-  devtool: 'source-map'
+  // devtool: 'source-map'
 }
