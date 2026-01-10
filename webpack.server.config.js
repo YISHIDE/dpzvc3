@@ -5,6 +5,7 @@ const { merge } = require('webpack-merge')
 const baseConfig = require('./webpack.base.config.js')
 const nodeExternals = require('webpack-node-externals')
 baseConfig.devtool = 'source-map'
+// baseConfig.mode = 'production'
 module.exports = merge(baseConfig, {
   entry: './src/entry-server.ts',
   target: 'node',

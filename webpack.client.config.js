@@ -4,6 +4,7 @@ const path = require('path')
 const { merge } = require('webpack-merge')
 const baseConfig = require('./webpack.base.config.js')
 baseConfig.devtool = 'source-map'
+// baseConfig.mode = 'production'
 module.exports = merge(baseConfig, {
   entry: './src/entry-client.ts',
   output: {

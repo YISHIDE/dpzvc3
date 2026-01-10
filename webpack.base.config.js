@@ -26,13 +26,19 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          cacheDirectory: path.resolve(__dirname, '.temp_cache/vue-loader'),
+        }
       },
       {
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+             options: {
+               cacheDirectory: true // 开启磁盘缓存
+             }
           },
           {
             loader: 'ts-loader',
@@ -49,7 +55,12 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: [{
+            loader: 'babel-loader',
+             options: {
+               cacheDirectory: true // 开启磁盘缓存
+             }
+          }]
       },
       {
         test: /\.css$/,
