@@ -36,15 +36,18 @@ const path = require('path')
 process.env.SSR = 'true'
 
 // CommonJS 服务端 bundle 导入
-const pkg = require('./dist-ssr/server/entry-server.mjs')
-const render = pkg.render
+// const pkg = require('./dist-ssr/server/entry-server.mjs')
+// const render = pkg.render
 
 const server = express()
 
 // 静态资源
 server.use(express.static(path.resolve(__dirname, 'dist-ssr/client')))
 
+async function start () {
 // 所有请求走 SSR（兼容 Vercel）
+  // 动态 import
+const { render } = await import('./dist-ssr/server/entry-server.mjs')
 server.use(async (req, res, next) => {
   try {
     const templatePath = path.resolve(__dirname, 'dist-ssr/client/indexSSR.html')
@@ -65,3 +68,5 @@ const port = process.env.PORT || 8000
 server.listen(port, () => {
   console.log(`SSR server running at http://localhost:${port}`)
 })
+}
+start();
