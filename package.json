@@ -6,7 +6,6 @@
   "module": "dist/dpzvc3-ui.es.js",
   "browser": "dist/dpzvc3-ui.umd.js",
   "types": "dist/types/index.d.ts",
-  "type": "module",
   "scripts": {
     "dev:vite": "vite",
     "type-check": "vue-tsc --noEmit",
