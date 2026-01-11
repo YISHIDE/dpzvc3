@@ -33,17 +33,17 @@
 const express = require('express')
 const fs = require('fs')
 const path = require('path')
-
 process.env.SSR = 'true'
+const pkg = require('./dist-ssr/server/entry-server.js')
+const render = pkg.render
 
 const server = express()
 
 // 静态资源
 server.use(express.static(path.resolve(__dirname, 'dist-ssr/client')))
 
-async function start() {
+function start() {
   // 动态 import SSR bundle（兼容 ESM）
-  const { render } = await import('./dist-ssr/server/entry-server.mjs')
 
   server.use(async (req, res, next) => {
     try {
