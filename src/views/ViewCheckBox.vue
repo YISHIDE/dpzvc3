@@ -9,53 +9,45 @@
       </CheckBoxGroup>
     </div>
 
-    <div class="item">
-      value: {{ data }}
-    </div>
+    <div class="item">value: {{ data }}</div>
 
     <p>单个 checkbox</p>
     <div class="item">
-      <CheckBox
-        v-model="checked"
-        label="苹果"
-        @onChange="change"
-      />
+      <CheckBox v-model="checked" label="苹果" @on-change="change" />
     </div>
 
-    <div class="item">
-      checked: {{ checked }}
-    </div>
+    <div class="item">checked: {{ checked }}</div>
 
     <p>禁用的 checkbox</p>
     <div class="item">
-      <CheckBox
-        label="玩具"
-        disable
-      />
+      <CheckBox label="玩具" disable />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { CheckBox, CheckBoxGroup } from '../components/checkBox'
-import type { CheckBoxProps, CheckBoxGroupProps } from '../components/checkBox/types'
+import { defineComponent, ref } from "vue";
+import { CheckBox, CheckBoxGroup } from "../components/checkBox";
+import type {
+  CheckBoxProps,
+  CheckBoxGroupProps,
+} from "../components/checkBox/types";
 export default defineComponent({
-  name: 'ViewCheckBox',
+  name: "ViewCheckBox",
   components: { CheckBox, CheckBoxGroup },
-  setup () {
-    const data = ref<CheckBoxGroupProps['modelValue']>(['中国'])
-    const checked = ref<CheckBoxProps['modelValue']>(false)
+  setup() {
+    const data = ref<CheckBoxGroupProps["modelValue"]>(["中国"]);
+    const checked = ref<CheckBoxProps["modelValue"]>(false);
     const change = (e: any) => {
-      console.log(e, 'e')
-    }
+      console.log(e, "e");
+    };
     return {
       data,
       change,
-      checked
-    }
-  }
-})
+      checked,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

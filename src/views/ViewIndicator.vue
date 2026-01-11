@@ -1,69 +1,61 @@
 <template>
   <div class="Indicator">
     <div class="item">
-      <DpButton @click="blade">
-        blade
-      </DpButton>
+      <DpButton @click="blade"> blade </DpButton>
     </div>
     <div class="item">
-      <DpButton @click="snake">
-        snake
-      </DpButton>
+      <DpButton @click="snake"> snake </DpButton>
     </div>
     <div class="item">
-      <DpButton @click="circle">
-        circle
-      </DpButton>
+      <DpButton @click="circle"> circle </DpButton>
     </div>
     <div class="item">
-      <DpButton @click="bounce">
-        bounce
-      </DpButton>
+      <DpButton @click="bounce"> bounce </DpButton>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance } from 'vue'
+import { defineComponent, getCurrentInstance } from "vue";
 
 export default defineComponent({
-  name: 'ViewIndicator',
-  setup () {
-    const { proxy } = getCurrentInstance()!
+  name: "ViewIndicator",
+  setup() {
+    const { proxy } = getCurrentInstance()!;
     const removeAfterDelay = (duration = 3000) => {
       setTimeout(() => {
-        proxy!.$Indicator.remove()
-      }, duration)
-    }
+        proxy!.$Indicator.remove();
+      }, duration);
+    };
 
     const blade = () => {
-      proxy!.$Indicator.blade({})
-      removeAfterDelay()
-    }
+      proxy!.$Indicator.blade({});
+      removeAfterDelay();
+    };
 
     const snake = () => {
-      proxy!.$Indicator.snake({})
-      removeAfterDelay()
-    }
+      proxy!.$Indicator.snake({});
+      removeAfterDelay();
+    };
 
     const circle = () => {
-      proxy!.$Indicator.circle({})
-      removeAfterDelay()
-    }
+      proxy!.$Indicator.circle({});
+      removeAfterDelay();
+    };
 
     const bounce = () => {
-      proxy!.$Indicator.bounce({})
-      removeAfterDelay()
-    }
+      proxy!.$Indicator.bounce({});
+      removeAfterDelay();
+    };
 
     return {
       blade,
       snake,
       circle,
-      bounce
-    }
-  }
-})
+      bounce,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

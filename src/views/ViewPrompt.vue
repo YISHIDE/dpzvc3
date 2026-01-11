@@ -1,36 +1,31 @@
 <template>
   <div class="Prompt">
-    <DpButton
-      width="50%"
-      @click="showPrompt"
-    >
-      弹出Prompt
-    </DpButton>
+    <DpButton width="50%" @click="showPrompt"> 弹出Prompt </DpButton>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance } from 'vue'
+import { defineComponent, getCurrentInstance } from "vue";
 
 export default defineComponent({
-  name: 'ViewPrompt',
-  setup () {
+  name: "ViewPrompt",
+  setup() {
     // 获取当前组件实例
-    const { proxy } = getCurrentInstance()!
+    const { proxy } = getCurrentInstance()!;
 
-    function showPrompt () {
+    function showPrompt() {
       proxy?.$Prompt.info({
-        title: 'Prompt',
-        spec: 'ccc',
-        text: 'vvvv'
-      })
+        title: "Prompt",
+        spec: "ccc",
+        text: "vvvv",
+      });
     }
 
     return {
-      showPrompt
-    }
-  }
-})
+      showPrompt,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

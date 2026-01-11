@@ -7,7 +7,7 @@
   "browser": "dist/dpzvc3-ui.umd.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "dev:vite": "vite",
+    "dev": "vite",
     "type-check": "vue-tsc --noEmit",
     "type-check:watch": "vue-tsc --noEmit --watch",
     "build:package": "npm run build:style && VITE_MINIFY=false vite build --config vite.config.lib.ts && VITE_MINIFY=true vite build --config vite.config.lib.ts && npm run build:types",

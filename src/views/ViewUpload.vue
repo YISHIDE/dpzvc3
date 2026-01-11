@@ -1,45 +1,37 @@
 <template>
   <div class="Upload">
-    <Upload
-      ref="upload"
-      :multiple="true"
-      @on-change-file="onChangeFile"
-    />
+    <Upload ref="upload" :multiple="true" @on-change-file="onChangeFile" />
 
     <template v-if="files.length">
-      <img
-        v-for="(item, index) in files"
-        :key="index"
-        :src="item.base64"
-      >
+      <img v-for="(item, index) in files" :key="index" :src="item.base64" />
     </template>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent } from "vue";
 // import Upload from '@/components/upload'
 // import type { UploadProps } from '@/components/upload/types'
 export default defineComponent({
-  name: 'ViewUpload',
+  name: "ViewUpload",
   components: {
     // Upload
   },
-  setup () {
-    const files = ref<Array<{ base64: string, clearBase64: string }>>([])
-    const upload = ref(null)
+  setup() {
+    const files = ref<Array<{ base64: string; clearBase64: string }>>([]);
+    const upload = ref(null);
 
     const onChangeFile = (newFiles: any[]) => {
-      files.value = newFiles
-    }
+      files.value = newFiles;
+    };
 
     return {
       files,
       upload,
-      onChangeFile
-    }
-  }
-})
+      onChangeFile,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

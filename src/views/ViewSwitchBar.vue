@@ -1,35 +1,29 @@
 <template>
   <div class="SwitchBar">
-    <SwitchBar
-      v-model="checkLarge"
-      size="large"
-    />
+    <SwitchBar v-model="checkLarge" size="large" />
     <span>large</span>
-    <SwitchBar
-      v-model="checkSmall"
-      size="small"
-    />
+    <SwitchBar v-model="checkSmall" size="small" />
     <span>small</span>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref } from "vue";
 // import SwitchBar from '../components/switchbar'
-import type { SwitchBarProps } from '../components/switchbar/types'
+import type { SwitchBarProps } from "../components/switchbar/types";
 export default defineComponent({
-  name: 'ViewSwitchBar',
+  name: "ViewSwitchBar",
   // components: { SwitchBar },
-  setup () {
-    const checkLarge = ref<SwitchBarProps['modelValue']>(false)
-    const checkSmall = ref<SwitchBarProps['modelValue']>(false)
+  setup() {
+    const checkLarge = ref<SwitchBarProps["modelValue"]>(false);
+    const checkSmall = ref<SwitchBarProps["modelValue"]>(false);
 
     return {
       checkLarge,
-      checkSmall
-    }
-  }
-})
+      checkSmall,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

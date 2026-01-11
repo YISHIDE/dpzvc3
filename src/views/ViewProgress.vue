@@ -1,45 +1,42 @@
 <template>
   <div class="Progress">
-    <DpProgress
-      v-model="progress"
-      :bar-height="barHeight"
-    />
+    <DpProgress v-model="progress" :bar-height="barHeight" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
+import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
 // import DpProgress from '../components/progress'
-import type { ProgressProps } from '../components/progress'
+import type { ProgressProps } from "../components/progress";
 export default defineComponent({
-  name: 'ViewDpProgress',
+  name: "ViewDpProgress",
   // components: { DpProgress },
-  setup () {
-    const progress = ref<ProgressProps['modelValue']>('0')
-    const barHeight = ref(5)
-    let timer:any = null
+  setup() {
+    const progress = ref<ProgressProps["modelValue"]>("0");
+    const barHeight = ref(5);
+    let timer: any = null;
 
     onMounted(() => {
       timer = setInterval(() => {
-        progress.value = Number(progress.value) + 1
+        progress.value = Number(progress.value) + 1;
         if (progress.value >= 100) {
-          clearInterval(timer)
-          timer = null
+          clearInterval(timer);
+          timer = null;
         }
-      }, 100)
-    })
+      }, 100);
+    });
 
     onBeforeUnmount(() => {
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      timer && clearInterval(timer)
-    })
+      timer && clearInterval(timer);
+    });
 
     return {
       progress,
-      barHeight
-    }
-  }
-})
+      barHeight,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

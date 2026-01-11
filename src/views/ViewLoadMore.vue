@@ -11,7 +11,7 @@
       <div
         v-for="(item, index) in loadmore"
         :key="index"
-        style="width: 100%; height: 50px;"
+        style="width: 100%; height: 50px"
       >
         {{ item }}
       </div>
@@ -20,40 +20,43 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import DpLoadMore from '../components/loadMore'
-import type { LoadmoreProps, LoadmoreEmits } from '../components/loadMore/types'
+import { defineComponent, ref } from "vue";
+import DpLoadMore from "../components/loadMore";
+import type {
+  LoadmoreProps,
+  LoadmoreEmits,
+} from "../components/loadMore/types";
 export default defineComponent({
-  name: 'ViewLoadMore',
+  name: "ViewLoadMore",
   components: { DpLoadMore },
-  setup () {
-    const moreRef = ref(null)
-    const hasMore = ref<LoadmoreProps['hasMore']>(true)
-    const loadmore = ref(Array(16).fill('LoadMore'))
+  setup() {
+    const moreRef = ref(null);
+    const hasMore = ref<LoadmoreProps["hasMore"]>(true);
+    const loadmore = ref(Array(16).fill("LoadMore"));
 
     const topMethod = () => {
-      hasMore.value = true
+      hasMore.value = true;
 
       setTimeout(() => {
         // console.log(moreRef.value, '----moreRef----')
         if (moreRef.value && (moreRef.value as any).onLoadOff) {
-          (moreRef.value as any).onLoadOff()
+          (moreRef.value as any).onLoadOff();
         }
-      }, 2000)
-    }
+      }, 2000);
+    };
 
     const bottomMethod = () => {
       setTimeout(() => {
         if (moreRef.value && (moreRef.value as any).onLoadOff) {
-          (moreRef.value as any).onLoadOff()
+          (moreRef.value as any).onLoadOff();
         }
-        loadmore.value.push(...['LoadMore', 'LoadMore'])
-      }, 2000)
-    }
+        loadmore.value.push(...["LoadMore", "LoadMore"]);
+      }, 2000);
+    };
 
-    const getStatus: LoadmoreEmits['on-change-up-status'] = (val) => {
-      console.log(val, '----val----')
-    }
+    const getStatus: LoadmoreEmits["on-change-up-status"] = (val) => {
+      console.log(val, "----val----");
+    };
 
     return {
       moreRef,
@@ -61,10 +64,10 @@ export default defineComponent({
       loadmore,
       topMethod,
       bottomMethod,
-      getStatus
-    }
-  }
-})
+      getStatus,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>
