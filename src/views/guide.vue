@@ -21,7 +21,7 @@ export default defineComponent({
     const componentList = ref([
       {
         title: "ActionSheet",
-        label: "dpzvc3-ui库操作列表",
+        label: "dpzvc3-ui操作列表",
         link: "/ActionSheet",
       },
       {
