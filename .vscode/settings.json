@@ -3,14 +3,17 @@
   "eslint.validate": [
     "javascript",
     "javascriptreact",
+    "typescript",
+    "typescriptreact",
     "vue"
   ],
   "editor.defaultFormatter": "Vue.volar",
   "eslint.run": "onType",
+  "eslint.alwaysShowStatus": true,
   "eslint.packageManager": "npm",
   "editor.formatOnSave": false,
    "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "always"
   },
 "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

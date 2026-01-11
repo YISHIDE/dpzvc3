@@ -3,7 +3,7 @@
  * Rewritten for Vue 3 (no createApp)
  */
 
-import {createPromptInstance } from './confirm'
+import { createPromptInstance } from './confirm'
 import type { MergePromptOptions, PromptInstance, DefaultPromptProps } from './types'
 let promptInstance: DefaultPromptProps
 
@@ -11,7 +11,7 @@ function getPromptInstance () {
   if (!promptInstance) {
     promptInstance = createPromptInstance({
       closable: true,
-      maskClosable: false,
+      maskClosable: false
       // footerHide: false
     })
   }
@@ -36,7 +36,7 @@ function confirm (options: MergePromptOptions = {}) {
  * info 弹窗
  */
 const Prompt: PromptInstance = {
-  info: (props: MergePromptOptions = {}) => { 
+  info: (props: MergePromptOptions = {}) => {
     props.showCancle = true
     return confirm(props)
   },
@@ -44,7 +44,7 @@ const Prompt: PromptInstance = {
     if (!promptInstance) return false
     const instance = getPromptInstance()!
     instance.remove()
-  } 
+  }
 }
 
 export default Prompt

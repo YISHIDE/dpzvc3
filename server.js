@@ -36,7 +36,7 @@ const path = require('path')
 process.env.SSR = 'true'
 
 // CommonJS 服务端 bundle 导入
-const pkg = require('./dist-ssr/server/entry-server.js')
+const pkg = require('./dist-ssr/server/entry-server.mjs')
 const render = pkg.render
 
 const server = express()
@@ -47,7 +47,7 @@ server.use(express.static(path.resolve(__dirname, 'dist-ssr/client')))
 // 所有请求走 SSR（兼容 Vercel）
 server.use(async (req, res, next) => {
   try {
-    const templatePath = path.resolve(__dirname, 'dist-ssr/client/index.html')
+    const templatePath = path.resolve(__dirname, 'dist-ssr/client/indexSSR.html')
     const template = fs.readFileSync(templatePath, 'utf-8')
     const appHtml = await render(req.url)
     // console.log(appHtml, 'appHtml')

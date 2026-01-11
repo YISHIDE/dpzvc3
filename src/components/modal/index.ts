@@ -1,8 +1,8 @@
 /**
  * index.js - Vue 3 版本
  */
-import {createModalInstance } from './confirm'
-import type { MergeOptions,DefaultProps, ModalInstance } from './types'
+import { createModalInstance } from './confirm'
+import type { MergeOptions, DefaultProps, ModalInstance } from './types'
 let modalInstance:DefaultProps
 
 function getModalInstance () {
@@ -28,15 +28,15 @@ function confirm (options: MergeOptions) {
   return instance
 }
 const Modal: ModalInstance = {
-  info: (props: MergeOptions) => { 
+  info: (props: MergeOptions) => {
     props.showCancle = true
-      props.showHead = false
-      return confirm(props)
+    props.showHead = false
+    return confirm(props)
   },
   confirm: (props: MergeOptions) => {
     props.showCancle = false
-      props.showHead = false
-      return confirm(props)
+    props.showHead = false
+    return confirm(props)
   },
   remove: () => {
     if (!modalInstance) return false

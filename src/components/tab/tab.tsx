@@ -16,7 +16,7 @@ export default defineComponent({
     border: { type: Boolean, default: true },
     styles: { type: Object as PropType<Record<string, any>>, default: () => ({}) }
   },
-  setup(props) {
+  setup (props) {
     const show = ref(props.modelValue)
 
     watch(() => props.modelValue, val => {
@@ -49,17 +49,19 @@ export default defineComponent({
 
               return (
                 <li key={idx}>
-                  {isExternal ? (
-                    <a href={item.path} class={cls}>
-                      <span innerHTML={iconHtml} />
-                      <p>{item.name}</p>
-                    </a>
-                  ) : (
-                    <RouterLink to={item.path} class={cls}>
-                      <span innerHTML={iconHtml} />
-                      <p>{item.name}</p>
-                    </RouterLink>
-                  )}
+                  {isExternal
+                    ? (
+                      <a href={item.path} class={cls}>
+                        <span innerHTML={iconHtml} />
+                        <p>{item.name}</p>
+                      </a>
+                    )
+                    : (
+                      <RouterLink to={item.path} class={cls}>
+                        <span innerHTML={iconHtml} />
+                        <p>{item.name}</p>
+                      </RouterLink>
+                    )}
                 </li>
               )
             })}

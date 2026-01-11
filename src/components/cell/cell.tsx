@@ -1,58 +1,69 @@
 // src/components/cell/cell.tsx
-import { defineComponent, computed,PropType} from 'vue'
-import { useRouter } from 'vue-router'
-import { inputEmits } from './types'
-import type { CellProps, CellEmits, CellClassNameArray } from './types'
-export type { CellProps, CellEmits }
+import { defineComponent, computed, PropType } from "vue";
+import { useRouter } from "vue-router";
+import { inputEmits } from "./types";
+import type { CellProps, CellEmits, CellClassNameArray } from "./types";
+export type { CellProps, CellEmits };
 
-const prefixCls = 'dpzvc3-cell'
+const prefixCls = "dpzvc3-cell";
 
 export default defineComponent({
-  name: 'Dpzvc3Cell',
+  name: "Dpzvc3Cell",
   props: {
     title: String,
     value: null,
     label: String,
     link: String,
-    hasMask: Boolean
+    hasMask: Boolean,
   },
   emits: inputEmits,
   setup(props, { emit, slots }) {
-    const router = useRouter()
+    const router = useRouter();
 
     // const toLink = computed<CellProps['link']>(() => {
     //   if (!props.link) return ''
     //   const resolved = router.resolve(props.link)
     //   return resolved.matched.length ? resolved.href : props.link
     // })
-const toLink = computed<CellProps['link']>(() => {
-  if (typeof window === 'undefined') {
-    return ''  // SSR 阶段不要依赖 props.link
-  }
-  if (!props.link) return ''
-  const resolved = router.resolve(props.link)
-  return resolved.matched.length ? resolved.href : props.link
-})
-    const classes = computed<CellClassNameArray>(() => [prefixCls])
-    const maskClass = computed<CellClassNameArray>(() => [`${prefixCls}-mask`])
-    const leftClasses = computed<CellClassNameArray>(() => [`${prefixCls}-left`])
-    const rightClasses = computed<CellClassNameArray>(() => [`${prefixCls}-right`])
-    const wrapperClasses = computed<CellClassNameArray>(() => [`${prefixCls}-main`, 'dpzvc3-1px-top'])
-    const titleClass = computed<CellClassNameArray>(() => [`${prefixCls}-main-title`])
-    const valueClass = computed<CellClassNameArray>(() => [`${prefixCls}-main-value`])
-    const labelClass = computed(() => [`${prefixCls}-main-label`])
+    const toLink = computed<CellProps["link"]>(() => {
+      if (typeof window === "undefined") {
+        return ""; // SSR 阶段不要依赖 props.link
+      }
+      if (!props.link) return "";
+      const resolved = router.resolve(props.link);
+      return resolved.matched.length ? resolved.href : props.link;
+    });
+    const classes = computed<CellClassNameArray>(() => [prefixCls]);
+    const maskClass = computed<CellClassNameArray>(() => [`${prefixCls}-mask`]);
+    const leftClasses = computed<CellClassNameArray>(() => [
+      `${prefixCls}-left`,
+    ]);
+    const rightClasses = computed<CellClassNameArray>(() => [
+      `${prefixCls}-right`,
+    ]);
+    const wrapperClasses = computed<CellClassNameArray>(() => [
+      `${prefixCls}-main`,
+      "dpzvc3-1px-top",
+    ]);
+    const titleClass = computed<CellClassNameArray>(() => [
+      `${prefixCls}-main-title`,
+    ]);
+    const valueClass = computed<CellClassNameArray>(() => [
+      `${prefixCls}-main-value`,
+    ]);
+    const labelClass = computed(() => [`${prefixCls}-main-label`]);
 
     const handleClick = (e: MouseEvent) => {
       if (props.link) {
-        router.push(props.link)
+        router.push(props.link);
       } else {
-        emit('click', e)
+        emit("click", e);
       }
-    }
+    };
 
-    const cellTouchStart = (e: TouchEvent) => emit('touchstart', e)
-    const cellTouchMove = (e: TouchEvent) => emit('touchmove', e)
-    const cellTouchEnd = (e: TouchEvent) => emit('touchend', e)
+    const cellTouchStart = (e: TouchEvent) => emit("touchstart", e);
+    const cellTouchMove = (e: TouchEvent) => emit("touchmove", e);
+    const cellTouchEnd = (e: TouchEvent) => emit("touchend", e);
 
     return () => (
       <div
@@ -65,9 +76,7 @@ const toLink = computed<CellProps['link']>(() => {
       >
         {props.hasMask && <span class={maskClass.value} />}
 
-        <div class={leftClasses.value}>
-          {slots.left?.()}
-        </div>
+        <div class={leftClasses.value}>{slots.left?.()}</div>
 
         <div class={wrapperClasses.value}>
           <div class={titleClass.value}>
@@ -87,10 +96,8 @@ const toLink = computed<CellProps['link']>(() => {
           </div>
         </div>
 
-        <div class={rightClasses.value}>
-          {slots.right?.()}
-        </div>
+        <div class={rightClasses.value}>{slots.right?.()}</div>
       </div>
-    )
-  }
-})
+    );
+  },
+});

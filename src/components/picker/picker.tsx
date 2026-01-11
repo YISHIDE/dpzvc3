@@ -35,7 +35,7 @@ export default defineComponent({
     initArr: { type: Array as PropType<any[]>, default: () => [] }
   },
   emits: ['update:modelValue', 'sure', 'cancle', 'normal-change'],
-  setup(props, { emit, slots }) {
+  setup (props, { emit }) {
     const visible = ref(props.modelValue)
 
     watch(() => props.modelValue, val => {

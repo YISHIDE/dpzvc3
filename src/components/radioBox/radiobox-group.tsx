@@ -28,7 +28,7 @@ export default defineComponent({
 
   emits: ['update:modelValue', 'on-change', 'on-form-change'],
 
-  setup(props, { emit, slots }) {
+  setup (props, { emit, slots }) {
     const currentValue = ref<RadioGroupProps['modelValue']>(props.modelValue) as RadioGroupProvide['currentValue']
 
     /** 提供给 Radio 子组件 */

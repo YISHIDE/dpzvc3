@@ -51,9 +51,15 @@
 /**
  * 路由配置 - SSR 友好版本
  */
-import { createRouter as _createRouter, createWebHistory, createMemoryHistory, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import {
+  createRouter as _createRouter,
+  createWebHistory,
+  createMemoryHistory,
+  createWebHashHistory,
+  RouteRecordRaw,
+} from "vue-router";
 // 判断当前是否 SSR
-const isSSR = typeof process !== 'undefined' && process.env.SSR === 'true'
+// const isSSR = typeof process !== 'undefined' && process.env.SSR === 'true'
 // 辅助函数：SSR 同步加载，SPA 异步懒加载
 function loadView(path: string) {
   // if (isSSR) {
@@ -62,42 +68,177 @@ function loadView(path: string) {
   //   // SSR 服务端渲染，直接 require 同步加载
   //   return require(`./views/${path}.vue`).default
   // } else {
-    // SPA 客户端懒加载
-    return () => import(`./views/${path}.vue`)
+  // SPA 客户端懒加载
+  return () => import(`./views/${path}.vue`);
   // }
 }
 
 const routers: RouteRecordRaw[] = [
-  { path: '/', redirect: '/guide' },
+  { path: "/", redirect: "/guide" },
 
-  { path: '/guide', name: 'guide', component: loadView('guide'), meta: { title: 'guide' } },
-  { path: '/ActionSheet', name: 'ActionSheet', component: loadView('ViewActionSheet'), meta: { title: 'ViewActionSheet' } },
-  { path: '/Badge', name: 'Badge', component: loadView('ViewBadge'), meta: { title: 'ViewBadge' } },
-  { path: '/Button', name: 'Button', component: loadView('ViewButton'), meta: { title: 'ViewButton' } },
-  { path: '/Card', name: 'Card', component: loadView('ViewCard'), meta: { title: 'ViewCard' } },
-  { path: '/Cell', name: 'Cell', component: loadView('ViewCell'), meta: { title: 'ViewCell' } },
-  { path: '/CellSwipe', name: 'CellSwipe', component: loadView('ViewCellSwipe'), meta: { title: 'ViewCellSwipe' } },
-  { path: '/CheckBox', name: 'CheckBox', component: loadView('ViewCheckBox'), meta: { title: 'ViewCheckBox' } },
-  { path: '/Header', name: 'Header', component: loadView('ViewHeader'), meta: { title: 'ViewHeader' } },
-  { path: '/Indicator', name: 'Indicator', component: loadView('ViewIndicator'), meta: { title: 'ViewIndicator' } },
-  { path: '/LoadMore', name: 'LoadMore', component: loadView('ViewLoadMore'), meta: { title: 'ViewLoadMore' } },
-  { path: '/Message', name: 'Message', component: loadView('ViewMessage'), meta: { title: 'ViewMessage' } },
-  { path: '/Modal', name: 'Modal', component: loadView('ViewModal'), meta: { title: 'ViewModal' } },
-  { path: '/Picker', name: 'Picker', component: loadView('ViewPicker'), meta: { title: 'ViewPicker' } },
-  { path: '/Popup', name: 'Popup', component: loadView('ViewPopup'), meta: { title: 'ViewPopup' } },
-  { path: '/Progress', name: 'Progress', component: loadView('ViewProgress'), meta: { title: 'ViewProgress' } },
-  { path: '/Prompt', name: 'Prompt', component: loadView('ViewPrompt'), meta: { title: 'ViewPrompt' } },
-  { path: '/RadioBox', name: 'RadioBox', component: loadView('ViewRadioBox'), meta: { title: 'ViewRadioBox' } },
-  { path: '/Rater', name: 'Rater', component: loadView('ViewRater'), meta: { title: 'ViewRater' } },
-  { path: '/SlideBar', name: 'SlideBar', component: loadView('ViewSlideBar'), meta: { title: 'ViewSlideBar' } },
-  { path: '/Spinner', name: 'Spinner', component: loadView('ViewSpinner'), meta: { title: 'ViewSpinner' } },
-  { path: '/Swipe', name: 'Swipe', component: loadView('ViewSwipe'), meta: { title: 'ViewSwipe' } },
-  { path: '/SwitchBar', name: 'SwitchBar', component: loadView('ViewSwitchBar'), meta: { title: 'ViewSwitchBar' } },
-  { path: '/Tab', name: 'Tab', component: loadView('ViewTab'), meta: { title: 'ViewTab' } },
-  { path: '/Text', name: 'Text', component: loadView('ViewText'), meta: { title: 'ViewText' } },
-  { path: '/ToTop', name: 'ToTop', component: loadView('ViewToTop'), meta: { title: 'ViewToTop' } },
-  { path: '/Upload', name: 'Upload', component: loadView('ViewUpload'), meta: { title: 'ViewUpload' } }
-]
+  {
+    path: "/guide",
+    name: "guide",
+    component: loadView("guide"),
+    meta: { title: "guide" },
+  },
+  {
+    path: "/ActionSheet",
+    name: "ActionSheet",
+    component: loadView("ViewActionSheet"),
+    meta: { title: "ViewActionSheet" },
+  },
+  {
+    path: "/Badge",
+    name: "Badge",
+    component: loadView("ViewBadge"),
+    meta: { title: "ViewBadge" },
+  },
+  {
+    path: "/Button",
+    name: "Button",
+    component: loadView("ViewButton"),
+    meta: { title: "ViewButton" },
+  },
+  {
+    path: "/Card",
+    name: "Card",
+    component: loadView("ViewCard"),
+    meta: { title: "ViewCard" },
+  },
+  {
+    path: "/Cell",
+    name: "Cell",
+    component: loadView("ViewCell"),
+    meta: { title: "ViewCell" },
+  },
+  {
+    path: "/CellSwipe",
+    name: "CellSwipe",
+    component: loadView("ViewCellSwipe"),
+    meta: { title: "ViewCellSwipe" },
+  },
+  {
+    path: "/CheckBox",
+    name: "CheckBox",
+    component: loadView("ViewCheckBox"),
+    meta: { title: "ViewCheckBox" },
+  },
+  {
+    path: "/Header",
+    name: "Header",
+    component: loadView("ViewHeader"),
+    meta: { title: "ViewHeader" },
+  },
+  {
+    path: "/Indicator",
+    name: "Indicator",
+    component: loadView("ViewIndicator"),
+    meta: { title: "ViewIndicator" },
+  },
+  {
+    path: "/LoadMore",
+    name: "LoadMore",
+    component: loadView("ViewLoadMore"),
+    meta: { title: "ViewLoadMore" },
+  },
+  {
+    path: "/Message",
+    name: "Message",
+    component: loadView("ViewMessage"),
+    meta: { title: "ViewMessage" },
+  },
+  {
+    path: "/Modal",
+    name: "Modal",
+    component: loadView("ViewModal"),
+    meta: { title: "ViewModal" },
+  },
+  {
+    path: "/Picker",
+    name: "Picker",
+    component: loadView("ViewPicker"),
+    meta: { title: "ViewPicker" },
+  },
+  {
+    path: "/Popup",
+    name: "Popup",
+    component: loadView("ViewPopup"),
+    meta: { title: "ViewPopup" },
+  },
+  {
+    path: "/Progress",
+    name: "Progress",
+    component: loadView("ViewProgress"),
+    meta: { title: "ViewProgress" },
+  },
+  {
+    path: "/Prompt",
+    name: "Prompt",
+    component: loadView("ViewPrompt"),
+    meta: { title: "ViewPrompt" },
+  },
+  {
+    path: "/RadioBox",
+    name: "RadioBox",
+    component: loadView("ViewRadioBox"),
+    meta: { title: "ViewRadioBox" },
+  },
+  {
+    path: "/Rater",
+    name: "Rater",
+    component: loadView("ViewRater"),
+    meta: { title: "ViewRater" },
+  },
+  {
+    path: "/SlideBar",
+    name: "SlideBar",
+    component: loadView("ViewSlideBar"),
+    meta: { title: "ViewSlideBar" },
+  },
+  {
+    path: "/Spinner",
+    name: "Spinner",
+    component: loadView("ViewSpinner"),
+    meta: { title: "ViewSpinner" },
+  },
+  {
+    path: "/Swipe",
+    name: "Swipe",
+    component: loadView("ViewSwipe"),
+    meta: { title: "ViewSwipe" },
+  },
+  {
+    path: "/SwitchBar",
+    name: "SwitchBar",
+    component: loadView("ViewSwitchBar"),
+    meta: { title: "ViewSwitchBar" },
+  },
+  {
+    path: "/Tab",
+    name: "Tab",
+    component: loadView("ViewTab"),
+    meta: { title: "ViewTab" },
+  },
+  {
+    path: "/Text",
+    name: "Text",
+    component: loadView("ViewText"),
+    meta: { title: "ViewText" },
+  },
+  {
+    path: "/ToTop",
+    name: "ToTop",
+    component: loadView("ViewToTop"),
+    meta: { title: "ViewToTop" },
+  },
+  {
+    path: "/Upload",
+    name: "Upload",
+    component: loadView("ViewUpload"),
+    meta: { title: "ViewUpload" },
+  },
+];
 
 // 创建 SSR/SPA 路由
 export function createRouter(isServer: boolean) {
@@ -106,9 +247,9 @@ export function createRouter(isServer: boolean) {
     history: isServer ? createMemoryHistory() : createWebHistory(),
     routes: routers,
     scrollBehavior() {
-    return { top: 0 }
-    }
-  })
+      return { top: 0 };
+    },
+  });
 }
 
 // 创建 Hash 路由（可选）
@@ -117,7 +258,7 @@ export function createHashRouter() {
     history: createWebHashHistory(),
     routes: routers,
     scrollBehavior() {
-    return { top: 0 }
-    }
-  })
+      return { top: 0 };
+    },
+  });
 }

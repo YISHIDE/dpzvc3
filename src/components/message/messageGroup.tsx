@@ -10,7 +10,7 @@ export default defineComponent({
       default: () => ({})
     }
   },
-    setup(props, { expose }) {
+  setup (props, { expose }) {
     const messages = ref<MessageProps[]>([])
 
     const add = (msgProps: Partial<MessageProps> = {}) => {
@@ -25,7 +25,7 @@ export default defineComponent({
         onClose: () => {},
         ...msgProps
       }
-        // alert(1)
+      // alert(1)
       messages.value.push(message)
     }
 
@@ -37,7 +37,7 @@ export default defineComponent({
       messages.value = []
     }
     provide('removeMessage', remove)
-    expose({add, closeAll, remove})
+    expose({ add, closeAll, remove })
     return () => (
       <div class="dpzvc3-message-group" style={props.styles}>
         {messages.value.map(message => (

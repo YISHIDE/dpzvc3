@@ -33,14 +33,14 @@ function createPromptInstance (properties:MergePromptOptions = {}) {
     onCancle: () => {},
     ...properties
   }
-const mergeProps = <T extends object, K extends keyof T>(
-  target: T,
-  source: Partial<T>
-) =>{
-  (Object.keys(source) as K[]).forEach((key) => {
-    target[key] = source[key]!
-  })
-}
+  const mergeProps = <T extends object, K extends keyof T>(
+    target: T,
+    source: Partial<T>
+  ) => {
+    (Object.keys(source) as K[]).forEach((key) => {
+      target[key] = source[key]!
+    })
+  }
   const updateVNode = () => {
     // vnode
     // console.log(props, 'props')
@@ -78,7 +78,7 @@ const mergeProps = <T extends object, K extends keyof T>(
       // Object.keys(options).forEach((key) => {
       //   const typeKey = key as keyof PromptProps
       //   const val = options[typeKey];
-      //   // if (val) { 
+      //   // if (val) {
       //       props[typeKey] = val
       //   // }
       // })
@@ -94,7 +94,7 @@ const mergeProps = <T extends object, K extends keyof T>(
       props.value = false
 
       destroy()
-    },
+    }
 
     // component: instance
   }

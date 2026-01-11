@@ -21,7 +21,7 @@ export default defineComponent({
     disable: { type: Boolean, default: false }
   },
   emits: ['update:modelValue', 'input', 'on-input', 'on-enter', 'on-change'],
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     const currentVal = ref(props.modelValue)
 
     watch(() => props.modelValue, val => {

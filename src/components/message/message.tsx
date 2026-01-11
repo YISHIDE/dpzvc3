@@ -40,7 +40,7 @@ export default defineComponent({
       default: 'top'
     }
   },
-  setup(props) {
+  setup (props) {
     /** 🔑 从 MessageGroup 注入 remove 方法 */
     const remove = inject<(name: string | number) => void>('removeMessage')
 

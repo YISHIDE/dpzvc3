@@ -1,10 +1,19 @@
 <template>
-  <div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: #fff;">
+  <div
+    style="
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: #fff;
+    "
+  >
     <!--<dpzvc3-header title="asdasdsssssssssssssssssssssssssssssssssssssssssssssssss"></dpzvc3-header>-->
 
     <Header title="aaaa" />
-    <div style="height: 50px;" />
-    <div style="min-height: 50px; background: pink; padding: 0 10px;">
+    <div style="height: 50px" />
+    <div style="min-height: 50px; background: pink; padding: 0 10px">
       <div><i class="dpzvc3-icono-back" /></div>
     </div>
     <Picker
@@ -14,45 +23,20 @@
       @sure="pickerSure"
       @cancle="pickerCancle"
     />
-    <v-button
-      :loading="disable"
-      @on-click="popup = true"
-    >
-      确定
-    </v-button>
+    <v-button :loading="disable" @on-click="popup = true"> 确定 </v-button>
     <h1>111111111111</h1>
     <!--<tab></tab>-->
     <p>{{ address }}</p>
-    <v-button @click.native="showMessage">
-      asdasssssdaaaaaasdadd
-    </v-button>
-    <CheckBox-group
-      v-model="data"
-      :vertical="visible"
-    >
-      <CheckBox
-        label="aaa"
-        :disable="visible"
-      />
+    <v-button @click.native="showMessage"> asdasssssdaaaaaasdadd </v-button>
+    <CheckBox-group v-model="data" :vertical="visible">
+      <CheckBox label="aaa" :disable="visible" />
       <CheckBox label="bbb" />
       <CheckBox label="ccc" />
     </CheckBox-group>
-    <CheckBox
-      v-model="checked"
-      label="ddd"
-    />
-    <Radio
-      v-model="checked"
-      label="1111"
-    />
-    <Radio-group
-      v-model="radio"
-      :vertical="visible"
-    >
-      <Radio
-        :disable="visible"
-        label="1111"
-      />
+    <CheckBox v-model="checked" label="ddd" />
+    <Radio v-model="checked" label="1111" />
+    <Radio-group v-model="radio" :vertical="visible">
+      <Radio :disable="visible" label="1111" />
       <Radio label="222" />
       <Radio label="333" />
     </Radio-group>
@@ -68,84 +52,58 @@
       scroll-height="50px"
       :is-fixed-header="true"
     >
-      <div
-        slot="slot-item-0"
-        style="height:100%;flex: 1;background:red;overflow: scroll"
-      >
-        <div style="height: 40px;width: 100%;background-color: blue;" />
-        <div style="height: 40px;width: 100%;background-color: blue;" />
-        <div style="height: 40px;width: 100%;background-color: blue;" />
-        <div style="height: 40px;width: 100%;background-color: blue;" />
-        <div style="height: 40px;width: 100%;background-color: blue;" />
-      </div>
-      <div
-        slot="slot-item-1"
-        style="height:100%;flex: 1;background:yellow"
-      >
-        <Load-more
-          ref="more"
-          :refresh="topMethod"
-          height="100%"
-          :load-more="topMethod"
-          :has-more="hasMore"
-          @on-change-up-status="getStatus"
-        >
-          <div
-            v-for="(item, index) in loadmore"
-            :key="index"
-            style="width: 100%;height: 50px;"
+      <template #slot-item-0>
+        <div style="height: 100%; flex: 1; background: red; overflow: scroll">
+          <div style="height: 40px; width: 100%; background-color: blue" />
+          <div style="height: 40px; width: 100%; background-color: blue" />
+          <div style="height: 40px; width: 100%; background-color: blue" />
+          <div style="height: 40px; width: 100%; background-color: blue" />
+          <div style="height: 40px; width: 100%; background-color: blue" />
+        </div>
+      </template>
+      <template #slot-item-1>
+        <div style="height: 100%; flex: 1; background: yellow">
+          <Load-more
+            ref="more"
+            :refresh="topMethod"
+            height="100%"
+            :load-more="topMethod"
+            :has-more="hasMore"
+            @on-change-up-status="getStatus"
           >
-            {{ item }}
-          </div>
-        </Load-more>
-      </div>
-      <div
-        slot="slot-item-2"
-        style="height:100%;flex: 1;background:black"
-      />
+            <div
+              v-for="(item, index) in loadmore"
+              :key="index"
+              style="width: 100%; height: 50px"
+            >
+              {{ item }}
+            </div>
+          </Load-more>
+        </div>
+      </template>
+      <template #slot-item-2>
+        <div style="height: 100%; flex: 1; background: black" />
+      </template>
     </Slide-bar>
     <!--<Tab :items="items" v-model="maskCloseble"></Tab>-->
 
-    <Swipe
-      :multiple="false"
-      :list="files"
-    >
-      <template scope="props">
+    <Swipe :multiple="false" :list="files">
+      <template #default="props">
         <div>
           <span>{{ props.item.id }}</span>
-          <img :src="props.item.image">
+          <img :src="props.item.image" />
           <span v-text="props.index" />
         </div>
       </template>
     </Swipe>
 
-    <TextBar
-      v-model="texts"
-      type="textarea"
-      :maxlength="9"
-    />
+    <TextBar v-model="texts" type="textarea" :maxlength="9" />
     <span>{{ texts }}</span>
-    <Number
-      v-model="number"
-      :min="1"
-      :max="10"
-      :focus="true"
-    />
+    <Number v-model="number" :min="1" :max="10" :focus="true" />
     <span>{{ number }}</span>
-    <Upload
-      ref="upload"
-      :multiple="true"
-      @on-change-file="onChangeFile"
-    />
-    <img
-      v-for="(item,index) in files"
-      :key="index"
-      :src="item.base64"
-    >
-    <SwitchBar
-      v-model="check"
-      size="large"
-    />
+    <Upload ref="upload" :multiple="true" @on-change-file="onChangeFile" />
+    <img v-for="(item, index) in files" :key="index" :src="item.base64" />
+    <SwitchBar v-model="check" size="large" />
     <span>{{ check }}</span>
     <SwitchBar size="large" />
 
@@ -164,126 +122,78 @@
       :loading="loading"
       @click.native="load"
     />
-    <Rater
-      v-model="rate"
-      disabled
-    />
+    <Rater v-model="rate" disabled />
     {{ rate }}
 
-    <Spinner
-      type="blade"
-      size="60"
-    />
-    <Action-sheet
-      v-model="popup"
-      :items="actionSheet"
-    />
+    <Spinner type="blade" size="60" />
+    <Action-sheet v-model="popup" :items="actionSheet" />
     <Progress v-model="progress" />
     <ToTop />
-    <Cell
-      title="标题"
-      label="小标题"
-      value="说明文字"
-      has-mask
-    />
-    <CellSwipe
-      :right="right"
-      title="标题"
-      has-mask
-    />
-    <CellSwipe
-      :left="left"
-      :right="right"
-      title="标题"
-      has-mask
-    />
-    <CellSwipe
-      :left="left"
-      :right="right"
-      title="标题"
-      has-mask
-    />
-    <CellSwipe
-      :left="left"
-      :right="right"
-      title="标题"
-      has-mask
-    />
-    <CellSwipe
-      :left="left"
-      :right="right"
-      title="标题"
-      has-mask
-    />
-    <CellSwipe
-      :left="left"
-      :right="right"
-      title="标题"
-      has-mask
-    />
-    <Badge
-      number="10"
-      max="99"
-      :dot="false"
-    >
-      <div style="width: 45px;height: 45px;background-color: red" />
+    <Cell title="标题" label="小标题" value="说明文字" has-mask />
+    <CellSwipe :right="right" title="标题" has-mask />
+    <CellSwipe :left="left" :right="right" title="标题" has-mask />
+    <CellSwipe :left="left" :right="right" title="标题" has-mask />
+    <CellSwipe :left="left" :right="right" title="标题" has-mask />
+    <CellSwipe :left="left" :right="right" title="标题" has-mask />
+    <CellSwipe :left="left" :right="right" title="标题" has-mask />
+    <Badge number="10" max="99" :dot="false">
+      <div style="width: 45px; height: 45px; background-color: red" />
     </Badge>
     <Card />
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'IndexView',
+  name: "IndexView",
   filters: {},
   directives: {},
   components: {},
-  data () {
+  data() {
     return {
       left: [
         {
-          content: 'btn1',
+          content: "btn1",
           style: {
-            backgroundColor: '#eee',
-            color: '#fff'
+            backgroundColor: "#eee",
+            color: "#fff",
           },
           handleClick: function () {
-            console.log('btn1')
-          }
+            console.log("btn1");
+          },
         },
         {
-          content: 'btn2',
+          content: "btn2",
           style: {
-            backgroundColor: 'red',
-            color: '#fff'
+            backgroundColor: "red",
+            color: "#fff",
           },
           handleClick: function () {
-            console.log('btn2')
-          }
-        }
+            console.log("btn2");
+          },
+        },
       ],
       right: [
         {
-          content: 'btn1',
+          content: "btn1",
           style: {
-            backgroundColor: '#eee',
-            color: '#fff'
+            backgroundColor: "#eee",
+            color: "#fff",
           },
           handleClick: function () {
-            console.log('btn1')
-          }
+            console.log("btn1");
+          },
         },
         {
-          content: 'btn2',
+          content: "btn2",
           style: {
-            backgroundColor: 'red',
-            color: '#fff'
+            backgroundColor: "red",
+            color: "#fff",
           },
           handleClick: function () {
-            console.log('btn2')
-          }
-        }
+            console.log("btn2");
+          },
+        },
       ],
       badge: true,
       progress: 40,
@@ -292,35 +202,68 @@ export default {
       inita: [9, 1, 1],
       listss: [
         {
-          target: 'a',
-          list: [{ value: 'w', code: 1 }, { value: 2, code: 2 }, { value: 3, code: 3 }, {
-            value: 4,
-            code: 4
-          }, { value: 5, code: 5 }, { value: 6, code: 6 }, { value: 7, code: 7 }, {
-            value: 8,
-            code: 8
-          }, { value: 'c', code: 9 }, { value: 0, code: 0 }]
+          target: "a",
+          list: [
+            { value: "w", code: 1 },
+            { value: 2, code: 2 },
+            { value: 3, code: 3 },
+            {
+              value: 4,
+              code: 4,
+            },
+            { value: 5, code: 5 },
+            { value: 6, code: 6 },
+            { value: 7, code: 7 },
+            {
+              value: 8,
+              code: 8,
+            },
+            { value: "c", code: 9 },
+            { value: 0, code: 0 },
+          ],
         },
         {
-          target: 'b',
-          list: [{ value: 'e', code: 1 }, { value: 2, code: 2 }, { value: 3, code: 3 }, {
-            value: 4,
-            code: 4
-          }, { value: 5, code: 5 }, { value: 6, code: 6 }, { value: 7, code: 7 }, {
-            value: 8,
-            code: 8
-          }, { value: 9, code: 9 }, { value: 0, code: 0 }]
+          target: "b",
+          list: [
+            { value: "e", code: 1 },
+            { value: 2, code: 2 },
+            { value: 3, code: 3 },
+            {
+              value: 4,
+              code: 4,
+            },
+            { value: 5, code: 5 },
+            { value: 6, code: 6 },
+            { value: 7, code: 7 },
+            {
+              value: 8,
+              code: 8,
+            },
+            { value: 9, code: 9 },
+            { value: 0, code: 0 },
+          ],
         },
         {
-          target: 'c',
-          list: [{ value: 'r', code: 1 }, { value: 2, code: 2 }, { value: 3, code: 3 }, {
-            value: 4,
-            code: 4
-          }, { value: 5, code: 5 }, { value: 6, code: 6 }, { value: 7, code: 7 }, {
-            value: 8,
-            code: 8
-          }, { value: 9, code: 9 }, { value: 0, code: 0 }]
-        }
+          target: "c",
+          list: [
+            { value: "r", code: 1 },
+            { value: 2, code: 2 },
+            { value: 3, code: 3 },
+            {
+              value: 4,
+              code: 4,
+            },
+            { value: 5, code: 5 },
+            { value: 6, code: 6 },
+            { value: 7, code: 7 },
+            {
+              value: 8,
+              code: 8,
+            },
+            { value: 9, code: 9 },
+            { value: 0, code: 0 },
+          ],
+        },
       ],
 
       loading: false,
@@ -328,231 +271,262 @@ export default {
       check: false,
       files: [],
       number: 1,
-      msgTip: '',
+      msgTip: "",
       texts: 1,
       list: [
-
         {
-          image: 'https://vuefe.cn/images/logo.png',
-          spec: '1111',
+          image: "https://vuefe.cn/images/logo.png",
+          spec: "1111",
           onClick: function (item, index) {
-            console.log(item)
-          }
+            console.log(item);
+          },
         },
         {
-          image: 'https://vuefe.cn/images/logo.png',
-          spec: '2222'
-        },
-
-        {
-          image: 'https://vuefe.cn/images/logo.png',
-          spec: '3333'
-        },
-        {
-          image: 'https://vuefe.cn/images/logo.png',
-          spec: '5555'
+          image: "https://vuefe.cn/images/logo.png",
+          spec: "2222",
         },
 
         {
-          image: 'https://vuefe.cn/images/logo.png',
-          spec: '121231'
+          image: "https://vuefe.cn/images/logo.png",
+          spec: "3333",
         },
         {
-          image: 'https://vuefe.cn/images/logo.png',
-          spec: '0000'
-        }
+          image: "https://vuefe.cn/images/logo.png",
+          spec: "5555",
+        },
 
+        {
+          image: "https://vuefe.cn/images/logo.png",
+          spec: "121231",
+        },
+        {
+          image: "https://vuefe.cn/images/logo.png",
+          spec: "0000",
+        },
       ],
 
-      pcd: '河北省/唐山市/路南区',
-      dates: '2017/07/08',
+      pcd: "河北省/唐山市/路南区",
+      dates: "2017/07/08",
       showAddressPicker: false,
       items: [],
 
       lists: [
         {
-          text: 'aaa',
-          onClick: this.callback
-
+          text: "aaa",
+          onClick: this.callback,
         },
         {
-          text: 'bbb',
+          text: "bbb",
           onClick: function () {
-            console.log('bbb')
-          }
-        }
+            console.log("bbb");
+          },
+        },
       ],
 
       visible: true,
       indicator: true,
       maskCloseble: true,
-      address: '',
+      address: "",
       data: [],
       checked: true,
-      radio: '1111',
-      theme: 'twilight',
-      mode: 'javascript',
-      text: 'test',
+      radio: "1111",
+      theme: "twilight",
+      mode: "javascript",
+      text: "test",
       disable: false,
-      actionSheet: [
-        { text: 'aaa' },
-        { text: 'bbb' },
-        { text: 'ccc' }
-      ],
-      hasMore: true
-    }
+      actionSheet: [{ text: "aaa" }, { text: "bbb" }, { text: "ccc" }],
+      hasMore: true,
+    };
   },
-  mounted () {
+  mounted() {
     //            this.$Message.loading({showLeft:false,text:'加载中...',duration:0,position:'center'})
-    this.$Modal.info({ showHead: false, body: '加中...', title: 'a' })
+    this.$Modal.info({ showHead: false, body: "加中...", title: "a" });
     setTimeout(() => {
-      this.files = [{ id: 521, ad_id: 10, name: '\u73a9\u8f6c\u5927\u6570\u636e\u5206\u6790\uff01Spark2.X+Python \u7cbe\u534e\u5b9e\u6218\u8bfe\u7a0b', image: 'https://o74ly5e8r.qnssl.com/9MhSVW1gJD.png', background: { color: '' }, link: 'https://edu.hellobi.com/course/222', sort: 0, meta: '', created_at: '2017-12-21 09:48:29', updated_at: '2017-12-21 09:48:29', deleted_at: null }, { id: 506, ad_id: 10, name: '\u6570\u636e\u5206\u6790\u62a5\u544a\u5236\u4f5c\u79d8\u7c4d\u5347\u7ea7\u7248', image: 'https://o74ly5e8r.qnssl.com/EAbxDnBMcX.png', background: { color: '' }, link: 'https://edu.hellobi.com/course/132', sort: 1, meta: '', created_at: '2017-10-31 09:43:15', updated_at: '2017-12-21 09:46:16', deleted_at: null }, { id: 504, ad_id: 10, name: '\u72ec\u4e00\u65e0\u4e8c\u7684\u6570\u636e\u4ed3\u5e93\u5efa\u6a21\u6307\u5357\u7cfb\u5217\u6559\u7a0b\u5347\u7ea7\u7248 \uff08\u8fde\u8f7d\u4e2d\uff09', image: 'https://o74ly5e8r.qnssl.com/dmJqsjtLNS.png', background: { color: '' }, link: 'https://edu.hellobi.com/course/102', sort: 2, meta: '', created_at: '2017-10-18 09:35:05', updated_at: '2017-12-21 09:50:03', deleted_at: null }]
-    }, 2000)
+      this.files = [
+        {
+          id: 521,
+          ad_id: 10,
+          name: "\u73a9\u8f6c\u5927\u6570\u636e\u5206\u6790\uff01Spark2.X+Python \u7cbe\u534e\u5b9e\u6218\u8bfe\u7a0b",
+          image: "https://o74ly5e8r.qnssl.com/9MhSVW1gJD.png",
+          background: { color: "" },
+          link: "https://edu.hellobi.com/course/222",
+          sort: 0,
+          meta: "",
+          created_at: "2017-12-21 09:48:29",
+          updated_at: "2017-12-21 09:48:29",
+          deleted_at: null,
+        },
+        {
+          id: 506,
+          ad_id: 10,
+          name: "\u6570\u636e\u5206\u6790\u62a5\u544a\u5236\u4f5c\u79d8\u7c4d\u5347\u7ea7\u7248",
+          image: "https://o74ly5e8r.qnssl.com/EAbxDnBMcX.png",
+          background: { color: "" },
+          link: "https://edu.hellobi.com/course/132",
+          sort: 1,
+          meta: "",
+          created_at: "2017-10-31 09:43:15",
+          updated_at: "2017-12-21 09:46:16",
+          deleted_at: null,
+        },
+        {
+          id: 504,
+          ad_id: 10,
+          name: "\u72ec\u4e00\u65e0\u4e8c\u7684\u6570\u636e\u4ed3\u5e93\u5efa\u6a21\u6307\u5357\u7cfb\u5217\u6559\u7a0b\u5347\u7ea7\u7248 \uff08\u8fde\u8f7d\u4e2d\uff09",
+          image: "https://o74ly5e8r.qnssl.com/dmJqsjtLNS.png",
+          background: { color: "" },
+          link: "https://edu.hellobi.com/course/102",
+          sort: 2,
+          meta: "",
+          created_at: "2017-10-18 09:35:05",
+          updated_at: "2017-12-21 09:50:03",
+          deleted_at: null,
+        },
+      ];
+    }, 2000);
 
     setInterval(() => {
-      this.progress += 8
-    }, 1000)
+      this.progress += 8;
+    }, 1000);
     setTimeout(() => {
       this.items = [
         {
+          name: "首页",
+          icon: "&#xe662;",
+          iconCur: "&#xe663;",
+          path: "/index",
+        },
+        {
+          name: "商品",
+          icon: "&#xe665;",
 
-          name: '首页',
-          icon: '&#xe662;',
-          iconCur: '&#xe663;',
-          path: '/index'
-        }, {
-          name: '商品',
-          icon: '&#xe665;',
-
-          iconCur: '&#xe667;',
-          path: '/list'
-        }, {
-          name: '晒单',
-          icon: '&#xe666;',
-          iconCur: '&#xe668;',
-          path: '/shareOrder'
-        }
-      ]
-    }, 1000)
+          iconCur: "&#xe667;",
+          path: "/list",
+        },
+        {
+          name: "晒单",
+          icon: "&#xe666;",
+          iconCur: "&#xe668;",
+          path: "/shareOrder",
+        },
+      ];
+    }, 1000);
   },
-  beforeDestroy () {
-
-  },
+  beforeUnmount() {},
   methods: {
-
-    normalChange (val) {
-      console.log(val)
+    normalChange(val) {
+      console.log(val);
     },
-    async a (a) {
+    async a(a) {
       await setTimeout(() => {
-        console.log(a.c)
-        console.log(a.b)
-      })
+        console.log(a.c);
+        console.log(a.b);
+      });
     },
 
-    load () {
-      this.loading = !this.loading
+    load() {
+      this.loading = !this.loading;
     },
-    onChangeFile (val) {
-      this.files = val
+    onChangeFile(val) {
+      this.files = val;
     },
-    onLoad (val) {
-
-    },
-    valida (val) {
-      if (val !== 'a') {
-        return false
+    onLoad(val) {},
+    valida(val) {
+      if (val !== "a") {
+        return false;
       }
 
-      return true
+      return true;
     },
-    getConfirm (val) {
+    getConfirm(val) {
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      val ? this.msgTip = '成功' : this.msgTip = '失败'
+      val ? (this.msgTip = "成功") : (this.msgTip = "失败");
     },
-    getVal (val) {
-      console.log(val)
+    getVal(val) {
+      console.log(val);
     },
-    topMethod () {
-      this.loadmore.push(...[2, 2])
-      this.$refs.more.onLoadOff()
+    topMethod() {
+      this.loadmore.push(...[2, 2]);
+      this.$refs.more.onLoadOff();
       //                this.hasMore = true;
     },
-    pickerSure (value) {
+    pickerSure(value) {
       //                this.address = `${province} ${city} ${district}`
-      console.log(value)
+      console.log(value);
     },
-    pickerCancle () {
-      console.log('您取消了选择')
-      this.disable = true
+    pickerCancle() {
+      console.log("您取消了选择");
+      this.disable = true;
     },
-    ok () {
-      console.log(this.radio)
+    ok() {
+      console.log(this.radio);
     },
-    close () {
-      console.log('asdasdasd')
+    close() {
+      console.log("asdasdasd");
     },
-    newTip () {
+    newTip() {
       // this.$Notice.open({desc: 'asdasd', onClose: this.close, duration: 4, styles: {right: '0'}})
     },
-    callback (item, index) {
-      console.log('asdasdasd')
+    callback(item, index) {
+      console.log("asdasdasd");
     },
-    callback2 (item, index) {
-      console.log(item.text)
+    callback2(item, index) {
+      console.log(item.text);
     },
-    getStatus (val) {
-      console.log(val)
+    getStatus(val) {
+      console.log(val);
     },
-    showMessage () {
-      console.log('a')
-      this.$Message.show({ text: 'asdasdasdasd', duration: 0 })
-      this.$Message.show({ text: 'ascx', duration: 0 })
+    showMessage() {
+      console.log("a");
+      this.$Message.show({ text: "asdasdasdasd", duration: 0 });
+      this.$Message.show({ text: "ascx", duration: 0 });
 
       setTimeout(() => {
-        this.$Message.destroy()
-      }, 2000)
-    }
-
-  }
-}
+        this.$Message.destroy();
+      }, 2000);
+    },
+  },
+};
 </script>
 
 <style>
-    html, body {
-        height: 100%
-    }
+html,
+body {
+  height: 100%;
+}
 
-    .dpzvc3-slideBar {
-        height: 100%;
-    }
+.dpzvc3-slideBar {
+  height: 100%;
+}
 
-    @font-face {
-        font-family: "ifont";
-        /*src: url('font/iconfont.eot'); !* IE9*!*/
-        /*src: url('font/iconfont.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!*/
-        /*url('font/iconfont.woff') format('woff'), !* chrome、firefox *!*/
-        /*url('font/iconfont.ttf') format('truetype'), !* chrome、firefox、opera、Safari, Android, iOS 4.2+*!*/
-        /*url('font/iconfont.svg#iconfont') format('svg'); !* iOS 4.1- *!*/
-        /*src: url('//at.alicdn.com/t/font_gm9v3xai12z6ko6r.eot');*/
-        /*src: url('//at.alicdn.com/t/font_gm9v3xai12z6ko6r.eot?#iefix') format('embedded-opentype'),*/
-        /*url('//at.alicdn.com/t/font_gm9v3xai12z6ko6r.woff') format('woff'),*/
-        /*url('//at.alicdn.com/t/font_gm9v3xai12z6ko6r.ttf') format('truetype'),*/
-        /*url('//at.alicdn.com/t/font_gm9v3xai12z6ko6r.svg#iconfont') format('svg');*/
-        src: url('//at.alicdn.com/t/font_mrhpq9yw1ssxxbt9.eot');
-        src: url('//at.alicdn.com/t/font_mrhpq9yw1ssxxbt9.eot?#iefix') format('embedded-opentype'),
-        url('//at.alicdn.com/t/font_mrhpq9yw1ssxxbt9.woff') format('woff'),
-        url('//at.alicdn.com/t/font_mrhpq9yw1ssxxbt9.ttf') format('truetype'),
-        url('//at.alicdn.com/t/font_mrhpq9yw1ssxxbt9.svg#iconfont') format('svg');
-    }
+@font-face {
+  font-family: "ifont";
+  /*src: url('font/iconfont.eot'); !* IE9*!*/
+  /*src: url('font/iconfont.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!*/
+  /*url('font/iconfont.woff') format('woff'), !* chrome、firefox *!*/
+  /*url('font/iconfont.ttf') format('truetype'), !* chrome、firefox、opera、Safari, Android, iOS 4.2+*!*/
+  /*url('font/iconfont.svg#iconfont') format('svg'); !* iOS 4.1- *!*/
+  /*src: url('//at.alicdn.com/t/font_gm9v3xai12z6ko6r.eot');*/
+  /*src: url('//at.alicdn.com/t/font_gm9v3xai12z6ko6r.eot?#iefix') format('embedded-opentype'),*/
+  /*url('//at.alicdn.com/t/font_gm9v3xai12z6ko6r.woff') format('woff'),*/
+  /*url('//at.alicdn.com/t/font_gm9v3xai12z6ko6r.ttf') format('truetype'),*/
+  /*url('//at.alicdn.com/t/font_gm9v3xai12z6ko6r.svg#iconfont') format('svg');*/
+  src: url("//at.alicdn.com/t/font_mrhpq9yw1ssxxbt9.eot");
+  src:
+    url("//at.alicdn.com/t/font_mrhpq9yw1ssxxbt9.eot?#iefix")
+      format("embedded-opentype"),
+    url("//at.alicdn.com/t/font_mrhpq9yw1ssxxbt9.woff") format("woff"),
+    url("//at.alicdn.com/t/font_mrhpq9yw1ssxxbt9.ttf") format("truetype"),
+    url("//at.alicdn.com/t/font_mrhpq9yw1ssxxbt9.svg#iconfont") format("svg");
+}
 
-    .ifont {
-        margin: 0 3px;
-        font-family: "ifont" !important;
-        font-size: 16px;
-        font-style: normal;
-        -webkit-font-smoothing: antialiased;
-        -webkit-text-stroke-width: 0.2px;
-        -moz-osx-font-smoothing: grayscale;
-    }
+.ifont {
+  margin: 0 3px;
+  font-family: "ifont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
 </style>

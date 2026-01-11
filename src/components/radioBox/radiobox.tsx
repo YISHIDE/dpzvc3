@@ -9,7 +9,7 @@ import {
 import type { PropType } from 'vue'
 import type {
   RadioBoxProps,
-  RadioGroupProvide,
+  RadioGroupProvide
 } from './types'
 export type { RadioBoxProps }
 const prefixCls = 'dpzvc3-radiobox'

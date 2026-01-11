@@ -29,7 +29,7 @@ export default defineComponent({
     }
   },
 
-  setup(props, { slots }) {
+  setup (props, { slots }) {
     /** 当前进度 */
     const width = ref<number>(0)
 

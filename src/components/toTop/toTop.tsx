@@ -11,8 +11,8 @@ export default defineComponent({
     bottom: { type: [Number, String], default: 30 },
     right: { type: [Number, String], default: 30 },
     duration: { type: Number, default: 1000 }
-  }, //as unknown as Record<keyof ToTopProps, any>
-  setup(props: ToTopProps) {
+  }, // as unknown as Record<keyof ToTopProps, any>
+  setup (props: ToTopProps) {
     const back = ref(false)
 
     const classes = computed(() => [prefixCls])
@@ -42,13 +42,15 @@ export default defineComponent({
     })
 
     return () => {
-      return back.value ? (
-        <div class={classes.value} style={positionStyles.value} onClick={toTopHandler}>
-          <slot>
-            <div class={wrapperClasses.value}></div>
-          </slot>
-        </div>
-      ) : null
+      return back.value
+        ? (
+          <div class={classes.value} style={positionStyles.value} onClick={toTopHandler}>
+            <slot>
+              <div class={wrapperClasses.value}></div>
+            </slot>
+          </div>
+        )
+        : null
     }
   }
 })

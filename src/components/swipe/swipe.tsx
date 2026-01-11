@@ -30,7 +30,7 @@ export default defineComponent({
     perpage: { type: Number, default: 1 }
   },
 
-  setup(props, { slots }) {
+  setup (props, { slots }) {
     const swipeRef = ref<HTMLDivElement | null>(null)
     const wrapper = ref<HTMLDivElement | null>(null)
 
@@ -42,7 +42,7 @@ export default defineComponent({
     const startX = ref(0)
     const distance = ref(0)
     const slideIndex = ref(props.startIndex)
-    const timer = ref<null | (() => void)>(null)
+    const timer = ref<null |(() => void)>(null)
 
     const localList = ref<SwipeItem[]>([...props.list])
     const transitionRef = ref('transform .2s ease-out')
@@ -109,7 +109,7 @@ export default defineComponent({
     }))
 
     /** 点击 */
-    function choose(item: SwipeItem, index: number, e?: Event) {
+    function choose (item: SwipeItem, index: number, e?: Event) {
       if (item.onClick) {
         item.onClick(item, index)
       } else if (item.link) {
@@ -120,7 +120,7 @@ export default defineComponent({
     }
 
     /** touch */
-    function onTouchStart(e: TouchEvent) {
+    function onTouchStart (e: TouchEvent) {
       dragging.value = true
       autoSwipe.value = false
       startX.value = e.touches[0].clientX
@@ -129,7 +129,7 @@ export default defineComponent({
       clearTimer()
     }
 
-    function onTouchMove(e: TouchEvent) {
+    function onTouchMove (e: TouchEvent) {
       const currentX = e.touches[0].clientX
       distance.value = props.distanceIndex
         ? (currentX - startX.value) / props.distanceIndex
@@ -137,7 +137,7 @@ export default defineComponent({
       translateX.value = currentTranslateX.value + distance.value
     }
 
-    function onTouchEnd() {
+    function onTouchEnd () {
       if (distance.value < 0 && Math.abs(distance.value) > clientWidth.value / 5) {
         props.loop ? onLoopSlideLeft() : onSlideLeft()
       } else if (distance.value > 0 && Math.abs(distance.value) > clientWidth.value / 5) {
@@ -151,31 +151,31 @@ export default defineComponent({
       props.auto && autoSlide()
     }
 
-    function onSlideLeft() {
+    function onSlideLeft () {
       if (slideIndex.value < maxIndex.value) slideIndex.value++
       translateX.value = -slideIndex.value * clientWidth.value
     }
 
-    function onSlideRight() {
+    function onSlideRight () {
       if (slideIndex.value > minIndex.value) slideIndex.value--
       translateX.value = -slideIndex.value * clientWidth.value
     }
 
-    function onLoopSlideLeft() {
+    function onLoopSlideLeft () {
       onSlideLeft()
       if (slideIndex.value > maxIndex.value) {
         slideIndex.value = maxIndex.value
       }
     }
 
-    function onLoopSlideRight() {
+    function onLoopSlideRight () {
       onSlideRight()
       if (slideIndex.value < minIndex.value) {
         slideIndex.value = minIndex.value
       }
     }
 
-    function autoSlide() {
+    function autoSlide () {
       timer.value = rafTimeout(() => {
         if (!dragging.value && autoSwipe.value) {
           translateX.value -= clientWidth.value
@@ -189,7 +189,7 @@ export default defineComponent({
       }, props.speed < 1 ? 1000 : props.speed * 1000)
     }
 
-    function resetSlide() {
+    function resetSlide () {
       wrapper.value?.removeEventListener('transitionend', resetSlide)
       slideIndex.value = minIndex.value
       autoSwipe.value = false
@@ -201,12 +201,12 @@ export default defineComponent({
       })
     }
 
-    function clearTimer() {
+    function clearTimer () {
       timer.value?.()
       timer.value = null
     }
 
-    function onResize() {
+    function onResize () {
       clientWidth.value = swipeRef.value?.clientWidth || 0
     }
 
@@ -243,34 +243,36 @@ export default defineComponent({
         >
           {arrayList.value.map((item: any, index: number) => (
             <div key={index} class={itemClasses.value}>
-              {isMultiple.value ? (
-                item.map((sub: SwipeItem, i: number) => (
+              {isMultiple.value
+                ? (
+                  item.map((sub: SwipeItem, i: number) => (
+                    <a
+                      key={i}
+                      class={multipleClass}
+                      onClick={(e: any) => choose(sub, i, e)}
+                    >
+                      {slots.default?.({ item: sub, index: i }) ?? (
+                        <>
+                          <img src={sub.image} />
+                          <span>{sub.spec}</span>
+                        </>
+                      )}
+                    </a>
+                  ))
+                )
+                : (
                   <a
-                    key={i}
-                    class={multipleClass}
-                    onClick={(e: any) => choose(sub, i, e)}
+                    class={singleClass}
+                    onClick={(e: any) => choose(item, index, e)}
                   >
-                    {slots.default?.({ item: sub, index: i }) ?? (
+                    {slots.default?.({ item, index }) ?? (
                       <>
-                        <img src={sub.image} />
-                        <span>{sub.spec}</span>
+                        <img src={item.image} />
+                        <span>{item.spec}</span>
                       </>
                     )}
                   </a>
-                ))
-              ) : (
-                <a
-                  class={singleClass}
-                  onClick={(e: any) => choose(item, index, e)}
-                >
-                  {slots.default?.({ item, index }) ?? (
-                    <>
-                      <img src={item.image} />
-                      <span>{item.spec}</span>
-                    </>
-                  )}
-                </a>
-              )}
+                )}
             </div>
           ))}
         </div>

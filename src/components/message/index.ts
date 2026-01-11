@@ -4,9 +4,9 @@
 
 import { createMessageInstance } from './confirm'
 import { randomStr } from '../../utils/util'
-import type { MergeMessageOptions,MessageInstance,MgInstance } from './types'
-let defaultDuration = 1
-let top = '0'
+import type { MergeMessageOptions, MessageInstance, MgInstance } from './types'
+const defaultDuration = 1
+const top = '0'
 
 let MGInstance:MgInstance = null
 let seed = 1
@@ -64,9 +64,9 @@ function message (props:MergeMessageOptions) {
   }
 }
 
-const Message: MessageInstance= {
+const Message: MessageInstance = {
 
-  show(options:MergeMessageOptions) {
+  show (options:MergeMessageOptions) {
     // alert(1)
     return message(options)
   },

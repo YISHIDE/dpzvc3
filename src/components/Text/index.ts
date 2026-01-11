@@ -6,9 +6,9 @@ import Text from './textBar'
 // import Number from './Number'
 // Text.Number = Number
 Text.install = (app: App): void => {
-    app.component('TextBar', Text); // 注册全局组件
+  app.component('TextBar', Text) // 注册全局组件
 }
 type IWithInstall<T> = T & { install(app: App): void };
-const _Text=Text as IWithInstall<typeof Text>;
+const _Text = Text as IWithInstall<typeof Text>
 export default _Text
 export type { TextBarProps } from './types'

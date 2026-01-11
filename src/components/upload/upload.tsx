@@ -5,159 +5,163 @@ import {
   computed,
   watch,
   getCurrentInstance,
-  PropType
-} from 'vue'
-import exifr from 'exifr'
-import MegaPixImage from '../../lib/MegaPixImage'
-import { JPEG } from '../../utils/util'
-import type { UploadProps } from './types'
+  PropType,
+} from "vue";
+import exifr from "exifr";
+import MegaPixImage from "../../lib/MegaPixImage";
+import { JPEG } from "../../utils/util";
+import type { UploadProps } from "./types";
 
-export type { UploadProps }
+export type { UploadProps };
 
-const prefixCls = 'dpzvc3-upload'
+const prefixCls = "dpzvc3-upload";
 
 export default defineComponent({
-  name: 'Dpzvc3Upload',
+  name: "Dpzvc3Upload",
 
   props: {
     multiple: {
       type: Boolean as PropType<boolean>,
-      default: false
+      default: false,
     },
     accept: {
       type: String as PropType<string>,
-      default: 'image/*'
+      default: "image/*",
     },
     styles: {
       type: Object as PropType<Record<string, any>>,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
 
-  emits: ['on-change-file'],
+  emits: ["on-change-file"],
 
   setup(props: UploadProps, { emit, slots }) {
-    const { proxy } = getCurrentInstance()!
+    const { proxy } = getCurrentInstance()!;
 
-    const files = ref<any[]>([])
-    const fileLength = ref(0)
-    const uploadRef = ref<HTMLInputElement | null>(null)
+    const files = ref<any[]>([]);
+    const fileLength = ref(0);
+    const uploadRef = ref<HTMLInputElement | null>(null);
 
-    const classes = computed(() => [prefixCls])
-    const wrapperClasses = computed(() => [`${prefixCls}-wrapper`])
+    const classes = computed(() => [prefixCls]);
+    const wrapperClasses = computed(() => [`${prefixCls}-wrapper`]);
 
     watch(files, (val) => {
-      emit('on-change-file', val)
-    })
+      emit("on-change-file", val);
+    });
 
     const showPhoto = async (e: Event) => {
-      const input = e.target as HTMLInputElement
-      const fileList = input.files
-      if (!fileList || !proxy) return
+      const input = e.target as HTMLInputElement;
+      const fileList = input.files;
+      if (!fileList || !proxy) return;
 
-      (proxy as any).$Indicator?.snake({ text: '上传中' })
+      (proxy as any).$Indicator?.snake({ text: "上传中" });
 
-      files.value = []
-      fileLength.value = fileList.length
+      files.value = [];
+      fileLength.value = fileList.length;
 
       for (let i = 0; i < fileList.length; i++) {
-        const file = fileList[i]
+        const file = fileList[i];
         try {
-          const orientation = await exifr.orientation(file)
+          const orientation = await exifr.orientation(file);
 
           const dataURL = await new Promise<string>((resolve, reject) => {
-            const reader = new FileReader()
-            reader.readAsDataURL(file)
-            reader.onload = () => resolve(reader.result as string)
-            reader.onerror = reject
-          })
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = reject;
+          });
 
-          const img = new Image()
-          img.src = dataURL
+          const img = new Image();
+          img.src = dataURL;
 
           await new Promise<void>((resolve) => {
             img.onload = () => {
-              create(img, orientation)
-              resolve()
-            }
-          })
+              create(img, orientation);
+              resolve();
+            };
+          });
         } catch (err) {
-          console.error('读取图片失败', err)
+          console.error("读取图片失败", err);
         }
       }
 
-      input.value = ''
-    }
+      input.value = "";
+    };
 
     const create = (file: HTMLImageElement, orientation?: number) => {
-      const img = new Image()
-      const mpImg = new MegaPixImage(file)
+      const img = new Image();
+      const mpImg = new MegaPixImage(file);
 
-      mpImg.render(img, { maxWidth: 600, quality: 0.8 })
+      mpImg.render(img, { maxWidth: 600, quality: 0.8 });
 
       img.onload = () => {
-        const canvas = document.createElement('canvas')
-        const ctx = canvas.getContext('2d')!
-        canvas.width = img.width
-        canvas.height = img.height
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d")!;
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-        let data = canvas.toDataURL('image/jpeg', 0.8)
+        let data = canvas.toDataURL("image/jpeg", 0.8);
 
-        if (/iphone/i.test(navigator.userAgent) && orientation && orientation !== 1) {
-          rotateImg(img, orientation, canvas)
-          data = canvas.toDataURL('image/jpeg', 0.8)
+        if (
+          /iphone/i.test(navigator.userAgent) &&
+          orientation &&
+          orientation !== 1
+        ) {
+          rotateImg(img, orientation, canvas);
+          data = canvas.toDataURL("image/jpeg", 0.8);
         }
 
         if (/android/i.test(navigator.userAgent)) {
-          const encoder = new JPEG.JPEGEncoder()
+          const encoder = new JPEG.JPEGEncoder();
           data = encoder.encode(
             ctx.getImageData(0, 0, canvas.width, canvas.height),
-            80
-          )
+            80,
+          );
         }
 
         files.value.push({
           base64: data,
-          clearBase64: data.slice(data.indexOf(',') + 1)
-        })
+          clearBase64: data.slice(data.indexOf(",") + 1),
+        });
 
         if (files.value.length === fileLength.value) {
-          (proxy as any).$Indicator?.remove()
+          (proxy as any).$Indicator?.remove();
         }
-      }
-    }
+      };
+    };
 
     const rotateImg = (
       img: HTMLImageElement,
       orientation: number,
-      canvas: HTMLCanvasElement
+      canvas: HTMLCanvasElement,
     ) => {
-      const ctx = canvas.getContext('2d')!
-      const width = img.width
-      const height = img.height
+      const ctx = canvas.getContext("2d")!;
+      const width = img.width;
+      const height = img.height;
 
       switch (orientation) {
-        case 6:
-          canvas.width = height
-          canvas.height = width
-          ctx.rotate(Math.PI / 2)
-          ctx.drawImage(img, 0, -height)
-          break
-        case 8:
-          canvas.width = height
-          canvas.height = width
-          ctx.rotate(-Math.PI / 2)
-          ctx.drawImage(img, -width, 0)
-          break
-        case 3:
-          canvas.width = width
-          canvas.height = height
-          ctx.rotate(Math.PI)
-          ctx.drawImage(img, -width, -height)
-          break
+      case 6:
+        canvas.width = height;
+        canvas.height = width;
+        ctx.rotate(Math.PI / 2);
+        ctx.drawImage(img, 0, -height);
+        break;
+      case 8:
+        canvas.width = height;
+        canvas.height = width;
+        ctx.rotate(-Math.PI / 2);
+        ctx.drawImage(img, -width, 0);
+        break;
+      case 3:
+        canvas.width = width;
+        canvas.height = height;
+        ctx.rotate(Math.PI);
+        ctx.drawImage(img, -width, -height);
+        break;
       }
-    }
+    };
 
     return () => (
       <div class={classes.value} style={props.styles}>
@@ -175,6 +179,6 @@ export default defineComponent({
           onChange={showPhoto}
         />
       </div>
-    )
-  }
-})
+    );
+  },
+});

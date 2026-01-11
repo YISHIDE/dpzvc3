@@ -1,12 +1,12 @@
 import { defineComponent, ref, computed, watch, onMounted, PropType } from 'vue'
 
-const prefixCls = 'dpzvc3-number'
+import { NumberProps, NumberEmits } from './types'
 
-import { NumberProps, NumberEmits } from './types' // 引入类型
+const prefixCls = 'dpzvc3-number' // 引入类型
 export type { NumberProps } from './types' // 导出类型
 export default defineComponent({
   name: 'Dpzvc3Number',
-   props: {
+  props: {
     modelValue: [Number, String],
     min: { type: [Number, String], default: -Infinity },
     max: { type: [Number, String], default: Infinity },
@@ -17,7 +17,7 @@ export default defineComponent({
     containerStyle: { type: Object, default: () => ({}) }
   }, // 强制使用类型as unknown as Record<keyof NumberProps, any>
   emits: ['update:modelValue', 'input', 'on-input'] as NumberEmits[],
-  setup(props, { emit, slots }) {
+  setup (props, { emit, slots }) {
     const currentValue = ref(props.modelValue)
     const upDisabled = ref(false)
     const downDisabled = ref(false)

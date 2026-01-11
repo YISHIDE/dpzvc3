@@ -2,7 +2,7 @@
 
 ## 一、说明
 
-> 一套基于 **Vue 3.X** 的h5移动端通用组件库，提供丰富 UI 组件，兼容最新Vue3.x + Typescript Cli项目（可以在Vue3.x + Typescript Cli项目直接引用组件并使用）使用最新的Webpack5构建，并支持 组件以及CSS样式**全量引入** 和 **按需引入**，同时提供公共样式、基础工具样式和服务组件方法（如 Message、Modal、Indicator）。会一直不断完善体验，使用过程有问题欢迎在https://github.com/yishide/dpzvc3/issues提交bug，看到了会及时修复！！！
+> 一套基于 **Vue 3.X** 的h5移动端通用组件库，提供丰富 UI 组件，兼容最新Vue3.x + Typescript Cli项目（可以在Vue3.x + Typescript Cli项目直接引用组件并使用）使用最新的Vite构建，并支持 组件以及CSS样式**全量引入** 和 **按需引入**，同时提供公共样式、基础工具样式和服务组件方法（如 Message、Modal、Indicator）。会一直不断完善体验，使用过程有问题欢迎在https://github.com/yishide/dpzvc3/issues提交bug，看到了会及时修复！！！
 
 ---
 

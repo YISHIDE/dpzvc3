@@ -1,21 +1,21 @@
-import { createApp } from 'vue'
+import { createApp } from "vue";
 // import { createRouter, createWebHashHistory } from 'vue-router'
 
-import App from './components/app.vue'
-import { createHashRouter } from './router'
-import Config from './config/config'
+import App from "./components/app.vue";
+import { createHashRouter } from "./router";
+import Config from "./config/config";
 // import dpzvc3 from 'dpzvc3-ui'
-import dpzvc3 from './index'
+import dpzvc3 from "./index";
 // import { count } from './utils/test'
 // console.log(count)
 // 1️⃣ 创建 app
-const app = createApp(App)
+const app = createApp(App);
 
 // 2️⃣ 安装你的组件库
-app.use(dpzvc3)
+app.use(dpzvc3);
 
 // 3️⃣ 挂载全局变量
-app.config.globalProperties.$Config = Config
+app.config.globalProperties.$Config = Config;
 
 // // 4️⃣ 创建 router（Vue Router 4）
 // const router = createRouter({
@@ -27,7 +27,7 @@ app.config.globalProperties.$Config = Config
 // })
 
 // 5️⃣ 使用路由
-const router = createHashRouter()
-app.use(router)
+const router = createHashRouter();
+app.use(router);
 // 6️⃣ 挂载
-app.mount('#app')
+app.mount("#app");

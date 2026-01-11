@@ -64,7 +64,7 @@ export default defineComponent({
     'on-cancle'
   ],
 
-  setup(props: ModalProps, { emit, slots }) {
+  setup (props: ModalProps, { emit, slots }) {
     const visible = ref(!!props.modelValue)
     const isHead = ref(!!props.showHead)
     const buttonLoading = ref(false)
@@ -109,20 +109,20 @@ export default defineComponent({
     return () => (
       <>
         {/* mask */}
-            <Transition name="dpzvc3-ani-fade"
-                v-slots={{
-                default: () =>visible.value && (
-                <div
+        <Transition name="dpzvc3-ani-fade"
+          v-slots={{
+            default: () => visible.value && (
+              <div
                 class="dpzvc3-modal-mask"
                 onClick={mask}
                 onTouchstart={(e:any) => e.preventDefault()}
                 onTouchmove={(e:any) => e.preventDefault()}
                 onTouchend={(e:any) => e.preventDefault()}
-                />)
-                }}
-            />
+              />)
+          }}
+        />
         {/* </Transition> */}
-{/* <Transition
+        {/* <Transition
           name="dpzvc3-ani-fade"
           v-slots={{
             default: () =>
@@ -135,40 +135,43 @@ export default defineComponent({
               )
           }}
         /> */}
-            
 
-            {/* modal */}
-            <Transition name="dpzvc3-ani-scale"
-                v-slots={{
-                default: () =>visible.value && (
-                <div
+        {/* modal */}
+        <Transition name="dpzvc3-ani-scale"
+          v-slots={{
+            default: () => visible.value && (
+              <div
                 class={prefixCls}
                 style={getWrapperStyle.value}
-                >
-                  {/* header */}
-                  {isHead.value && (
-                    <div class={`${prefixCls}-header`}>
-                      {slots.header ? (
+              >
+                {/* header */}
+                {isHead.value && (
+                  <div class={`${prefixCls}-header`}>
+                    {slots.header
+                      ? (
                         slots.header()
-                      ) : (
+                      )
+                      : (
                         <div class={`${prefixCls}-header-inner ellipse-fir`}>
                           {props.title}
                         </div>
                       )}
-                    </div>
-                  )}
-
-                  {/* body */}
-                  <div class={`${prefixCls}-body`}>
-                    {slots.body ? slots.body() : props.body}
                   </div>
+                )}
 
-                  {/* footer */}
-                  {!props.footerHide && (
-                    <div class={`${prefixCls}-footer`}>
-                      {slots.footer ? (
+                {/* body */}
+                <div class={`${prefixCls}-body`}>
+                  {slots.body ? slots.body() : props.body}
+                </div>
+
+                {/* footer */}
+                {!props.footerHide && (
+                  <div class={`${prefixCls}-footer`}>
+                    {slots.footer
+                      ? (
                         slots.footer()
-                      ) : (
+                      )
+                      : (
                         <>
                           {props.cancleText && (
                             <VButton type="primary" onClick={close}>
@@ -184,13 +187,13 @@ export default defineComponent({
                           </VButton>
                         </>
                       )}
-                    </div>
-                  )}
-                </div>
-                )
-                }}
-            
-            />
+                  </div>
+                )}
+              </div>
+            )
+          }}
+
+        />
       </>
     )
   }

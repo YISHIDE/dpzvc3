@@ -5,83 +5,83 @@ import {
   computed,
   onMounted,
   watch,
-  PropType
-} from 'vue'
+  PropType,
+} from "vue";
 
-import type { HeaderProps } from './types'
-export type { HeaderProps }
+import type { HeaderProps } from "./types";
+export type { HeaderProps };
 
-const prefixCls = 'dpzvc3-header'
+const prefixCls = "dpzvc3-header";
 
 export default defineComponent({
-  name: 'Dpzvc3Header',
+  name: "Dpzvc3Header",
 
   props: {
     modelValue: {
       type: Boolean as PropType<boolean>,
-      default: true
+      default: true,
     },
     fixed: {
       type: Boolean as PropType<boolean>,
-      default: true
+      default: true,
     },
     title: {
       type: String as PropType<string>,
-      default: ''
+      default: "",
     },
     wechat: {
       type: Boolean as PropType<boolean>,
-      default: false
-    }
+      default: false,
+    },
   },
 
-  emits: ['update:modelValue'],
+  emits: ["update:modelValue"],
 
   setup(props, { emit, slots }) {
-    const visible = ref<boolean>(props.modelValue)
-    const isWechat = ref<boolean>(props.wechat)
+    const visible = ref<boolean>(props.modelValue);
+    const isWechat = ref<boolean>(props.wechat);
 
     /** class 计算 */
     const classes = computed(() => [
       prefixCls,
-      props.fixed && `${prefixCls}-fixed`
-    ])
+      props.fixed && `${prefixCls}-fixed`,
+    ]);
 
     /** UA 判断 */
     const isWeixin = computed(() =>
-      /micromessenger/i.test(window.navigator.userAgent)
-    )
+      /micromessenger/i.test(window.navigator.userAgent),
+    );
 
     const isPcWeixin = computed(() =>
-      /windowswechat/i.test(window.navigator.userAgent)
-    )
+      /windowswechat/i.test(window.navigator.userAgent),
+    );
 
     /** v-model 同步 */
     watch(
       () => props.modelValue,
-      val => {
-        visible.value = val
-      }
-    )
+      (val) => {
+        visible.value = val;
+      },
+    );
 
     watch(
       () => props.wechat,
-      val => {
-        isWechat.value = val
-      }
-    )
+      (val) => {
+        isWechat.value = val;
+      },
+    );
 
     /** mounted 逻辑 */
     onMounted(() => {
       if ((isWeixin.value || isPcWeixin.value) && !isWechat.value) {
-        emit('update:modelValue', false)
+        emit("update:modelValue", false);
       }
-    })
+    });
 
     /** 返回 */
     const back = () => {
-      window.history.back()
-    }
+      window.history.back();
+    };
 
     /** JSX render */
     return () =>
@@ -101,19 +101,15 @@ export default defineComponent({
             </div>
 
             {/* title */}
-            <div class="title dpzvc3-nowrap">
-              {props.title}
-            </div>
+            <div class="title dpzvc3-nowrap">{props.title}</div>
 
             {/* right */}
-            <div class="right">
-              {slots.right ? slots.right() : <div />}
-            </div>
+            <div class="right">{slots.right ? slots.right() : <div />}</div>
           </header>
 
           {/* 占位 */}
           {props.fixed && <div class="header-place" />}
         </div>
-      ) : null
-  }
-})
+      ) : null;
+  },
+});

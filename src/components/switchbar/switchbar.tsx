@@ -15,7 +15,7 @@ export default defineComponent({
     size: { type: String as PropType<'small' | 'large'>, default: 'small' }
   },
   emits: ['update:modelValue'],
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     const name = ref(props.id || '')
     const currentValue = ref(props.modelValue)
 

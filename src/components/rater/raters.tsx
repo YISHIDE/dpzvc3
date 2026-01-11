@@ -1,10 +1,9 @@
 // src/components/rater/rater.tsx
 // src/components/rater/rater.tsx
 
-
 import { defineComponent, ref, watch, computed, PropType } from 'vue'
 import type { RaterProps } from './types'
-export type { RaterProps } 
+export type { RaterProps }
 const prefixCls = 'dpzvc3-rater'
 
 export default defineComponent({
@@ -23,7 +22,7 @@ export default defineComponent({
 
   emits: ['update:modelValue'],
 
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     const currentValue = ref(props.modelValue)
 
     watch(() => props.modelValue, v => {

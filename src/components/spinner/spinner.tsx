@@ -26,8 +26,8 @@ const SPINNER_MAP = {
   'fading-circle': SpinnerFadingCircle
 } as const
 
-function parseSpinner(type: SpinnerType | number): keyof typeof SPINNER_MAP {
-  let value: string | number = type ?? 0
+function parseSpinner (type: SpinnerType | number): keyof typeof SPINNER_MAP {
+  const value: string | number = type ?? 0
 
   // 数字类型（索引）
   if (typeof value === 'number' || /^\d+$/.test(String(value))) {
@@ -66,7 +66,7 @@ export default defineComponent({
     }
   },
 
-  setup(props) {
+  setup (props) {
     const SpinnerComponent = computed(() => {
       const key = parseSpinner(props.type)
       return SPINNER_MAP[key]

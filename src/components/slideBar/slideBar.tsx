@@ -69,7 +69,7 @@ export default defineComponent({
 
   emits: ['on-change'],
 
-  setup(props: SlideBarProps, { emit, slots }) {
+  setup (props: SlideBarProps, { emit, slots }) {
     const headerRef = ref<HTMLDivElement | null>(null)
     const contentRef = ref<HTMLDivElement | null>(null)
 
