@@ -53,7 +53,7 @@ server.use(async (req, res, next) => {
     const templatePath = path.resolve(__dirname, 'dist-ssr/client/indexSSR.html')
     const template = fs.readFileSync(templatePath, 'utf-8')
     const appHtml = await render(req.url)
-    // console.log(appHtml, 'appHtml')
+    console.log(appHtml, 'appHtml')
     const html = template.replace('<!--app-html-->', appHtml)
     // console.log(html)
     res.setHeader('Content-Type', 'text/html')
