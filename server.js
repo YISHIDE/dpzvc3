@@ -52,9 +52,9 @@ function start() {
       const appHtml = await render(req.url)
 
       const html = template.replace('<!--app-html-->', appHtml)
-
+      // console.log(html, 'html')
       // ✅ 设置响应头，保证中文不乱码
-      res.setHeader('Content-Type', 'text/html; charset=utf-8')
+      res.setHeader('Content-Type', 'text/html')
       res.end(html)
     } catch (err) {
       console.error(err)
