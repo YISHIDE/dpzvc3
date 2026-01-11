@@ -1,7 +1,8 @@
 {
+  "version": 3,
   "functions": {
     "api/server.js": {
-      "runtime": "edge"
+      "runtime": "nodejs20.x"
     }
   },
   "routes": [
