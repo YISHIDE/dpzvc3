@@ -1,1 +1,0 @@
-import{d as o,r as t,a as s,b as r,c as p,o as c,e as a}from"./index-GkcAnYTH.js";const i=o({name:"ViewSpinner",setup(){return{type:t("double-bounce")}}}),_={class:"Spinner"};function d(e,l,u,f,m,y){const n=r("Spinner");return c(),p("div",_,[a(n,{type:e.type},null,8,["type"])])}const $=s(i,[["render",d]]);export{$ as default};

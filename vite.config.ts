@@ -14,6 +14,7 @@ export default defineConfig(({ command, mode }) => {
   const isProd = mode === "production";
 
   return {
+    base: "/dpzvc3",
     plugins: [vue(), vueJsx()],
     resolve: {
       alias: {

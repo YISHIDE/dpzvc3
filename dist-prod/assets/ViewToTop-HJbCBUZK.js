@@ -1,1 +1,0 @@
-import{d as e,r as n,a as s,b as a,c,o as r,e as p}from"./index-GkcAnYTH.js";const m=e({name:"ViewToTop",components:{},setup(){return{bottom:n(100)}}}),d={class:"ToTop"};function _(o,i,T,f,l,u){const t=a("ToTop");return r(),c("div",d,[p(t,{bottom:o.bottom,right:50,duration:500},null,8,["bottom"])])}const $=s(m,[["render",_],["__scopeId","data-v-c0a1d819"]]);export{$ as default};
