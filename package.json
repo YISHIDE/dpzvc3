@@ -1,6 +1,6 @@
 {
   "name": "dpzvc3-ui",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "Vue3组件库,基于Vue3+Vite+TypeScript开发，提供丰富的移动端UI组件。",
   "main": "dist/dpzvc3-ui.cjs.js",
   "module": "dist/dpzvc3-ui.es.js",
@@ -11,7 +11,7 @@
     "dev": "vite",
     "type-check": "vue-tsc --noEmit",
     "type-check:watch": "vue-tsc --noEmit --watch",
-    "build:package": "npm run build:style && VITE_MINIFY=false vite build --config vite.config.lib.ts && VITE_MINIFY=true vite build --config vite.config.lib.ts && npm run build:types",
+    "build:llb": "npm run build:style && VITE_MINIFY=false vite build --config vite.config.lib.ts && VITE_MINIFY=true vite build --config vite.config.lib.ts && npm run build:types",
     "dist": "vite build --mode production",
     "preview": "vite preview --outDir dist-prod",
     "build": "vite build --config vite.config.ssr.client.ts && vite build --config vite.config.ssr.server.ts",

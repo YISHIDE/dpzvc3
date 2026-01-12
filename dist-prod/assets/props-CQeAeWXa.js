@@ -1,0 +1,1 @@
+import{B as t}from"./index-z_KhAxK9.js";const n={props:{size:{type:[Number,String]},color:{type:String}},setup(e){return{spinnerStyle:t(()=>e.size?{height:typeof Number(e.size)=="number"?`${e.size}px`:e.size,width:typeof Number(e.size)=="number"?`${e.size}px`:e.size}:{})}}};export{n as s};

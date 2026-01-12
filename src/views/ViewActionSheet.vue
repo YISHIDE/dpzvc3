@@ -24,12 +24,6 @@ export default defineComponent({
           console.log(e, "点击了提交");
         },
       },
-      {
-        text: "保存",
-        onClick: (e) => {
-          console.log(e, "点击了保存");
-        },
-      },
       { text: "确定" },
     ]);
 

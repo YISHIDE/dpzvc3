@@ -38,7 +38,7 @@ export default defineComponent({
         switch (s) {
           case "top":
             width.value = "100%";
-            height.value = 0;
+            height.value = "70%";
             break;
           case "right":
             width.value = "70%";

@@ -65,6 +65,7 @@ export default defineComponent({
         <Popup
           v-model={visible.value}
           position="bottom"
+          maskClosable={false}
           styles={{ background: "transparent" }}
         >
           <div class={classes.value}>

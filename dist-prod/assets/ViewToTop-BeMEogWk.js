@@ -1,1 +1,0 @@
-import{d as e,r as n,a as s,b as a,c,o as r,e as p}from"./index-BWfEv6cb.js";const d=e({name:"ViewToTop",components:{},setup(){return{bottom:n(100)}}}),m={class:"ToTop"};function _(o,i,T,f,l,u){const t=a("ToTop");return r(),c("div",m,[p(t,{bottom:o.bottom,right:50,duration:500},null,8,["bottom"])])}const $=s(d,[["render",_],["__scopeId","data-v-8d9e10d6"]]);export{$ as default};
