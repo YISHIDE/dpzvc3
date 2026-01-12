@@ -5,16 +5,15 @@ export default {
   props: {
     list: {
       type: Array,
-      default () {
-        return []
-      }
+      default() {
+        return [];
+      },
     },
     initArr: {
       type: Array,
-      default () {
-        return []
-      }
-    }
-
-  }
-}
+      default() {
+        return [];
+      },
+    },
+  },
+};

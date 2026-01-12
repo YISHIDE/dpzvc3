@@ -6,12 +6,11 @@ export default {
     addressValue: String,
     styles: {
       type: Object,
-      default: () => {
-      }
+      default: () => {},
     },
     valueSeparator: {
       type: String,
-      default: '/'
-    }
-  }
-}
+      default: "/",
+    },
+  },
+};

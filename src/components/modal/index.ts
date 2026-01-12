@@ -1,49 +1,49 @@
 /**
  * index.js - Vue 3 版本
  */
-import { createModalInstance } from './confirm'
-import type { MergeOptions, DefaultProps, ModalInstance } from './types'
-let modalInstance:DefaultProps
+import { createModalInstance } from "./confirm";
+import type { MergeOptions, DefaultProps, ModalInstance } from "./types";
+let modalInstance: DefaultProps;
 
-function getModalInstance () {
+function getModalInstance() {
   if (!modalInstance) {
     modalInstance = createModalInstance({
       showHead: true,
       // closable: true,
       maskClosable: false,
-      footerHide: false
-    })
+      footerHide: false,
+    });
   }
-  return modalInstance
+  return modalInstance;
 }
 
-function confirm (options: MergeOptions) {
-  const instance = getModalInstance()
+function confirm(options: MergeOptions) {
+  const instance = getModalInstance();
 
   options.onRemove = () => {
-    modalInstance = null
-  }
+    modalInstance = null;
+  };
 
-  instance!.show(options)
-  return instance
+  instance!.show(options);
+  return instance;
 }
 const Modal: ModalInstance = {
   info: (props: MergeOptions) => {
-    props.showCancle = true
-    props.showHead = false
-    return confirm(props)
+    props.showCancle = true;
+    props.showHead = false;
+    return confirm(props);
   },
   confirm: (props: MergeOptions) => {
-    props.showCancle = false
-    props.showHead = false
-    return confirm(props)
+    props.showCancle = false;
+    props.showHead = false;
+    return confirm(props);
   },
   remove: () => {
-    if (!modalInstance) return false
-    const instance = getModalInstance()
-    instance!.remove()
-  }
-}
+    if (!modalInstance) return false;
+    const instance = getModalInstance();
+    instance!.remove();
+  },
+};
 // info 模态框，显示取消按钮
 // Modal.info = function (props: MergeOptions) {
 //   props.showCancle = true
@@ -65,4 +65,4 @@ const Modal: ModalInstance = {
 //   instance!.remove()
 // }
 
-export default Modal
+export default Modal;

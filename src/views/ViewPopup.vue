@@ -36,22 +36,22 @@ export default defineComponent({
         if (!sideList.includes(s)) s = "top";
 
         switch (s) {
-        case "top":
-          width.value = "100%";
-          height.value = 0;
-          break;
-        case "right":
-          width.value = "70%";
-          height.value = "100%";
-          break;
-        case "bottom":
-          width.value = "100%";
-          height.value = "70%";
-          break;
-        case "left":
-          width.value = "70%";
-          height.value = "100%";
-          break;
+          case "top":
+            width.value = "100%";
+            height.value = 0;
+            break;
+          case "right":
+            width.value = "70%";
+            height.value = "100%";
+            break;
+          case "bottom":
+            width.value = "100%";
+            height.value = "70%";
+            break;
+          case "left":
+            width.value = "70%";
+            height.value = "100%";
+            break;
         }
 
         side.value = s;

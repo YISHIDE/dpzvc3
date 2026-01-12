@@ -61,7 +61,7 @@ export default defineComponent({
     ]);
     const contentStyle = computed<CSSProperties>(() => {
       const heightValue =
-        props.height != null
+        props.height !== null
           ? props.height
           : props.position === "top"
             ? "auto"

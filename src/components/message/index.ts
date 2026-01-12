@@ -2,48 +2,48 @@
  * message/index.js - Vue 3 版本
  */
 
-import { createMessageInstance } from './confirm'
-import { randomStr } from '../../utils/util'
-import type { MergeMessageOptions, MessageInstance, MgInstance } from './types'
-const defaultDuration = 1
-const top = '0'
+import { createMessageInstance } from "./confirm";
+import { randomStr } from "../../utils/util";
+import type { MergeMessageOptions, MessageInstance, MgInstance } from "./types";
+const defaultDuration = 1;
+const top = "0";
 
-let MGInstance:MgInstance = null
-let seed = 1
-const time = Date.now()
+let MGInstance: MgInstance = null;
+let seed = 1;
+const time = Date.now();
 
-function getName () {
-  return `dpzvc3-message-group_${time}_${seed++}_${randomStr()}`
+function getName() {
+  return `dpzvc3-message-group_${time}_${seed++}_${randomStr()}`;
 }
 
-function getNewInstance () {
+function getNewInstance() {
   if (!MGInstance) {
     MGInstance = createMessageInstance({
       styles: {
         top,
-        right: '0'
-      }
-    })
+        right: "0",
+      },
+    });
   }
 
-  return MGInstance
+  return MGInstance;
 }
 
-function message (props:MergeMessageOptions) {
+function message(props: MergeMessageOptions) {
   const {
-    text = '',
+    text = "",
     name = getName(),
-    duration = props.duration === 0 ? 0 : (props.duration || defaultDuration),
+    duration = props.duration === 0 ? 0 : props.duration || defaultDuration,
     showLeft = false,
     rightHide = true,
     loading = false,
     onClose = () => {},
     styles = {},
-    type = 'normal',
-    position = 'center'
-  } = props
+    type = "normal",
+    position = "center",
+  } = props;
 
-  const instance = getNewInstance()
+  const instance = getNewInstance();
   // console.log(instance.add, 'instance')
   instance.add({
     name,
@@ -55,43 +55,42 @@ function message (props:MergeMessageOptions) {
     onClose,
     styles,
     type,
-    position
-  })
+    position,
+  });
 
   // 返回手动关闭函数（保持旧行为）
-  return function remove () {
-    instance.remove(name)
-  }
+  return function remove() {
+    instance.remove(name);
+  };
 }
 
 const Message: MessageInstance = {
-
-  show (options:MergeMessageOptions) {
+  show(options: MergeMessageOptions) {
     // alert(1)
-    return message(options)
+    return message(options);
   },
 
-  success (options:MergeMessageOptions) {
+  success(options: MergeMessageOptions) {
     return message({
       ...options,
-      type: 'success'
-    })
+      type: "success",
+    });
   },
 
-  error (options:MergeMessageOptions) {
+  error(options: MergeMessageOptions) {
     return message({
       ...options,
-      type: 'error'
-    })
+      type: "error",
+    });
   },
 
-  loading (options:MergeMessageOptions) {
+  loading(options: MergeMessageOptions) {
     return message({
       ...options,
-      type: 'loading',
+      type: "loading",
       duration: 0,
-      showLeft: true
-    })
+      showLeft: true,
+    });
   },
 
   // config (options:MergeMessageOptions) {
@@ -104,10 +103,10 @@ const Message: MessageInstance = {
   //   }
   // },
 
-  destroy () {
-    if (!MGInstance) return
-    MGInstance.destroy()
-    MGInstance = null
-  }
-}
-export default Message
+  destroy() {
+    if (!MGInstance) return;
+    MGInstance.destroy();
+    MGInstance = null;
+  },
+};
+export default Message;

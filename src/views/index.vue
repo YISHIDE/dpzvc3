@@ -27,7 +27,7 @@
     <h1>111111111111</h1>
     <!--<tab></tab>-->
     <p>{{ address }}</p>
-    <v-button @click.native="showMessage"> asdasssssdaaaaaasdadd </v-button>
+    <v-button @click="showMessage"> asdasssssdaaaaaasdadd </v-button>
     <CheckBox-group v-model="data" :vertical="visible">
       <CheckBox label="aaa" :disable="visible" />
       <CheckBox label="bbb" />
@@ -112,7 +112,7 @@
       width="40%"
       type="warning"
       :loading="loading"
-      @click.native="load"
+      @click="load"
     />
     <v-button
       :inline="true"
@@ -120,7 +120,7 @@
       width="40%"
       type="success"
       :loading="loading"
-      @click.native="load"
+      @click="load"
     />
     <Rater v-model="rate" disabled />
     {{ rate }}

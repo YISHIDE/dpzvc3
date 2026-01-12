@@ -5,223 +5,232 @@ import {
   computed,
   onMounted,
   onBeforeUnmount,
-  PropType
-} from 'vue'
-import type { SlideBarProps, SlideBarItem } from './types'
+  PropType,
+} from "vue";
+import type { SlideBarProps, SlideBarItem } from "./types";
 
-export type { SlideBarProps }
+export type { SlideBarProps };
 
-const prefixCls = 'dpzvc3-slideBar'
+const prefixCls = "dpzvc3-slideBar";
 
 export default defineComponent({
-  name: 'SlideBar',
+  name: "SlideBar",
 
   props: {
     scrollHeight: {
       type: [String, Number] as PropType<string | number>,
-      default: '30px'
+      default: "30px",
     },
     height: {
       type: [String, Number] as PropType<string | number>,
-      default: '100%'
+      default: "100%",
     },
     styles: {
       type: Object as PropType<Record<string, any>>,
-      default: () => ({})
+      default: () => ({}),
     },
     childWidth: {
       type: Number,
-      default: 70
+      default: 70,
     },
     scrollColor: {
       type: String,
-      default: '#036eb8'
+      default: "#036eb8",
     },
     textAlign: {
       type: String,
-      default: 'center'
+      default: "center",
     },
     flex: {
       type: Boolean,
-      default: true
+      default: true,
     },
     type: {
-      type: String as PropType<SlideBarProps['type']>,
-      default: 'normal'
+      type: String as PropType<SlideBarProps["type"]>,
+      default: "normal",
     },
     list: {
       type: Array as PropType<SlideBarItem[]>,
-      default: () => [{ name: '1' }, { name: '2' }, { name: '3' }, { name: '4' }]
+      default: () => [
+        { name: "1" },
+        { name: "2" },
+        { name: "3" },
+        { name: "4" },
+      ],
     },
     index: {
       type: Number,
-      default: 0
+      default: 0,
     },
     distanceIndex: {
       type: Number,
-      default: 1.5
+      default: 1.5,
     },
     canDrag: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
 
-  emits: ['on-change'],
+  emits: ["on-change"],
 
-  setup (props: SlideBarProps, { emit, slots }) {
-    const headerRef = ref<HTMLDivElement | null>(null)
-    const contentRef = ref<HTMLDivElement | null>(null)
+  setup(props: SlideBarProps, { emit, slots }) {
+    const headerRef = ref<HTMLDivElement | null>(null);
+    const contentRef = ref<HTMLDivElement | null>(null);
 
-    const startIndex = ref(props.index ?? 0)
-    const clientWidth = ref(0)
-    const dragging = ref(false)
-    const distance = ref(0)
-    const startTranslateX = ref(0)
-    const startX = ref(0)
+    const startIndex = ref(props.index ?? 0);
+    const clientWidth = ref(0);
+    const dragging = ref(false);
+    const distance = ref(0);
+    const startTranslateX = ref(0);
+    const startX = ref(0);
 
-    const items = ref(props.list ?? [])
-    const isFlex = ref(!!props.flex)
-    const fixed = ref(false)
+    const items = ref(props.list ?? []);
+    const isFlex = ref(!!props.flex);
+    const fixed = ref(false);
 
-    const translateX = ref(0)
+    const translateX = ref(0);
 
     const getItemWidth = computed(() =>
-      isFlex.value
-        ? clientWidth.value / items.value.length
-        : props.childWidth!
-    )
+      isFlex.value ? clientWidth.value / items.value.length : props.childWidth!,
+    );
 
-    const classes = computed(() => [prefixCls])
+    const classes = computed(() => [prefixCls]);
 
     const headerClasses = computed(() => [
       `${prefixCls}-header`,
-      { fixed: fixed.value }
-    ])
+      { fixed: fixed.value },
+    ]);
 
     const wrapperClasses = computed(() => [
       `${prefixCls}-wrapper`,
       isFlex.value ? `${prefixCls}-flex` : `${prefixCls}-slide`,
       {
-        normal: props.type === 'normal' && isFlex.value,
-        vertical: props.type === 'vertical' && isFlex.value
-      }
-    ])
+        normal: props.type === "normal" && isFlex.value,
+        vertical: props.type === "vertical" && isFlex.value,
+      },
+    ]);
 
     const contentClasses = computed(() => [
       `${prefixCls}-content`,
-      { [`${prefixCls}-dragging`]: dragging.value }
-    ])
+      { [`${prefixCls}-dragging`]: dragging.value },
+    ]);
 
-    const absoluteClass = computed(() => [`${prefixCls}-wrapper-absolute`])
-    const containerClass = computed(() => [`${prefixCls}-container`])
+    const absoluteClass = computed(() => [`${prefixCls}-wrapper-absolute`]);
+    const containerClass = computed(() => [`${prefixCls}-container`]);
 
-    const getStyles = computed(() => ({ ...props.styles }))
+    const getStyles = computed(() => ({ ...props.styles }));
 
     const getContainerStyle = computed(() => ({
-      width: clientWidth.value * items.value.length + 'px',
-      transform: `translate3d(${translateX.value}px,0,0)`
-    }))
+      width: clientWidth.value * items.value.length + "px",
+      transform: `translate3d(${translateX.value}px,0,0)`,
+    }));
 
     const getScrollStyle = computed(() => ({
-      width: getItemWidth.value + 'px',
+      width: getItemWidth.value + "px",
       transform: `translate3d(${startIndex.value * getItemWidth.value}px,0,0)`,
-      backgroundColor: props.scrollColor
-    }))
+      backgroundColor: props.scrollColor,
+    }));
 
-    const maxIndex = computed(() => items.value.length - 1)
+    const maxIndex = computed(() => items.value.length - 1);
 
     /* tab 切换 */
     const changeBar = (index: number) => {
-      if (startIndex.value === index) return
-      startIndex.value = index
-      translateX.value = -index * clientWidth.value
-      emit('on-change', index)
-    }
+      if (startIndex.value === index) return;
+      startIndex.value = index;
+      translateX.value = -index * clientWidth.value;
+      emit("on-change", index);
+    };
 
     /* 拖拽逻辑 */
     const onTouchStart = (e: TouchEvent) => {
-      startTranslateX.value = translateX.value
-      distance.value = 0
-      startX.value = e.touches[0].clientX
-      dragging.value = true
-    }
+      startTranslateX.value = translateX.value;
+      distance.value = 0;
+      startX.value = e.touches[0].clientX;
+      dragging.value = true;
+    };
 
     const onTouchMove = (e: TouchEvent) => {
-      const currentX = e.touches[0].clientX
+      const currentX = e.touches[0].clientX;
       distance.value = props.distanceIndex
         ? (currentX - startX.value) / props.distanceIndex
-        : currentX - startX.value
-      translateX.value = startTranslateX.value + distance.value
-    }
+        : currentX - startX.value;
+      translateX.value = startTranslateX.value + distance.value;
+    };
 
     const onTouchEnd = () => {
-      if (distance.value < 0 && Math.abs(distance.value) > clientWidth.value / 2) {
-        slideLeft()
-      } else if (distance.value > 0 && Math.abs(distance.value) > clientWidth.value / 2) {
-        slideRight()
+      if (
+        distance.value < 0 &&
+        Math.abs(distance.value) > clientWidth.value / 2
+      ) {
+        slideLeft();
+      } else if (
+        distance.value > 0 &&
+        Math.abs(distance.value) > clientWidth.value / 2
+      ) {
+        slideRight();
       } else {
-        translateX.value = startTranslateX.value
+        translateX.value = startTranslateX.value;
       }
-      dragging.value = false
-    }
+      dragging.value = false;
+    };
 
     const slideLeft = () => {
       if (startIndex.value >= maxIndex.value) {
-        translateX.value = startTranslateX.value
+        translateX.value = startTranslateX.value;
       } else {
-        startIndex.value++
-        translateX.value = startTranslateX.value - clientWidth.value
+        startIndex.value++;
+        translateX.value = startTranslateX.value - clientWidth.value;
       }
-      emit('on-change', startIndex.value)
-    }
+      emit("on-change", startIndex.value);
+    };
 
     const slideRight = () => {
       if (startIndex.value <= 0) {
-        translateX.value = startTranslateX.value
+        translateX.value = startTranslateX.value;
       } else {
-        startIndex.value--
-        translateX.value = startTranslateX.value + clientWidth.value
+        startIndex.value--;
+        translateX.value = startTranslateX.value + clientWidth.value;
       }
-      emit('on-change', startIndex.value)
-    }
+      emit("on-change", startIndex.value);
+    };
 
     /* 固定 header */
     const onScroll = () => {
-      if (!headerRef.value) return
-      fixed.value = headerRef.value.getBoundingClientRect().top <= 0
-    }
+      if (!headerRef.value) return;
+      fixed.value = headerRef.value.getBoundingClientRect().top <= 0;
+    };
 
     const onResize = () => {
-      if (!headerRef.value) return
-      clientWidth.value = headerRef.value.clientWidth
-    }
+      if (!headerRef.value) return;
+      clientWidth.value = headerRef.value.clientWidth;
+    };
 
     onMounted(() => {
-      if (!headerRef.value) return
-      clientWidth.value = headerRef.value.clientWidth
-      translateX.value = -startIndex.value * clientWidth.value
+      if (!headerRef.value) return;
+      clientWidth.value = headerRef.value.clientWidth;
+      translateX.value = -startIndex.value * clientWidth.value;
 
-      window.addEventListener('resize', onResize)
-      window.addEventListener('scroll', onScroll)
+      window.addEventListener("resize", onResize);
+      window.addEventListener("scroll", onScroll);
 
       if (props.canDrag && contentRef.value) {
-        contentRef.value.addEventListener('touchstart', onTouchStart)
-        contentRef.value.addEventListener('touchmove', onTouchMove)
-        contentRef.value.addEventListener('touchend', onTouchEnd)
+        contentRef.value.addEventListener("touchstart", onTouchStart);
+        contentRef.value.addEventListener("touchmove", onTouchMove);
+        contentRef.value.addEventListener("touchend", onTouchEnd);
       }
-    })
+    });
 
     onBeforeUnmount(() => {
-      window.removeEventListener('resize', onResize)
-      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onScroll);
 
       if (props.canDrag && contentRef.value) {
-        contentRef.value.removeEventListener('touchstart', onTouchStart)
-        contentRef.value.removeEventListener('touchmove', onTouchMove)
-        contentRef.value.removeEventListener('touchend', onTouchEnd)
+        contentRef.value.removeEventListener("touchstart", onTouchStart);
+        contentRef.value.removeEventListener("touchmove", onTouchMove);
+        contentRef.value.removeEventListener("touchend", onTouchEnd);
       }
-    })
+    });
 
     return () => (
       <div class={classes.value} style={getStyles.value}>
@@ -231,29 +240,31 @@ export default defineComponent({
             class={wrapperClasses.value}
             style={{
               width: isFlex.value
-                ? 'auto'
-                : items.value.length * getItemWidth.value + 'px'
+                ? "auto"
+                : items.value.length * getItemWidth.value + "px",
             }}
           >
             {items.value.map((item, key) => (
               <div
                 key={key}
                 class={[
-                  'dpzvc3-slideBar-child',
-                  startIndex.value === key && 'active',
-                  !isFlex.value && 'normalChild'
+                  "dpzvc3-slideBar-child",
+                  startIndex.value === key && "active",
+                  !isFlex.value && "normalChild",
                 ]}
                 style={{
                   textAlign: props.textAlign,
-                  width: getItemWidth.value + 'px',
+                  width: getItemWidth.value + "px",
                   height: props.scrollHeight,
-                  lineHeight: String(props.scrollHeight)
+                  lineHeight: String(props.scrollHeight),
                 }}
                 onClick={() => changeBar(key)}
               >
-                {slots[`slide-bar-header-${key}`]
-                  ? slots[`slide-bar-header-${key}`]!()
-                  : <a class="content ellipse-fir">{item.name}</a>}
+                {slots[`slide-bar-header-${key}`] ? (
+                  slots[`slide-bar-header-${key}`]!()
+                ) : (
+                  <a class="content ellipse-fir">{item.name}</a>
+                )}
               </div>
             ))}
           </div>
@@ -272,10 +283,10 @@ export default defineComponent({
               <div
                 key={index}
                 class={[
-                  'dpzvc3-slideBar-content-item',
-                  startIndex.value === index && 'active'
+                  "dpzvc3-slideBar-content-item",
+                  startIndex.value === index && "active",
                 ]}
-                style={{ width: clientWidth.value + 'px' }}
+                style={{ width: clientWidth.value + "px" }}
               >
                 {slots[`slot-item-${index}`]?.()}
               </div>
@@ -283,6 +294,6 @@ export default defineComponent({
           </div>
         </div>
       </div>
-    )
-  }
-})
+    );
+  },
+});

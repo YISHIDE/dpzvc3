@@ -3,19 +3,22 @@ import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import path from "path";
 import eslint from "vite-plugin-eslint";
-// eslint({
-//         cache: false, // 关闭缓存，避免“改了不报错”
-//         include: ["src/**/*.ts", "src/**/*.vue", "src/**/*.tsx"],
-//         exclude: ["node_modules", "dist", "dist-ssr", "dist-prod"],
-//         failOnError: true,
-//         failOnWarning: false,
-//       }),
 export default defineConfig(({ command, mode }) => {
   const isProd = mode === "production";
 
   return {
     base: isProd ? "/dpzvc3" : "",
-    plugins: [vue(), vueJsx()],
+    plugins: [
+      vue(),
+      vueJsx(),
+      eslint({
+        cache: false, // 关闭缓存，避免“改了不报错”
+        include: ["src/**/*.ts", "src/**/*.vue", "src/**/*.tsx"],
+        exclude: ["node_modules", "dist", "dist-ssr", "dist-prod"],
+        failOnError: true,
+        failOnWarning: false,
+      }),
+    ],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),

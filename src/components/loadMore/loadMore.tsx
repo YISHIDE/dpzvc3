@@ -83,33 +83,33 @@ export default defineComponent({
     /** watch */
     watch<LoadmoreUpStatus>(upStatus, (val) => {
       switch (val) {
-      case "pull":
-        upText.value = props.upPullText;
-        break;
-      case "drop":
-        upText.value = props.upDropText;
-        break;
-      case "loading":
-        upText.value = props.upLoadingText;
-        break;
+        case "pull":
+          upText.value = props.upPullText;
+          break;
+        case "drop":
+          upText.value = props.upDropText;
+          break;
+        case "loading":
+          upText.value = props.upLoadingText;
+          break;
       }
       emit("on-change-up-status", val);
     });
 
     watch<LoadmoreDownStatus>(downStatus, (val) => {
       switch (val) {
-      case "end":
-        downText.value = props.downEndText;
-        break;
-      case "drop":
-        downText.value = props.downDropText;
-        break;
-      case "loading":
-        downText.value = props.downLoadingText;
-        break;
-      default:
-        downText.value = "";
-        break;
+        case "end":
+          downText.value = props.downEndText;
+          break;
+        case "drop":
+          downText.value = props.downDropText;
+          break;
+        case "loading":
+          downText.value = props.downLoadingText;
+          break;
+        default:
+          downText.value = "";
+          break;
       }
       emit("on-change-down-status", val);
     });

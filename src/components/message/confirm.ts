@@ -1,46 +1,46 @@
-import { createVNode, render } from 'vue'
-import type { ComponentPublicInstance } from 'vue'
-import MessageGroup from './messageGroup'
+import { createVNode, render } from "vue";
+import type { ComponentPublicInstance } from "vue";
+import MessageGroup from "./messageGroup";
 
 // MessageGroup.newInstance = function (props = {}) {
-function createMessageInstance (props = {}) {
-  const container = document.createElement('div')
-  document.body.appendChild(container)
+function createMessageInstance(props = {}) {
+  const container = document.createElement("div");
+  document.body.appendChild(container);
 
-  const vnode = createVNode(MessageGroup, { ...props })
-  render(vnode, container)
+  const vnode = createVNode(MessageGroup, { ...props });
+  render(vnode, container);
 
   // vnode.component.proxy 会有 expose 出来的方法
-  const instance = vnode.component?.proxy as ComponentPublicInstance
-  const { add, remove, closeAll } = vnode.component?.exposed || {}
+  const instance = vnode.component?.proxy as ComponentPublicInstance;
+  const { add, remove, closeAll } = vnode.component?.exposed || {};
   //   console.log(vnode.component.exposed
   // , 'instance---messageGroup')
 
   return {
-    add (options: any) {
+    add(options: any) {
       // instance?.add?.(options)
-      add?.(options)
+      add?.(options);
     },
-    remove (name: string | number) {
+    remove(name: string | number) {
       // instance?.remove?.(name)
-      remove?.(name)
+      remove?.(name);
     },
-    closeAll () {
+    closeAll() {
       // instance?.closeAll?.()
-      closeAll?.()
+      closeAll?.();
     },
     component: instance,
-    destroy () {
-      closeAll?.()
+    destroy() {
+      closeAll?.();
       setTimeout(() => {
-        render(null, container)
-        container.parentNode?.removeChild(container)
-      }, 500)
-    }
-  }
+        render(null, container);
+        container.parentNode?.removeChild(container);
+      }, 500);
+    },
+  };
 }
 
-export { createMessageInstance }
+export { createMessageInstance };
 // /**
 //  * confirm.js - Vue 3 版本
 //  * 负责创建 MessageGroup 实例

@@ -99,10 +99,10 @@ export default defineComponent({
           {slots.left
             ? slots.left()
             : loadingValue.value && (
-              <span class="loading">
-                <Spinner type="blade" size={15} color="#ffffff" />
-              </span>
-            )}
+                <span class="loading">
+                  <Spinner type="blade" size={15} color="#ffffff" />
+                </span>
+              )}
 
           {/* default slot */}
           {slots.default ? slots.default() : <span>确定</span>}

@@ -37,7 +37,7 @@ export default defineComponent({
       (val) => {
         if (props.dot) {
           visible.value = true;
-        } else if (val == null || isNaN(Number(val))) {
+        } else if (val === null || isNaN(Number(val))) {
           visible.value = false;
         } else {
           visible.value = true;

@@ -13,18 +13,18 @@
 // router.isReady().then(() => {
 //   app.mount('#app')
 // })
-import { createApp } from './app'
+import { createApp } from "./app";
 
-const { app, router } = createApp(false)
+const { app, router } = createApp(false);
 
-console.log('🟢 app created')
+console.log("🟢 app created");
 
 router.beforeEach((to, from, next) => {
-  console.log('➡️ route change', from.fullPath, '=>', to.fullPath)
-  next()
-})
+  console.log("➡️ route change", from.fullPath, "=>", to.fullPath);
+  next();
+});
 
 router.isReady().then(() => {
-  console.log('🟢 router ready, mount app')
-  app.mount('#app')
-})
+  console.log("🟢 router ready, mount app");
+  app.mount("#app");
+});

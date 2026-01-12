@@ -1,28 +1,34 @@
 // spinnerProps.js
-import { computed } from 'vue'
+import { computed } from "vue";
 
 export default {
   props: {
     size: {
-      type: [Number, String]
+      type: [Number, String],
     },
     color: {
-      type: String
-    }
+      type: String,
+    },
   },
-  setup (props) {
+  setup(props) {
     const spinnerStyle = computed(() => {
       if (props.size) {
         return {
-          height: typeof Number(props.size) === 'number' ? `${props.size}px` : props.size,
-          width: typeof Number(props.size) === 'number' ? `${props.size}px` : props.size
-        }
+          height:
+            typeof Number(props.size) === "number"
+              ? `${props.size}px`
+              : props.size,
+          width:
+            typeof Number(props.size) === "number"
+              ? `${props.size}px`
+              : props.size,
+        };
       }
-      return {}
-    })
+      return {};
+    });
 
     return {
-      spinnerStyle
-    }
-  }
-}
+      spinnerStyle,
+    };
+  },
+};

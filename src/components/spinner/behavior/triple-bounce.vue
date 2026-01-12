@@ -1,10 +1,7 @@
 <template>
-  <div
-    class="dpzvc3-spinner-triple-bounce"
-    :style="spinnerStyle"
-  >
+  <div class="dpzvc3-spinner-triple-bounce" :style="spinnerStyle">
     <div
-      v-for="(i,key) in 3"
+      v-for="(i, key) in 3"
       :key="key"
       class="bounce"
       :class="'bounce-' + i"

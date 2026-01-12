@@ -1,81 +1,91 @@
-import { defineComponent, computed, onMounted, onBeforeUnmount, inject, PropType } from 'vue'
-import Spinner from '../spinner'
-import type { MessageProps } from './types'
+import {
+  defineComponent,
+  computed,
+  onMounted,
+  onBeforeUnmount,
+  inject,
+  PropType,
+} from "vue";
+import Spinner from "../spinner";
+import type { MessageProps } from "./types";
 
-const prefixCls = 'dpzvc3-message'
+const prefixCls = "dpzvc3-message";
 
 export default defineComponent({
-  name: 'DpzMessage',
+  name: "DpzMessage",
   props: {
     name: {
       type: [String, Number] as PropType<string | number>,
-      required: true
+      required: true,
     },
     text: {
       type: [String, Number] as PropType<string | number>,
-      default: ''
+      default: "",
     },
     duration: {
       type: Number,
-      default: 1.5
+      default: 1.5,
     },
     showLeft: {
       type: Boolean,
-      default: false
+      default: false,
     },
     rightHide: {
       type: Boolean,
-      default: true
+      default: true,
     },
     type: {
-      type: String as PropType<MessageProps['type']>,
-      default: 'normal'
+      type: String as PropType<MessageProps["type"]>,
+      default: "normal",
     },
     onClose: {
       type: Function as PropType<() => void>,
-      default: () => {}
+      default: () => {},
     },
     position: {
-      type: String as PropType<MessageProps['position']>,
-      default: 'top'
-    }
+      type: String as PropType<MessageProps["position"]>,
+      default: "top",
+    },
   },
-  setup (props) {
+  setup(props) {
     /** 🔑 从 MessageGroup 注入 remove 方法 */
-    const remove = inject<(name: string | number) => void>('removeMessage')
+    const remove = inject<(name: string | number) => void>("removeMessage");
 
-    let timer: number | null = null
+    let timer: number | null = null;
 
-    const classes = computed(() => [prefixCls, `${prefixCls}-position-${props.position}`])
-    const wrapperClasses = computed(() => [`${prefixCls}-text`])
-    const leftClasses = computed(() => [`${prefixCls}-left`])
-    const rightClasses = computed(() => [`${prefixCls}-right`])
+    const classes = computed(() => [
+      prefixCls,
+      `${prefixCls}-position-${props.position}`,
+    ]);
+    const wrapperClasses = computed(() => [`${prefixCls}-text`]);
+    const leftClasses = computed(() => [`${prefixCls}-left`]);
+    const rightClasses = computed(() => [`${prefixCls}-right`]);
 
     const closeTimer = () => {
       if (timer) {
-        clearTimeout(timer)
-        timer = null
+        clearTimeout(timer);
+        timer = null;
       }
-    }
+    };
 
     const close = () => {
-      closeTimer()
-      remove?.(props.name)
-      props.onClose?.()
-    }
+      closeTimer();
+      remove?.(props.name);
+      props.onClose?.();
+    };
 
     onMounted(() => {
-      closeTimer()
+      closeTimer();
       if (props.duration !== 0) {
         timer = window.setTimeout(() => {
-          close()
-        }, props.duration * 1000)
+          close();
+        }, props.duration * 1000);
       }
-    })
+    });
 
     onBeforeUnmount(() => {
-      closeTimer()
-    })
+      closeTimer();
+    });
 
     return () => (
       <div class={classes.value}>
@@ -95,6 +105,6 @@ export default defineComponent({
           </div>
         )}
       </div>
-    )
-  }
-})
+    );
+  },
+});

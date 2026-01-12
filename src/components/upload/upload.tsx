@@ -142,24 +142,24 @@ export default defineComponent({
       const height = img.height;
 
       switch (orientation) {
-      case 6:
-        canvas.width = height;
-        canvas.height = width;
-        ctx.rotate(Math.PI / 2);
-        ctx.drawImage(img, 0, -height);
-        break;
-      case 8:
-        canvas.width = height;
-        canvas.height = width;
-        ctx.rotate(-Math.PI / 2);
-        ctx.drawImage(img, -width, 0);
-        break;
-      case 3:
-        canvas.width = width;
-        canvas.height = height;
-        ctx.rotate(Math.PI);
-        ctx.drawImage(img, -width, -height);
-        break;
+        case 6:
+          canvas.width = height;
+          canvas.height = width;
+          ctx.rotate(Math.PI / 2);
+          ctx.drawImage(img, 0, -height);
+          break;
+        case 8:
+          canvas.width = height;
+          canvas.height = width;
+          ctx.rotate(-Math.PI / 2);
+          ctx.drawImage(img, -width, 0);
+          break;
+        case 3:
+          canvas.width = width;
+          canvas.height = height;
+          ctx.rotate(Math.PI);
+          ctx.drawImage(img, -width, -height);
+          break;
       }
     };
 

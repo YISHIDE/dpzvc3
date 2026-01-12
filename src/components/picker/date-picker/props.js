@@ -6,19 +6,19 @@ export default {
     dateValue: String,
     year: {
       type: [Boolean, Array],
-      default: true
+      default: true,
     },
     month: {
       type: [Boolean, Array],
-      default: true
+      default: true,
     },
     day: {
       type: [Boolean, Array],
-      default: true
+      default: true,
     },
     valueSeparator: {
       type: String,
-      default: '/'
-    }
-  }
-}
+      default: "/",
+    },
+  },
+};

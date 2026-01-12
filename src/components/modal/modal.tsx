@@ -5,120 +5,119 @@ import {
   computed,
   watch,
   Transition,
-  PropType
-} from 'vue'
-import VButton from '../button'
-import type { ModalProps } from './types'
+  PropType,
+} from "vue";
+import VButton from "../button";
+import type { ModalProps } from "./types";
 
-export type { ModalProps }
+export type { ModalProps };
 
-const prefixCls = 'dpzvc3-modal'
+const prefixCls = "dpzvc3-modal";
 
 export default defineComponent({
-  name: 'Dpzvc3Modal',
+  name: "Dpzvc3Modal",
 
   props: {
     modelValue: {
       type: Boolean,
-      default: false
+      default: false,
     },
     maskClosable: {
       type: Boolean,
-      default: true
+      default: true,
     },
     title: String,
     width: {
       type: String,
-      default: '70%'
+      default: "70%",
     },
     okText: {
       type: String,
-      default: '确定'
+      default: "确定",
     },
     cancleText: {
       type: String,
-      default: '取消'
+      default: "取消",
     },
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     styles: {
       type: Object as PropType<Record<string, any>>,
-      default: () => ({})
+      default: () => ({}),
     },
     showHead: {
       type: Boolean,
-      default: true
+      default: true,
     },
     footerHide: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    body: String
+    body: String,
   },
 
-  emits: [
-    'update:modelValue',
-    'on-ok',
-    'on-cancle'
-  ],
+  emits: ["update:modelValue", "on-ok", "on-cancle"],
 
-  setup (props: ModalProps, { emit, slots }) {
-    const visible = ref(!!props.modelValue)
-    const isHead = ref(!!props.showHead)
-    const buttonLoading = ref(false)
+  setup(props: ModalProps, { emit, slots }) {
+    const visible = ref(!!props.modelValue);
+    const isHead = ref(!!props.showHead);
+    const buttonLoading = ref(false);
 
     const getWrapperStyle = computed(() => ({
       width: props.width,
-      ...(props.styles || {})
-    }))
+      ...(props.styles || {}),
+    }));
 
     /* watch props */
     watch(
       () => props.modelValue,
-      val => (visible.value = !!val)
-    )
+      (val) => (visible.value = !!val),
+    );
 
     watch(
       () => props.showHead,
-      val => (isHead.value = !!val)
-    )
+      (val) => (isHead.value = !!val),
+    );
 
     /* methods */
     const close = () => {
-      emit('update:modelValue', false)
-      emit('on-cancle')
-    }
+      emit("update:modelValue", false);
+      emit("on-cancle");
+    };
 
     const mask = () => {
       if (props.maskClosable && !buttonLoading.value) {
-        close()
+        close();
       }
-    }
+    };
 
     const ok = () => {
       if (props.loading) {
-        buttonLoading.value = true
+        buttonLoading.value = true;
       } else {
-        emit('update:modelValue', false)
+        emit("update:modelValue", false);
       }
-      emit('on-ok')
-    }
+      emit("on-ok");
+    };
 
     return () => (
       <>
         {/* mask */}
-        <Transition name="dpzvc3-ani-fade"
+        <Transition
+          name="dpzvc3-ani-fade"
           v-slots={{
-            default: () => visible.value && (
-              <div
-                class="dpzvc3-modal-mask"
-                onClick={mask}
-                onTouchstart={(e:any) => e.preventDefault()}
-                onTouchmove={(e:any) => e.preventDefault()}
-                onTouchend={(e:any) => e.preventDefault()}
-              />)
+            default: () =>
+              visible.value && (
+                <div
+                  class="dpzvc3-modal-mask"
+                  onClick={mask}
+                  onTouchstart={(e: any) => e.preventDefault()}
+                  onTouchmove={(e: any) => e.preventDefault()}
+                  onTouchend={(e: any) => e.preventDefault()}
+                />
+              ),
           }}
         />
         {/* </Transition> */}
@@ -137,41 +136,36 @@ export default defineComponent({
         /> */}
 
         {/* modal */}
-        <Transition name="dpzvc3-ani-scale"
+        <Transition
+          name="dpzvc3-ani-scale"
           v-slots={{
-            default: () => visible.value && (
-              <div
-                class={prefixCls}
-                style={getWrapperStyle.value}
-              >
-                {/* header */}
-                {isHead.value && (
-                  <div class={`${prefixCls}-header`}>
-                    {slots.header
-                      ? (
+            default: () =>
+              visible.value && (
+                <div class={prefixCls} style={getWrapperStyle.value}>
+                  {/* header */}
+                  {isHead.value && (
+                    <div class={`${prefixCls}-header`}>
+                      {slots.header ? (
                         slots.header()
-                      )
-                      : (
+                      ) : (
                         <div class={`${prefixCls}-header-inner ellipse-fir`}>
                           {props.title}
                         </div>
                       )}
+                    </div>
+                  )}
+
+                  {/* body */}
+                  <div class={`${prefixCls}-body`}>
+                    {slots.body ? slots.body() : props.body}
                   </div>
-                )}
 
-                {/* body */}
-                <div class={`${prefixCls}-body`}>
-                  {slots.body ? slots.body() : props.body}
-                </div>
-
-                {/* footer */}
-                {!props.footerHide && (
-                  <div class={`${prefixCls}-footer`}>
-                    {slots.footer
-                      ? (
+                  {/* footer */}
+                  {!props.footerHide && (
+                    <div class={`${prefixCls}-footer`}>
+                      {slots.footer ? (
                         slots.footer()
-                      )
-                      : (
+                      ) : (
                         <>
                           {props.cancleText && (
                             <VButton type="primary" onClick={close}>
@@ -187,17 +181,16 @@ export default defineComponent({
                           </VButton>
                         </>
                       )}
-                  </div>
-                )}
-              </div>
-            )
+                    </div>
+                  )}
+                </div>
+              ),
           }}
-
         />
       </>
-    )
-  }
-})
+    );
+  },
+});
 
 //  {/* <Transition name="dpzvc3-ani-scale"> */}
 //           {visible.value && (

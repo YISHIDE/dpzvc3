@@ -1,48 +1,57 @@
 /**
  * confirm.js - Vue 3 版本（修复 enter 过渡）
  */
-import { h, createVNode, render } from 'vue'
-import Modal from './modal'
-import VButton from '../button'
+import { h, createVNode, render } from "vue";
+import Modal from "./modal";
+import VButton from "../button";
 // import type { ModalInstance } from './types'
-const prefixCls = 'dpzvc3-modal'
+const prefixCls = "dpzvc3-modal";
 
-function createModalInstance (properties = {}) {
-  const container = document.createElement('div')
-  document.body.appendChild(container)
+function createModalInstance(properties = {}) {
+  const container = document.createElement("div");
+  document.body.appendChild(container);
 
-  let vnode = null
+  let vnode = null;
 
   const defaultProps = {
     // visible: false,
     modelValue: false,
-    width: '70%',
-    body: '',
-    title: '',
-    okText: '确定',
-    cancleText: '取消',
+    width: "70%",
+    body: "",
+    title: "",
+    okText: "确定",
+    cancleText: "取消",
     loading: false,
     buttonLoading: false,
     showCancle: true,
     showHead: true,
     onOk: () => {},
     onCancle: () => {},
-    onRemove: () => {}
-  }
+    onRemove: () => {},
+  };
 
-  const props = { ...defaultProps, ...properties }
+  const props = { ...defaultProps, ...properties };
 
   const updateVNode = () => {
     const footer = [
       props.showCancle
-        ? h(VButton, { type: 'primary', radius: false, onClick: cancle }, () => props.cancleText)
+        ? h(
+            VButton,
+            { type: "primary", radius: false, onClick: cancle },
+            () => props.cancleText,
+          )
         : null,
       h(
         VButton,
-        { type: 'normal', radius: false, loading: props.buttonLoading, onClick: ok },
-        () => props.okText
-      )
-    ]
+        {
+          type: "normal",
+          radius: false,
+          loading: props.buttonLoading,
+          onClick: ok,
+        },
+        () => props.okText,
+      ),
+    ];
 
     vnode = createVNode(
       Modal,
@@ -52,72 +61,72 @@ function createModalInstance (properties = {}) {
         showHead: props.showHead,
         footerHide: false,
         onOk: ok,
-        onCancle: cancle
+        onCancle: cancle,
       },
       {
         header: () =>
-          h('div', {
+          h("div", {
             class: `${prefixCls}-header-inner ellipse-fir`,
-            innerHTML: props.title
+            innerHTML: props.title,
           }),
         body: () =>
-          h('div', {
+          h("div", {
             class: `${prefixCls}-body-inner`,
-            innerHTML: props.body
+            innerHTML: props.body,
           }),
-        footer: () => footer
-      }
-    )
+        footer: () => footer,
+      },
+    );
 
-    render(vnode, container)
-  }
+    render(vnode, container);
+  };
 
   const remove = () => {
-    props.modelValue = false
-    updateVNode()
-    setTimeout(destroy, 300)
-  }
+    props.modelValue = false;
+    updateVNode();
+    setTimeout(destroy, 300);
+  };
 
   const destroy = () => {
-    render(null, container)
+    render(null, container);
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    container.parentNode && container.parentNode.removeChild(container)
-    props.onRemove()
-  }
+    container.parentNode && container.parentNode.removeChild(container);
+    props.onRemove();
+  };
 
   const ok = () => {
     if (props.loading) {
-      props.buttonLoading = true
+      props.buttonLoading = true;
     } else {
-      remove()
+      remove();
     }
-    props.onOk()
-  }
+    props.onOk();
+  };
 
   const cancle = () => {
-    remove()
-    props.onCancle()
-  }
+    remove();
+    props.onCancle();
+  };
 
   return {
-    show (newProps = {}) {
-      Object.assign(props, newProps)
+    show(newProps = {}) {
+      Object.assign(props, newProps);
 
       // 👇 关键：先 render hidden
-      props.modelValue = false
-      updateVNode()
+      props.modelValue = false;
+      updateVNode();
 
       // 👇 下一帧再显示，触发 enter
       requestAnimationFrame(() => {
-        props.modelValue = true
-        updateVNode()
-      })
+        props.modelValue = true;
+        updateVNode();
+      });
     },
     remove,
-    component: props
-  }
+    component: props,
+  };
 }
 // const ModalMethods:ModalInstance = {
 //   newInstance: createModalInstance,
 // }
-export { createModalInstance }
+export { createModalInstance };

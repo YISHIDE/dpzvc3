@@ -1,9 +1,9 @@
-import { defineComponent } from 'vue'
-import './Badge.less'
-import Badge from '@/components/badge/index'
+import { defineComponent } from "vue";
+import "./Badge.less";
+import Badge from "@/components/badge/index";
 
 export default defineComponent({
-  name: 'ViewBadge',
+  name: "ViewBadge",
   setup() {
     return () => (
       <div class="Badge">
@@ -17,7 +17,6 @@ export default defineComponent({
           <div class="item" />
         </Badge>
       </div>
-    )
-  }
-})
-
+    );
+  },
+});

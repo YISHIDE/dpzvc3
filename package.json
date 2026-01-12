@@ -7,6 +7,7 @@
   "browser": "dist/dpzvc3-ui.umd.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
+    "fix": "eslint src --fix",
     "dev": "vite",
     "type-check": "vue-tsc --noEmit",
     "type-check:watch": "vue-tsc --noEmit --watch",
