@@ -1,13 +1,29 @@
 // src/components/picker/picker.tsx
-import { defineComponent, ref, computed, watch, provide, PropType } from "vue";
+import {
+  defineComponent,
+  defineAsyncComponent,
+  ref,
+  computed,
+  watch,
+  provide,
+  PropType,
+} from "vue";
 import Popup from "../popup";
-import AreaPicker from "./area-picker/area-picker.vue";
-import DatePicker from "./date-picker/date-picker.vue";
-import NormalPicker from "./normal-picker/normal-picker.vue";
+// import AreaPicker from "./area-picker/area-picker.vue";
+// import DatePicker from "./date-picker/date-picker.vue";
+// import NormalPicker from "./normal-picker/normal-picker.vue";
 import type { PickerProps } from "./types";
 
 export type { PickerProps };
-
+const AreaPicker = defineAsyncComponent(
+  () => import("./area-picker/area-picker.vue"),
+);
+const DatePicker = defineAsyncComponent(
+  () => import("./date-picker/date-picker.vue"),
+);
+const NormalPicker = defineAsyncComponent(
+  () => import("./normal-picker/normal-picker.vue"),
+);
 const prefixCls = "dpzvc3-picker";
 const LIST = ["DatePicker", "AreaPicker", "NormalPicker"];
 

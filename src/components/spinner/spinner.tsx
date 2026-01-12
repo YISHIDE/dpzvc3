@@ -1,11 +1,11 @@
 // src/components/spinner/spinner.tsx
-import { defineComponent, computed, PropType } from "vue";
+import { defineComponent, defineAsyncComponent, computed, PropType } from "vue";
 // import type { DefineComponent } from 'vue'
-import SpinnerBlade from "./behavior/blade.vue";
-import SpinnerSnake from "./behavior/snake.vue";
-import SpinnerDoubleBounce from "./behavior/double-bounce.vue";
-import SpinnerTripleBounce from "./behavior/triple-bounce.vue";
-import SpinnerFadingCircle from "./behavior/fading-circle.vue";
+// import SpinnerBlade from "./behavior/blade.vue";
+// import SpinnerSnake from "./behavior/snake.vue";
+// import SpinnerDoubleBounce from "./behavior/double-bounce.vue";
+// import SpinnerTripleBounce from "./behavior/triple-bounce.vue";
+// import SpinnerFadingCircle from "./behavior/fading-circle.vue";
 
 import type { SpinnerProps, SpinnerType } from "./types";
 export type { SpinnerProps };
@@ -19,11 +19,17 @@ const SPINNERS = [
 ] as const;
 
 const SPINNER_MAP = {
-  blade: SpinnerBlade,
-  snake: SpinnerSnake,
-  "double-bounce": SpinnerDoubleBounce,
-  "triple-bounce": SpinnerTripleBounce,
-  "fading-circle": SpinnerFadingCircle,
+  blade: defineAsyncComponent(() => import("./behavior/blade.vue")),
+  snake: defineAsyncComponent(() => import("./behavior/snake.vue")),
+  "double-bounce": defineAsyncComponent(
+    () => import("./behavior/double-bounce.vue"),
+  ),
+  "triple-bounce": defineAsyncComponent(
+    () => import("./behavior/triple-bounce.vue"),
+  ),
+  "fading-circle": defineAsyncComponent(
+    () => import("./behavior/fading-circle.vue"),
+  ),
 } as const;
 
 function parseSpinner(type: SpinnerType | number): keyof typeof SPINNER_MAP {
