@@ -1,0 +1,1 @@
+"use strict";const e=require("vue"),s={props:{size:{type:[Number,String]},color:{type:String}},setup:s=>({spinnerStyle:e.computed(()=>s.size?{height:"number"==typeof Number(s.size)?`${s.size}px`:s.size,width:"number"==typeof Number(s.size)?`${s.size}px`:s.size}:{})})};exports.spinnerProps=s;

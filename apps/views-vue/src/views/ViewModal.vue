@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { getCurrentInstance, defineComponent } from "vue";
-import VButton from "../components/button";
+import { DpButton as VButton } from "@dpzvc3/vue";
 
 export default defineComponent({
   name: "ViewModal",

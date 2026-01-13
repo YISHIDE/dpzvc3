@@ -81,7 +81,7 @@ export { default as DpProgress } from "./components/progress";
 export type { ProgressProps } from "./components/progress/types";
 
 export { default as DpLoadMore } from "./components/loadMore";
-export type { LoadmoreProps } from "./components/loadMore/types";
+export type { LoadmoreProps, LoadmoreEmits } from "./components/loadMore/types";
 
 export { CheckBox, CheckBoxGroup } from "./components/checkBox";
 export type {

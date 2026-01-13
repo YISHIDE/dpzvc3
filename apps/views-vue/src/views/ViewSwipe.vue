@@ -11,7 +11,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 // import Swipe from '../components/swipe'
-import type { SwipeProps } from "../components/swipe";
+import type { SwipeProps } from "@dpzvc3/vue";
 export default defineComponent({
   name: "ViewSwipe",
   // components: { Swipe },

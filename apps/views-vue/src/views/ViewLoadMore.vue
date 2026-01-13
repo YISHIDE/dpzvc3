@@ -21,11 +21,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import DpLoadMore from "../components/loadMore";
+import { DpLoadMore } from "@dpzvc3/vue";
 import type {
   LoadmoreProps,
   LoadmoreEmits,
-} from "../components/loadMore/types";
+} from "@dpzvc3/vue";
 export default defineComponent({
   name: "ViewLoadMore",
   components: { DpLoadMore },

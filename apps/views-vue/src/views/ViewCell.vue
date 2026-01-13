@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Cell from "../components/cell";
+import { Cell } from "@dpzvc3/vue";
 export default defineComponent({
   name: "ViewCell",
   components: { Cell },
