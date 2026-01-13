@@ -1,1 +1,0 @@
-import{computed as e}from"vue";const i={props:{size:{type:[Number,String]},color:{type:String}},setup:i=>({spinnerStyle:e(()=>i.size?{height:"number"==typeof Number(i.size)?`${i.size}px`:i.size,width:"number"==typeof Number(i.size)?`${i.size}px`:i.size}:{})})};export{i as s};

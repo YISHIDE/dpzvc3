@@ -1,1 +1,0 @@
-{"version":3,"file":"types.d.ts","sourceRoot":"","sources":["../../../../src/components/progress/types.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,aAAa,EAAE,MAAM,KAAK,CAAC;AACzC,MAAM,WAAW,aAAa;IAC5B,YAAY;IACZ,MAAM,CAAC,EAAE,aAAa,CAAC;IACvB,WAAW;IACX,UAAU,CAAC,EAAE,MAAM,GAAG,MAAM,CAAC;IAC7B,YAAY;IACZ,SAAS,CAAC,EAAE,MAAM,GAAG,MAAM,CAAC;CAC7B"}
