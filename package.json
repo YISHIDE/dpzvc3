@@ -1,111 +1,18 @@
 {
-  "name": "dpzvc3-ui",
-  "version": "3.2.3",
-  "description": "Vue3组件库,基于Vue3+Vite+TypeScript开发，提供丰富的移动端UI组件。",
-  "main": "dist/dpzvc3-ui.cjs.js",
-  "module": "dist/dpzvc3-ui.es.js",
-  "browser": "dist/dpzvc3-ui.umd.js",
-  "types": "dist/types/index.d.ts",
+  "name": "dpzvc3",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "fix": "eslint src --fix",
-    "dev": "vite",
-    "type-check": "vue-tsc --noEmit",
-    "type-check:watch": "vue-tsc --noEmit --watch",
-    "build:llb": "npm run build:style && VITE_MINIFY=false vite build --config vite.config.lib.ts && VITE_MINIFY=true vite build --config vite.config.lib.ts && npm run build:types",
-    "dist": "vite build --mode production",
-    "preview": "vite preview --outDir dist-prod",
-    "build": "vite build --config vite.config.ssr.client.ts && vite build --config vite.config.ssr.server.ts",
-    "build:style": "gulp --gulpfile build-style.js",
-    "build:types": "tsc --project tsconfig.build.json && cp src/index.d.ts dist/types/index.d.ts",
-    "prepare": "husky",
-    "start": "node server.js",
-    "vercel-build": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yishide/dpzvc3.git"
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "images"
-  ],
-  "keywords": [
-    "Vue3",
-    "Vue3 Cli",
-    "Vite",
-    "dpzvc3",
-    "UI",
-    "Vue3 Components",
-    "Vue3组件库",
-    "移动端组件库"
-  ],
-  "dependencies": {
-    "china-area-data": "^3.0.0",
-    "core-js": "^2.4.1",
-    "css-loader": "^7.1.2",
-    "deepmerge": "^1.3.1",
-    "exifr": "^7.1.3",
-    "express": "^5.2.1",
-    "less": "^4.5.1",
-    "less-loader": "^12.3.0",
-    "path-to-regexp": "^6.3.0",
-    "postcss-loader": "^8.2.0",
-    "vue": "^3.5.26",
-    "vue-router": "^4.6.4",
-    "vue-style-loader": "^4.1.3"
+    "dev:vue": "pnpm --filter @dpzvc3/vue dev",
+    "build:vue": "pnpm --filter @dpzvc3/vue build",
+    "lint": "pnpm -r lint",
+    "type-check": "pnpm -r type-check",
+    "build": "pnpm build:vue"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.51.0",
-    "@typescript-eslint/parser": "^8.51.0",
-    "@vitejs/plugin-vue": "^6.0.3",
-    "@vitejs/plugin-vue-jsx": "^5.1.3",
-    "@vue/compiler-sfc": "^3.5.26",
-    "@vue/eslint-config-standard": "^8.0.1",
-    "autoprefixer": "^10.4.23",
-    "del": "^8.0.1",
-    "eslint": "8.57.1",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-html": "^1.7.0",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-promise": "^6.6.0",
-    "eslint-plugin-vue": "^9.33.0",
-    "function-bind": "^1.1.0",
-    "gh-pages": "^6.3.0",
-    "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-cli": "^2.3.0",
-    "gulp-header": "^2.0.9",
-    "gulp-less": "^5.0.0",
-    "gulp-postcss": "^10.0.0",
-    "gulp-rename": "^2.1.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "lolex": "^1.5.2",
-    "postcss": "^8.5.6",
-    "prettier": "^3.7.4",
-    "style-loader": "^3.3.4",
-    "ts-loader": "^9.5.4",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.1",
-    "vite-plugin-eslint": "^1.8.1",
-    "vue-eslint-parser": "^10.2.0",
-    "vue-tsc": "^3.2.2"
-  },
-  "author": "yishide",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yishide/dpzvc3/issues"
-  },
-  "homepage": "https://github.com/yishide/dpzvc3#readme",
-  "directories": {
-    "example": "example"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "eslint --max-warnings=0"
-    ]
+    "@types/node": "^25.0.7"
   }
 }
