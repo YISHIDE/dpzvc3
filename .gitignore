@@ -1,0 +1,16 @@
+.idea
+.idea/
+.DS_Store
+node_modules/
+.project
+dist
+dist/*
+dist-ssr
+dist-ssr/*
+src/config/*.tmp
+src/config/env.js
+/index_prod.html
+example
+example/*
+.vercel
+.env*.local
