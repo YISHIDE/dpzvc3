@@ -26,14 +26,14 @@ function createLibConfig(isMinify: boolean) {
       minify: isMinify ? "terser" : false,
       emptyOutDir: false, // 不清空目录
       rollupOptions: {
-        external: ["vue"],
+        external: ["vue", "vue-router"],
         output: [
           {
             format: "es",
             entryFileNames: isMinify
               ? "dpzvc3-ui.es.min.js"
               : "dpzvc3-ui.es.js",
-            globals: { vue: "Vue" },
+            globals: { vue: "Vue", "vue-router": "VueRouter" },
             exports: "named",
           },
           {
@@ -41,7 +41,7 @@ function createLibConfig(isMinify: boolean) {
             entryFileNames: isMinify
               ? "dpzvc3-ui.cjs.min.js"
               : "dpzvc3-ui.cjs.js",
-            globals: { vue: "Vue" },
+            globals: { vue: "Vue", "vue-router": "VueRouter" },
             exports: "named",
           },
           {
@@ -50,7 +50,7 @@ function createLibConfig(isMinify: boolean) {
             entryFileNames: isMinify
               ? "dpzvc3-ui.umd.min.js"
               : "dpzvc3-ui.umd.js",
-            globals: { vue: "Vue" },
+            globals: { vue: "Vue", "vue-router": "VueRouter" },
             exports: "named",
           },
         ],
