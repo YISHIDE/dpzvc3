@@ -1,0 +1,34 @@
+{
+  "name": "@dpzvc3/react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/dpzvc3-react.cjs.js",
+  "module": "dist/dpzvc3-react.es.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.0",
+  "devDependencies": {
+    "@storybook/react": "^10.1.11",
+    "@types/react": "^19.2.8",
+    "@vitejs/plugin-react": "^5.1.2",
+    "eslint": "8.57.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "peerDependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}

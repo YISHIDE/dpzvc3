@@ -8,8 +8,9 @@
   "scripts": {
     "dev:vue": "pnpm --filter @dpzvc3/vue dev",
     "build:vue": "pnpm --filter @dpzvc3/vue build",
-    "preview:vue":"pnpm --filter @dpzvc3/views-vue dev",
-    "build:vuessr":"pnpm --filter @dpzvc3/views-vue build:ssr",
+    "build:react": "pnpm --filter @dpzvc3/react build",
+    "preview:vue": "pnpm --filter @dpzvc3/views-vue dev",
+    "build:vuessr": "pnpm --filter @dpzvc3/views-vue build:ssr",
     "lint": "pnpm -r lint",
     "type-check": "pnpm -r type-check",
     "build": "pnpm build:vue",
