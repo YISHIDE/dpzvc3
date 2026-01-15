@@ -10,6 +10,7 @@
     "build:vue": "pnpm --filter @dpzvc3/vue build",
     "build:react": "pnpm --filter @dpzvc3/react build",
     "preview:vue": "pnpm --filter @dpzvc3/views-vue dev",
+    "preview:react": "pnpm --filter @dpzvc3/views-react dev",
     "build:vuessr": "pnpm --filter @dpzvc3/views-vue build:ssr",
     "lint": "pnpm -r lint",
     "type-check": "pnpm -r type-check",
