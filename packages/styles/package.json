@@ -1,0 +1,15 @@
+{
+  "name": "@dpzvc3/styles",
+  "version": "0.0.1",
+  "private": false,
+  "style": "dist/index.css",
+  "types": "index.d.ts",
+  "files": ["dist", "index.d.ts"],
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "less": "^4.2.0",
+    "vite": "^7.3.1"
+  }
+}

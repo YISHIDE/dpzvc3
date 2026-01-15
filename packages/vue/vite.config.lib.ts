@@ -24,7 +24,7 @@ function createLibConfig(isMinify: boolean) {
       outDir,
       sourcemap: !isMinify,
       minify: isMinify ? "terser" : false,
-      emptyOutDir: false, // 不清空目录
+      emptyOutDir: !isMinify? true: false, // 不清空目录
       rollupOptions: {
         external: ["vue", "vue-router"],
         output: [

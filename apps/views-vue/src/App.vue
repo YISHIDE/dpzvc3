@@ -65,7 +65,9 @@ export default defineComponent({
 
 // @import '../../src/styles/index';
 //  @import '../styles/index.less';
- @import "@dpzvc3/vue/dist/styles/dpzvc3.css";
+//  @import "@dpzvc3/vue/dist/styles/dpzvc3.css";
+// @import "@dpzvc3/styles";  总的引入
+// @import "@dpzvc3/styles/dist/components/cell.css"; 按需引入 
 
 .page {
   position: relative;

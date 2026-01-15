@@ -11,7 +11,7 @@
     "dev": "vite",
     "type-check": "vue-tsc --noEmit",
     "type-check:watch": "vue-tsc --noEmit --watch",
-    "build": "npm run build:style && VITE_MINIFY=false vite build --config vite.config.lib.ts && VITE_MINIFY=true vite build --config vite.config.lib.ts && npm run build:types",
+    "build": "VITE_MINIFY=false vite build --config vite.config.lib.ts && VITE_MINIFY=true vite build --config vite.config.lib.ts && npm run build:types",
     "dist": "vite build --mode production",
     "preview": "vite preview --outDir dist-prod",
     "build:ssr": "vite build --config vite.config.ssr.client.ts && vite build --config vite.config.ssr.server.ts",
