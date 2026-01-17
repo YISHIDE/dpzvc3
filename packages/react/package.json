@@ -50,6 +50,7 @@
     ]
   },
   "dependencies": {
-    "@dpzvc3/styles": "workspace:*"
+    "@dpzvc3/styles": "workspace:*",
+    "react-router-dom": "^7.12.0"
   }
 }

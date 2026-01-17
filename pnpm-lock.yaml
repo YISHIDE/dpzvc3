@@ -17,6 +17,9 @@ importers:
       '@dpzvc3/react':
         specifier: workspace:*
         version: link:../../packages/react
+      '@dpzvc3/styles':
+        specifier: workspace:*
+        version: link:../../packages/styles
       react:
         specifier: ^19.2.0
         version: 19.2.3
@@ -109,6 +112,9 @@ importers:
       '@dpzvc3/styles':
         specifier: workspace:*
         version: link:../styles
+      react-router-dom:
+        specifier: ^7.12.0
+        version: 7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^5.0.0

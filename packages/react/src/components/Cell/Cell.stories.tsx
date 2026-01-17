@@ -1,11 +1,19 @@
 // Cell.stories.tsx
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { Meta, Story } from '@storybook/react';
 import Cell, { CellProps } from './index';
 
 export default {
   title: 'Components/Cell',
   component: Cell,
+  decorators: [
+    (Story) => (
+      <MemoryRouter initialEntries={["/"]}>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
   argTypes: {
     title: { control: 'text' },
     label: { control: 'text' },

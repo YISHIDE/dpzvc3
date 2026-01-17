@@ -1,11 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Button } from '@dpzvc3/react';
+// import { Button } from '@dpzvc3/react';
+import Guide from './views/Guide';
+import '@dpzvc3/styles/dist/index.css';
 
 function Home() {
   return <div>
     <h1>Home 页面</h1>
-    <Button>点击按钮</Button>
+    {/* <Button>点击按钮</Button> */}
     <Link to="/about">去 About</Link>
   </div>;
 }
@@ -21,7 +23,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Guide />}/>
+        <Route path="/home" element={<Home />}/>
         <Route path="/about" element={<About />}/>
       </Routes>
     </Router>

@@ -10,8 +10,14 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [react(), dts({
-    insertTypesEntry: true
-  }) // 自动生成类型声明文件
+    insertTypesEntry: true,
+    exclude: [
+      'src/**/*.stories.*',
+      'src/stories/**',
+      'src/**/*.test.*',
+      'src/**/__tests__/**'
+    ]
+  }) // 自动生成类型声明文件（排除 story/test 文件）
   ],
   build: {
     lib: {
@@ -20,12 +26,16 @@ export default defineConfig({
       fileName: format => `dpzvc3-react.${format}.js`
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      // Externalize packages and any sub-path imports (including CSS paths)
+      // Also mark all local `.css` imports external so styles are not bundled into the library.
+      external: [/^react($|\/)/, /^react-dom($|\/)/, /^react-router-dom($|\/)/, /^@dpzvc3\/styles($|\/)*/, /\.css$/],
       // 不打包 React
       output: {
-        globals: {
+          globals: {
           react: 'React',
-          'react-dom': 'ReactDOM'
+          'react-dom': 'ReactDOM',
+          'react-router-dom': 'ReactRouterDOM',
+          '@dpzvc3/styles': 'DPZVC3Styles'
         }
       }
     }
