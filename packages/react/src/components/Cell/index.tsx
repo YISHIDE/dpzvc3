@@ -2,15 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import '@dpzvc3/styles/dist/components/cell.css'
 import "@dpzvc3/styles/dist/utils/1px.css"
+import type { CellProps } from './types';
 
-export interface CellProps {
-    children?: React.ReactNode;
-    title: string;
-    value?: string | number;
-    label?: string;
-    link?: string;
-    hasMask?: boolean;
-}
 const Cell: React.FC<CellProps>  =({ children, title, label, value, link, hasMask }) => { 
     const navigate = useNavigate()
     const handleClick = () => {

@@ -19,6 +19,15 @@ export default defineConfig({
     ]
   }) // 自动生成类型声明文件（排除 story/test 文件）
   ],
+  resolve: {
+        // alias: {
+        //   "@": path.resolve(__dirname, "src"),
+        // },
+        extensions: [".ts", ".tsx", ".js", ".vue", ".json"],
+      },
+    optimizeDeps: {
+      exclude: ['react-transition-group']
+    },
   build: {
     lib: {
       entry: 'src/index.ts',
@@ -28,13 +37,14 @@ export default defineConfig({
     rollupOptions: {
       // Externalize packages and any sub-path imports (including CSS paths)
       // Also mark all local `.css` imports external so styles are not bundled into the library.
-      external: [/^react($|\/)/, /^react-dom($|\/)/, /^react-router-dom($|\/)/, /^@dpzvc3\/styles($|\/)*/, /\.css$/],
-      // 不打包 React
+      external: [/^react($|\/)/, /^react-dom($|\/)/, /^react-router-dom($|\/)/, /^react-transition-group($|\/)/, /^@dpzvc3\/styles($|\/)*, \/\.css$/],
+      // 不打包 React 及 react-transition-group
       output: {
           globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           'react-router-dom': 'ReactRouterDOM',
+          'react-transition-group': 'ReactTransitionGroup',
           '@dpzvc3/styles': 'DPZVC3Styles'
         }
       }
