@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@dpzvc3/uni-components/*": ["src/*"]
+    },
+    "compilerOptions": {
+    "types": ["@types/uni-app"]
+   }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "index.ts"]
+}
