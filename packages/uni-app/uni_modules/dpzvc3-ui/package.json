@@ -1,0 +1,23 @@
+{
+  "id": "dpzvc3-ui",
+  "name": "dpzvc3-ui",
+  "displayName": "dpzvc3 UI",
+  "version": "1.0.0",
+  "description": "dpzvc3 uni-app 组件库（Vue3 + TS）",
+  "keywords": ["uni-app", "vue3", "component"],
+  "dcloudext": {
+    "type": "component-vue"
+  },
+  "uni_modules": {
+    "dependencies": [],
+    "platforms": {
+      "client": {
+        "uni-app": {
+          "vue": {
+            "vue3": "√"
+          }
+        }
+      }
+    }
+  }
+}

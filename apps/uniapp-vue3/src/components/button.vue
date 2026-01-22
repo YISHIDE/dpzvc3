@@ -1,7 +1,7 @@
 <template>
   <view class="content">
     <image class="logo" src="/static/logo.png" />
-      <!-- <UniButton text="点我" @click="onClick" /> -->
+      <uni-button text="点我" @click="onClick" />
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>

@@ -4,7 +4,8 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      // "@/uni_modules/*": ["./uni_modules/*"]
     },
     "lib": ["esnext", "dom"],
     "types": ["@dcloudio/types"]

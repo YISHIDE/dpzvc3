@@ -6,7 +6,10 @@ export default defineConfig({
   plugins: [uni()],
   resolve: {
       alias: {
-        "@": path.resolve(__dirname, "src"),
+      "@": path.resolve(__dirname, "src"),
+      // "@/uni_modules": path.resolve(__dirname, "uni_modules"),
+      // "@": path.resolve(__dirname, "src"),
+      '@uni_modules': path.resolve(__dirname, 'uni_modules')
       },
       extensions: [".ts", ".tsx", ".js", ".vue", ".json"],
     },

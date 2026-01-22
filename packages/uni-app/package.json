@@ -2,14 +2,15 @@
   "name": "@dpzvc3/uni-app",
   "version": "1.0.0",
   "description": "跨端 uni-app Vue3+TS 移动端组件库",
-  "main": "src/index.ts",   
-  "module": "src/index.ts", 
-  "types": "src/index.ts",              
+  "type":"module",        
   "scripts": {
     "dev": "vite",                      
     "build": "vite build",              
-    "clean": "rimraf dist"           
+    "clean": "rimraf dist"
   },
+  "files": [
+    "uni_modules"
+  ],
   "keywords": [
     "uni-app",
     "vue3",
