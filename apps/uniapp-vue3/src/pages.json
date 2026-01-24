@@ -7,13 +7,23 @@
 			}
 		}
 	],
+	"subPackages":[
+		{
+			"root": "pages-sub",
+			"pages": [
+				{
+					"path": "popup/index",
+					"style": {
+							"navigationBarTitleText": "uni-app"
+					}
+				}
+			]
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
-	},
-	  "easycom": {
-      "autoscan": true
 	}
 }

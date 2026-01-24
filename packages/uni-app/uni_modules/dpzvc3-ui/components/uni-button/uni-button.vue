@@ -1,21 +1,22 @@
 <template>
-  <view class="uni-button" @tap="handleClick">{{ text }}</view>
+  <view class="uni-button" @click="handleClick"><slot/></view>
 </template>
 
 <script lang="ts" setup>
 defineOptions({
   name: 'UniButton'
 });
-import { defineProps, defineEmits } from 'vue'
+// import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps<{ text: string }>()
 const emit = defineEmits<{ (e: 'click'): void }>()
 
 const handleClick = () => {
+  console.log('点击了按钮');
   emit('click')
   // 小程序端 uni API
   // #ifdef MP-WEIXIN
-  uni.showToast({ title: '点击了按钮2222222' })
+  // uni.showToast({ title: '点击了按钮2222222' })
   // #endif
 
   // H5 端 console

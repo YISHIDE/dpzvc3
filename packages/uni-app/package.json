@@ -2,10 +2,10 @@
   "name": "@dpzvc3/uni-app",
   "version": "1.0.0",
   "description": "跨端 uni-app Vue3+TS 移动端组件库",
-  "type":"module",        
+  "type": "module",
   "scripts": {
-    "dev": "vite",                      
-    "build": "vite build",              
+    "dev": "vite",
+    "build": "vite build",
     "clean": "rimraf dist"
   },
   "files": [
@@ -21,14 +21,17 @@
   "license": "MIT",
   "packageManager": "pnpm@10.28.0",
   "peerDependencies": {
-    "vue": "^3.5.0"                     
+    "vue": "^3.5.0"
   },
   "devDependencies": {
     "@types/uni-app": "^1.4.8",
     "@vitejs/plugin-vue": "^6.0.3",
+    "rimraf": "^5.0.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
-    "vue": "^3.5.26",
-    "rimraf": "^5.0.0"
+    "vue": "^3.5.26"
+  },
+  "dependencies": {
+    "@dpzvc3/styles": "workspace:*"
   }
 }
