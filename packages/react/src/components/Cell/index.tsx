@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'
-import '@dpzvc3/styles/dist/components/cell.css'
-import "@dpzvc3/styles/dist/utils/1px.css"
+import "@dpzvc3/styles/dist/base/reset.css";
+import "@dpzvc3/styles/dist/utils/nowrap.css";
+import "@dpzvc3/styles/dist/utils/1px.css";
+import "@dpzvc3/styles/dist/components/cell.css";
 import type { CellProps } from './types';
 
 const Cell: React.FC<CellProps>  =({ children, title, label, value, link, hasMask }) => { 
@@ -39,4 +41,5 @@ const Cell: React.FC<CellProps>  =({ children, title, label, value, link, hasMas
         </div>
     )
 }
+export type { CellProps } from './types';
 export default Cell;

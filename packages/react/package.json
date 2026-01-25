@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/dpzvc3-react.cjs.js",
   "module": "dist/dpzvc3-react.es.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vite build",
