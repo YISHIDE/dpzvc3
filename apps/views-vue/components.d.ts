@@ -11,7 +11,8 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Cell: typeof import('@dpzvc3/vue')['default']
+    Badge: typeof import('@dpzvc3/vue/es/badge')['default']
+    Cell: typeof import('@dpzvc3/vue/es/cell')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

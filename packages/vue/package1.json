@@ -11,7 +11,7 @@
     "dev": "vite",
     "type-check": "vue-tsc --noEmit",
     "type-check:watch": "vue-tsc --noEmit --watch",
-    "build": "VITE_MINIFY=false vite build --config vite.config.lib.ts && VITE_MINIFY=true vite build --config vite.config.lib.ts && pnpm run build:types && pnpm run build:resolver",
+    "build": "VITE_MINIFY=false vite build --config vite.config.lib.ts && VITE_MINIFY=true vite build --config vite.config.lib.ts && pnpm run build:types",
     "dist": "vite build --mode production",
     "preview": "vite preview --outDir dist-prod",
     "build:ssr": "vite build --config vite.config.ssr.client.ts && vite build --config vite.config.ssr.server.ts",
@@ -31,23 +31,6 @@
     "README.md",
     "images"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/dpzvc3-ui.es.js",
-      "require": "./dist/dpzvc3-ui.cjs.js",
-      "browser": "./dist/dpzvc3-ui.umd.js",
-      "types": "./dist/types/index.d.ts"
-    },
-    "./resolvers": {
-      "import": "./dist/resolvers/dpzvc3.mjs",
-      "types": "./dist/resolvers/dpzvc3.d.ts"
-    },
-     "./es/*": {
-      "types": "./dist/es/*/*.d.ts",
-      "import": "./dist/es/*/index.mjs"
-    },
-     "./package.json": "./package.json" 
-  },
   "keywords": [
     "Vue3",
     "Vue3 Cli",
