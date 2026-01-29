@@ -14,17 +14,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-// import Badge from '@/components/badge/badge.vue' // 修改为你实际路径
-
-export default defineComponent({
-  name: "ViewBadge",
-  setup() {
-    // 这个组件不需要响应式数据，所以 setup 可以为空
-    return {};
-  },
-});
+<script lang="ts" setup>
 </script>
 
 <style lang="less" scoped>

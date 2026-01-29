@@ -11,12 +11,13 @@
     "dev": "vite",
     "type-check": "vue-tsc --noEmit",
     "type-check:watch": "vue-tsc --noEmit --watch",
-    "build": "VITE_MINIFY=false vite build --config vite.config.lib.ts && VITE_MINIFY=true vite build --config vite.config.lib.ts && npm run build:types",
+    "build": "VITE_MINIFY=false vite build --config vite.config.lib.ts && VITE_MINIFY=true vite build --config vite.config.lib.ts && pnpm run build:types",
     "dist": "vite build --mode production",
     "preview": "vite preview --outDir dist-prod",
     "build:ssr": "vite build --config vite.config.ssr.client.ts && vite build --config vite.config.ssr.server.ts",
     "build:style": "gulp --gulpfile build-style.js",
     "build:types": "tsc --project tsconfig.build.json && cp src/index.d.ts dist/types/index.d.ts",
+    "build:resolver": "tsup --config tsup.resolver.config.ts",
     "prepare": "husky",
     "start": "node server.js",
     "vercel-build": "npm run build:ssr"
@@ -41,8 +42,8 @@
     "移动端组件库"
   ],
   "peerDependencies": {
-     "vue": "^3.5.26",
-     "vue-router": "^4.6.4"
+    "vue": "^3.5.26",
+    "vue-router": "^4.6.4"
   },
   "dependencies": {
     "china-area-data": "^3.0.0",
@@ -91,7 +92,9 @@
     "prettier": "^3.7.4",
     "style-loader": "^3.3.4",
     "ts-loader": "^9.5.4",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3",
+    "unplugin-vue-components": "^31.0.0",
     "vite": "^7.3.1",
     "vite-plugin-eslint": "^1.8.1",
     "vue-eslint-parser": "^10.2.0",

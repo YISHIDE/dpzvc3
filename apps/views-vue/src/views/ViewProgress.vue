@@ -4,14 +4,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
-// import DpProgress from '../components/progress'
-import type { ProgressProps } from "../components/progress";
-export default defineComponent({
-  name: "ViewDpProgress",
-  // components: { DpProgress },
-  setup() {
+<script lang="ts" setup>
+    import type { ProgressProps } from "@dpzvc3/vue";
+
     const progress = ref<ProgressProps["modelValue"]>("0");
     const barHeight = ref(5);
     let timer: any = null;
@@ -30,13 +25,6 @@ export default defineComponent({
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       timer && clearInterval(timer);
     });
-
-    return {
-      progress,
-      barHeight,
-    };
-  },
-});
 </script>
 
 <style lang="less" scoped>

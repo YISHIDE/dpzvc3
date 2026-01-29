@@ -8,30 +8,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from "vue";
-// import Upload from '@/components/upload'
-// import type { UploadProps } from '@/components/upload/types'
-export default defineComponent({
-  name: "ViewUpload",
-  components: {
-    // Upload
-  },
-  setup() {
+<script lang="ts" setup>
+
     const files = ref<Array<{ base64: string; clearBase64: string }>>([]);
     const upload = ref(null);
 
     const onChangeFile = (newFiles: any[]) => {
       files.value = newFiles;
     };
-
-    return {
-      files,
-      upload,
-      onChangeFile,
-    };
-  },
-});
 </script>
 
 <style lang="less" scoped>

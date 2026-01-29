@@ -7,23 +7,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-// import SwitchBar from '../components/switchbar'
-import type { SwitchBarProps } from "../components/switchbar/types";
-export default defineComponent({
-  name: "ViewSwitchBar",
-  // components: { SwitchBar },
-  setup() {
-    const checkLarge = ref<SwitchBarProps["modelValue"]>(false);
-    const checkSmall = ref<SwitchBarProps["modelValue"]>(false);
-
-    return {
-      checkLarge,
-      checkSmall,
-    };
-  },
-});
+<script lang="ts" setup>
+  import type { SwitchBarProps } from "@dpzvc3/vue";
+  const checkLarge = ref<SwitchBarProps["modelValue"]>(false);
+  const checkSmall = ref<SwitchBarProps["modelValue"]>(false);
 </script>
 
 <style lang="less" scoped>

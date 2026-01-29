@@ -8,14 +8,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-// import Swipe from '../components/swipe'
+<script lang="ts" setup>
 import type { SwipeProps } from "@dpzvc3/vue";
-export default defineComponent({
-  name: "ViewSwipe",
-  // components: { Swipe },
-  setup() {
     const files = ref<SwipeProps["list"]>([
       {
         id: 521,
@@ -42,10 +36,6 @@ export default defineComponent({
         link: "https://edu.hellobi.com/course/102",
       },
     ]);
-
-    return { files };
-  },
-});
 </script>
 
 <style lang="less" scoped>

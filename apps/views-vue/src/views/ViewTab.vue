@@ -4,14 +4,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-// import Tab from '../components/tab'
-import type { TabProps } from "../components/tab/types";
-export default defineComponent({
-  name: "ViewTab",
-  // components: { Tab },
-  setup() {
+<script lang="ts" setup>
+import type { TabProps } from "@dpzvc3/vue";
     const items = ref<TabProps["items"]>([
       {
         path: "/guide",
@@ -32,15 +26,6 @@ export default defineComponent({
     const styles = ref<TabProps["styles"]>({
       bottom: 0,
     });
-
-    return {
-      items,
-      index,
-      hasBorder,
-      styles,
-    };
-  },
-});
 </script>
 
 <style scoped>

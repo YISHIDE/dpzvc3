@@ -11,13 +11,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-import { useRouter } from "vue-router";
-export default defineComponent({
-  name: "ViewGuide",
-  setup() {
-    const router = useRouter();
+<script lang="ts" setup>
+    // const router = useRouter();
     const componentList = ref([
       {
         title: "ActionSheet",
@@ -150,20 +145,9 @@ export default defineComponent({
         link: "/Upload",
       },
     ]);
-    const jump = (path: string) => {
-      router.push(path);
-    };
-    return {
-      componentList,
-      jump,
-    };
-  },
-  // methods: {
-  //   jump () {
-  //     this.$router.push('/Button')
-  //   }
-  // }
-});
+    // const jump = (path: string) => {
+    //   router.push(path);
+    // };
 </script>
 
 <style lang="less" scoped>

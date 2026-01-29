@@ -5,34 +5,19 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from "vue";
-// import VButton from '@/components/button'
-// import ActionSheet from "@/components/actionSheet";
+<script lang="ts" setup>
 import type { ActionSheetProps } from "@dpzvc3/vue";
-
-export default defineComponent({
-  name: "ViewActionSheet",
-  // components: { ActionSheet },
-  setup() {
     // 响应式状态
-    const visible = ref(false);
-    const actionSheet = ref<ActionSheetProps["items"]>([
-      {
-        text: "提交",
-        onClick: (e) => {
-          console.log(e, "点击了提交");
-        },
-      },
-      { text: "确定" },
-    ]);
-
-    return {
-      visible,
-      actionSheet,
-    };
+const visible = ref<ActionSheetProps["modelValue"]>(false);
+const actionSheet = ref<ActionSheetProps["items"]>([
+{
+  text: "提交",
+  onClick: (e) => {
+    console.log(e, "点击了提交");
   },
-});
+  },
+  { text: "确定" },
+]);
 </script>
 
 <style lang="less" scoped>

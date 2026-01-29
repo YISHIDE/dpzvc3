@@ -4,20 +4,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-// import Spinner from '../components/spinner'
-import type { SpinnerProps } from "../components/spinner";
-export default defineComponent({
-  name: "ViewSpinner",
-  // components: { Spinner },
-  setup() {
-    const type = ref<SpinnerProps["type"]>("double-bounce");
-    return {
-      type,
-    };
-  },
-});
+<script lang="ts" setup>
+import type { SpinnerProps } from "@dpzvc3/vue";
+const type = ref<SpinnerProps["type"]>("double-bounce");
+  
 </script>
 
 <style scoped></style>

@@ -19,22 +19,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-import { DpLoadMore } from "@dpzvc3/vue";
+<script lang="ts" setup>
 import type {
   LoadmoreProps,
   LoadmoreEmits,
 } from "@dpzvc3/vue";
-export default defineComponent({
-  name: "ViewLoadMore",
-  components: { DpLoadMore },
-  setup() {
-    const moreRef = ref(null);
-    const hasMore = ref<LoadmoreProps["hasMore"]>(true);
-    const loadmore = ref(Array(16).fill("LoadMore"));
+  const moreRef = ref(null);
+  const hasMore = ref<LoadmoreProps["hasMore"]>(true);
+  const loadmore = ref(Array(16).fill("LoadMore"));
 
-    const topMethod = () => {
+  const topMethod = () => {
       hasMore.value = true;
 
       setTimeout(() => {
@@ -43,9 +37,9 @@ export default defineComponent({
           (moreRef.value as any).onLoadOff();
         }
       }, 2000);
-    };
+  };
 
-    const bottomMethod = () => {
+  const bottomMethod = () => {
       setTimeout(() => {
         if (moreRef.value && (moreRef.value as any).onLoadOff) {
           (moreRef.value as any).onLoadOff();
@@ -54,20 +48,9 @@ export default defineComponent({
       }, 2000);
     };
 
-    const getStatus: LoadmoreEmits["on-change-up-status"] = (val) => {
+  const getStatus: LoadmoreEmits["on-change-up-status"] = (val) => {
       console.log(val, "----val----");
-    };
-
-    return {
-      moreRef,
-      hasMore,
-      loadmore,
-      topMethod,
-      bottomMethod,
-      getStatus,
-    };
-  },
-});
+  };
 </script>
 
 <style lang="less" scoped>

@@ -17,33 +17,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref } from "vue";
-// import Card from '../components/card'
+<script lang="ts" setup>
+  const count = ref(0);
 
-export default {
-  name: "ViewCard",
-  // components: { Card },
-  setup() {
-    const count = ref(0);
-
-    const onClick = () => {
+  const onClick = () => {
       count.value += 1;
       console.log("点击了第一张卡片按钮", count.value);
-    };
-
-    const onClick2 = () => {
-      count.value += 2;
-      console.log("点击了第二张卡片按钮", count.value);
-    };
-
-    return {
-      count,
-      onClick,
-      onClick2,
-    };
-  },
-};
+  };
 </script>
 
 <style lang="less" scoped>

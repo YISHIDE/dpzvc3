@@ -28,13 +28,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, getCurrentInstance, defineComponent } from "vue";
-// import DpHeader from '../components/header'
-export default defineComponent({
-  name: "ViewHeader",
-  // components: { DpHeader },
-  setup() {
+<script lang="ts" setup>
     const { proxy } = getCurrentInstance()!;
     const fixed = ref(false);
 
@@ -47,10 +41,6 @@ export default defineComponent({
         });
       }
     };
-
-    return { fixed, share };
-  },
-});
 </script>
 
 <style scoped>

@@ -6,12 +6,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { getCurrentInstance, defineComponent } from "vue";
-
-export default defineComponent({
-  name: "ViewMessage",
-  setup() {
+<script lang="ts" setup>
     // 获取全局实例
     const { proxy } = getCurrentInstance()!;
     const showMessage = () => {
@@ -25,14 +20,6 @@ export default defineComponent({
     const showMessageBottom = () => {
       proxy!.$Message.show({ text: "显示消息", position: "bottom" });
     };
-
-    return {
-      showMessage,
-      showMessageTop,
-      showMessageBottom,
-    };
-  },
-});
 </script>
 
 <style scoped>

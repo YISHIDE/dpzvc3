@@ -31,16 +31,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-import type { SlideBarProps } from "@/components/slideBar/types";
-// import SlideBar from '@/components/slideBar'
-export default defineComponent({
-  name: "ViewSlideBar",
-  components: {
-    // SlideBar
-  },
-  setup() {
+<script lang="ts" setup>
+import type { SlideBarProps } from "@dpzvc3/vue";
     const items = ref<SlideBarProps["list"]>([
       { name: "选项一" },
       { name: "选项二" },
@@ -50,9 +42,6 @@ export default defineComponent({
     const changeIndex = (index: number) => {
       console.log(index);
     };
-    return { items, index, changeIndex };
-  },
-});
 </script>
 
 <style lang="less" scoped>

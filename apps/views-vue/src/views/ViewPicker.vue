@@ -35,14 +35,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ref, getCurrentInstance } from "vue";
-// import Picker from '../components/picker'
-import type { PickerProps } from "../components/picker/types";
-export default {
-  name: "ViewPicker",
-  // components: { Picker },
-  setup() {
+<script lang="ts" setup>
+    import type { PickerProps } from "@dpzvc3/vue";
     const AreaVisible = ref<PickerProps["modelValue"]>(false);
     const DateVisible = ref<PickerProps["modelValue"]>(false);
     const NormalVisible = ref<PickerProps["modelValue"]>(false);
@@ -138,18 +132,6 @@ export default {
         (proxy as any).$Message.show({ text: "您选择了取消" });
       }
     }
-
-    return {
-      AreaVisible,
-      DateVisible,
-      NormalVisible,
-      pickerSure,
-      pickerCancle,
-      listRef,
-      initArrRef,
-    };
-  },
-};
 </script>
 
 <style lang="less" scoped>

@@ -14,13 +14,7 @@
 
 // const rate = ref<Rate>(3)
 // </script> -->
-<script lang="ts">
-import { defineComponent, reactive, ref, getCurrentInstance } from "vue";
-// import CellSwipe from '../components/cellSwipe'
-
-export default defineComponent({
-  name: "ViewCellSwipe",
-  setup() {
+<script lang="ts" setup>
     const show = ref(true);
     const { proxy } = getCurrentInstance()!; // 用于访问全局 Modal
 
@@ -57,11 +51,4 @@ export default defineComponent({
         },
       },
     ]);
-    return {
-      left,
-      right,
-      show,
-    };
-  },
-});
 </script>

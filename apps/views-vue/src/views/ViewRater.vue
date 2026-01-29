@@ -10,22 +10,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-// import Rater from '../components/rater/'
-export default defineComponent({
-  name: "ViewRater",
-  // components: { Rater },
-  setup() {
+<script lang="ts" setup>
     const rate = ref(0);
     const disabledRate = ref(4.5);
-
-    return {
-      rate,
-      disabledRate,
-    };
-  },
-});
 </script>
 
 <style lang="less" scoped>

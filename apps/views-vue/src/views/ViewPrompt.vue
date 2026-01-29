@@ -4,12 +4,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, getCurrentInstance } from "vue";
+<script lang="ts" setup>
 
-export default defineComponent({
-  name: "ViewPrompt",
-  setup() {
     // 获取当前组件实例
     const { proxy } = getCurrentInstance()!;
 
@@ -20,12 +16,6 @@ export default defineComponent({
         text: "vvvv",
       });
     }
-
-    return {
-      showPrompt,
-    };
-  },
-});
 </script>
 
 <style lang="less" scoped>

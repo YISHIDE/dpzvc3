@@ -15,15 +15,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, nextTick } from "vue";
-// import type { Side } from './dist/types/components/popup/types'
-import type { PopupProps } from "@/components/popup/types";
+<script lang="ts" setup>
+import type { PopupProps } from "@dpzvc3/vue";
 type Side = "top" | "right" | "bottom" | "left";
 
-export default defineComponent({
-  name: "ViewPopup",
-  setup() {
     const side = ref<PopupProps["position"]>("top");
     const show = ref<PopupProps["modelValue"]>(false);
     const width = ref<PopupProps["width"]>("100%");
@@ -61,16 +56,6 @@ export default defineComponent({
         }, 350);
       });
     };
-
-    return {
-      side,
-      show,
-      width,
-      height,
-      showPop,
-    };
-  },
-});
 </script>
 
 <style scoped>

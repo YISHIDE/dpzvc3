@@ -15,12 +15,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, getCurrentInstance } from "vue";
-
-export default defineComponent({
-  name: "ViewIndicator",
-  setup() {
+<script lang="ts" setup>
     const { proxy } = getCurrentInstance()!;
     const removeAfterDelay = (duration = 3000) => {
       setTimeout(() => {
@@ -47,15 +42,6 @@ export default defineComponent({
       proxy!.$Indicator.bounce({});
       removeAfterDelay();
     };
-
-    return {
-      blade,
-      snake,
-      circle,
-      bounce,
-    };
-  },
-});
 </script>
 
 <style lang="less" scoped>

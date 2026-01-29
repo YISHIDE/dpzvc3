@@ -1,18 +1,11 @@
 <template>
   <div class="Modal">
-    <VButton width="50%" @click="showInfo"> info </VButton>
-    <VButton width="50%" @click="showConfirm"> confirm </VButton>
+    <DpButton width="50%" @click="showInfo"> info </DpButton>
+    <DpButton width="50%" @click="showConfirm"> confirm </DpButton>
   </div>
 </template>
 
-<script lang="ts">
-import { getCurrentInstance, defineComponent } from "vue";
-import { DpButton as VButton } from "@dpzvc3/vue";
-
-export default defineComponent({
-  name: "ViewModal",
-  components: { VButton },
-  setup() {
+<script lang="ts" setup>
     // 获取实例，用来访问全局属性 $Modal / $Message
     const { proxy } = getCurrentInstance()!;
 
@@ -39,13 +32,6 @@ export default defineComponent({
         },
       });
     };
-
-    return {
-      showInfo,
-      showConfirm,
-    };
-  },
-});
 </script>
 
 <style lang="less" scoped>

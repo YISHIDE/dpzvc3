@@ -25,29 +25,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-import { CheckBox, CheckBoxGroup } from "@dpzvc3/vue";
-import type {
-  CheckBoxProps,
-  CheckBoxGroupProps,
-} from "@dpzvc3/vue";
-export default defineComponent({
-  name: "ViewCheckBox",
-  components: { CheckBox, CheckBoxGroup },
-  setup() {
+<script lang="ts" setup>
+    import type {
+      CheckBoxProps,
+      CheckBoxGroupProps,
+    } from "@dpzvc3/vue";
     const data = ref<CheckBoxGroupProps["modelValue"]>(["中国"]);
     const checked = ref<CheckBoxProps["modelValue"]>(false);
     const change = (e: any) => {
       console.log(e, "e");
     };
-    return {
-      data,
-      change,
-      checked,
-    };
-  },
-});
 </script>
 
 <style lang="less" scoped>

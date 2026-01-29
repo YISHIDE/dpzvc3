@@ -12,41 +12,23 @@
     <DpButton type="normal" disabled> Disabled </DpButton>
   </div>
 </template>
-<script lang="ts">
-import { ref, getCurrentInstance, defineComponent, onMounted } from "vue";
-// import DpButton from "../components/button";
-import { useRouter } from "vue-router";
+<script lang="ts" setup>
 import type { ButtonProps, ButtonEmits } from "@dpzvc3/vue";
-export default defineComponent({
-  name: "ViewButton",
-  components: {
-    // DpButton,
-  },
-  setup() {
-    const router = useRouter();
-    console.log(
-      getCurrentInstance()?.vnode,
-      typeof window !== "undefined" ? "client" : "server",
-    );
-    const loading = ref<ButtonProps["loading"]>(false);
+const router = useRouter();
+console.log(
+  getCurrentInstance()?.vnode,
+  typeof window !== "undefined" ? "client" : "server",
+);
+const loading = ref<ButtonProps["loading"]>(false);
 
-    const onClick: ButtonEmits["click"] = (e) => {
-      // console.trace('onClick triggered')
-      loading.value = !loading.value;
-      // alert(loading.value)
-    };
-    const jump = () => {
-      router.push({ name: "guide" });
-    };
-    onMounted(() => {
-      console.log("ViewButton mounted");
-    });
-    return {
-      loading,
-      onClick,
-      jump,
-    };
-  },
+const onClick: ButtonEmits["click"] = (e) => {
+  loading.value = !loading.value;
+};
+const jump = () => {
+  router.push({ name: "guide" });
+};
+onMounted(() => {
+  console.log("ViewButton mounted");
 });
 </script>
 
