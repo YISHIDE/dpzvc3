@@ -11,11 +11,18 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ActionSheet: typeof import('@dpzvc3/vue/es/action-sheet')['default']
     Badge: typeof import('@dpzvc3/vue/es/badge')['default']
+    Card: typeof import('@dpzvc3/vue/es/card')['default']
     Cell: typeof import('@dpzvc3/vue/es/cell')['default']
+    CellSwipe: typeof import('@dpzvc3/vue/es/cell-swipe')['default']
+    DpButton: typeof import('@dpzvc3/vue/es/dp-button')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    Picker: typeof import('@dpzvc3/vue/es/picker')['default']
+    Popup: typeof import('@dpzvc3/vue/es/popup')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ToTop: typeof import('@dpzvc3/vue/es/to-top')['default']
     Upload: typeof import('@dpzvc3/vue/src/components/upload')['default']
   }
 }

@@ -14,9 +14,9 @@
 </template>
 <script lang="ts">
 import { ref, getCurrentInstance, defineComponent, onMounted } from "vue";
-import DpButton from "../components/button";
+import DpButton from "../components/dp-button";
 import { useRouter } from "vue-router";
-import type { ButtonProps, ButtonEmits } from "../components/button/types";
+import type { ButtonProps, ButtonEmits } from "../components/dp-button/types";
 export default defineComponent({
   name: "ViewButton",
   components: {

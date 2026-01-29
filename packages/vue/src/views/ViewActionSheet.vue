@@ -8,8 +8,8 @@
 <script lang="ts">
 import { ref, defineComponent } from "vue";
 // import VButton from '@/components/button'
-import ActionSheet from "@/components/actionSheet";
-import type { ActionSheetProps } from "@/components/actionSheet/actionSheet";
+import ActionSheet from "@/components/action-sheet";
+import type { ActionSheetProps } from "@/components/action-sheet/actionSheet";
 
 export default defineComponent({
   name: "ViewActionSheet",

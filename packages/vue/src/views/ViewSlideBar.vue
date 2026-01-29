@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import type { SlideBarProps } from "@/components/slideBar/types";
+import type { SlideBarProps } from "@/components/slide-bar/types";
 // import SlideBar from '@/components/slideBar'
 export default defineComponent({
   name: "ViewSlideBar",

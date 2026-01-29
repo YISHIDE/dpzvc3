@@ -27,11 +27,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { CheckBox, CheckBoxGroup } from "../components/checkBox";
+import { CheckBox, CheckBoxGroup } from "../components/check-box";
 import type {
   CheckBoxProps,
   CheckBoxGroupProps,
-} from "../components/checkBox/types";
+} from "../components/check-box/types";
 export default defineComponent({
   name: "ViewCheckBox",
   components: { CheckBox, CheckBoxGroup },

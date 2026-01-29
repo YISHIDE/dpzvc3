@@ -5,7 +5,7 @@ import type { PromptProps } from "./types";
 
 import Modal from "../modal/modal";
 import TextBar from "../Text/textBar";
-import DpButton from "../button/button";
+import DpButton from "../dp-button/button";
 
 export default defineComponent({
   name: "Dpzvc3Prompt",

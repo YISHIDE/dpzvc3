@@ -3,7 +3,7 @@
  */
 import { h, createVNode, render } from "vue";
 import Modal from "./modal";
-import VButton from "../button";
+import VButton from "../dp-button";
 // import type { ModalInstance } from './types'
 const prefixCls = "dpzvc3-modal";
 

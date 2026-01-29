@@ -7,7 +7,7 @@ import {
   Transition,
   PropType,
 } from "vue";
-import VButton from "../button";
+import VButton from "../dp-button";
 import type { ModalProps } from "./types";
 
 export type { ModalProps };

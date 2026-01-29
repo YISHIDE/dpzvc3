@@ -26,7 +26,7 @@ import { defineComponent, ref } from "vue";
 import type {
   RadioBoxProps,
   RadioGroupProps,
-} from "../components/radioBox/types";
+} from "../components/radio-box/types";
 // import { RadioBox, RadioBoxGroup } from '../components/radioBox'
 export default defineComponent({
   name: "ViewRadioBox",

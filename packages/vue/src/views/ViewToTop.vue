@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 // import ToTop from '@/components/toTop'
-import type { ToTopProps } from "@/components/toTop/types";
+import type { ToTopProps } from "@/components/to-top/types";
 export default defineComponent({
   name: "ViewToTop",
   components: {
