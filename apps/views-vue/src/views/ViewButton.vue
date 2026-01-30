@@ -13,7 +13,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { ButtonProps, ButtonEmits } from "@dpzvc3/vue";
+import type { ButtonProps, ButtonEmits } from "@dpzvc3/vue/es/dp-button";
 const router = useRouter();
 console.log(
   getCurrentInstance()?.vnode,

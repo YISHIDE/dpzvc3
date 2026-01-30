@@ -16,7 +16,7 @@ import Swipe from "./components/swipe";
 import Tab from "./components/tab";
 import Prompt from "./components/prompt";
 import SlideBar from "./components/slide-bar";
-import TextBar from "./components/Text";
+import TextBar from "./components/text-bar";
 import Upload from "./components/upload";
 import ActionSheet from "./components/action-sheet";
 import SwitchBar from "./components/switchbar";

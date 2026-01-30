@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { SlideBarProps } from "@dpzvc3/vue";
+import type { SlideBarProps } from "@dpzvc3/vue/es/slide-bar";
     const items = ref<SlideBarProps["list"]>([
       { name: "选项一" },
       { name: "选项二" },

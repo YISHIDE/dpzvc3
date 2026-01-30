@@ -4,7 +4,7 @@ import type { PropType } from "vue";
 import type { PromptProps } from "./types";
 
 import Modal from "../modal/modal";
-import TextBar from "../Text/textBar";
+import TextBar from "../text-bar/textBar";
 import DpButton from "../dp-button/button";
 
 export default defineComponent({

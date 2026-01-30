@@ -23,11 +23,11 @@ export type { BadgeProps } from "./components/badge/types";
 export { default as Popup } from "./components/popup";
 export type { PopupProps, PopupEmits } from "./components/popup/types";
 
-export { default as ActionSheet } from "./components/actionSheet";
+export { default as ActionSheet } from "./components/action-sheet";
 export type {
   ActionSheetProps,
   ActionSheetEmits,
-} from "./components/actionSheet/types";
+} from "./components/action-sheet/types";
 
 export { default as Card } from "./components/card";
 export type { CardProps } from "./components/card/types";
@@ -38,11 +38,11 @@ export type { RaterProps } from "./components/rater/types";
 export { default as Cell } from "./components/cell";
 export type { CellProps, CellEmits } from "./components/cell/types";
 
-export { default as CellSwipe } from "./components/cellSwipe";
-export type { CellSwipeProps } from "./components/cellSwipe/types";
+export { default as CellSwipe } from "./components/cell-swipe";
+export type { CellSwipeProps } from "./components/cell-swipe/types";
 
-export { default as DpHeader } from "./components/header";
-export type { HeaderProps } from "./components/header/types";
+export { default as DpHeader } from "./components/dp-header";
+export type { HeaderProps } from "./components/dp-header/types";
 
 export { default as Spinner } from "./components/spinner";
 export type { SpinnerProps } from "./components/spinner/types";
@@ -50,8 +50,8 @@ export type { SpinnerProps } from "./components/spinner/types";
 export { default as Swipe } from "./components/swipe";
 export type { SwipeProps } from "./components/swipe/types";
 
-export { default as DpButton } from "./components/button";
-export type { ButtonProps, ButtonEmits } from "./components/button/types";
+export { default as DpButton } from "./components/dp-button";
+export type { ButtonProps, ButtonEmits } from "./components/dp-button/types";
 
 export { default as Picker } from "./components/picker";
 export type { PickerProps } from "./components/picker/types";
@@ -62,39 +62,37 @@ export type { SwitchBarProps } from "./components/switchbar/types";
 export { default as Tab } from "./components/tab";
 export type { TabProps } from "./components/tab/types";
 
-export { default as TextBar } from "./components/Text";
-export type { TextBarProps } from "./components/Text/types";
+export { default as TextBar } from "./components/text-bar";
+export type { TextBarProps } from "./components/text-bar/types";
 
 export { default as Number } from "./components/number";
 export type { NumberProps } from "./components/number/types";
 
-export { default as ToTop } from "./components/toTop";
-export type { ToTopProps } from "./components/toTop/types";
+export { default as ToTop } from "./components/to-top";
+export type { ToTopProps } from "./components/to-top/types";
 
 export { default as Upload } from "./components/upload";
 export type { UploadProps } from "./components/upload/types";
 
-export { default as SlideBar } from "./components/slideBar";
-export type { SlideBarProps } from "./components/slideBar/types";
+export { default as SlideBar } from "./components/slide-bar";
+export type { SlideBarProps } from "./components/slide-bar/types";
 
 export { default as DpProgress } from "./components/progress";
 export type { ProgressProps } from "./components/progress/types";
 
-export { default as DpLoadMore } from "./components/loadMore";
-export type { LoadmoreProps, LoadmoreEmits } from "./components/loadMore/types";
+export { default as DpLoadMore } from "./components/load-more";
+export type { LoadmoreProps, LoadmoreEmits } from "./components/load-more/types";
 
-export { CheckBox, CheckBoxGroup } from "./components/checkBox";
+export { CheckBox, CheckBoxGroup } from "./components/check-box";
 export type {
   CheckBoxProps,
   CheckBoxGroupProps,
-} from "./components/checkBox/types";
-
-export { RadioBox, RadioBoxGroup } from "./components/radioBox";
+} from "./components/check-box/types";
+export { RadioBox, RadioBoxGroup } from "./components/radio-box";
 export type {
   RadioBoxProps,
   RadioGroupProps,
-} from "./components/radioBox/types";
-
+} from "./components/radio-box/types";
 declare module "vue" {
   // export interface ElementAttrs {
   //   children?: any;
@@ -109,29 +107,29 @@ declare module "vue" {
   export interface GlobalComponents {
     Badge: (typeof import("./components/badge"))["default"];
     Popup: (typeof import("./components/popup"))["default"];
-    ActionSheet: (typeof import("./components/actionSheet"))["default"];
+    ActionSheet: (typeof import("./components/action-sheet"))["default"];
     Card: (typeof import("./components/card"))["default"];
     Rater: (typeof import("./components/rater"))["default"];
     Cell: (typeof import("./components/cell"))["default"];
-    CellSwipe: (typeof import("./components/cellSwipe"))["default"];
-    DpHeader: (typeof import("./components/header"))["default"];
+    CellSwipe: (typeof import("./components/cell-swipe"))["default"];
+    DpHeader: (typeof import("./components/dp-header"))["default"];
     Spinner: (typeof import("./components/spinner"))["default"];
     Swipe: (typeof import("./components/swipe"))["default"];
-    DpButton: (typeof import("./components/button"))["default"];
+    DpButton: (typeof import("./components/dp-button"))["default"];
     Picker: (typeof import("./components/picker"))["default"];
     SwitchBar: (typeof import("./components/switchbar"))["default"];
     Tab: (typeof import("./components/tab"))["default"];
-    TextBar: (typeof import("./components/Text"))["default"];
+    TextBar: (typeof import("./components/text-bar"))["default"];
     Number: (typeof import("./components/number"))["default"];
-    ToTop: (typeof import("./components/toTop"))["default"];
+    ToTop: (typeof import("./components/to-top"))["default"];
     Upload: (typeof import("./components/upload"))["default"];
-    SlideBar: (typeof import("./components/slideBar"))["default"];
+    SlideBar: (typeof import("./components/slide-bar"))["default"];
     DpProgress: (typeof import("./components/progress"))["default"];
-    DpLoadMore: (typeof import("./components/loadMore"))["default"];
-    CheckBox: (typeof import("./components/checkBox"))["CheckBox"];
-    CheckBoxGroup: (typeof import("./components/checkBox"))["CheckBoxGroup"];
-    RadioBox: (typeof import("./components/radioBox"))["RadioBox"];
-    RadioBoxGroup: (typeof import("./components/radioBox"))["RadioBoxGroup"];
+    DpLoadMore: (typeof import("./components/load-more"))["default"];
+    CheckBox: (typeof import("./components/check-box"))["CheckBox"];
+    CheckBoxGroup: (typeof import("./components/check-box"))["CheckBoxGroup"];
+    RadioBox: (typeof import("./components/radio-box"))["RadioBox"];
+    RadioBoxGroup: (typeof import("./components/radio-box"))["RadioBoxGroup"];
   }
 }
 export const Dpzvc3UI: Plugin;

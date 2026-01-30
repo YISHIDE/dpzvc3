@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { SwipeProps } from "@dpzvc3/vue";
+import type { SwipeProps } from "@dpzvc3/vue/es/swipe";
     const files = ref<SwipeProps["list"]>([
       {
         id: 521,

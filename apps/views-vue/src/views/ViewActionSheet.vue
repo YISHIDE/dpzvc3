@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { ActionSheetProps } from "@dpzvc3/vue";
+import type { ActionSheetProps } from "@dpzvc3/vue/es/action-sheet";
     // 响应式状态
 const visible = ref<ActionSheetProps["modelValue"]>(false);
 const actionSheet = ref<ActionSheetProps["items"]>([

@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 // import path from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
-import { Dpzvc3Resolver } from '@dpzvc3/vue/resolvers'
+import { Dpzvc3Resolver,Dpzvc3TypesResolver } from '@dpzvc3/vue/resolvers'
 import Components from 'unplugin-vue-components/vite'
 
 // https://vite.dev/config/
@@ -10,9 +10,11 @@ export default defineConfig({
   plugins: [
     vue(),
     Components({
-      resolvers: [Dpzvc3Resolver]
+      resolvers: [Dpzvc3Resolver],
+      dts: 'src/components.d.ts',
     }),
     AutoImport({
+    resolvers: [Dpzvc3TypesResolver],
     imports: ['vue', 'vue-router'],
     dts: 'src/auto-imports.d.ts',
     eslintrc: {

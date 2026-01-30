@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { TabProps } from "@dpzvc3/vue";
+import type { TabProps } from "@dpzvc3/vue/es/tab";
     const items = ref<TabProps["items"]>([
       {
         path: "/guide",

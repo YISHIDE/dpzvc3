@@ -24,8 +24,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { TextBarProps } from "@dpzvc3/vue";
-import type { NumberProps } from "@dpzvc3/vue";
+import type { TextBarProps } from "@dpzvc3/vue/es/text-bar";
+import type { NumberProps } from "@dpzvc3/vue/es/number";
 
 const number = ref<NumberProps["modelValue"]>(0);
 const min = ref<NumberProps["min"]>(0);

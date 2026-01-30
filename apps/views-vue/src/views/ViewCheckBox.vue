@@ -26,10 +26,11 @@
 </template>
 
 <script lang="ts" setup>
+    import { CheckBoxGroup, CheckBox } from "@dpzvc3/vue/es/check-box";
     import type {
       CheckBoxProps,
       CheckBoxGroupProps,
-    } from "@dpzvc3/vue";
+    } from "@dpzvc3/vue/es/check-box";
     const data = ref<CheckBoxGroupProps["modelValue"]>(["中国"]);
     const checked = ref<CheckBoxProps["modelValue"]>(false);
     const change = (e: any) => {

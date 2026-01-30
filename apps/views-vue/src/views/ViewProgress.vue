@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-    import type { ProgressProps } from "@dpzvc3/vue";
+    import type { ProgressProps } from "@dpzvc3/vue/es/progress";
 
     const progress = ref<ProgressProps["modelValue"]>("0");
     const barHeight = ref(5);

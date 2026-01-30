@@ -1,6 +1,6 @@
 <template>
   <div class="LoadMore">
-    <DpLoadMore
+    <LoadMore
       ref="moreRef"
       :refresh="topMethod"
       height="100%"
@@ -15,7 +15,7 @@
       >
         {{ item }}
       </div>
-    </DpLoadMore>
+    </LoadMore>
   </div>
 </template>
 
@@ -23,7 +23,7 @@
 import type {
   LoadmoreProps,
   LoadmoreEmits,
-} from "@dpzvc3/vue";
+} from "@dpzvc3/vue/es/load-more";
   const moreRef = ref(null);
   const hasMore = ref<LoadmoreProps["hasMore"]>(true);
   const loadmore = ref(Array(16).fill("LoadMore"));

@@ -27,7 +27,7 @@
 import { defineComponent, ref } from "vue";
 // import TextBar from '../components/Text'
 // import Number from '../components/number'
-import type { TextBarProps } from "../components/Text/types";
+import type { TextBarProps } from "../components/text-bar/types";
 import type { NumberProps } from "../components/number/types";
 export default defineComponent({
   name: "ViewText",

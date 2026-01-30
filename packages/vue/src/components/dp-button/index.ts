@@ -10,4 +10,4 @@ type IWithInstall<T> = T & { install(app: App): void };
 const _DpButton = DpButton as IWithInstall<typeof DpButton>;
 export default _DpButton;
 // export default DpButton
-export type { ButtonProps } from "./types";
+export type { ButtonProps, ButtonEmits } from "./types";

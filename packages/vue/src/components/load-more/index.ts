@@ -11,4 +11,4 @@ type IWithInstall<T> = T & { install(app: App): void };
 const _DpLoadMore = DpLoadMore as IWithInstall<typeof DpLoadMore>;
 export default _DpLoadMore;
 // export default LoadMore
-export type { LoadmoreProps } from "./types";
+export type { LoadmoreProps, LoadmoreEmits } from "./types";

@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-  import type { SwitchBarProps } from "@dpzvc3/vue";
+  import type { SwitchBarProps } from "@dpzvc3/vue/es/switch-bar";
   const checkLarge = ref<SwitchBarProps["modelValue"]>(false);
   const checkSmall = ref<SwitchBarProps["modelValue"]>(false);
 </script>

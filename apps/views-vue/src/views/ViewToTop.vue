@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { ToTopProps } from "@dpzvc3/vue";
+import type { ToTopProps } from "@dpzvc3/vue/es/to-top";
 const bottom = ref<ToTopProps["bottom"]>(100);
 </script>
 

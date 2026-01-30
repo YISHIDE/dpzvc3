@@ -3,13 +3,22 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import path from "path";
-
+import dts from "vite-plugin-dts";
 const outDir = "dist";
 
 // 生成非压缩或压缩的配置
 function createLibConfig(isMinify: boolean) {
   return defineConfig({
-    plugins: [vue(), vueJsx()],
+    plugins: [vue(), vueJsx(),
+    dts({
+      entryRoot: 'src/components',     // 对齐 preserveModulesRoot
+      outDir: 'dist/es',
+      include: ['src/components'],
+      cleanVueFileName: true,
+      copyDtsFiles: false,
+      tsconfigPath: './tsconfig.json'
+    })
+    ],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),

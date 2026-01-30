@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { PopupProps } from "@dpzvc3/vue";
+import type { PopupProps } from "@dpzvc3/vue/es/popup";
 type Side = "top" | "right" | "bottom" | "left";
 
     const side = ref<PopupProps["position"]>("top");

@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-    import type { PickerProps } from "@dpzvc3/vue";
+    import type { PickerProps } from "@dpzvc3/vue/es/picker";
     const AreaVisible = ref<PickerProps["modelValue"]>(false);
     const DateVisible = ref<PickerProps["modelValue"]>(false);
     const NormalVisible = ref<PickerProps["modelValue"]>(false);
