@@ -1,47 +1,60 @@
 <template>
   <div class="Indicator">
     <div class="item">
-      <DpButton @click="blade"> blade </DpButton>
+      <DpButton @click="blade">
+blade
+</DpButton>
     </div>
     <div class="item">
-      <DpButton @click="snake"> snake </DpButton>
+      <DpButton @click="snake">
+snake
+</DpButton>
     </div>
     <div class="item">
-      <DpButton @click="circle"> circle </DpButton>
+      <DpButton @click="circle">
+circle
+</DpButton>
     </div>
     <div class="item">
-      <DpButton @click="bounce"> bounce </DpButton>
+      <DpButton @click="bounce">
+bounce
+</DpButton>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-    const { proxy } = getCurrentInstance()!;
-    const removeAfterDelay = (duration = 3000) => {
-      setTimeout(() => {
-        proxy!.$Indicator.remove();
-      }, duration);
-    };
+// const { proxy } = getCurrentInstance()!;
+const removeAfterDelay = (duration = 3000) => {
+  setTimeout(() => {
+    // proxy!.$Indicator.remove();
+    Indicator.remove();
+  }, duration);
+};
 
-    const blade = () => {
-      proxy!.$Indicator.blade({});
-      removeAfterDelay();
-    };
+const blade = () => {
+  // proxy!.$Indicator.blade({});
+  Indicator.blade({});
+  removeAfterDelay();
+};
 
-    const snake = () => {
-      proxy!.$Indicator.snake({});
-      removeAfterDelay();
-    };
+const snake = () => {
+  // proxy!.$Indicator.snake({});
+  Indicator.snake({});
+  removeAfterDelay();
+};
 
-    const circle = () => {
-      proxy!.$Indicator.circle({});
-      removeAfterDelay();
-    };
+const circle = () => {
+  // proxy!.$Indicator.circle({});
+  Indicator.circle({});
+  removeAfterDelay();
+};
 
-    const bounce = () => {
-      proxy!.$Indicator.bounce({});
-      removeAfterDelay();
-    };
+const bounce = () => {
+  // proxy!.$Indicator.bounce({});
+  Indicator.bounce({});
+  removeAfterDelay();
+};
 </script>
 
 <style lang="less" scoped>

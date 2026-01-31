@@ -1,25 +1,31 @@
 <template>
   <div class="Message">
-    <DpButton width="50%" @click="showMessageTop"> Top </DpButton>
-    <DpButton width="50%" @click="showMessage"> Center </DpButton>
-    <DpButton width="50%" @click="showMessageBottom"> Bottom </DpButton>
+    <DpButton
+width="50%" @click="showMessageTop"> Top </DpButton>
+    <DpButton
+width="50%" @click="showMessage"> Center </DpButton>
+    <DpButton
+width="50%" @click="showMessageBottom"> Bottom </DpButton>
   </div>
 </template>
 
 <script lang="ts" setup>
-    // 获取全局实例
-    const { proxy } = getCurrentInstance()!;
-    const showMessage = () => {
-      proxy!.$Message.show({ text: "显示消息" });
-    };
+// 获取全局实例
+// const { proxy } = getCurrentInstance()!;
+const showMessage = () => {
+  Message.show({ text: "显示消息" });
+  // proxy!.$Message.show({ text: "显示消息" });
+};
 
-    const showMessageTop = () => {
-      proxy!.$Message.show({ text: "显示消息", position: "top" });
-    };
+const showMessageTop = () => {
+  Message.show({ text: "显示消息", position: "top" });
+  // proxy!.$Message.show({ text: "显示消息", position: "top" });
+};
 
-    const showMessageBottom = () => {
-      proxy!.$Message.show({ text: "显示消息", position: "bottom" });
-    };
+const showMessageBottom = () => {
+  Message.show({ text: "显示消息", position: "bottom" });
+  // proxy!.$Message.show({ text: "显示消息", position: "bottom" });
+};
 </script>
 
 <style scoped>

@@ -58,7 +58,7 @@ import {
   createWebHashHistory,
   // RouteRecordRaw,
 } from "vue-router";
-import type { RouteRecordRaw } from "vue-router"
+import type { RouteRecordRaw } from "vue-router";
 // 判断当前是否 SSR
 // const isSSR = typeof process !== 'undefined' && process.env.SSR === 'true'
 // 辅助函数：SSR 同步加载，SPA 异步懒加载

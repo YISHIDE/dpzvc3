@@ -1,6 +1,7 @@
 <template>
   <div class="ToTop">
-    <ToTop :bottom="bottom" :right="50" :duration="500" />
+    <ToTop :bottom="bottom"
+:right="50" :duration="500" />
   </div>
 </template>
 

@@ -3,10 +3,14 @@
     <!-- 基础卡片 -->
     <Card width="80%">
       <template #header>
-        <h3 class="item">卡片头部</h3>
+        <h3 class="item">
+卡片头部
+</h3>
       </template>
       <template #default>
-        <p class="item-main">这里是卡片内容</p>
+        <p class="item-main">
+这里是卡片内容
+</p>
       </template>
       <template #footer>
         <span class="item">
@@ -18,12 +22,12 @@
 </template>
 
 <script lang="ts" setup>
-  const count = ref(0);
+const count = ref(0);
 
-  const onClick = () => {
-      count.value += 1;
-      console.log("点击了第一张卡片按钮", count.value);
-  };
+const onClick = () => {
+  count.value += 1;
+  console.log("点击了第一张卡片按钮", count.value);
+};
 </script>
 
 <style lang="less" scoped>

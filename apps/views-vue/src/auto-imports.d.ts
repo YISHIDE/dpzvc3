@@ -7,6 +7,10 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue').EffectScope
+  const Indicator: typeof import('@dpzvc3/vue/es/indicator').default
+  const Message: typeof import('@dpzvc3/vue/es/message').default
+  const Modal: typeof import('@dpzvc3/vue/es/modal').default
+  const Prompt: typeof import('@dpzvc3/vue/es/prompt').default
   const computed: typeof import('vue').computed
   const createApp: typeof import('vue').createApp
   const customRef: typeof import('vue').customRef

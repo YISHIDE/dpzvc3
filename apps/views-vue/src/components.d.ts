@@ -11,6 +11,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ActionSheet: typeof import('@dpzvc3/vue/es/action-sheet')['default']
     Badge: typeof import('@dpzvc3/vue/es/badge')['default']
     Cell: typeof import('@dpzvc3/vue/es/cell')['default']
     CellSwipe: typeof import('@dpzvc3/vue/es/cell-swipe')['default']
@@ -19,6 +20,7 @@ declare module 'vue' {
     DpHeader: typeof import('@dpzvc3/vue/es/dp-header')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     LoadMore: typeof import('@dpzvc3/vue/es/load-more')['default']
+    Picker: typeof import('@dpzvc3/vue/es/picker')['default']
     RadioBox: typeof import('@dpzvc3/vue/es/radio-box')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

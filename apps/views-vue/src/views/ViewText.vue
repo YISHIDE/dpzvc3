@@ -3,21 +3,24 @@
     <!-- Number 示例 -->
     <div class="item">
       <p class="title">Number</p>
-      <Number v-model="number" :min="min" :max="max" :step="step" />
+      <Number v-model="number"
+:min="min" :max="max" :step="step" />
       <span class="value">value: {{ number }}</span>
     </div>
 
     <!-- TextBar 普通输入框 -->
     <div class="item">
       <p class="title">TextBar</p>
-      <TextBar v-model="text" type="text" />
+      <TextBar v-model="text"
+type="text" />
       <span class="value">value: {{ text }}</span>
     </div>
 
     <!-- TextBar 多行输入框 -->
     <div class="item">
       <p class="title">TextBar</p>
-      <TextBar v-model="texts" type="textarea" :maxlength="9" />
+      <TextBar v-model="texts"
+type="textarea" :maxlength="9" />
       <span class="value">value: {{ texts }}</span>
     </div>
   </div>

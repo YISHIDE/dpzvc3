@@ -1,16 +1,18 @@
 <template>
   <div class="SwitchBar">
-    <SwitchBar v-model="checkLarge" size="large" />
+    <SwitchBar v-model="checkLarge"
+size="large" />
     <span>large</span>
-    <SwitchBar v-model="checkSmall" size="small" />
+    <SwitchBar v-model="checkSmall"
+size="small" />
     <span>small</span>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import type { SwitchBarProps } from "@dpzvc3/vue/es/switch-bar";
-  const checkLarge = ref<SwitchBarProps["modelValue"]>(false);
-  const checkSmall = ref<SwitchBarProps["modelValue"]>(false);
+import type { SwitchBarProps } from "@dpzvc3/vue/es/switch-bar";
+const checkLarge = ref<SwitchBarProps["modelValue"]>(false);
+const checkSmall = ref<SwitchBarProps["modelValue"]>(false);
 </script>
 
 <style lang="less" scoped>

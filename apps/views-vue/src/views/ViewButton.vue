@@ -1,15 +1,19 @@
 <template>
   <div class="Button">
-    <DpButton type="primary" @click="jump"> Primary </DpButton>
-    <DpButton type="success" :loading="loading" @click="onClick">
+    <DpButton
+type="primary" @click="jump"> Primary </DpButton>
+    <DpButton type="success"
+:loading="loading" @click="onClick">
       Success
     </DpButton>
-    <DpButton type="warning" :loading="loading" @click="onClick">
+    <DpButton type="warning"
+:loading="loading" @click="onClick">
       Warning
     </DpButton>
     <DpButton type="danger"> Danger </DpButton>
     <DpButton type="normal"> Normal </DpButton>
-    <DpButton type="normal" disabled> Disabled </DpButton>
+    <DpButton
+type="normal" disabled> Disabled </DpButton>
   </div>
 </template>
 <script lang="ts" setup>

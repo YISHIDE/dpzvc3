@@ -23,20 +23,27 @@
       @sure="pickerSure"
       @cancle="pickerCancle"
     />
-    <v-button :loading="disable" @on-click="popup = true"> 确定 </v-button>
+    <v-button
+:loading="disable" @on-click="popup = true"> 确定 </v-button>
     <h1>111111111111</h1>
     <!--<tab></tab>-->
     <p>{{ address }}</p>
     <v-button @click="showMessage"> asdasssssdaaaaaasdadd </v-button>
-    <CheckBox-group v-model="data" :vertical="visible">
-      <CheckBox label="aaa" :disable="visible" />
+    <CheckBox-group v-model="data"
+:vertical="visible">
+      <CheckBox label="aaa"
+:disable="visible" />
       <CheckBox label="bbb" />
       <CheckBox label="ccc" />
     </CheckBox-group>
-    <CheckBox v-model="checked" label="ddd" />
-    <Radio v-model="checked" label="1111" />
-    <Radio-group v-model="radio" :vertical="visible">
-      <Radio :disable="visible" label="1111" />
+    <CheckBox v-model="checked"
+label="ddd" />
+    <Radio v-model="checked"
+label="1111" />
+    <Radio-group v-model="radio"
+:vertical="visible">
+      <Radio :disable="visible"
+label="1111" />
       <Radio label="222" />
       <Radio label="333" />
     </Radio-group>
@@ -87,23 +94,29 @@
     </Slide-bar>
     <!--<Tab :items="items" v-model="maskCloseble"></Tab>-->
 
-    <Swipe :multiple="false" :list="files">
+    <Swipe :multiple="false"
+:list="files">
       <template #default="props">
         <div>
           <span>{{ props.item.id }}</span>
-          <img :src="props.item.image" />
+          <img :src="props.item.image" >
           <span v-text="props.index" />
         </div>
       </template>
     </Swipe>
 
-    <TextBar v-model="texts" type="textarea" :maxlength="9" />
+    <TextBar v-model="texts"
+type="textarea" :maxlength="9" />
     <span>{{ texts }}</span>
-    <Number v-model="number" :min="1" :max="10" :focus="true" />
+    <Number v-model="number"
+:min="1" :max="10" :focus="true" />
     <span>{{ number }}</span>
-    <Upload ref="upload" :multiple="true" @on-change-file="onChangeFile" />
-    <img v-for="(item, index) in files" :key="index" :src="item.base64" />
-    <SwitchBar v-model="check" size="large" />
+    <Upload ref="upload"
+:multiple="true" @on-change-file="onChangeFile" />
+    <img
+v-for="(item, index) in files" :key="index" :src="item.base64" />
+    <SwitchBar v-model="check"
+size="large" />
     <span>{{ check }}</span>
     <SwitchBar size="large" />
 
@@ -122,21 +135,32 @@
       :loading="loading"
       @click="load"
     />
-    <Rater v-model="rate" disabled />
+    <Rater v-model="rate"
+disabled />
     {{ rate }}
 
-    <Spinner type="blade" size="60" />
-    <Action-sheet v-model="popup" :items="actionSheet" />
+    <Spinner type="blade"
+size="60" />
+    <Action-sheet v-model="popup"
+:items="actionSheet" />
     <Progress v-model="progress" />
     <ToTop />
-    <Cell title="标题" label="小标题" value="说明文字" has-mask />
-    <CellSwipe :right="right" title="标题" has-mask />
-    <CellSwipe :left="left" :right="right" title="标题" has-mask />
-    <CellSwipe :left="left" :right="right" title="标题" has-mask />
-    <CellSwipe :left="left" :right="right" title="标题" has-mask />
-    <CellSwipe :left="left" :right="right" title="标题" has-mask />
-    <CellSwipe :left="left" :right="right" title="标题" has-mask />
-    <Badge number="10" max="99" :dot="false">
+    <Cell title="标题"
+label="小标题" value="说明文字" has-mask />
+    <CellSwipe :right="right"
+title="标题" has-mask />
+    <CellSwipe :left="left"
+:right="right" title="标题" has-mask />
+    <CellSwipe :left="left"
+:right="right" title="标题" has-mask />
+    <CellSwipe :left="left"
+:right="right" title="标题" has-mask />
+    <CellSwipe :left="left"
+:right="right" title="标题" has-mask />
+    <CellSwipe :left="left"
+:right="right" title="标题" has-mask />
+    <Badge number="10"
+max="99" :dot="false">
       <div style="width: 45px; height: 45px; background-color: red" />
     </Badge>
     <Card />
@@ -439,7 +463,6 @@ export default {
       return true;
     },
     getConfirm(val) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       val ? (this.msgTip = "成功") : (this.msgTip = "失败");
     },
     getVal(val) {

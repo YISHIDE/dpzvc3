@@ -20,37 +20,34 @@
 </template>
 
 <script lang="ts" setup>
-import type {
-  LoadmoreProps,
-  LoadmoreEmits,
-} from "@dpzvc3/vue/es/load-more";
-  const moreRef = ref(null);
-  const hasMore = ref<LoadmoreProps["hasMore"]>(true);
-  const loadmore = ref(Array(16).fill("LoadMore"));
+import type { LoadmoreProps, LoadmoreEmits } from "@dpzvc3/vue/es/load-more";
+const moreRef = ref(null);
+const hasMore = ref<LoadmoreProps["hasMore"]>(true);
+const loadmore = ref(Array(16).fill("LoadMore"));
 
-  const topMethod = () => {
-      hasMore.value = true;
+const topMethod = () => {
+  hasMore.value = true;
 
-      setTimeout(() => {
-        // console.log(moreRef.value, '----moreRef----')
-        if (moreRef.value && (moreRef.value as any).onLoadOff) {
-          (moreRef.value as any).onLoadOff();
-        }
-      }, 2000);
-  };
+  setTimeout(() => {
+    // console.log(moreRef.value, '----moreRef----')
+    if (moreRef.value && (moreRef.value as any).onLoadOff) {
+      (moreRef.value as any).onLoadOff();
+    }
+  }, 2000);
+};
 
-  const bottomMethod = () => {
-      setTimeout(() => {
-        if (moreRef.value && (moreRef.value as any).onLoadOff) {
-          (moreRef.value as any).onLoadOff();
-        }
-        loadmore.value.push(...["LoadMore", "LoadMore"]);
-      }, 2000);
-    };
+const bottomMethod = () => {
+  setTimeout(() => {
+    if (moreRef.value && (moreRef.value as any).onLoadOff) {
+      (moreRef.value as any).onLoadOff();
+    }
+    loadmore.value.push(...["LoadMore", "LoadMore"]);
+  }, 2000);
+};
 
-  const getStatus: LoadmoreEmits["on-change-up-status"] = (val) => {
-      console.log(val, "----val----");
-  };
+const getStatus: LoadmoreEmits["on-change-up-status"] = (val) => {
+  console.log(val, "----val----");
+};
 </script>
 
 <style lang="less" scoped>

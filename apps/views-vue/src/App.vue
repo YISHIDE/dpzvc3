@@ -34,7 +34,7 @@ import HelloWorld from './components/HelloWorld.vue'
   </transition>
 </template>
 <script lang="ts">
-  import { defineComponent } from "vue";
+import { defineComponent } from "vue";
 export default defineComponent({
   data() {
     return {
@@ -67,7 +67,7 @@ export default defineComponent({
 //  @import '../styles/index.less';
 //  @import "@dpzvc3/vue/dist/styles/dpzvc3.css";
 // @import "@dpzvc3/styles";  总的引入
-// @import "@dpzvc3/styles/dist/components/cell.css"; 按需引入 
+// @import "@dpzvc3/styles/dist/components/cell.css"; 按需引入
 
 .page {
   position: relative;

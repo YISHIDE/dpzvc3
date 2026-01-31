@@ -1,21 +1,22 @@
 <template>
   <div class="Upload">
-    <Upload ref="upload" :multiple="true" @on-change-file="onChangeFile" />
+    <Upload ref="upload"
+:multiple="true" @on-change-file="onChangeFile" />
 
     <template v-if="files.length">
-      <img v-for="(item, index) in files" :key="index" :src="item.base64" />
+      <img
+v-for="(item, index) in files" :key="index" :src="item.base64" />
     </template>
   </div>
 </template>
 
 <script lang="ts" setup>
+const files = ref<Array<{ base64: string; clearBase64: string }>>([]);
+const upload = ref(null);
 
-    const files = ref<Array<{ base64: string; clearBase64: string }>>([]);
-    const upload = ref(null);
-
-    const onChangeFile = (newFiles: any[]) => {
-      files.value = newFiles;
-    };
+const onChangeFile = (newFiles: any[]) => {
+  files.value = newFiles;
+};
 </script>
 
 <style lang="less" scoped>

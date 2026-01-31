@@ -8,19 +8,13 @@
   "types": "dist/types/index.d.ts",
   "scripts": {
     "fix": "eslint src --fix",
-    "dev": "vite",
     "type-check": "vue-tsc --noEmit",
     "type-check:watch": "vue-tsc --noEmit --watch",
     "build": "VITE_MINIFY=false vite build --config vite.config.lib.ts && pnpm run build:types && pnpm run build:resolver",
-    "dist": "vite build --mode production",
-    "preview": "vite preview --outDir dist-prod",
-    "build:ssr": "vite build --config vite.config.ssr.client.ts && vite build --config vite.config.ssr.server.ts",
     "build:style": "gulp --gulpfile build-style.js",
     "build:types": "tsc --project tsconfig.build.json && cp src/index.d.ts dist/types/index.d.ts",
     "build:resolver": "tsup --config tsup.resolver.config.ts",
-    "prepare": "husky",
-    "start": "node server.js",
-    "vercel-build": "npm run build:ssr"
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",

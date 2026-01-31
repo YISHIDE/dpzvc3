@@ -1,21 +1,26 @@
 <template>
   <div class="Prompt">
-    <DpButton width="50%" @click="showPrompt"> 弹出Prompt </DpButton>
+    <DpButton
+width="50%" @click="showPrompt"> 弹出Prompt </DpButton>
   </div>
 </template>
 
 <script lang="ts" setup>
+// 获取当前组件实例
+// const { proxy } = getCurrentInstance()!;
 
-    // 获取当前组件实例
-    const { proxy } = getCurrentInstance()!;
-
-    function showPrompt() {
-      proxy?.$Prompt.info({
-        title: "Prompt",
-        spec: "ccc",
-        text: "vvvv",
-      });
-    }
+function showPrompt() {
+  // proxy?.$Prompt.info({
+  //   title: "Prompt",
+  //   spec: "ccc",
+  //   text: "vvvv",
+  // });
+  Prompt.info({
+    title: "Prompt",
+    spec: "ccc",
+    text: "vvvv",
+  });
+}
 </script>
 
 <style lang="less" scoped>

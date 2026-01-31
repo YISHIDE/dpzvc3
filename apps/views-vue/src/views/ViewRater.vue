@@ -1,18 +1,20 @@
 <template>
   <div class="Rater">
     <p>可点击评分</p>
-    <Rater v-model="rate" :max="5" />
+    <Rater v-model="rate"
+:max="5" />
     <span>{{ rate }}</span>
 
     <p>不可点击评分</p>
-    <Rater v-model="disabledRate" :disabled="true" />
+    <Rater v-model="disabledRate"
+:disabled="true" />
     <span>{{ disabledRate }}</span>
   </div>
 </template>
 
 <script lang="ts" setup>
-    const rate = ref(0);
-    const disabledRate = ref(4.5);
+const rate = ref(0);
+const disabledRate = ref(4.5);
 </script>
 
 <style lang="less" scoped>
