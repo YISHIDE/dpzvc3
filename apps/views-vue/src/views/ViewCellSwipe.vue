@@ -19,21 +19,23 @@ title="向右滑" has-mask />
 // </script> -->
 <script lang="ts" setup>
 const show = ref(true);
-const { proxy } = getCurrentInstance()!; // 用于访问全局 Modal
+// const { proxy } = getCurrentInstance()!; // 用于访问全局 Modal
 
 const left = reactive([
   {
     content: "确定",
     style: { backgroundColor: "#eee", color: "#fff" },
     handleClick: () => {
-      (proxy! as any).$Modal.info({ body: "点击了确定" });
+      // (proxy! as any).$Modal.info({ body: "点击了确定" });
+      Modal.info({ body: "点击了确定" });
     },
   },
   {
     content: "删除",
     style: { backgroundColor: "red", color: "#fff" },
     handleClick: () => {
-      (proxy! as any).$Modal.info({ body: "点击了删除" });
+      // (proxy! as any).$Modal.info({ body: "点击了删除" });
+      Modal.info({ body: "点击了删除" });
     },
   },
 ]);
@@ -43,14 +45,16 @@ const right = reactive([
     content: "确定",
     style: { backgroundColor: "#eee", color: "#fff" },
     handleClick: () => {
-      (proxy! as any).$Modal.info({ body: "点击了确定" });
+      // (proxy! as any).$Modal.info({ body: "点击了确定" });
+      Modal.info({ body: "点击了确定" });
     },
   },
   {
     content: "删除",
     style: { backgroundColor: "red", color: "#fff" },
     handleClick: () => {
-      (proxy! as any).$Modal.info({ body: "点击了删除" });
+      // (proxy! as any).$Modal.info({ body: "点击了删除" });
+      Modal.info({ body: "点击了删除" });
     },
   },
 ]);
