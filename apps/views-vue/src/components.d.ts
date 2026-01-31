@@ -24,6 +24,7 @@ declare module 'vue' {
     RadioBox: typeof import('@dpzvc3/vue/es/radio-box')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SwitchBar: typeof import('@dpzvc3/vue/es/switch-bar')['default']
     ToTop: typeof import('@dpzvc3/vue/es/to-top')['default']
     Upload: typeof import('@dpzvc3/vue/es/upload')['default']
   }

@@ -19,7 +19,7 @@ import SlideBar from "./components/slide-bar";
 import TextBar from "./components/text-bar";
 import Upload from "./components/upload";
 import ActionSheet from "./components/action-sheet";
-import SwitchBar from "./components/switchbar";
+import SwitchBar from "./components/switch-bar";
 import Rater from "./components/rater";
 import Spinner from "./components/spinner";
 import DpLoadMore from "./components/load-more";
