@@ -1,13 +1,12 @@
-import { createApp } from "vue";
+// import { createApp } from "vue";
 // import './style.css'
 // import dpzvc3 from "@dpzvc3/vue";
-import "@dpzvc3/styles/dist/index.css";
+// import "@dpzvc3/styles/dist/index.css";
 // import "@dpzvc3/vue/dist/styles/dpzvc3.css"
 import App from "./App.vue";
-import { createHashRouter } from "./router";
+import { createHashRouters } from "./router";
 const app = createApp(App);
 // app.use(dpzvc3)
-
-const router = createHashRouter();
+const router = createHashRouters();
 app.use(router);
 app.mount("#app");

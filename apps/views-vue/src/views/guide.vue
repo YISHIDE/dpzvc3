@@ -16,7 +16,7 @@
 const componentList = ref([
   {
     title: "ActionSheet",
-    label: "dpzvc3-ui操作列表",
+    label: "dpzvc3-ui操作列表1111",
     link: "/ActionSheet",
   },
   {
@@ -151,6 +151,7 @@ const componentList = ref([
 </script>
 
 <style lang="less" scoped>
+ @import "@dpzvc3/styles/dist/components/cell.css";
 .guide {
   width: 100%;
   position: relative;

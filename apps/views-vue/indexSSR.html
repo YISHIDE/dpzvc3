@@ -1,39 +1,62 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta name="viewport"
-        content="width=device-width,
-                 initial-scale=1.0,
-                 maximum-scale=1.0,
-                 minimum-scale=1.0">
+  <!-- ① charset 必须最前 -->
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+  />
+
   <title>dpzvc3-ui SSR</title>
+  <!--head-css-->
+  <!-- ③ SSR 基础样式兜底 -->
   <style>
-    html, body {
+    html {
+      width: 100%;
+      height: 100%;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "PingFang SC",
+        "Hiragino Sans GB",
+        "Microsoft YaHei",
+        Arial,
+        sans-serif;
+      line-height: 1.5;
+    }
+
+    body {
       width: 100%;
       height: 100%;
       margin: 0;
     }
   </style>
 </head>
+
 <body>
   <div id="app"><!--app-html--></div>
-  <script>
-    (function (doc, win) {
-      var docEl = doc.documentElement;
 
-      function recalc() {
-        var clientWidth = docEl.clientWidth;
-        if (!clientWidth) return;
+  <!-- 客户端 hydrate -->
+  <!-- <script type="module" src="/src/entry-client.ts"></script> -->
+    <!-- ② rem 提前同步计算 -->
+  <script type="module">
+  (function(doc, win){
+    var docEl = doc.documentElement;
 
-        if (clientWidth > 750) clientWidth = 750;
+    function setFontSize() {
+      var clientWidth = docEl.clientWidth;
+      if(clientWidth > 750) clientWidth = 750;
+      docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+    }
 
-        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
-      }
+    // 1️⃣ 首屏立即执行
+    setFontSize();
 
-      win.addEventListener('resize', recalc);
-      doc.addEventListener('DOMContentLoaded', recalc);
-    })(document, window);
-  </script>
-  <script type="module" src="/src/entry-client.ts"></script>
+    // 2️⃣ 窗口 resize 时自适应
+    win.addEventListener('resize', setFontSize);
+  })(document, window);
+</script>
 </body>
 </html>

@@ -33,40 +33,41 @@ import HelloWorld from './components/HelloWorld.vue'
     <router-view class="page" />
   </transition>
 </template>
-<script lang="ts">
-import { defineComponent } from "vue";
-export default defineComponent({
-  data() {
-    return {
-      direction: "dpzvc3-ani-fade",
-    };
-  },
-  watch: {
-    $route(to, from) {
-      const toDepth = to.path.split("/").length;
-      const fromDepth = from.path.split("/").length;
 
-      if (toDepth === fromDepth) {
-        this.direction = "dpzvc3-ani-fade";
-      } else if (toDepth > fromDepth) {
-        this.direction = "dpzvc3-ani-left";
-      } else {
-        this.direction = "dpzvc3-ani-right";
-      }
-    },
-  },
-  mounted() {},
-  beforeUnmount() {},
-  methods: {},
-});
+<script lang="ts" setup>
+// import { ref, watch } from "vue";
+// import { useRoute } from "vue-router";
+
+// 当前动画方向
+const direction = ref("dpzvc3-ani-fade");
+
+// 获取路由实例
+const route = useRoute();
+
+// 监听路由变化
+watch(
+  () => route.fullPath, // 监听路由全路径变化
+  (toPath, fromPath) => {
+    const toDepth = toPath.split("/").length;
+    const fromDepth = fromPath.split("/").length;
+    // console.log("toDepth:", toDepth, "fromDepth:", fromDepth);
+    if (toDepth === fromDepth) {
+      direction.value = "dpzvc3-ani-fade";
+    } else if (toDepth > fromDepth) {
+      direction.value = "dpzvc3-ani-left";
+    } else {
+      direction.value = "dpzvc3-ani-right";
+    }
+  }
+);
 </script>
-<style lang="less">
+<style lang="less" scoped>
 // @import '../styles/common.css';
 
 // @import '../../src/styles/index';
 //  @import '../styles/index.less';
 //  @import "@dpzvc3/vue/dist/styles/dpzvc3.css";
-// @import "@dpzvc3/styles";  总的引入
+// @import "@dpzvc3/styles";  // 总的引入
 // @import "@dpzvc3/styles/dist/components/cell.css"; 按需引入
 
 .page {

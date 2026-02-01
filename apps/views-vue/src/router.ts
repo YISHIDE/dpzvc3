@@ -51,13 +51,13 @@
 /**
  * 路由配置 - SSR 友好版本
  */
-import {
-  createRouter as _createRouter,
-  createWebHistory,
-  createMemoryHistory,
-  createWebHashHistory,
-  // RouteRecordRaw,
-} from "vue-router";
+// import {
+//   createRouter as _createRouter,
+//   createWebHistory,
+//   createMemoryHistory,
+//   createWebHashHistory,
+//   // RouteRecordRaw,
+// } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
 // 判断当前是否 SSR
 // const isSSR = typeof process !== 'undefined' && process.env.SSR === 'true'
@@ -242,9 +242,9 @@ const routers: RouteRecordRaw[] = [
 ];
 
 // 创建 SSR/SPA 路由
-export function createRouter(isServer: boolean) {
+export function createRouters(isServer: boolean) {
   // if(!isServer) console.log(routers, 'routers')
-  return _createRouter({
+  return createRouter({
     history: isServer ? createMemoryHistory() : createWebHistory(),
     routes: routers,
     scrollBehavior() {
@@ -254,8 +254,8 @@ export function createRouter(isServer: boolean) {
 }
 
 // 创建 Hash 路由（可选）
-export function createHashRouter() {
-  return _createRouter({
+export function createHashRouters() {
+  return createRouter({
     history: createWebHashHistory(),
     routes: routers,
     scrollBehavior() {

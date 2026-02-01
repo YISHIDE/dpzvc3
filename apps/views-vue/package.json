@@ -8,12 +8,14 @@
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
+    "dev:ssr": "node server-dev.js",
     "build:ssr": "vite build --config vite.config.ssr.client.ts && vite build --config vite.config.ssr.server.ts",
-    "start": "node server.cjs"
+    "start": "node server.js"
   },
   "dependencies": {
     "@dpzvc3/styles": "workspace:*",
     "@dpzvc3/vue": "workspace:*",
+    "@vueuse/head": "^2.0.0",
     "express": "^5.2.1",
     "vue": "^3.5.24",
     "vue-router": "^4.6.4"
@@ -28,6 +30,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-vue": "^9.33.0",
     "postcss-pxtorem": "^6.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.53.0",
     "unplugin-auto-import": "^21.0.0",

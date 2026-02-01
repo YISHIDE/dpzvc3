@@ -8,7 +8,6 @@ width="50%" @click="showConfirm"> confirm </DpButton>
 </template>
 
 <script lang="ts" setup>
-
 // import Modal from '@dpzvc3/vue/es/modal';
 
 // 获取实例，用来访问全局属性 $Modal / $Message
