@@ -61,7 +61,7 @@ watch(
   }
 );
 </script>
-<style lang="less" scoped>
+<style lang="less">
 // @import '../styles/common.css';
 
 // @import '../../src/styles/index';

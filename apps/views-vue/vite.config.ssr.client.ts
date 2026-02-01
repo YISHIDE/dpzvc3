@@ -101,32 +101,31 @@ export default defineConfig({
     },
   },
   build: {
-    cssCodeSplit: true, // 关键：提取 CSS
+    // cssCodeSplit: true, // 关键：提取 CSS
     // ssrManifest: true, // 关键：生成 SSR 清单
     outDir: "dist-ssr/client",
-      rollupOptions: {
-        input: path.resolve(__dirname, "src/entry-client.ts"), // 🚫 不再是 indexSSR.html
-        // output: {
-        // // ⚠️ 自动避免拆分 vendor / common
-        // manualChunks: () => null,
-        // }
-        output: {
-          //  assetFileNames: 'assets/[name]-[hash][extname]', 
-          entryFileNames: "[name].js",
-          chunkFileNames: "[name]-[hash].js",
-          assetFileNames: "[name]-[hash][extname]",
-        },
+      // rollupOptions: {
+      //   input: path.resolve(__dirname, "src/entry-client.ts"), // 🚫 不再是 indexSSR.html
+      //   // output: {
+      //   // // ⚠️ 自动避免拆分 vendor / common
+      //   // manualChunks: () => null,
+      //   // }
+      //   output: {
+      //     //  assetFileNames: 'assets/[name]-[hash][extname]', 
+      //     entryFileNames: "[name].js",
+      //     chunkFileNames: "[name]-[hash].js",
+      //     assetFileNames: "[name]-[hash][extname]",
+      //   },
+      // },
+    rollupOptions: {
+      input: path.resolve(__dirname, "indexSSR.html"),
+      output: {
+        format: "umd", // ⚡ 改成 UMD
+        name: "App", // ⚡ 浏览器访问 window.App
+        entryFileNames: "[name].js",
+        chunkFileNames: "[name]-[hash].js",
       },
-    // rollupOptions: {
-    //   input: path.resolve(__dirname, "indexSSR.html"),
-    //   output: {
-    //     format: "umd", // ⚡ 改成 UMD
-    //     name: "App", // ⚡ 浏览器访问 window.App
-    //     entryFileNames: "[name].js",
-    //     chunkFileNames: "[name]-[hash].js",
-    //     assetFileNames: 'assets/[name]-[hash][extname]', // 可选：自定义 CSS 文件名
-    //   },
-    // },
+    },
     manifest: true,
   },
 });

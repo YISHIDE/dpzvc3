@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "dev:ssr": "node server-dev.js",
     "build:ssr": "vite build --config vite.config.ssr.client.ts && vite build --config vite.config.ssr.server.ts",
-    "start": "node server.js"
+    "start": "node server.cjs"
   },
   "dependencies": {
     "@dpzvc3/styles": "workspace:*",

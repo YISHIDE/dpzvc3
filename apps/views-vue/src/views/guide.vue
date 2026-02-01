@@ -150,8 +150,8 @@ const componentList = ref([
 // };
 </script>
 
-<style lang="less" scoped>
- @import "@dpzvc3/styles/dist/components/cell.css";
+<style lang="less">
+//  @import "@dpzvc3/styles/dist/components/cell.css";
 .guide {
   width: 100%;
   position: relative;
