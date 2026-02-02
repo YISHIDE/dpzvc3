@@ -11,6 +11,7 @@
     "InjectionKey": true,
     "MaybeRef": true,
     "MaybeRefOrGetter": true,
+    "Modal": true,
     "PropType": true,
     "Ref": true,
     "ShallowRef": true,
