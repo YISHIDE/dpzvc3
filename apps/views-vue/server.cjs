@@ -60,9 +60,15 @@ function start() {
     try {
       const templatePath = path.resolve(__dirname, 'dist-ssr/client/indexSSR.html')
       const template = fs.readFileSync(templatePath, 'utf-8') // ✅ 确保 utf-8
-      const appHtml = await render(req.url)
+      // const appHtml = await render(req.url)
+       const { appHtml, skeletonHtml, skeletonStyle } =
+    await render(req.url)
+    const html = template
+    .replace('<!--skeleton-style-->', `<style>${skeletonStyle}</style>`)
+    .replace('<!--skeleton-->', skeletonHtml)
+    .replace('<!--ssr-outlet-->', appHtml)
+      // const html = template.replace('<!--app-html-->', appHtml)
 
-      const html = template.replace('<!--app-html-->', appHtml)
       // console.log(html, 'html')
       // ✅ 设置响应头，保证中文不乱码
       res.setHeader('Content-Type', 'text/html')

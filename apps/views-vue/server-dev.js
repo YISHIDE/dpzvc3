@@ -33,10 +33,15 @@ async function createServer() {
       const { render } = await vite.ssrLoadModule('/src/entry-server.ts')
 
       // 3d️⃣ 调用 render 方法，生成 HTML
-      const appHtml = await render(url)
+      // const appHtml = await render(url)
+          const { appHtml, skeletonHtml, skeletonStyle } =
+    await render(req.url)
 
       // 3e️⃣ 注入 HTML
-      const html = template.replace('<!--app-html-->', appHtml)
+    const html = template
+    .replace('<!--skeleton-style-->', `<style>${skeletonStyle}</style>`)
+    .replace('<!--skeleton-->', skeletonHtml)
+    .replace('<!--ssr-outlet-->', appHtml)
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {

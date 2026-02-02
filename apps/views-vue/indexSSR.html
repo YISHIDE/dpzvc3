@@ -12,6 +12,7 @@
   <title>dpzvc3-ui SSR</title>
   <!--head-css-->
   <!-- ③ SSR 基础样式兜底 -->
+   <!--skeleton-style-->
   <style>
     html {
       width: 100%;
@@ -36,7 +37,9 @@
 </head>
 
 <body>
-  <div id="app"><!--app-html--></div>
+  <div id="app"><!--ssr-outlet--></div>
+  <!--skeleton-->
+  
 
   <!-- 客户端 hydrate -->
   <script type="module" src="/src/entry-client.ts"></script>

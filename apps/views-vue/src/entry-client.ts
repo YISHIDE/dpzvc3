@@ -27,4 +27,5 @@ router.beforeEach((to, from, next) => {
 router.isReady().then(() => {
   console.log("🟢 router ready, mount app");
   app.mount("#app");
+  document.getElementById('skeleton')?.remove()
 });
