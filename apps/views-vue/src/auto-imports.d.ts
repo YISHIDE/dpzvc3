@@ -10,6 +10,7 @@ declare global {
   const Indicator: typeof import('@dpzvc3/vue/es/indicator').default
   const Message: typeof import('@dpzvc3/vue/es/message').default
   const Modal: typeof import('@dpzvc3/vue/es/modal').default
+  const Number: typeof import('@dpzvc3/vue/es/number').default
   const Prompt: typeof import('@dpzvc3/vue/es/prompt').default
   const TextBar: typeof import('@dpzvc3/vue/es/text-bar').default
   const computed: typeof import('vue').computed

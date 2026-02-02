@@ -11,6 +11,7 @@ import exifr from "exifr";
 import MegaPixImage from "../../lib/MegaPixImage";
 import { JPEG } from "../../utils/util";
 import type { UploadProps } from "./types";
+import Indicator from "../Indicator";
 
 export type { UploadProps };
 
@@ -55,7 +56,9 @@ export default defineComponent({
       const fileList = input.files;
       if (!fileList || !proxy) return;
 
-      (proxy as any).$Indicator?.snake({ text: "上传中" });
+      // (proxy as any).$Indicator?.snake({ text: "上传中" });
+
+      Indicator?.snake({ text: "上传中" });
 
       files.value = [];
       fileLength.value = fileList.length;
@@ -127,7 +130,8 @@ export default defineComponent({
         });
 
         if (files.value.length === fileLength.value) {
-          (proxy as any).$Indicator?.remove();
+          // (proxy as any).$Indicator?.remove();
+          Indicator?.remove();
         }
       };
     };

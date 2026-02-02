@@ -65,8 +65,8 @@ export type { TabProps } from "./components/tab/types";
 export { default as TextBar } from "./components/text-bar";
 export type { TextBarProps } from "./components/text-bar/types";
 
-export { default as Number } from "./components/number";
-export type { NumberProps } from "./components/number/types";
+export { default as Number } from "./components/dp-number";
+export type { NumberProps } from "./components/dp-number/types";
 
 export { default as ToTop } from "./components/to-top";
 export type { ToTopProps } from "./components/to-top/types";

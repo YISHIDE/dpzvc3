@@ -69,10 +69,9 @@ function start() {
     .replace('<!--ssr-outlet-->', appHtml)
       // const html = template.replace('<!--app-html-->', appHtml)
 
-      // console.log(html, 'html')
+      console.log(html, 'html')
       // ✅ 设置响应头，保证中文不乱码
-      res.setHeader('Content-Type', 'text/html')
-      res.end(html)
+    res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (err) {
       console.error(err)
       res.status(500).send('SSR Error')

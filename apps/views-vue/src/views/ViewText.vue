@@ -3,7 +3,7 @@
     <!-- Number 示例 -->
     <div class="item">
       <p class="title">Number</p>
-      <Number v-model="number"
+      <DpNumber v-model="number"
 :min="min" :max="max" :step="step" />
       <span class="value">value: {{ number }}</span>
     </div>
@@ -28,7 +28,8 @@ type="textarea" :maxlength="9" />
 
 <script lang="ts" setup>
 import type { TextBarProps } from "@dpzvc3/vue/es/text-bar";
-import type { NumberProps } from "@dpzvc3/vue/es/number";
+// import Number from "@dpzvc3/vue/es/number";
+import type { NumberProps } from "@dpzvc3/vue/es/dp-number";
 
 const number = ref<NumberProps["modelValue"]>(0);
 const min = ref<NumberProps["min"]>(0);

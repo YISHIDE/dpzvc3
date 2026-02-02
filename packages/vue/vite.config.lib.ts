@@ -13,7 +13,7 @@ function createLibConfig(isMinify: boolean) {
     dts({
       entryRoot: 'src/components',     // 对齐 preserveModulesRoot
       outDir: 'dist/es',
-      include: ['src/components'],
+      include: ['src/components', 'src/shims-vue.d.ts'],
       cleanVueFileName: true,
       copyDtsFiles: false,
       tsconfigPath: './tsconfig.json'

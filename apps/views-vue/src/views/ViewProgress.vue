@@ -1,6 +1,6 @@
 <template>
   <div class="Progress">
-    <DpProgress v-model="progress"
+    <Progress v-model="progress"
 :bar-height="barHeight" />
   </div>
 </template>

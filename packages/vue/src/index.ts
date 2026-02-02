@@ -31,7 +31,7 @@ import Cell from "./components/cell";
 import CellSwipe from "./components/cell-swipe";
 import Badge from "./components/badge";
 import Card from "./components/card";
-import Number from "./components/number";
+import DpNumber from "./components/dp-number";
 
 /* ========= 组件集合 ========= */
 const components = {
@@ -46,7 +46,7 @@ const components = {
   Tab,
   SlideBar,
   TextBar,
-  Number,
+  DpNumber,
   Upload,
   ActionSheet,
   SwitchBar,
@@ -129,6 +129,7 @@ export {
   CellSwipe,
   Badge,
   Card,
+  DpNumber
 };
 
 /* ========= 默认导出 ========= */

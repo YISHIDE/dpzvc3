@@ -14,7 +14,12 @@ const basePath = path.dirname(
 
 // 服务组件列表
 // const serviceComponents = ['modal', 'message']
-
+const kebabToPascal = (name: string) => {
+  return name
+    .split('-')               // ['check', 'box', 'group']
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // ['Check', 'Box', 'Group']
+    .join('')                 // 'CheckBoxGroup'
+}
 // 自动扫描 dist/es 下组件目录
 const componentDirs = fs.readdirSync(path.join(basePath, 'dist/es')).filter((dir) => {
   const full = path.join(basePath, 'dist/es', dir)
@@ -47,18 +52,29 @@ const componentsStr = [
   'upload',
   'modal',
   'message',
+  'dp-number',
+  'check-box-group',
+  'radio-box-group'
 ]
 const serviceComponents = ['modal', 'message', 'indicator', 'prompt'];
+const componentsGroup = ['check-box','check-box-group','radio-box','radio-box-group']
 export const Dpzvc3Resolver = () => {
   return (name: string) => { 
-    console.log('Dpzvc3Resolver:',name);
+    // console.log('Dpzvc3Resolver:',name);
     const servicesName: string = name.toLowerCase()
-    console.log('servicesName:',servicesName);
+    // console.log('servicesName:',servicesName);
     if (serviceComponents.includes(servicesName)) { 
-      console.log('service component:',servicesName);
+      // console.log('service component:',servicesName);
       return {
         name: 'default',
-        from: `@dpzvc3/vue/es/${servicesName}`
+        from: `@dpzvc3/vue/es/${servicesName}`,
+        sideEffects: [`@dpzvc3/styles/dist/components/${servicesName}.css`,
+          `@dpzvc3/styles/dist/base/font.css`,
+          `@dpzvc3/styles/dist/base/reset.css`,
+          `@dpzvc3/styles/dist/utils/1px.css`,
+          `@dpzvc3/styles/dist/utils/animation.css`,
+          `@dpzvc3/styles/dist/utils/nowrap.css`
+        ]
       }
     }
     const componentDir = name
@@ -66,12 +82,68 @@ export const Dpzvc3Resolver = () => {
       .toLowerCase()
       .slice(1)
     if (!componentsStr.includes(componentDir)) return undefined
+    if (componentsGroup.includes(componentDir)) { 
+      if (componentDir === 'check-box-group' || componentDir === 'radio-box-group') { 
+        const sliceComponentDir = componentDir.slice(0, componentDir.indexOf('-group'))
+        console.dir({
+        importName: kebabToPascal(componentDir),
+        path: `@dpzvc3/vue/es/${sliceComponentDir}`,
+        sideEffects: [`@dpzvc3/styles/dist/components/${sliceComponentDir}.css`,
+          `@dpzvc3/styles/dist/base/font.css`,
+          `@dpzvc3/styles/dist/base/reset.css`,
+          `@dpzvc3/styles/dist/utils/1px.css`,
+          `@dpzvc3/styles/dist/utils/animation.css`,
+          `@dpzvc3/styles/dist/utils/nowrap.css`
+        ]
+      }, 'Group component');
+        return {
+        importName: kebabToPascal(componentDir),
+        path: `@dpzvc3/vue/es/${sliceComponentDir}`,
+        sideEffects: [`@dpzvc3/styles/dist/components/${sliceComponentDir}.css`,
+          `@dpzvc3/styles/dist/base/font.css`,
+          `@dpzvc3/styles/dist/base/reset.css`,
+          `@dpzvc3/styles/dist/utils/1px.css`,
+          `@dpzvc3/styles/dist/utils/animation.css`,
+          `@dpzvc3/styles/dist/utils/nowrap.css`
+        ]
+      }
+      }
+      console.dir({
+        importName: kebabToPascal(componentDir),
+        path: `@dpzvc3/vue/es/${componentDir}`,
+        sideEffects: [`@dpzvc3/styles/dist/components/${componentDir}.css`,
+          `@dpzvc3/styles/dist/base/font.css`,
+          `@dpzvc3/styles/dist/base/reset.css`,
+          `@dpzvc3/styles/dist/utils/1px.css`,
+          `@dpzvc3/styles/dist/utils/animation.css`,
+          `@dpzvc3/styles/dist/utils/nowrap.css`
+        ]
+      }, 'Single group component');
+      return {
+        importName: kebabToPascal(componentDir),
+        path: `@dpzvc3/vue/es/${componentDir}`,
+        sideEffects: [`@dpzvc3/styles/dist/components/${componentDir}.css`,
+          `@dpzvc3/styles/dist/base/font.css`,
+          `@dpzvc3/styles/dist/base/reset.css`,
+          `@dpzvc3/styles/dist/utils/1px.css`,
+          `@dpzvc3/styles/dist/utils/animation.css`,
+          `@dpzvc3/styles/dist/utils/nowrap.css`
+        ]
+      }
+    }
     const fullPath = path.join(basePath, 'dist/es', componentDir)
 
     if (fs.existsSync(fullPath)) {
       return {
         name: 'default',
-        from: `@dpzvc3/vue/es/${componentDir}`
+        from: `@dpzvc3/vue/es/${componentDir}`,
+        sideEffects: [`@dpzvc3/styles/dist/components/${componentDir}.css`,
+          `@dpzvc3/styles/dist/base/font.css`,
+          `@dpzvc3/styles/dist/base/reset.css`,
+          `@dpzvc3/styles/dist/utils/1px.css`,
+          `@dpzvc3/styles/dist/utils/animation.css`,
+          `@dpzvc3/styles/dist/utils/nowrap.css`
+        ]
       }
     }
     return undefined
@@ -87,7 +159,14 @@ export const Dpzvc3ImportResolver = () => {
       console.log('service component:',servicesName);
       return {
         name: 'default',
-        from: `@dpzvc3/vue/es/${servicesName}`
+        from: `@dpzvc3/vue/es/${servicesName}`,
+         sideEffects: [`@dpzvc3/styles/dist/components/${servicesName}.css`,
+          `@dpzvc3/styles/dist/base/font.css`,
+          `@dpzvc3/styles/dist/base/reset.css`,
+          `@dpzvc3/styles/dist/utils/1px.css`,
+          `@dpzvc3/styles/dist/utils/animation.css`,
+          `@dpzvc3/styles/dist/utils/nowrap.css`
+        ]
       }
     }
     return undefined
