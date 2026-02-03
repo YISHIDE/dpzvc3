@@ -76,15 +76,6 @@ export default defineConfig({
     Components({
       resolvers: [Dpzvc3Resolver()],
       dts: 'src/components.d.ts',
-      types: [
-    {
-      from: '@dpzvc3/vue/es/check-box',
-      names: ['CheckBox','CheckBoxGroup']
-    },
-    {
-      from: '@dpzvc3/vue/es/radio-box',
-      names: ['RadioBox','RadioBoxGroup']
-    }
   ]
     }),
     AutoImport({

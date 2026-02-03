@@ -15,6 +15,9 @@
    "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
   },
+"eslint.workingDirectories": [
+    { "mode": "auto" }  // 自动识别 monorepo 子包
+  ],
 "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

@@ -1,11 +1,11 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-// import eslint from "vite-plugin-eslint";
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import eslint from "vite-plugin-eslint";
 // import path from 'path'
-import AutoImport from 'unplugin-auto-import/vite'
+import AutoImport from "unplugin-auto-import/vite";
 // import { VueRouterAutoImports } from 'unplugin-vue-router'
-import { Dpzvc3Resolver } from '@dpzvc3/vue/resolvers'
-import Components from 'unplugin-vue-components/vite'
+import { Dpzvc3Resolver } from "@dpzvc3/vue/resolvers";
+import Components from "unplugin-vue-components/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,56 +13,58 @@ export default defineConfig({
     vue(),
     Components({
       resolvers: [Dpzvc3Resolver()],
-      dts: 'src/components.d.ts',
+      dts: "src/components.d.ts",
     }),
     AutoImport({
-    resolvers: [Dpzvc3Resolver()],
-      imports: ['vue', {
-        'vue-router': [
-        'useRouter',
-        'useRoute',  
-        'createRouter',
-        'createWebHistory',
-        'createWebHashHistory',
-        'createMemoryHistory']}],
-    dts: 'src/auto-imports.d.ts',
-    eslintrc: {
-    enabled: true, // Default false
-    filepath: './.eslintrc-auto-import.json', // Default './.eslintrc-auto-import.json'
-    globalsPropValue: true // Default 'true', (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
-    }
-  })
-    // eslint({
-    //   cache: false, // 关闭缓存，避免“改了不报错”
-    //   include: ["src/**/*.ts", "src/**/*.vue", "src/**/*.tsx"],
-    //   exclude: ["node_modules", "dist", "dist-ssr", "dist-prod"],
-    //   failOnError: true,
-    //   failOnWarning: false,
-    // }),
-],
+      resolvers: [Dpzvc3Resolver()],
+      imports: [
+        "vue",
+        {
+          "vue-router": [
+            "useRouter",
+            "useRoute",
+            "createRouter",
+            "createWebHistory",
+            "createWebHashHistory",
+            "createMemoryHistory",
+          ],
+        },
+      ],
+      dts: "src/auto-imports.d.ts",
+      eslintrc: {
+        enabled: true, // Default false
+        filepath: "./.eslintrc-auto-import.json", // Default './.eslintrc-auto-import.json'
+        // globalsPropValue: true // Default 'true', (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+      },
+    }),
+    eslint({
+      cache: false, // 关闭缓存，避免“改了不报错”
+      include: ["src/**/*.ts", "src/**/*.vue", "src/**/*.tsx"],
+      exclude: ["node_modules", "dist", "dist-ssr", "dist-prod"],
+      failOnError: true,
+      failOnWarning: false,
+    }),
+  ],
   css: {
-  preprocessorOptions: {
-    less: {
-      javascriptEnabled: true,                  // 允许 Less 里用 JS 表达式
-      // paths: [path.resolve(__dirname, 'node_modules')] // @import "~@dpzvc3/styles/xxx" 时查找路径
-    }
-  }
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true, // 允许 Less 里用 JS 表达式
+        // paths: [path.resolve(__dirname, 'node_modules')] // @import "~@dpzvc3/styles/xxx" 时查找路径
+      },
+    },
   },
   build: {
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendors'
+          if (id.includes("node_modules")) {
+            return "vendors";
           }
-        }
-      }
-    }
-  }
-})
-
-
-
+        },
+      },
+    },
+  },
+});
 
 // import { defineConfig } from 'vite'
 // import vue from '@vitejs/plugin-vue'
@@ -148,27 +150,6 @@ export default defineConfig({
 //     },
 //   }
 // })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { defineConfig } from "vite";
 // import vue from "@vitejs/plugin-vue";

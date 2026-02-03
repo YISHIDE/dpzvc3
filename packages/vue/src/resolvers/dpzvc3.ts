@@ -154,28 +154,35 @@ export const Dpzvc3Resolver = ():ComponentResolver => {
   }
 }
 
-export const Dpzvc3ImportResolver = () => {
-  return (name: string) => { 
-    console.log('Dpzvc3Resolver:',name);
-  const servicesName: string = name.toLowerCase()
-    console.log('servicesName:',servicesName);
-    if (serviceComponents.includes(servicesName)) { 
-      console.log('service component:',servicesName);
-      return {
-        name: 'default',
-        from: `@dpzvc3/vue/es/${servicesName}`,
-         sideEffects: [`@dpzvc3/styles/dist/components/${servicesName}.css`,
-          `@dpzvc3/styles/dist/base/font.css`,
-          `@dpzvc3/styles/dist/base/reset.css`,
-          `@dpzvc3/styles/dist/utils/1px.css`,
-          `@dpzvc3/styles/dist/utils/animation.css`,
-          `@dpzvc3/styles/dist/utils/nowrap.css`
-        ]
-      }
-    }
-    return undefined
-  }
+export const dpzvc3Globals = {
+  Indicator: true,
+  Modal: true,
+  Message: true,
+  Prompt: true,
 }
+
+// export const Dpzvc3ImportResolver = () => {
+//   return (name: string) => { 
+//     console.log('Dpzvc3Resolver:',name);
+//   const servicesName: string = name.toLowerCase()
+//     console.log('servicesName:',servicesName);
+//     if (serviceComponents.includes(servicesName)) { 
+//       console.log('service component:',servicesName);
+//       return {
+//         name: 'default',
+//         from: `@dpzvc3/vue/es/${servicesName}`,
+//          sideEffects: [`@dpzvc3/styles/dist/components/${servicesName}.css`,
+//           `@dpzvc3/styles/dist/base/font.css`,
+//           `@dpzvc3/styles/dist/base/reset.css`,
+//           `@dpzvc3/styles/dist/utils/1px.css`,
+//           `@dpzvc3/styles/dist/utils/animation.css`,
+//           `@dpzvc3/styles/dist/utils/nowrap.css`
+//         ]
+//       }
+//     }
+//     return undefined
+//   }
+// }
 
 
 // export const Dpzvc3TypesResolver= (name: string) => {

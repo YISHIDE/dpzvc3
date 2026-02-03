@@ -19,6 +19,7 @@
     "vercel-build": "pnpm --filter @dpzvc3/views-vue build:ssr"
   },
   "devDependencies": {
-    "@types/node": "^25.0.7"
+    "@types/node": "^25.0.7",
+    "eslint": "^9.39.2"
   }
 }
