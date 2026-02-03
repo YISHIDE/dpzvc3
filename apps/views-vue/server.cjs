@@ -69,7 +69,7 @@ function start() {
     .replace('<!--ssr-outlet-->', appHtml)
       // const html = template.replace('<!--app-html-->', appHtml)
 
-      console.log(html, 'html')
+      // console.log(html, 'html')
       // ✅ 设置响应头，保证中文不乱码
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (err) {
@@ -78,7 +78,7 @@ function start() {
     }
   })
 
-  const port = process.env.PORT || 8000
+  const port = process.env.PORT || 8001
   server.listen(port, () => {
     console.log(`SSR server running at http://localhost:${port}`)
   })

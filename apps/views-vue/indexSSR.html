@@ -33,11 +33,17 @@
       height: 100%;
       margin: 0;
     }
+    /* 首屏阶段：彻底禁用所有过渡 */
+.no-transition *,
+.no-transition *::before,
+.no-transition *::after {
+  transition: none !important;
+}
   </style>
 </head>
 
 <body>
-  <div id="app"><!--ssr-outlet--></div>
+  <div id="app" class="no-transition"><!--ssr-outlet--></div>
   <!--skeleton-->
   
 

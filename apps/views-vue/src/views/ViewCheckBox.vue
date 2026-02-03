@@ -28,7 +28,6 @@ disable />
 </template>
 
 <script lang="ts" setup>
-// import { CheckBoxGroup, CheckBox } from "@dpzvc3/vue/es/check-box";
 import type {
   CheckBoxProps,
   CheckBoxGroupProps,

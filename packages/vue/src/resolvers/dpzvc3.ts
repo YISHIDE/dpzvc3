@@ -105,7 +105,7 @@ export const Dpzvc3Resolver = () => {
           `@dpzvc3/styles/dist/utils/1px.css`,
           `@dpzvc3/styles/dist/utils/animation.css`,
           `@dpzvc3/styles/dist/utils/nowrap.css`
-        ]
+          ]
       }
       }
       console.dir({

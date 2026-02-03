@@ -11,29 +11,13 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    ActionSheet: typeof import('@dpzvc3/vue/es/action-sheet')['default']
-    Badge: typeof import('@dpzvc3/vue/es/badge')['default']
-    Card: typeof import('@dpzvc3/vue/es/card')['default']
     Cell: typeof import('@dpzvc3/vue/es/cell')['default']
-    CellSwipe: typeof import('@dpzvc3/vue/es/cell-swipe')['default']
-    DpButton: typeof import('@dpzvc3/vue/es/dp-button')['default']
-    DpHeader: typeof import('@dpzvc3/vue/es/dp-header')['default']
-    DpNumber: typeof import('@dpzvc3/vue/es/dp-number')['default']
+    CheckBox: typeof import('@dpzvc3/vue/es/check-box')['CheckBox']
+    CheckBoxGroup: typeof import('@dpzvc3/vue/es/check-box')['CheckBoxGroup']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
-    LoadMore: typeof import('@dpzvc3/vue/es/load-more')['default']
-    Picker: typeof import('@dpzvc3/vue/es/picker')['default']
-    Popup: typeof import('@dpzvc3/vue/es/popup')['default']
-    Progress: typeof import('@dpzvc3/vue/es/progress')['default']
-    Rater: typeof import('@dpzvc3/vue/es/rater')['default']
+    RadioBox: typeof import('@dpzvc3/vue/es/radio-box')['RadioBox']
+    RadioBoxGroup: typeof import('@dpzvc3/vue/es/radio-box')['RadioBoxGroup']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SlideBar: typeof import('@dpzvc3/vue/es/slide-bar')['default']
-    Spinner: typeof import('@dpzvc3/vue/es/spinner')['default']
-    Swipe: typeof import('@dpzvc3/vue/es/swipe')['default']
-    SwitchBar: typeof import('@dpzvc3/vue/es/switch-bar')['default']
-    Tab: typeof import('@dpzvc3/vue/es/tab')['default']
-    TextBar: typeof import('@dpzvc3/vue/es/text-bar')['default']
-    ToTop: typeof import('@dpzvc3/vue/es/to-top')['default']
-    Upload: typeof import('@dpzvc3/vue/es/upload')['default']
   }
 }

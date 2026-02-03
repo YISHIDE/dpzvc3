@@ -24,7 +24,6 @@ label="苹果" />
 </template>
 
 <script lang="ts" setup>
-// import { RadioBoxGroup, RadioBox } from "@dpzvc3/vue/es/radio-box";
 import type { RadioBoxProps, RadioGroupProps } from "@dpzvc3/vue/es/radio-box";
 const checked = ref<RadioBoxProps["modelValue"]>(false);
 const radio = ref<RadioGroupProps["modelValue"]>("");

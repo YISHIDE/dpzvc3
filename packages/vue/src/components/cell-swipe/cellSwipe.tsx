@@ -129,11 +129,11 @@ export default defineComponent({
         state.leftWidth = state.leftEl?.offsetWidth || 0;
         state.rightWidth = state.rightEl?.offsetWidth || 0;
 
-        state.leftEl &&
-          (state.leftEl.style.transform = translate3d(-state.leftWidth));
-        state.rightEl &&
-          (state.rightEl.style.transform = translate3d(state.rightWidth + 1));
-        state.wrapper && (state.wrapper.style.transform = translate3d(0));
+        // state.leftEl &&
+        //   (state.leftEl.style.transform = translate3d(-state.leftWidth));
+        // state.rightEl &&
+        //   (state.rightEl.style.transform = translate3d(state.rightWidth + 1));
+        // state.wrapper && (state.wrapper.style.transform = translate3d(0));
       });
     });
 
