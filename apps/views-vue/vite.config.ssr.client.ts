@@ -76,6 +76,16 @@ export default defineConfig({
     Components({
       resolvers: [Dpzvc3Resolver()],
       dts: 'src/components.d.ts',
+      types: [
+    {
+      from: '@dpzvc3/vue/es/check-box',
+      names: ['CheckBox','CheckBoxGroup']
+    },
+    {
+      from: '@dpzvc3/vue/es/radio-box',
+      names: ['RadioBox','RadioBoxGroup']
+    }
+  ]
     }),
     AutoImport({
       resolvers: [Dpzvc3Resolver()],
@@ -125,11 +135,16 @@ export default defineConfig({
     rollupOptions: {
       input: path.resolve(__dirname, "indexSSR.html"),
       output: {
-        format: "umd", // ⚡ 改成 UMD
-        name: "App", // ⚡ 浏览器访问 window.App
-        entryFileNames: "[name].js",
-        chunkFileNames: "[name]-[hash].js",
-      },
+        // format: "umd", // ⚡ 改成 UMD
+        // name: "App", // ⚡ 浏览器访问 window.App
+        // entryFileNames: "[name].js",
+        // chunkFileNames: "[name]-[hash].js",
+          manualChunks: (id) => { 
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+      }
     },
     manifest: true,
   },

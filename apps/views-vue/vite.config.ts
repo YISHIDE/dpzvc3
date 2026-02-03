@@ -14,17 +14,6 @@ export default defineConfig({
     Components({
       resolvers: [Dpzvc3Resolver()],
       dts: 'src/components.d.ts',
-       types: [
-    {
-      from: '@dpzvc3/vue/es/check-box',
-      names: ['CheckBox','CheckBoxGroup']
-    },
-    {
-      from: '@dpzvc3/vue/es/radio-box',
-      names: ['RadioBox','RadioBoxGroup']
-    }
-  ]
-
     }),
     AutoImport({
     resolvers: [Dpzvc3Resolver()],
@@ -38,9 +27,9 @@ export default defineConfig({
         'createMemoryHistory']}],
     dts: 'src/auto-imports.d.ts',
     eslintrc: {
-      enabled: true, // Default false
-      filepath: './.eslintrc-auto-import.json', // Default './.eslintrc-auto-import.json'
-      globalsPropValue: true // Default 'true', (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+    enabled: true, // Default false
+    filepath: './.eslintrc-auto-import.json', // Default './.eslintrc-auto-import.json'
+    globalsPropValue: true // Default 'true', (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
     }
   })
     // eslint({
@@ -58,7 +47,18 @@ export default defineConfig({
       // paths: [path.resolve(__dirname, 'node_modules')] // @import "~@dpzvc3/styles/xxx" 时查找路径
     }
   }
-}
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendors'
+          }
+        }
+      }
+    }
+  }
 })
 
 

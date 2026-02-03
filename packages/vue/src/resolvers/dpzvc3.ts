@@ -2,7 +2,7 @@
 import fs from 'fs'
 import path from 'path'
 import { createRequire } from 'module' // ✅ ESM 下可用
-// import type { ComponentResolver } from 'unplugin-vue-components'
+import type { ComponentResolver } from 'unplugin-vue-components'
 
 // 在 ESM 中创建 require
 const require = createRequire(import.meta.url)
@@ -58,7 +58,7 @@ const componentsStr = [
 ]
 const serviceComponents = ['modal', 'message', 'indicator', 'prompt'];
 const componentsGroup = ['check-box','check-box-group','radio-box','radio-box-group']
-export const Dpzvc3Resolver = () => {
+export const Dpzvc3Resolver = ():ComponentResolver => {
   return (name: string) => { 
     // console.log('Dpzvc3Resolver:',name);
     const servicesName: string = name.toLowerCase()
@@ -85,20 +85,22 @@ export const Dpzvc3Resolver = () => {
     if (componentsGroup.includes(componentDir)) { 
       if (componentDir === 'check-box-group' || componentDir === 'radio-box-group') { 
         const sliceComponentDir = componentDir.slice(0, componentDir.indexOf('-group'))
-        console.dir({
-        importName: kebabToPascal(componentDir),
-        path: `@dpzvc3/vue/es/${sliceComponentDir}`,
-        sideEffects: [`@dpzvc3/styles/dist/components/${sliceComponentDir}.css`,
-          `@dpzvc3/styles/dist/base/font.css`,
-          `@dpzvc3/styles/dist/base/reset.css`,
-          `@dpzvc3/styles/dist/utils/1px.css`,
-          `@dpzvc3/styles/dist/utils/animation.css`,
-          `@dpzvc3/styles/dist/utils/nowrap.css`
-        ]
-      }, 'Group component');
+      //   console.dir({
+      //   importName: kebabToPascal(componentDir),
+      //   path: `@dpzvc3/vue/es/${sliceComponentDir}`,
+      //   sideEffects: [`@dpzvc3/styles/dist/components/${sliceComponentDir}.css`,
+      //     `@dpzvc3/styles/dist/base/font.css`,
+      //     `@dpzvc3/styles/dist/base/reset.css`,
+      //     `@dpzvc3/styles/dist/utils/1px.css`,
+      //     `@dpzvc3/styles/dist/utils/animation.css`,
+      //     `@dpzvc3/styles/dist/utils/nowrap.css`
+      //   ]
+      // }, 'Group component');
         return {
-        importName: kebabToPascal(componentDir),
-        path: `@dpzvc3/vue/es/${sliceComponentDir}`,
+        // importName: kebabToPascal(componentDir),
+        name: kebabToPascal(componentDir),
+        // name:'*',
+        from: `@dpzvc3/vue/es/${sliceComponentDir}`,
         sideEffects: [`@dpzvc3/styles/dist/components/${sliceComponentDir}.css`,
           `@dpzvc3/styles/dist/base/font.css`,
           `@dpzvc3/styles/dist/base/reset.css`,
@@ -108,20 +110,22 @@ export const Dpzvc3Resolver = () => {
           ]
       }
       }
-      console.dir({
-        importName: kebabToPascal(componentDir),
-        path: `@dpzvc3/vue/es/${componentDir}`,
-        sideEffects: [`@dpzvc3/styles/dist/components/${componentDir}.css`,
-          `@dpzvc3/styles/dist/base/font.css`,
-          `@dpzvc3/styles/dist/base/reset.css`,
-          `@dpzvc3/styles/dist/utils/1px.css`,
-          `@dpzvc3/styles/dist/utils/animation.css`,
-          `@dpzvc3/styles/dist/utils/nowrap.css`
-        ]
-      }, 'Single group component');
+      // console.dir({
+      //   importName: kebabToPascal(componentDir),
+      //   path: `@dpzvc3/vue/es/${componentDir}`,
+      //   sideEffects: [`@dpzvc3/styles/dist/components/${componentDir}.css`,
+      //     `@dpzvc3/styles/dist/base/font.css`,
+      //     `@dpzvc3/styles/dist/base/reset.css`,
+      //     `@dpzvc3/styles/dist/utils/1px.css`,
+      //     `@dpzvc3/styles/dist/utils/animation.css`,
+      //     `@dpzvc3/styles/dist/utils/nowrap.css`
+      //   ]
+      // }, 'Single group component');
       return {
-        importName: kebabToPascal(componentDir),
-        path: `@dpzvc3/vue/es/${componentDir}`,
+        // importName: kebabToPascal(componentDir),
+        name: kebabToPascal(componentDir),
+        // name:'*',
+        from: `@dpzvc3/vue/es/${componentDir}`,
         sideEffects: [`@dpzvc3/styles/dist/components/${componentDir}.css`,
           `@dpzvc3/styles/dist/base/font.css`,
           `@dpzvc3/styles/dist/base/reset.css`,

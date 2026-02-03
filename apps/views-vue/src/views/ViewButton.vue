@@ -25,7 +25,7 @@ console.log(
 );
 const loading = ref<ButtonProps["loading"]>(false);
 
-const onClick: ButtonEmits["click"] = (e) => {
+const onClick: ButtonEmits["click"] = () => {
   loading.value = !loading.value;
 };
 const jump = () => {
