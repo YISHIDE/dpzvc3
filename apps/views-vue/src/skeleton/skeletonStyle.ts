@@ -70,4 +70,4 @@ export const skeletonStyle = `
   0% { left: -100%; }
   100% { left: 100%; }
 }
-`
+`;

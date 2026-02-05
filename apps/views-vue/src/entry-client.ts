@@ -28,8 +28,8 @@ router.isReady().then(() => {
   console.log("🟢 router ready, mount app");
   app.mount("#app", true);
   // entry-client.ts
-requestAnimationFrame(() => {
-  document.getElementById('skeleton')?.remove()
-  document.getElementById('app')?.classList.remove('no-transition')
-})
+  requestAnimationFrame(() => {
+    document.getElementById("skeleton")?.remove();
+    document.getElementById("app")?.classList.remove("no-transition");
+  });
 });

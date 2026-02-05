@@ -14,23 +14,19 @@
 //   return await renderToString(app)
 // }
 
-
-
-
-
 import { renderToString } from "@vue/server-renderer";
 import { createApp } from "./app";
-import { resolveSkeleton } from './skeleton/resolveSkeleton'
-import { skeletonStyle } from './skeleton/skeletonStyle'
+import { resolveSkeleton } from "./skeleton/resolveSkeleton";
+import { skeletonStyle } from "./skeleton/skeletonStyle";
 
 export async function render(url: string) {
   const { app, router } = createApp(true);
 
   await router.push(url);
   await router.isReady();
-  const appHtml = await renderToString(app)
-  const skeletonHtml = resolveSkeleton(router)
-// console.log(app?.$style, 'appstyle');
+  const appHtml = await renderToString(app);
+  const skeletonHtml = resolveSkeleton(router);
+  // console.log(app?.$style, 'appstyle');
   // return renderToString(app);
   return {
     appHtml,
@@ -38,8 +34,6 @@ export async function render(url: string) {
     skeletonStyle,
   };
 }
-
-
 
 // import { renderToString } from "@vue/server-renderer";
 // import { createApp } from "./app";
