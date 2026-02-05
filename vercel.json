@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "apps/views-vue/server.cjs",
-      "use": "@vercel/node"
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
