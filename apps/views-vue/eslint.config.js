@@ -58,6 +58,8 @@ export default [
         defineEmits: "readonly",
         defineExpose: "readonly",
         withDefaults: "readonly",
+        require: "readonly",
+        __dirname: "readonly",
       },
     },
     plugins: {
@@ -86,6 +88,7 @@ export default [
       "vue/no-v-for-template-key": "off",
       "vue/multi-word-component-names": "off",
       "multiline-ternary": "off",
+      "@typescript-eslint/no-require-imports": "off",
     },
   },
 
