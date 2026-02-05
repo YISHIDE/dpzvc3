@@ -43,7 +43,9 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 process.env.SSR = "true";
-const pkg = require("./dist-ssr/server/entry-server.cjs");
+const pkg = require(
+  path.resolve(__dirname, "dist-ssr/server/entry-server.cjs"),
+);
 // import { renderHeadToString } from '@vueuse/head'
 const render = pkg.render;
 
