@@ -1,0 +1,1 @@
+{"postinstall": "node ../../packages/uni-app/scripts/link-uni-modules.mjs"}
