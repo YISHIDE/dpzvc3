@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import eslint from "vite-plugin-eslint";
+import eslint from "vite-plugin-eslint2";
 // import path from 'path'
 import AutoImport from "unplugin-auto-import/vite";
 // import { VueRouterAutoImports } from 'unplugin-vue-router'
@@ -41,8 +41,8 @@ export default defineConfig({
       cache: false, // 关闭缓存，避免“改了不报错”
       include: ["src/**/*.ts", "src/**/*.vue", "src/**/*.tsx"],
       exclude: ["node_modules", "dist", "dist-ssr", "dist-prod"],
-      failOnError: true,
-      failOnWarning: false,
+      emitError: true,
+      emitWarning: false,
     }),
   ],
   css: {
