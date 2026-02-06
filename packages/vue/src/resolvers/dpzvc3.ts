@@ -68,7 +68,7 @@ export const Dpzvc3Resolver = ():ComponentResolver => {
       return {
         name: 'default',
         from: `@dpzvc3/vue/es/${servicesName}`,
-        sideEffects: [`@dpzvc3/styles/dist/components/${servicesName}.css`,
+        sideEffects: [`@dpzvc3/styles/dist/components/${servicesName.toLowerCase()}.css`,
           `@dpzvc3/styles/dist/base/font.css`,
           `@dpzvc3/styles/dist/base/reset.css`,
           `@dpzvc3/styles/dist/utils/1px.css`,
