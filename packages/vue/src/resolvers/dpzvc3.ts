@@ -61,7 +61,8 @@ const componentsGroup = ['check-box','check-box-group','radio-box','radio-box-gr
 export const Dpzvc3Resolver = ():ComponentResolver => {
   return (name: string) => { 
     // console.log('Dpzvc3Resolver:',name);
-    const servicesName: string = name.toLowerCase()
+    // 解决vercel部署indicator组件加载问题
+    const servicesName: string = name === 'Indicator' ? 'Indicator' : name.toLowerCase()
     // console.log('servicesName:',servicesName);
     if (serviceComponents.includes(servicesName)) { 
       // console.log('service component:',servicesName);
