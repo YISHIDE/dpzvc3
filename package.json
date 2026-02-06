@@ -14,7 +14,7 @@
     "build:vuessr": "pnpm --filter @dpzvc3/views-vue build:ssr",
     "lint": "pnpm -r lint",
     "type-check": "pnpm -r type-check",
-    "build": "pnpm build:vue",
+    "build": "pnpm --filter @dpzvc3/views-vue build:ssr",
     "start": "pnpm --filter @dpzvc3/views-vue start",
     "vercel-build": "pnpm --filter @dpzvc3/views-vue build:ssr"
   },
