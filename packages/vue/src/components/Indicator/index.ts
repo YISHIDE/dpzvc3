@@ -2,7 +2,7 @@
  * Indicator - Vue 3 版本
  */
 import { createVNode, render } from "vue";
-import Indicator from "./indicator";
+import Indicator from "./Indicator";
 import type { IndicatorProps, IndicatorInstance } from "./types";
 type containerE = HTMLElement | null;
 let instance: any = null;

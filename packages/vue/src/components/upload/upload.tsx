@@ -11,7 +11,7 @@ import exifr from "exifr";
 import MegaPixImage from "../../lib/MegaPixImage";
 import { JPEG } from "../../utils/util";
 import type { UploadProps } from "./types";
-import Indicator from "../indicator";
+import Indicator from "../Indicator";
 
 export type { UploadProps };
 

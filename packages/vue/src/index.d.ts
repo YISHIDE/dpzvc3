@@ -9,7 +9,7 @@
 // import type { App } from "vue";
 import type { ModalInstance } from "./components/modal/types";
 import type { MessageInstance } from "./components/message/types";
-import type { IndicatorInstance } from "./components/indicator/types";
+import type { IndicatorInstance } from "./components/Indicator/types";
 import type { PromptInstance } from "./components/prompt/types";
 
 /* ----------------------------------
@@ -24,7 +24,7 @@ export { default as Popup } from "./components/popup";
 export type { PopupProps, PopupEmits } from "./components/popup/types";
 
 export { default as ActionSheet } from "./components/action-sheet";
-export type {
+export type 
   ActionSheetProps,
   ActionSheetEmits,
 } from "./components/action-sheet/types";
