@@ -11,7 +11,7 @@
     "dev:ssr": "node server-dev.js",
     "build:ssr": "vite build --config vite.config.ssr.client.ts && vite build --config vite.config.ssr.server.ts && echo '==== dist-ssr ====' && ls -R dist-ssr",
     "start": "node server.cjs",
-    "vercel-build": "pnpm build:ssr"
+    "vercel-build": "pnpm --filter @dpzvc3/vue build && pnpm build:ssr"
   },
   "dependencies": {
     "@dpzvc3/styles": "workspace:*",
