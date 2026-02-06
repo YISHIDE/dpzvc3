@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "apps/views-vue/server.cjs",
+      "src": "apps/views-vue/package.json",
       "use": "@vercel/node"
     }
   ],
