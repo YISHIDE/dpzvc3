@@ -24,7 +24,7 @@ export { default as Popup } from "./components/popup";
 export type { PopupProps, PopupEmits } from "./components/popup/types";
 
 export { default as ActionSheet } from "./components/action-sheet";
-export type 
+export type {
   ActionSheetProps,
   ActionSheetEmits,
 } from "./components/action-sheet/types";
