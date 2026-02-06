@@ -56,7 +56,7 @@ const componentsStr = [
   'check-box-group',
   'radio-box-group'
 ]
-const serviceComponents = ['modal', 'message', 'Indicator', 'prompt'];
+const serviceComponents = ['modal', 'message', 'indicator', 'prompt'];
 const componentsGroup = ['check-box','check-box-group','radio-box','radio-box-group']
 export const Dpzvc3Resolver = ():ComponentResolver => {
   return (name: string) => { 

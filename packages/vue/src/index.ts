@@ -24,7 +24,7 @@ import Rater from "./components/rater";
 import Spinner from "./components/spinner";
 import DpLoadMore from "./components/load-more";
 import Popup from "./components/popup";
-import Indicator from "./components/Indicator";
+import Indicator from "./components/indicator";
 import Progress from "./components/progress";
 import ToTop from "./components/to-top";
 import Cell from "./components/cell";

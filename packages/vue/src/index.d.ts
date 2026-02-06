@@ -9,7 +9,7 @@
 // import type { App } from "vue";
 import type { ModalInstance } from "./components/modal/types";
 import type { MessageInstance } from "./components/message/types";
-import type { IndicatorInstance } from "./components/Indicator/types";
+import type { IndicatorInstance } from "./components/indicator/types";
 import type { PromptInstance } from "./components/prompt/types";
 
 /* ----------------------------------
