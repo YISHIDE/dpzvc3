@@ -8,7 +8,7 @@ import fs from 'fs'
 
 type fileNameType = 'base' | 'components' | 'utils'
 interface fileNameList {
-    [k:string]:string
+    [k in fileNameType]:string
 }
 const styleCss = (fileName: fileNameType): fileNameList=> { 
 const componentsDir = path.resolve(__dirname, `src/${fileName}`)
@@ -16,7 +16,7 @@ const componentEntries = Object.fromEntries(
   fs.readdirSync(componentsDir)
     .filter(file => file.endsWith('.less'))
     .map(file => [
-      `${fileName}/${file.replace('.less', '')}`,
+      `${fileName}/${file.replace('.less', '').toLowerCase()}`,
       path.join(componentsDir, file)
     ])
 )
