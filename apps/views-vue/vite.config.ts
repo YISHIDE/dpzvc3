@@ -6,10 +6,11 @@ import AutoImport from "unplugin-auto-import/vite";
 // import { VueRouterAutoImports } from 'unplugin-vue-router'
 import { Dpzvc3Resolver } from "@dpzvc3/vue/resolvers";
 import Components from "unplugin-vue-components/vite";
-
+import Inspect from "vite-plugin-inspect";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
+    Inspect(),
     vue(),
     Components({
       resolvers: [Dpzvc3Resolver()],
