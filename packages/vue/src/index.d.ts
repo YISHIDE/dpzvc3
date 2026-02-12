@@ -9,7 +9,7 @@
 // import type { App } from "vue";
 import type { ModalInstance } from "./components/modal/types";
 import type { MessageInstance } from "./components/message/types";
-import type { IndicatorInstance } from "./components/Indicator/types";
+import type { IndicatorInstance } from "./components/indicator/types";
 import type { PromptInstance } from "./components/prompt/types";
 
 /* ----------------------------------
@@ -56,8 +56,8 @@ export type { ButtonProps, ButtonEmits } from "./components/dp-button/types";
 export { default as Picker } from "./components/picker";
 export type { PickerProps } from "./components/picker/types";
 
-export { default as SwitchBar } from "./components/switchbar";
-export type { SwitchBarProps } from "./components/switchbar/types";
+export { default as SwitchBar } from "./components/switch-bar";
+export type { SwitchBarProps } from "./components/switch-bar/types";
 
 export { default as Tab } from "./components/tab";
 export type { TabProps } from "./components/tab/types";
@@ -117,10 +117,10 @@ declare module "vue" {
     Swipe: (typeof import("./components/swipe"))["default"];
     DpButton: (typeof import("./components/dp-button"))["default"];
     Picker: (typeof import("./components/picker"))["default"];
-    SwitchBar: (typeof import("./components/switchbar"))["default"];
+    SwitchBar: (typeof import("./components/switch-bar"))["default"];
     Tab: (typeof import("./components/tab"))["default"];
     TextBar: (typeof import("./components/text-bar"))["default"];
-    Number: (typeof import("./components/number"))["default"];
+    Number: (typeof import("./components/dp-number"))["default"];
     ToTop: (typeof import("./components/to-top"))["default"];
     Upload: (typeof import("./components/upload"))["default"];
     SlideBar: (typeof import("./components/slide-bar"))["default"];

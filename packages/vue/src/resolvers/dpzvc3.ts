@@ -56,20 +56,20 @@ const componentsStr = [
   'check-box-group',
   'radio-box-group'
 ]
-const serviceComponents = ['modal', 'message', 'Indicator', 'prompt'];
+const serviceComponents = ['modal', 'message', 'indicator', 'prompt'];
 const componentsGroup = ['check-box','check-box-group','radio-box','radio-box-group']
 export const Dpzvc3Resolver = ():ComponentResolver => {
   return (name: string) => { 
     // console.log('Dpzvc3Resolver:',name);
     // 解决vercel部署indicator组件加载问题
-    const servicesName: string = name === 'Indicator' ? 'Indicator' : name.toLowerCase()
+    const servicesName: string = name.toLowerCase()
     // console.log('servicesName:',servicesName);
     if (serviceComponents.includes(servicesName)) { 
       // console.log('service component:',servicesName);
       return {
         name: 'default',
         from: `@dpzvc3/vue/es/${servicesName}`,
-        sideEffects: [`@dpzvc3/styles/dist/components/${servicesName.toLowerCase()}.css`,
+        sideEffects: [`@dpzvc3/styles/dist/components/${servicesName}.css`,
           `@dpzvc3/styles/dist/base/font.css`,
           `@dpzvc3/styles/dist/base/reset.css`,
           `@dpzvc3/styles/dist/utils/1px.css`,
