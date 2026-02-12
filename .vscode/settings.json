@@ -9,11 +9,15 @@
   ],
   "editor.defaultFormatter": "Vue.volar",
   "eslint.run": "onType",
-  "eslint.alwaysShowStatus": true,
-  "eslint.packageManager": "npm",
-  "editor.formatOnSave": false,
+  // "eslint.alwaysShowStatus": true,
+  "eslint.packageManager": "pnpm",
+  "editor.formatOnSave": true,
    "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
+  },
+  "files.associations": {
+    "*.js": "javascript",
+    "*.ts": "typescript"
   },
 "eslint.workingDirectories": [
     { "mode": "auto" }  // 自动识别 monorepo 子包
@@ -22,6 +26,15 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 }

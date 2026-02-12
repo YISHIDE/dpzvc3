@@ -6,16 +6,20 @@ import {
   watch,
   Transition,
   PropType,
-} from "vue";
-import VButton from "../dp-button";
-import type { ModalProps } from "./types";
+  onMounted,
+  onBeforeUnmount,
+} from 'vue';
+import { useRouter } from 'vue-router';
+// import { onBeforeRouteLeave } from 'vue-router'
+import VButton from '../dp-button';
+import type { ModalProps } from './types';
 
 export type { ModalProps };
 
-const prefixCls = "dpzvc3-modal";
+const prefixCls = 'dpzvc3-modal';
 
 export default defineComponent({
-  name: "Dpzvc3Modal",
+  name: 'Dpzvc3Modal',
 
   props: {
     modelValue: {
@@ -29,15 +33,15 @@ export default defineComponent({
     title: String,
     width: {
       type: String,
-      default: "70%",
+      default: '70%',
     },
     okText: {
       type: String,
-      default: "确定",
+      default: '确定',
     },
     cancleText: {
       type: String,
-      default: "取消",
+      default: '取消',
     },
     loading: {
       type: Boolean,
@@ -58,33 +62,52 @@ export default defineComponent({
     body: String,
   },
 
-  emits: ["update:modelValue", "on-ok", "on-cancle"],
+  emits: ['update:modelValue', 'ok', 'cancle', 'remove'],
 
   setup(props: ModalProps, { emit, slots }) {
     const visible = ref(!!props.modelValue);
     const isHead = ref(!!props.showHead);
     const buttonLoading = ref(false);
-
+    const router = useRouter();
     const getWrapperStyle = computed(() => ({
       width: props.width,
       ...(props.styles || {}),
     }));
-
+    // onBeforeRouteLeave(() => {
+    //   console.log('ddadadadaad', '页面改变')
+    //   props.remove && props.remove()
+    // })
     /* watch props */
+    let removeHook: any;
+
+    onMounted(() => {
+      // console.log(router, props.remove, '窗口加载');
+      removeHook =
+        router &&
+        router.afterEach(() => {
+          // props.remove?.();
+          console.log('离开', emit);
+          emit('remove');
+        });
+    });
+
+    onBeforeUnmount(() => {
+      removeHook?.();
+    });
     watch(
       () => props.modelValue,
-      (val) => (visible.value = !!val),
+      (val) => (visible.value = !!val)
     );
 
     watch(
       () => props.showHead,
-      (val) => (isHead.value = !!val),
+      (val) => (isHead.value = !!val)
     );
 
     /* methods */
     const close = () => {
-      emit("update:modelValue", false);
-      emit("on-cancle");
+      // emit('update:modelValue', false);
+      emit('cancle');
     };
 
     const mask = () => {
@@ -97,9 +120,9 @@ export default defineComponent({
       if (props.loading) {
         buttonLoading.value = true;
       } else {
-        emit("update:modelValue", false);
+        emit('update:modelValue', false);
       }
-      emit("on-ok");
+      emit('ok');
     };
 
     return () => (

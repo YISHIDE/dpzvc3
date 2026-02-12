@@ -1,14 +1,17 @@
 /**
  * confirm.js - Vue 3 版本（修复 enter 过渡）
  */
-import { h, createVNode, render } from "vue";
-import Modal from "./modal";
-import VButton from "../dp-button";
-// import type { ModalInstance } from './types'
-const prefixCls = "dpzvc3-modal";
+import { h, createVNode, render, getCurrentInstance } from 'vue';
+import Modal from './modal';
+import VButton from '../dp-button';
+import type { globalAppContextProp } from './types';
+const prefixCls = 'dpzvc3-modal';
 
-function createModalInstance(properties = {}) {
-  const container = document.createElement("div");
+function createModalInstance(
+  properties = {},
+  appContext: globalAppContextProp = null
+) {
+  const container = document.createElement('div');
   document.body.appendChild(container);
 
   let vnode = null;
@@ -16,11 +19,11 @@ function createModalInstance(properties = {}) {
   const defaultProps = {
     // visible: false,
     modelValue: false,
-    width: "70%",
-    body: "",
-    title: "",
-    okText: "确定",
-    cancleText: "取消",
+    width: '70%',
+    body: '',
+    title: '',
+    okText: '确定',
+    cancleText: '取消',
     loading: false,
     buttonLoading: false,
     showCancle: true,
@@ -37,19 +40,19 @@ function createModalInstance(properties = {}) {
       props.showCancle
         ? h(
             VButton,
-            { type: "primary", radius: false, onClick: cancle },
-            () => props.cancleText,
+            { type: 'primary', radius: false, onClick: cancle },
+            () => props.cancleText
           )
         : null,
       h(
         VButton,
         {
-          type: "normal",
+          type: 'normal',
           radius: false,
           loading: props.buttonLoading,
           onClick: ok,
         },
-        () => props.okText,
+        () => props.okText
       ),
     ];
 
@@ -62,26 +65,33 @@ function createModalInstance(properties = {}) {
         footerHide: false,
         onOk: ok,
         onCancle: cancle,
+        onRemove: remove,
       },
       {
         header: () =>
-          h("div", {
+          h('div', {
             class: `${prefixCls}-header-inner ellipse-fir`,
             innerHTML: props.title,
           }),
         body: () =>
-          h("div", {
+          h('div', {
             class: `${prefixCls}-body-inner`,
             innerHTML: props.body,
           }),
         footer: () => footer,
-      },
+      }
     );
-
+    // const appInstance = getCurrentInstance();
+    // console.log(appInstance, 'adddadadsaddas');
+    if (appContext !== null) {
+      // console.log(appContext, 'Modal的appContext');
+      vnode.appContext = appContext.appContext;
+    }
     render(vnode, container);
   };
 
   const remove = () => {
+    console.log('debug');
     props.modelValue = false;
     updateVNode();
     setTimeout(destroy, 300);

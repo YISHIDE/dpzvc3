@@ -1,4 +1,5 @@
 // src/components/modal/types.ts
+import type { App, AppContext } from 'vue';
 export type ModalProps = {
   modelValue?: boolean;
   maskClosable?: boolean;
@@ -11,6 +12,7 @@ export type ModalProps = {
   showHead?: boolean;
   footerHide?: boolean;
   body?: string;
+  remove?: () => void;
 };
 // modal函数调用 传参数与modal props类型声明合并
 export type MergeOptions<T = ModalProps> = {
@@ -28,12 +30,17 @@ export type ModalInstance = {
   confirm: (options: MergeOptions) => DefaultProps;
   remove: () => void;
   info: (props: MergeOptions) => DefaultProps;
+  useInit: () => void;
 };
 // 开启
 export type DefaultProps = {
   show: (options: MergeOptions) => any;
   remove: () => void;
   component: MergeOptions;
+} | null;
+
+export type globalAppContextProp = {
+  appContext: AppContext;
 } | null;
 //  visible: false,
 //     modelValue: false,

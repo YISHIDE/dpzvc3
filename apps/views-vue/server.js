@@ -11,8 +11,8 @@ const server = express();
 const manifest = JSON.parse(
   fs.readFileSync(
     path.resolve(__dirname, "./dist-ssr/client/.vite/manifest.json"),
-    "utf-8",
-  ),
+    "utf-8"
+  )
 );
 
 server.use(express.static(path.resolve(__dirname, "./dist-ssr/client")));
@@ -21,7 +21,7 @@ server.all(/^(.*)$/, async (req, res) => {
   try {
     const template = fs.readFileSync(
       path.resolve(__dirname, "./dist-ssr/client/indexSSR.html"),
-      "utf-8",
+      "utf-8"
     );
     const { appHtml, cssLinks } = await render(req.url, manifest);
     // console.dir(cssLinks, 'adddad');
@@ -31,7 +31,7 @@ server.all(/^(.*)$/, async (req, res) => {
       .replace("<!--app-html-->", appHtml)
       .replace(
         '<script type="module" src="/src/entry-client.ts"></script>',
-        `<script type="module" src="/entry-client.js"></script>`,
+        `<script type="module" src="/entry-client.js"></script>`
       );
 
     res.setHeader("Content-Type", "text/html");
