@@ -25,17 +25,17 @@ const showInfo = () => {
   //   },
   // });
   Modal.info({
-    body: "这是内容",
+    body: '这是内容',
     onOk: function () {
       console.log('点击了确定');
-      Message.show({ text: "点击了确定" });
+      Message.show({ text: '点击了确定' });
     },
     onCancle: function () {
       console.log('点击了取消');
-      Message.show({ text: "点击了取消" });
+      Message.show({ text: '点击了取消' });
     },
   });
-}
+};
 //   Modal.info({
 //     body: "这是内容",
 //     onOk: function () {
@@ -58,10 +58,10 @@ const showConfirm = () => {
   //   },
   // });
   Modal.confirm({
-    body: "这是内容",
+    body: '这是内容',
     onOk: function () {
-      console.log('点击了确定')
-      Message.show({ text: "点击了确定" });
+      console.log('点击了确定');
+      Message.show({ text: '点击了确定' });
     },
   });
 };

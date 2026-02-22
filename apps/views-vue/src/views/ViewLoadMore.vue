@@ -20,10 +20,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { LoadmoreProps, LoadmoreEmits } from "@dpzvc3/vue/es/load-more";
+import type { LoadmoreProps, LoadmoreEmits } from '@dpzvc3/vue/es/load-more';
 const moreRef = ref(null);
-const hasMore = ref<LoadmoreProps["hasMore"]>(true);
-const loadmore = ref(Array(16).fill("LoadMore"));
+const hasMore = ref<LoadmoreProps['hasMore']>(true);
+const loadmore = ref(Array(16).fill('LoadMore'));
 
 const topMethod = () => {
   hasMore.value = true;
@@ -41,12 +41,12 @@ const bottomMethod = () => {
     if (moreRef.value && (moreRef.value as any).onLoadOff) {
       (moreRef.value as any).onLoadOff();
     }
-    loadmore.value.push(...["LoadMore", "LoadMore"]);
+    loadmore.value.push(...['LoadMore', 'LoadMore']);
   }, 2000);
 };
 
-const getStatus: LoadmoreEmits["on-change-up-status"] = (val) => {
-  console.log(val, "----val----");
+const getStatus: LoadmoreEmits['on-change-up-status'] = (val) => {
+  console.log(val, '----val----');
 };
 </script>
 

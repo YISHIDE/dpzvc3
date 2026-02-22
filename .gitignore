@@ -15,6 +15,6 @@ example/*
 .vercel
 .env*.local
 node_modules
-
+test.html
 *storybook.log
 storybook-static

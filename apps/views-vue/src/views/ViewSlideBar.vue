@@ -32,13 +32,13 @@
 </template>
 
 <script lang="ts" setup>
-import type { SlideBarProps } from "@dpzvc3/vue/es/slide-bar";
-const items = ref<SlideBarProps["list"]>([
-  { name: "选项一" },
-  { name: "选项二" },
-  { name: "选项三" },
+import type { SlideBarProps } from '@dpzvc3/vue/es/slide-bar';
+const items = ref<SlideBarProps['list']>([
+  { name: '选项一' },
+  { name: '选项二' },
+  { name: '选项三' },
 ]);
-const index = ref<SlideBarProps["index"]>(1);
+const index = ref<SlideBarProps['index']>(1);
 const changeIndex = (index: number) => {
   console.log(index);
 };

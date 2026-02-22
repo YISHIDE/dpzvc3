@@ -13,16 +13,14 @@
 
     <p>单个 checkbox</p>
     <div class="item">
-      <CheckBox v-model="checked"
-label="苹果" @on-change="change" />
+      <CheckBox v-model="checked" label="苹果" @on-change="change" />
     </div>
 
     <div class="item">checked: {{ checked }}</div>
 
     <p>禁用的 checkbox</p>
     <div class="item">
-      <CheckBox label="玩具"
-disable />
+      <CheckBox label="玩具" disable />
     </div>
   </div>
 </template>
@@ -31,11 +29,11 @@ disable />
 import type {
   CheckBoxProps,
   CheckBoxGroupProps,
-} from "@dpzvc3/vue/es/check-box";
-const data = ref<CheckBoxGroupProps["modelValue"]>(["中国"]);
-const checked = ref<CheckBoxProps["modelValue"]>(false);
+} from '@dpzvc3/vue/es/check-box';
+const data = ref<CheckBoxGroupProps['modelValue']>(['中国']);
+const checked = ref<CheckBoxProps['modelValue']>(false);
 const change = (e: any) => {
-  console.log(e, "e");
+  console.log(e, 'e');
 };
 </script>
 

@@ -7,7 +7,7 @@
     "typescriptreact",
     "vue"
   ],
-  "editor.defaultFormatter": "Vue.volar",
+  // "editor.defaultFormatter": "Vue.volar",
   "eslint.run": "onType",
   // "eslint.alwaysShowStatus": true,
   "eslint.packageManager": "pnpm",
@@ -35,6 +35,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 }

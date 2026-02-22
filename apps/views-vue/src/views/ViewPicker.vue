@@ -26,12 +26,9 @@
       @cancle="pickerCancle"
     />
     <div class="item">
-      <DpButton
-width="30%" @click="DateVisible = true"> 日期选择器 </DpButton>
-      <DpButton
-width="30%" @click="AreaVisible = true"> 地区选择器 </DpButton>
-      <DpButton width="30%"
-@click="NormalVisible = true">
+      <DpButton width="30%" @click="DateVisible = true"> 日期选择器 </DpButton>
+      <DpButton width="30%" @click="AreaVisible = true"> 地区选择器 </DpButton>
+      <DpButton width="30%" @click="NormalVisible = true">
         通用选择器
       </DpButton>
     </div>
@@ -39,16 +36,16 @@ width="30%" @click="AreaVisible = true"> 地区选择器 </DpButton>
 </template>
 
 <script lang="ts" setup>
-import type { PickerProps } from "@dpzvc3/vue/es/picker";
-const AreaVisible = ref<PickerProps["modelValue"]>(false);
-const DateVisible = ref<PickerProps["modelValue"]>(false);
-const NormalVisible = ref<PickerProps["modelValue"]>(false);
-const initArrRef = ref<PickerProps["initArr"]>([1, 3, 3]);
-const listRef = ref<PickerProps["list"]>([
+import type { PickerProps } from '@dpzvc3/vue/es/picker';
+const AreaVisible = ref<PickerProps['modelValue']>(false);
+const DateVisible = ref<PickerProps['modelValue']>(false);
+const NormalVisible = ref<PickerProps['modelValue']>(false);
+const initArrRef = ref<PickerProps['initArr']>([1, 3, 3]);
+const listRef = ref<PickerProps['list']>([
   {
-    target: "targetA",
+    target: 'targetA',
     list: [
-      { value: "a", code: 1 },
+      { value: 'a', code: 1 },
       { value: 2, code: 2 },
       { value: 3, code: 3 },
       {
@@ -62,14 +59,14 @@ const listRef = ref<PickerProps["list"]>([
         value: 8,
         code: 8,
       },
-      { value: "c", code: 9 },
+      { value: 'c', code: 9 },
       { value: 0, code: 0 },
     ],
   },
   {
-    target: "targetB",
+    target: 'targetB',
     list: [
-      { value: "b", code: 1 },
+      { value: 'b', code: 1 },
       { value: 2, code: 2 },
       { value: 3, code: 3 },
       {
@@ -88,9 +85,9 @@ const listRef = ref<PickerProps["list"]>([
     ],
   },
   {
-    target: "targetC",
+    target: 'targetC',
     list: [
-      { value: "c", code: 1 },
+      { value: 'c', code: 1 },
       { value: 2, code: 2 },
       { value: 3, code: 3 },
       {
@@ -120,7 +117,7 @@ function pickerSure(value: any) {
   //   });
   // }
   Modal.confirm({
-      body: value.formArea || value.formatDate || JSON.stringify(value),
+    body: value.formArea || value.formatDate || JSON.stringify(value),
   });
   if (!value.formArea && !value.formatDate) {
     // console.log(value, 'value')
@@ -134,7 +131,7 @@ function pickerSure(value: any) {
 
 // 选择取消回调
 function pickerCancle() {
-  Message.show({ text: "您选择了取消" })
+  Message.show({ text: '您选择了取消' });
   // if (proxy) {
   //   (proxy as any).$Message.show({ text: "您选择了取消" });
   // }

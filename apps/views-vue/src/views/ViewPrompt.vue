@@ -1,7 +1,6 @@
 <template>
   <div class="Prompt">
-    <DpButton
-width="50%" @click="showPrompt"> 弹出Prompt </DpButton>
+    <DpButton width="50%" @click="showPrompt"> 弹出Prompt </DpButton>
   </div>
 </template>
 
@@ -16,9 +15,9 @@ function showPrompt() {
   //   text: "vvvv",
   // });
   Prompt.info({
-    title: "Prompt",
-    spec: "ccc",
-    text: "vvvv",
+    title: 'Prompt',
+    spec: 'ccc',
+    text: 'vvvv',
   });
 }
 </script>

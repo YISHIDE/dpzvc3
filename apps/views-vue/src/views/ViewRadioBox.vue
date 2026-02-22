@@ -11,22 +11,20 @@
     <div class="item">value: {{ radio }}</div>
 
     <p>单个Radio</p>
-    <RadioBox v-model="checked"
-label="苹果" />
+    <RadioBox v-model="checked" label="苹果" />
     <div class="item">checked: {{ checked }}</div>
 
     <p>禁用的Radio</p>
     <div class="item">
-      <RadioBox label="玩具"
-:disable="true" />
+      <RadioBox label="玩具" :disable="true" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { RadioBoxProps, RadioGroupProps } from "@dpzvc3/vue/es/radio-box";
-const checked = ref<RadioBoxProps["modelValue"]>(false);
-const radio = ref<RadioGroupProps["modelValue"]>("");
+import type { RadioBoxProps, RadioGroupProps } from '@dpzvc3/vue/es/radio-box';
+const checked = ref<RadioBoxProps['modelValue']>(false);
+const radio = ref<RadioGroupProps['modelValue']>('');
 </script>
 
 <style lang="less" scoped>

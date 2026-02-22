@@ -3,41 +3,38 @@
     <!-- Number 示例 -->
     <div class="item">
       <p class="title">Number</p>
-      <DpNumber v-model="number"
-:min="min" :max="max" :step="step" />
+      <DpNumber v-model="number" :min="min" :max="max" :step="step" />
       <span class="value">value: {{ number }}</span>
     </div>
 
     <!-- TextBar 普通输入框 -->
     <div class="item">
       <p class="title">TextBar</p>
-      <TextBar v-model="text"
-type="text" />
+      <TextBar v-model="text" type="text" />
       <span class="value">value: {{ text }}</span>
     </div>
 
     <!-- TextBar 多行输入框 -->
     <div class="item">
       <p class="title">TextBar</p>
-      <TextBar v-model="texts"
-type="textarea" :maxlength="9" />
+      <TextBar v-model="texts" type="textarea" :maxlength="9" />
       <span class="value">value: {{ texts }}</span>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { TextBarProps } from "@dpzvc3/vue/es/text-bar";
+import type { TextBarProps } from '@dpzvc3/vue/es/text-bar';
 // import Number from "@dpzvc3/vue/es/number";
-import type { NumberProps } from "@dpzvc3/vue/es/dp-number";
+import type { NumberProps } from '@dpzvc3/vue/es/dp-number';
 
-const number = ref<NumberProps["modelValue"]>(0);
-const min = ref<NumberProps["min"]>(0);
-const max = ref<NumberProps["max"]>(10);
-const step = ref<NumberProps["step"]>(2);
+const number = ref<NumberProps['modelValue']>(0);
+const min = ref<NumberProps['min']>(0);
+const max = ref<NumberProps['max']>(10);
+const step = ref<NumberProps['step']>(2);
 // const focus = ref<NumberProps['focus']>(true)
-const text = ref<TextBarProps["modelValue"]>("请输入");
-const texts = ref<TextBarProps["modelValue"]>("正在输入....");
+const text = ref<TextBarProps['modelValue']>('请输入');
+const texts = ref<TextBarProps['modelValue']>('正在输入....');
 </script>
 
 <style lang="less" scoped>

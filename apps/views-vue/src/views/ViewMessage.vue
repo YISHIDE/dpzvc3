@@ -1,11 +1,8 @@
 <template>
   <div class="Message">
-    <DpButton
-width="50%" @click="showMessageTop"> Top </DpButton>
-    <DpButton
-width="50%" @click="showMessage"> Center </DpButton>
-    <DpButton
-width="50%" @click="showMessageBottom"> Bottom </DpButton>
+    <DpButton width="50%" @click="showMessageTop"> Top </DpButton>
+    <DpButton width="50%" @click="showMessage"> Center </DpButton>
+    <DpButton width="50%" @click="showMessageBottom"> Bottom </DpButton>
   </div>
 </template>
 
@@ -13,17 +10,17 @@ width="50%" @click="showMessageBottom"> Bottom </DpButton>
 // 获取全局实例
 // const { proxy } = getCurrentInstance()!;
 const showMessage = () => {
-  Message.show({ text: "显示消息" });
+  Message.show({ text: '显示消息' });
   // proxy!.$Message.show({ text: "显示消息" });
 };
 
 const showMessageTop = () => {
-  Message.show({ text: "显示消息", position: "top" });
+  Message.show({ text: '显示消息', position: 'top' });
   // proxy!.$Message.show({ text: "显示消息", position: "top" });
 };
 
 const showMessageBottom = () => {
-  Message.show({ text: "显示消息", position: "bottom" });
+  Message.show({ text: '显示消息', position: 'bottom' });
   // proxy!.$Message.show({ text: "显示消息", position: "bottom" });
 };
 </script>

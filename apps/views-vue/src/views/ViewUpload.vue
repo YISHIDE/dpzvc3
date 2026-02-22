@@ -1,11 +1,9 @@
 <template>
   <div class="Upload">
-    <Upload ref="upload"
-:multiple="true" @on-change-file="onChangeFile" />
+    <Upload ref="upload" :multiple="true" @on-change-file="onChangeFile" />
 
     <template v-if="files.length">
-      <img
-v-for="(item, index) in files" :key="index" :src="item.base64" />
+      <img v-for="(item, index) in files" :key="index" :src="item.base64" />
     </template>
   </div>
 </template>

@@ -1,14 +1,13 @@
 <template>
   <div class="Progress">
-    <Progress v-model="progress"
-:bar-height="barHeight" />
+    <Progress v-model="progress" :bar-height="barHeight" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { ProgressProps } from "@dpzvc3/vue/es/progress";
+import type { ProgressProps } from '@dpzvc3/vue/es/progress';
 
-const progress = ref<ProgressProps["modelValue"]>("0");
+const progress = ref<ProgressProps['modelValue']>('0');
 const barHeight = ref(5);
 let timer: any = null;
 

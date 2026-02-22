@@ -1,24 +1,16 @@
 <template>
   <div class="Indicator">
     <div class="item">
-      <DpButton @click="blade">
-blade
-</DpButton>
+      <DpButton @click="blade"> blade </DpButton>
     </div>
     <div class="item">
-      <DpButton @click="snake">
-snake
-</DpButton>
+      <DpButton @click="snake"> snake </DpButton>
     </div>
     <div class="item">
-      <DpButton @click="circle">
-circle
-</DpButton>
+      <DpButton @click="circle"> circle </DpButton>
     </div>
     <div class="item">
-      <DpButton @click="bounce">
-bounce
-</DpButton>
+      <DpButton @click="bounce"> bounce </DpButton>
     </div>
   </div>
 </template>

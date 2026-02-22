@@ -39,7 +39,7 @@ import HelloWorld from './components/HelloWorld.vue'
 // import { useRoute } from "vue-router";
 
 // 当前动画方向
-const direction = ref("dpzvc3-ani-fade");
+const direction = ref('dpzvc3-ani-fade');
 
 // 获取路由实例
 const route = useRoute();
@@ -48,15 +48,15 @@ const route = useRoute();
 watch(
   () => route.fullPath, // 监听路由全路径变化
   (toPath, fromPath) => {
-    const toDepth = toPath.split("/").length;
-    const fromDepth = fromPath.split("/").length;
+    const toDepth = toPath.split('/').length;
+    const fromDepth = fromPath.split('/').length;
     // console.log("toDepth:", toDepth, "fromDepth:", fromDepth);
     if (toDepth === fromDepth) {
-      direction.value = "dpzvc3-ani-fade";
+      direction.value = 'dpzvc3-ani-fade';
     } else if (toDepth > fromDepth) {
-      direction.value = "dpzvc3-ani-left";
+      direction.value = 'dpzvc3-ani-left';
     } else {
-      direction.value = "dpzvc3-ani-right";
+      direction.value = 'dpzvc3-ani-right';
     }
   }
 );

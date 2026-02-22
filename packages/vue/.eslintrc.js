@@ -10,79 +10,79 @@ module.exports = {
   },
 
   // ✅ Vue SFC 解析
-  parser: "vue-eslint-parser",
+  parser: 'vue-eslint-parser',
 
   parserOptions: {
-    parser: "@typescript-eslint/parser", // <script lang="ts">
+    parser: '@typescript-eslint/parser', // <script lang="ts">
     ecmaVersion: 2021,
-    sourceType: "module",
+    sourceType: 'module',
   },
 
-  plugins: ["vue", "@typescript-eslint"],
+  plugins: ['vue', '@typescript-eslint'],
 
   extends: [
-    "standard", // JS 基础规范
-    "plugin:vue/vue3-recommended", // Vue3 推荐
-    "plugin:@typescript-eslint/recommended", // TS 推荐
-    "plugin:prettier/recommended", // ⚡ 让 Prettier 接管格式
+    'standard', // JS 基础规范
+    'plugin:vue/vue3-recommended', // Vue3 推荐
+    'plugin:@typescript-eslint/recommended', // TS 推荐
+    'plugin:prettier/recommended', // ⚡ 让 Prettier 接管格式
   ],
 
   rules: {
     /* =====================
      * 🚫 禁止与 Prettier 冲突的格式规则
      * ===================== */
-    indent: "off",
-    "vue/html-indent": "off",
+    indent: 'off',
+    'vue/html-indent': 'off',
 
     /* =====================
      * ✅ JavaScript 质量规则
      * ===================== */
-    "no-var": "error",
-    "prefer-const": "error",
-    eqeqeq: ["error", "always"],
-    "no-multiple-empty-lines": ["error", { max: 1 }],
-    "eol-last": ["error", "always"],
+    'no-var': 'error',
+    'prefer-const': 'error',
+    eqeqeq: ['error', 'always'],
+    'no-multiple-empty-lines': ['error', { max: 1 }],
+    'eol-last': ['error', 'always'],
 
     /* =====================
      * ✅ TypeScript
      * ===================== */
-    "no-unused-vars": "off", // 交给 TS
-    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-expressions": "off",
+    'no-unused-vars': 'off', // 交给 TS
+    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off',
 
     /* =====================
      * ✅ Vue
      * ===================== */
-    "vue/no-unused-components": "error",
-    "vue/no-mutating-props": "error",
-    "vue/require-default-prop": "warn",
-    "vue/no-v-for-template-key": "off", // SSR 场景安全
-    "vue/multi-word-component-names": "off",
+    'vue/no-unused-components': 'error',
+    'vue/no-mutating-props': 'error',
+    'vue/require-default-prop': 'warn',
+    'vue/no-v-for-template-key': 'off', // SSR 场景安全
+    'vue/multi-word-component-names': 'off',
 
     /* =====================
      * ⚠️ 无法自动修复的规则（直接关）
      * ===================== */
-    "multiline-ternary": "off",
+    'multiline-ternary': 'off',
   },
 
   overrides: [
     {
-      files: ["*.ts", "*.tsx", "*.vue"],
+      files: ['*.ts', '*.tsx', '*.vue'],
       rules: {
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": ["warn"],
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': ['warn'],
       },
     },
   ],
 
   ignorePatterns: [
-    "node_modules/",
-    "dist/",
-    "dist-ssr/",
-    "dist-prod/",
-    ".output/",
+    'node_modules/',
+    'dist/',
+    'dist-ssr/',
+    'dist-prod/',
+    '.output/',
   ],
 };
 // module.exports = {

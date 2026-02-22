@@ -3,7 +3,8 @@ import js from "@eslint/js";
 import vue from "eslint-plugin-vue";
 import tseslint from "typescript-eslint";
 // import prettier from "eslint-plugin-prettier";
-import prettier from "eslint-config-prettier";
+// import prettier from "eslint-config-prettier";  
+import prettierRecommended from "eslint-plugin-prettier/recommended";
 import vueParser from "vue-eslint-parser";
 import autoImportGlobals from "./.eslintrc-auto-import.json" with { type: "json" };
 import { dpzvc3Globals } from "@dpzvc3/vue/resolvers";
@@ -92,7 +93,7 @@ export default [
       "@typescript-eslint/no-require-imports": "off",
     },
   },
-  prettier
+  prettierRecommended
   // /* 🔁 overrides */
   // {
   //   files: ['**/*.{ts,tsx,vue}'],
