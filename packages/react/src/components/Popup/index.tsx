@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { PopupProps } from './types';
 import { CSSTransition } from 'react-transition-group';
-import '@dpzvc3/styles/dist/components/popup.css'
-import '@dpzvc3/styles/dist/utils/animation.css'
+import '@dpzvc3/styles/dist/components/popup.css';
+import '@dpzvc3/styles/dist/utils/animation.css';
 
 const prefixCls = 'dpzvc3-popup';
 
@@ -31,7 +31,7 @@ const Popup: React.FC<PopupProps> = (props) => {
   // notify parent (simulate update:modelValue)
   useEffect(() => {
     if (typeof onUpdateModelValue === 'function') onUpdateModelValue(visible);
-  }, [visible, onUpdateModelValue]);
+  }, [visible]);
 
   const close = () => {
     if (maskClosable && mask) setVisible(false);
@@ -40,7 +40,7 @@ const Popup: React.FC<PopupProps> = (props) => {
   const contentStyle: React.CSSProperties = {
     ...styles,
     width,
-    height: height ?? (position === 'top' ? 'auto' : '100%'),
+    height: height !== null ? height : position === 'top' ? 'auto' : '100%',
   };
 
   return (
