@@ -16,5 +16,11 @@ export type {
   ActionItem,
 } from './components/action-sheet';
 
+export { default as Header } from './components/dp-header';
+export type { dp_headerProps as HeaderProps } from './components/dp-header';
+
+export { default as Card } from './components/card';
+export type { cardProps as CardProps } from './components/card';
+
 export { default as Button } from './components/Button';
 export type { ButtonProps } from './components/Button';

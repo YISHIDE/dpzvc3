@@ -1,6 +1,23 @@
-# ${name}
+# dp-header
 
-This is a React placeholder for the ${name} component.
-Refer to the Vue implementation at `packages/vue/src/components/${name}` for behavior and props.
+React implementation of the `Header` component. Props mirror the Vue version:
 
-Once the logic is ported, implement it here and export appropriately.
+| prop       | type    | default | description            |
+| ---------- | ------- | ------- | ---------------------- |
+| modelValue | boolean | true    | visibility             |
+| fixed      | boolean | true    | header is fixed at top |
+| title      | string  | ''      | title text             |
+| wechat     | boolean | false   | hide in WeChat UA      |
+
+Use it like:
+
+```tsx
+<Header title="Title" fixed>
+  {{
+    left: <span>Back</span>,
+    right: <span>Menu</span>,
+  }}
+</Header>
+```
+
+See the Vue implementation in `packages/vue/src/components/dp-header` for reference and review `packages/react/src/stories/Header.tsx` for examples.

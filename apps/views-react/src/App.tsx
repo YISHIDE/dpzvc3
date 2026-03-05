@@ -7,8 +7,11 @@ import '@dpzvc3/styles/dist/index.css';
 const LazyGuide = lazy(() => import('./views/Guide'));
 const LazyButton = lazy(() => import('./views/Button'));
 const LazyBadge = lazy(() => import('./views/Badge'));
+const LazyCell = lazy(() => import('./views/Cell'));
 const LazyPopup = lazy(() => import('./views/Popup'));
 const LazyActionSheet = lazy(() => import('./views/ActionSheet'));
+const LazyHeader = lazy(() => import('./views/Header'));
+const LazyCard = lazy(() => import('./views/Card'));
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -29,6 +32,9 @@ function AnimatedRoutes() {
               <Route path="/" element={<LazyGuide />} />
               <Route path="/Button" element={<LazyButton />} />
               <Route path="/Badge" element={<LazyBadge />} />
+              <Route path="/Header" element={<LazyHeader />} />
+              <Route path="/Card" element={<LazyCard />} />
+              <Route path="/Cell" element={<LazyCell />} />
               <Route path="/ActionSheet" element={<LazyActionSheet />} />
               <Route path="/Popup" element={<LazyPopup />} />
             </Routes>

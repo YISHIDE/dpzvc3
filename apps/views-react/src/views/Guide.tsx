@@ -1,7 +1,7 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Cell } from '@dpzvc3/react' // 如果发布包可直接用 '@dpzvc3/react'
-import './guide.css'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Cell } from '@dpzvc3/react'; // 如果发布包可直接用 '@dpzvc3/react'
+import './guide.css';
 
 const componentList = [
   { title: 'ActionSheet', label: 'dpzvc3-ui操作列表', link: '/ActionSheet' },
@@ -30,27 +30,21 @@ const componentList = [
   { title: 'Text', label: 'dpzvc3-ui输入框', link: '/Text' },
   { title: 'ToTop', label: 'dpzvc3-ui回到顶部', link: '/ToTop' },
   { title: 'Upload', label: 'dpzvc3-ui图片上传', link: '/Upload' },
-]
+];
 
 const Guide: React.FC = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const onClick = (path?: string) => {
-    if (path) navigate(path)
-  }
+    if (path) navigate(path);
+  };
 
   return (
     <div className="guide">
       {componentList.map((v, idx) => (
-        <Cell
-          key={idx}
-          title={v.title}
-          label={v.label}
-          link={v.link}
-          hasMask
-        />
+        <Cell key={idx} title={v.title} label={v.label} link={v.link} hasMask />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Guide
+export default Guide;

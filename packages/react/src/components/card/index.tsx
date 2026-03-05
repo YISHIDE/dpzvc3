@@ -4,10 +4,22 @@ import '@dpzvc3/styles/dist/components/card.css';
 
 const prefixCls = 'dpzvc3-card';
 
-const card: React.FC<cardProps> = (props) => {
-  // TODO: port logic from vue version (packages/vue/src/components/card)
-  return <div className={prefixCls}>{props.children}</div>;
+const Card: React.FC<cardProps> = (props) => {
+  const { width = '100%', header, footer, children } = props;
+
+  const classes = [prefixCls].join(' ');
+  const headerCls = `${prefixCls}-header dpzvc3-1px-bottom`;
+  const contentCls = `${prefixCls}-content`;
+  const footerCls = `${prefixCls}-footer dpzvc3-1px-top`;
+
+  return (
+    <div className={classes} style={{ width }}>
+      <div className={headerCls}>{header}</div>
+      <div className={contentCls}>{children}</div>
+      <div className={footerCls}>{footer}</div>
+    </div>
+  );
 };
 
 export type { cardProps } from './types';
-export default card;
+export default Card;

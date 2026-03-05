@@ -7,7 +7,7 @@ This repository is a pnpm-based monorepo that contains a UI component library an
 - **packages/** hosts all packages that are published or consumed by apps.
 
   - `vue/` contains a Vue 3 component library (`@dpzvc3/vue`). Each component lives in `src/components/<name>`. Components are written in TSX + composition API with `defineComponent`. Types are defined in sibling `types.ts`. Many components export an `install` helper for Vue plugin registration; the `index.ts` just wraps the component.
-  - `react/` contains a React counterpart (`@dpzvc3/react`). It currently includes Button, Cell, Popup and Spinner but now has skeleton directories for all other components. The pattern is:
+  - `react/` contains a React counterpart (`@dpzvc3/react`). It currently includes Button, Cell, Popup, Spinner and Card (recently ported) but also hosts skeleton directories for all other components. The pattern is:
     - `src/components/<name>/index.tsx`: a `React.FC` component with a `prefixCls` constant and placeholder `TODO` comment; imports associated CSS from `@dpzvc3/styles`.
     - `src/components/<name>/types.ts`: props interface stub (children only until ported).
     - `src/components/<name>/README.md`: notes pointing to the Vue implementation and reminding to port logic.
@@ -65,7 +65,7 @@ This repository is a pnpm-based monorepo that contains a UI component library an
 
 ## Tips for AI agents
 
-- Always look at the Vue version when implementing or modifying React components – the logic is nearly identical aside from framework APIs.
+- Always look at the Vue version when implementing or modifying React components – the logic is nearly identical aside from framework APIs. The Card component is a recent example; props like `header`/`footer` and width computation were pulled directly from `packages/vue/src/components/card`.
 - When editing `types.ts` files, keep them minimal; avoid free‑form comments that break the TypeScript parser.
 - After making changes to a package, rebuild with the appropriate filter and check for type errors. The `pnpm build` output often shows which file is failing.
 - For new components, add a demo view in both `views-vue` and `views-react` so cross‑platform parity is easy to verify.
